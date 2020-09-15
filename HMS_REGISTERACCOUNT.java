@@ -254,8 +254,8 @@ public class HMS_REGISTERACCOUNT extends javax.swing.JFrame {
         userImageLabel.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         userImageLabel.setText("User Image:");
 
-        registerButton.setBackground(new java.awt.Color(118, 158, 203));
-        registerButton.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        registerButton.setBackground(new java.awt.Color(60, 143, 246));
+        registerButton.setFont(new java.awt.Font("Verdana", 0, 24)); // NOI18N
         registerButton.setText("Register Account");
         registerButton.setBorder(new javax.swing.border.MatteBorder(null));
         registerButton.setBorderPainted(false);
@@ -267,7 +267,7 @@ public class HMS_REGISTERACCOUNT extends javax.swing.JFrame {
         });
 
         cancelButton.setBackground(new java.awt.Color(255, 102, 102));
-        cancelButton.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        cancelButton.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         cancelButton.setText("Cancel (Esc)");
         cancelButton.setBorderPainted(false);
         cancelButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));

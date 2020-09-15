@@ -200,7 +200,7 @@ public class HMS_LOGIN extends javax.swing.JFrame {
             }
         });
 
-        loginButton.setBackground(new java.awt.Color(118, 158, 203));
+        loginButton.setBackground(new java.awt.Color(60, 143, 246));
         loginButton.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
         loginButton.setText("LOGIN (Enter)");
         loginButton.setToolTipText("Log In");
@@ -525,7 +525,7 @@ public class HMS_LOGIN extends javax.swing.JFrame {
 
     private void loginButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loginButtonMouseExited
         // set Login Button Background
-        loginButton.setBackground(new Color (210, 223, 237));
+        loginButton.setBackground(new Color (60, 143, 246));
     }//GEN-LAST:event_loginButtonMouseExited
 
     private void aboutButtonMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_aboutButtonMousePressed
