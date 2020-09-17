@@ -48,12 +48,13 @@ public class HMS_ADMINFORM extends javax.swing.JFrame {
 
         mainAdminPanel = new java.awt.Panel();
         adminToolHeader = new javax.swing.JLabel();
-        registerUserInDatabaseButton = new javax.swing.JButton();
+        registerEmployeeButton = new javax.swing.JButton();
         adminCancelButton = new javax.swing.JButton();
         manageDatabaseURL = new javax.swing.JButton();
-        userDatabaseButton = new javax.swing.JButton();
-        patientDatabaseButton = new javax.swing.JButton();
-        employeeDatabaseButton = new javax.swing.JButton();
+        manageUserButton = new javax.swing.JButton();
+        manageEmployeesButton = new javax.swing.JButton();
+        registerUserInDatabaseButton1 = new javax.swing.JButton();
+        managePatientsButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setAutoRequestFocus(false);
@@ -66,21 +67,21 @@ public class HMS_ADMINFORM extends javax.swing.JFrame {
 
         adminToolHeader.setIcon(new javax.swing.ImageIcon(getClass().getResource("/healthMonitoringSystem/APP_IMAGES/login_images/HMS_TOPPANEL_ADMINFORM.png"))); // NOI18N
 
-        registerUserInDatabaseButton.setBackground(new java.awt.Color(60, 143, 246));
-        registerUserInDatabaseButton.setFont(new java.awt.Font("Verdana", 0, 24)); // NOI18N
-        registerUserInDatabaseButton.setForeground(new java.awt.Color(255, 255, 255));
-        registerUserInDatabaseButton.setText("Register User Account");
-        registerUserInDatabaseButton.setToolTipText("");
-        registerUserInDatabaseButton.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        registerUserInDatabaseButton.setBorderPainted(false);
-        registerUserInDatabaseButton.addActionListener(new java.awt.event.ActionListener() {
+        registerEmployeeButton.setBackground(new java.awt.Color(60, 143, 246));
+        registerEmployeeButton.setFont(new java.awt.Font("Verdana", 0, 24)); // NOI18N
+        registerEmployeeButton.setForeground(new java.awt.Color(255, 255, 255));
+        registerEmployeeButton.setText("Register Employee");
+        registerEmployeeButton.setToolTipText("");
+        registerEmployeeButton.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        registerEmployeeButton.setBorderPainted(false);
+        registerEmployeeButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                registerUserInDatabaseButtonActionPerformed(evt);
+                registerEmployeeButtonActionPerformed(evt);
             }
         });
-        registerUserInDatabaseButton.addKeyListener(new java.awt.event.KeyAdapter() {
+        registerEmployeeButton.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                registerUserInDatabaseButtonKeyPressed(evt);
+                registerEmployeeButtonKeyPressed(evt);
             }
         });
 
@@ -89,6 +90,7 @@ public class HMS_ADMINFORM extends javax.swing.JFrame {
         adminCancelButton.setText("Cancel (Esc)");
         adminCancelButton.setBorderPainted(false);
         adminCancelButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        adminCancelButton.setSelected(true);
         adminCancelButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 adminCancelButtonMouseClicked(evt);
@@ -122,55 +124,99 @@ public class HMS_ADMINFORM extends javax.swing.JFrame {
                 manageDatabaseURLActionPerformed(evt);
             }
         });
-
-        userDatabaseButton.setBackground(new java.awt.Color(15, 79, 157));
-        userDatabaseButton.setFont(new java.awt.Font("Verdana", 1, 20)); // NOI18N
-        userDatabaseButton.setForeground(new java.awt.Color(255, 255, 255));
-        userDatabaseButton.setText("Manage User Database");
-        userDatabaseButton.setToolTipText("Full admin commands of the database");
-        userDatabaseButton.setActionCommand("");
-        userDatabaseButton.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(204, 204, 255), new java.awt.Color(204, 204, 255)));
-        userDatabaseButton.setBorderPainted(false);
-        userDatabaseButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        userDatabaseButton.setHideActionText(true);
-        userDatabaseButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        userDatabaseButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                userDatabaseButtonActionPerformed(evt);
+        manageDatabaseURL.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                manageDatabaseURLKeyPressed(evt);
             }
         });
 
-        patientDatabaseButton.setBackground(new java.awt.Color(15, 79, 157));
-        patientDatabaseButton.setFont(new java.awt.Font("Verdana", 1, 20)); // NOI18N
-        patientDatabaseButton.setForeground(new java.awt.Color(255, 255, 255));
-        patientDatabaseButton.setText("Manage Patient Database");
-        patientDatabaseButton.setToolTipText("Full admin commands of the database");
-        patientDatabaseButton.setActionCommand("");
-        patientDatabaseButton.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(204, 204, 255), new java.awt.Color(204, 204, 255)));
-        patientDatabaseButton.setBorderPainted(false);
-        patientDatabaseButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        patientDatabaseButton.setHideActionText(true);
-        patientDatabaseButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        patientDatabaseButton.addActionListener(new java.awt.event.ActionListener() {
+        manageUserButton.setBackground(new java.awt.Color(15, 79, 157));
+        manageUserButton.setFont(new java.awt.Font("Verdana", 1, 20)); // NOI18N
+        manageUserButton.setForeground(new java.awt.Color(255, 255, 255));
+        manageUserButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/healthMonitoringSystem/APP_IMAGES/mainprogram/userIcon.png"))); // NOI18N
+        manageUserButton.setText("<html>\n<center>Manage<br>Users</center>\n</html>");
+        manageUserButton.setToolTipText("Full admin commands of the database");
+        manageUserButton.setActionCommand("");
+        manageUserButton.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        manageUserButton.setBorderPainted(false);
+        manageUserButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        manageUserButton.setHideActionText(true);
+        manageUserButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        manageUserButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        manageUserButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                patientDatabaseButtonActionPerformed(evt);
+                manageUserButtonActionPerformed(evt);
+            }
+        });
+        manageUserButton.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                manageUserButtonKeyPressed(evt);
             }
         });
 
-        employeeDatabaseButton.setBackground(new java.awt.Color(15, 79, 157));
-        employeeDatabaseButton.setFont(new java.awt.Font("Verdana", 1, 20)); // NOI18N
-        employeeDatabaseButton.setForeground(new java.awt.Color(255, 255, 255));
-        employeeDatabaseButton.setText("Manage Employee Database");
-        employeeDatabaseButton.setToolTipText("Full admin commands of the database");
-        employeeDatabaseButton.setActionCommand("");
-        employeeDatabaseButton.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(204, 204, 255), new java.awt.Color(204, 204, 255)));
-        employeeDatabaseButton.setBorderPainted(false);
-        employeeDatabaseButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        employeeDatabaseButton.setHideActionText(true);
-        employeeDatabaseButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        employeeDatabaseButton.addActionListener(new java.awt.event.ActionListener() {
+        manageEmployeesButton.setBackground(new java.awt.Color(15, 79, 157));
+        manageEmployeesButton.setFont(new java.awt.Font("Verdana", 1, 20)); // NOI18N
+        manageEmployeesButton.setForeground(new java.awt.Color(255, 255, 255));
+        manageEmployeesButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/healthMonitoringSystem/APP_IMAGES/mainprogram/employeeIcon.png"))); // NOI18N
+        manageEmployeesButton.setText("<html>\n<center>Manage<br>Employees</center>\n</html>");
+        manageEmployeesButton.setToolTipText("Full admin commands of the database");
+        manageEmployeesButton.setActionCommand("");
+        manageEmployeesButton.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(204, 204, 255), new java.awt.Color(204, 204, 255)));
+        manageEmployeesButton.setBorderPainted(false);
+        manageEmployeesButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        manageEmployeesButton.setHideActionText(true);
+        manageEmployeesButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        manageEmployeesButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        manageEmployeesButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                employeeDatabaseButtonActionPerformed(evt);
+                manageEmployeesButtonActionPerformed(evt);
+            }
+        });
+        manageEmployeesButton.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                manageEmployeesButtonKeyPressed(evt);
+            }
+        });
+
+        registerUserInDatabaseButton1.setBackground(new java.awt.Color(60, 143, 246));
+        registerUserInDatabaseButton1.setFont(new java.awt.Font("Verdana", 0, 24)); // NOI18N
+        registerUserInDatabaseButton1.setForeground(new java.awt.Color(255, 255, 255));
+        registerUserInDatabaseButton1.setText("Register User Account");
+        registerUserInDatabaseButton1.setToolTipText("");
+        registerUserInDatabaseButton1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        registerUserInDatabaseButton1.setBorderPainted(false);
+        registerUserInDatabaseButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                registerUserInDatabaseButton1ActionPerformed(evt);
+            }
+        });
+        registerUserInDatabaseButton1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                registerUserInDatabaseButton1KeyPressed(evt);
+            }
+        });
+
+        managePatientsButton.setBackground(new java.awt.Color(15, 79, 157));
+        managePatientsButton.setFont(new java.awt.Font("Verdana", 1, 20)); // NOI18N
+        managePatientsButton.setForeground(new java.awt.Color(255, 255, 255));
+        managePatientsButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/healthMonitoringSystem/APP_IMAGES/mainprogram/patientIcon.png"))); // NOI18N
+        managePatientsButton.setText("<html>\n<center>Manage<br>Patients</center>\n</html>");
+        managePatientsButton.setToolTipText("Full admin commands of the database");
+        managePatientsButton.setActionCommand("");
+        managePatientsButton.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(204, 204, 255), new java.awt.Color(204, 204, 255)));
+        managePatientsButton.setBorderPainted(false);
+        managePatientsButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        managePatientsButton.setHideActionText(true);
+        managePatientsButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        managePatientsButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        managePatientsButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                managePatientsButtonActionPerformed(evt);
+            }
+        });
+        managePatientsButton.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                managePatientsButtonKeyPressed(evt);
             }
         });
 
@@ -179,71 +225,71 @@ public class HMS_ADMINFORM extends javax.swing.JFrame {
         mainAdminPanelLayout.setHorizontalGroup(
             mainAdminPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(adminToolHeader)
-            .addGroup(mainAdminPanelLayout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mainAdminPanelLayout.createSequentialGroup()
                 .addGap(66, 66, 66)
-                .addGroup(mainAdminPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(mainAdminPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(adminCancelButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(manageDatabaseURL, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(mainAdminPanelLayout.createSequentialGroup()
                         .addGroup(mainAdminPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(userDatabaseButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(registerUserInDatabaseButton, javax.swing.GroupLayout.DEFAULT_SIZE, 410, Short.MAX_VALUE))
+                            .addComponent(registerUserInDatabaseButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 293, Short.MAX_VALUE)
+                            .addComponent(registerEmployeeButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(mainAdminPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(employeeDatabaseButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 410, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(patientDatabaseButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 410, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(manageDatabaseURL, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(adminCancelButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(71, 71, 71))
+                        .addComponent(manageUserButton, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(manageEmployeesButton, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(managePatientsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(77, 77, 77))
         );
         mainAdminPanelLayout.setVerticalGroup(
             mainAdminPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mainAdminPanelLayout.createSequentialGroup()
                 .addComponent(adminToolHeader)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(mainAdminPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(mainAdminPanelLayout.createSequentialGroup()
-                        .addComponent(registerUserInDatabaseButton, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(userDatabaseButton, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mainAdminPanelLayout.createSequentialGroup()
-                        .addComponent(employeeDatabaseButton, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(patientDatabaseButton, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(registerUserInDatabaseButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(10, 10, 10)
+                        .addComponent(registerEmployeeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(manageUserButton, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(manageEmployeesButton, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(managePatientsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(manageDatabaseURL, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(adminCancelButton, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(mainAdminPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(mainAdminPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(mainAdminPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(mainAdminPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void registerUserInDatabaseButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerUserInDatabaseButtonActionPerformed
-          HMS_REGISTERACCOUNT registerForm = new HMS_REGISTERACCOUNT();
-            registerForm.setVisible(true);
-    }//GEN-LAST:event_registerUserInDatabaseButtonActionPerformed
+    private void registerEmployeeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerEmployeeButtonActionPerformed
+         
+    }//GEN-LAST:event_registerEmployeeButtonActionPerformed
 
     private void adminCancelButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_adminCancelButtonMouseClicked
         this.dispose();
     }//GEN-LAST:event_adminCancelButtonMouseClicked
 
-    private void registerUserInDatabaseButtonKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_registerUserInDatabaseButtonKeyPressed
+    private void registerEmployeeButtonKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_registerEmployeeButtonKeyPressed
         if (evt.getKeyCode()==KeyEvent.VK_ESCAPE){
             this.dispose();}
         else{}
-    }//GEN-LAST:event_registerUserInDatabaseButtonKeyPressed
+    }//GEN-LAST:event_registerEmployeeButtonKeyPressed
 
     private void adminCancelButtonKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_adminCancelButtonKeyPressed
         if (evt.getKeyCode()==KeyEvent.VK_ESCAPE){
@@ -252,10 +298,12 @@ public class HMS_ADMINFORM extends javax.swing.JFrame {
     }//GEN-LAST:event_adminCancelButtonKeyPressed
 
     private void adminCancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adminCancelButtonActionPerformed
+        HMS_LOGIN mainLoginForm = new HMS_LOGIN();
+        mainLoginForm.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_adminCancelButtonActionPerformed
 
-    private void userDatabaseButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userDatabaseButtonActionPerformed
+    private void manageUserButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageUserButtonActionPerformed
         try {
 
             Desktop.getDesktop().browse(new URI("http://localhost/phpmyadmin/sql.php?server=1&db=health_monitoring_system_database&table=users&pos=0"));
@@ -263,15 +311,17 @@ public class HMS_ADMINFORM extends javax.swing.JFrame {
         } catch (IOException | URISyntaxException err1) {
             System.out.println(err1);
         }
-    }//GEN-LAST:event_userDatabaseButtonActionPerformed
+    }//GEN-LAST:event_manageUserButtonActionPerformed
 
-    private void patientDatabaseButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_patientDatabaseButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_patientDatabaseButtonActionPerformed
+    private void manageEmployeesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageEmployeesButtonActionPerformed
+        try {
 
-    private void employeeDatabaseButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_employeeDatabaseButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_employeeDatabaseButtonActionPerformed
+            Desktop.getDesktop().browse(new URI("http://localhost/phpmyadmin/sql.php?server=1&db=health_monitoring_system_database&table=patients&pos=0"));
+
+        } catch (IOException | URISyntaxException err1) {
+            System.out.println(err1);
+        }
+    }//GEN-LAST:event_manageEmployeesButtonActionPerformed
 
     private void manageDatabaseURLActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageDatabaseURLActionPerformed
         try {
@@ -283,35 +333,57 @@ public class HMS_ADMINFORM extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_manageDatabaseURLActionPerformed
 
+    private void registerUserInDatabaseButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerUserInDatabaseButton1ActionPerformed
+        HMS_USER_REGISTRATION registerForm = new HMS_USER_REGISTRATION();
+        registerForm.setVisible(true);
+    }//GEN-LAST:event_registerUserInDatabaseButton1ActionPerformed
+
+    private void registerUserInDatabaseButton1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_registerUserInDatabaseButton1KeyPressed
+        if (evt.getKeyCode()==KeyEvent.VK_ESCAPE){
+            this.dispose();}
+        else{}  
+    }//GEN-LAST:event_registerUserInDatabaseButton1KeyPressed
+
+    private void managePatientsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_managePatientsButtonActionPerformed
+        try {
+
+            Desktop.getDesktop().browse(new URI("http://localhost/phpmyadmin/sql.php?server=1&db=health_monitoring_system_database&table=patients&pos=0"));
+
+        } catch (IOException | URISyntaxException err1) {
+            System.out.println(err1);
+        }
+    }//GEN-LAST:event_managePatientsButtonActionPerformed
+
+    private void manageDatabaseURLKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_manageDatabaseURLKeyPressed
+        if (evt.getKeyCode()==KeyEvent.VK_ESCAPE){
+            this.dispose();}
+        else{}  
+    }//GEN-LAST:event_manageDatabaseURLKeyPressed
+
+    private void manageEmployeesButtonKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_manageEmployeesButtonKeyPressed
+        if (evt.getKeyCode()==KeyEvent.VK_ESCAPE){
+            this.dispose();}
+        else{}                   
+    }//GEN-LAST:event_manageEmployeesButtonKeyPressed
+
+    private void manageUserButtonKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_manageUserButtonKeyPressed
+        if (evt.getKeyCode()==KeyEvent.VK_ESCAPE){
+            this.dispose();}
+        else{}  
+    }//GEN-LAST:event_manageUserButtonKeyPressed
+
+    private void managePatientsButtonKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_managePatientsButtonKeyPressed
+        if (evt.getKeyCode()==KeyEvent.VK_ESCAPE){
+            this.dispose();}
+        else{}  
+    }//GEN-LAST:event_managePatientsButtonKeyPressed
+
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(HMS_ADMINFORM.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(HMS_ADMINFORM.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(HMS_ADMINFORM.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(HMS_ADMINFORM.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
+    public static void HMS_MAIN() {
+//    public static void main(String args[]) {
 
-        /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new HMS_ADMINFORM().setVisible(true);
@@ -322,11 +394,12 @@ public class HMS_ADMINFORM extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton adminCancelButton;
     private javax.swing.JLabel adminToolHeader;
-    private javax.swing.JButton employeeDatabaseButton;
     private java.awt.Panel mainAdminPanel;
     private javax.swing.JButton manageDatabaseURL;
-    private javax.swing.JButton patientDatabaseButton;
-    private javax.swing.JButton registerUserInDatabaseButton;
-    private javax.swing.JButton userDatabaseButton;
+    private javax.swing.JButton manageEmployeesButton;
+    private javax.swing.JButton managePatientsButton;
+    private javax.swing.JButton manageUserButton;
+    private javax.swing.JButton registerEmployeeButton;
+    private javax.swing.JButton registerUserInDatabaseButton1;
     // End of variables declaration//GEN-END:variables
 }

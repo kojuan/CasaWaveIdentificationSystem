@@ -6,6 +6,7 @@ package healthMonitoringSystem;
  * and open the template in the editor.
  */
 
+import static healthMonitoringSystem.HMS_MAIN.passwordPanel;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import javax.swing.*;
@@ -24,6 +25,20 @@ import javax.swing.border.LineBorder;
 // import javax.swing.SwingConstants; // center text/label
 
 public class HMS_LOGIN extends javax.swing.JFrame {
+    
+    public static JFrame frame;
+    public static JPanel buttonpanel, topPanel,screenpanel,panel2, keypadpanel,
+            passwordPanel;
+    public static JLabel titleText, total, currentAmount, depositTextLabel, 
+            currentBalance, balInquiryTitle, withdrawTextLabel, passwordLabelText;
+    public static JButton exitButton, cwButton, payeeButton, bankButton, 
+            chequeHistoryButton, settingsButton, done, b1, b2, b3, b4, b5,  b6,
+            b7, b8, b9, b0, 
+            depositdone, deletechar, withdrawdone;
+    public static float balance, depositAmount, f;
+    public static TextField tf;
+    public static String new_num, a, withdrawinput, dateFormat;
+    public static Font titleTextFont;
     
     // Absolute =  Drive +  {folders(s)} + {file} | Uniform Naming Convention
     // Relative = No drive | ..\ one level up | ..\..\ two levels up
@@ -270,11 +285,6 @@ public class HMS_LOGIN extends javax.swing.JFrame {
                 usernameTfFocusLost(evt);
             }
         });
-        usernameTf.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                usernameTfActionPerformed(evt);
-            }
-        });
         usernameTf.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 usernameTfKeyPressed(evt);
@@ -455,8 +465,50 @@ public class HMS_LOGIN extends javax.swing.JFrame {
     }//GEN-LAST:event_closeButtonActionPerformed
 
     private void adminButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adminButtonActionPerformed
-        HMS_ADMINFORM adminForm = new HMS_ADMINFORM();
-        adminForm.setVisible(true);
+
+            passwordPanel = new JPanel();
+            passwordLabelText = new JLabel("Enter Special Code:");
+            JPasswordField passwordField = new JPasswordField(10);
+            passwordPanel.requestFocus();
+            passwordField.requestFocusInWindow();
+            passwordPanel.setBackground(new Color(0xccf5ff));
+
+            passwordPanel.add(passwordLabelText);
+            passwordPanel.add(passwordField);
+            String[] options = new String[]{"CANCEL", "ACCESS"};
+            int option = JOptionPane.showOptionDialog(null, passwordPanel, "Access Admin Tool",
+                JOptionPane.NO_OPTION, JOptionPane.PLAIN_MESSAGE,
+                null, options, options[1]); // default selection
+                if(option == 1) // pressing ACCESS button
+                {
+                    PreparedStatement st;
+                    ResultSet rs;
+                    // get the password
+                    String password = String.valueOf(passwordField.getPassword());
+                    //create a select query to check if the username and the password exist in the database
+                    String query = "SELECT * FROM adminspecialcode WHERE adminPassCodeNumber = ?";
+                    try {
+                        st = HEALTH_MONITORING_SYSTEM_DATABASE.getConnection().prepareStatement(query);
+                        st.setString(1, password);
+                        rs = st.executeQuery();
+
+                        if (rs.next())
+                        {
+                            HMS_ADMINFORM adminForm = new HMS_ADMINFORM();
+                            adminForm.setVisible(true);
+                            this.dispose();
+                        } else {
+                            // error message
+                            JOptionPane.showMessageDialog(null, "Invalid Special Code.\nPlease try again.","Special Code Invalid", 2);
+                        }
+
+
+                    } catch (SQLException ex) {
+                        Logger.getLogger(HMS_LOGIN.class.getName()).log(Level.SEVERE, null, ex);
+                        JOptionPane.showMessageDialog(null, "SQL Server Error. Please contact administrator.");
+                    }
+                }
+
     }//GEN-LAST:event_adminButtonActionPerformed
 
     private void passwordTfFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_passwordTfFocusGained
@@ -481,8 +533,6 @@ public class HMS_LOGIN extends javax.swing.JFrame {
             usernameTf.setText("");
             usernameTf.setForeground(Color.black);
         }
-        
-        
         // set a yellow border to the Username Icon
         //Border username_icon = BorderFactory.createMatteBorder(1, 1, 1, 1, Color.yellow);
         //usernameLabel.setBorder(username_icon);
@@ -532,10 +582,6 @@ public class HMS_LOGIN extends javax.swing.JFrame {
          HMS_ABOUT hmsaboutForm = new HMS_ABOUT();
          hmsaboutForm.setVisible(true);
     }//GEN-LAST:event_aboutButtonMousePressed
-
-    private void usernameTfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usernameTfActionPerformed
-        
-    }//GEN-LAST:event_usernameTfActionPerformed
 
     private void passwordTfKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_passwordTfKeyPressed
     if (evt.getKeyCode()==KeyEvent.VK_ESCAPE){

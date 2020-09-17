@@ -22,17 +22,20 @@ import java.sql.SQLException;
 import javax.swing.border.Border;
 import javax.swing.border.LineBorder;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import javax.swing.text.AttributeSet;
+import javax.swing.text.BadLocationException;
+import javax.swing.text.PlainDocument;
 
-public class HMS_REGISTERACCOUNT extends javax.swing.JFrame {
+public class HMS_USER_REGISTRATION extends javax.swing.JFrame {
 
     /**
-     * Creates new form HMS_REGISTERACCOUNT
+     * Creates new form HMS_USER_REGISTRATION
      */
     
     // Create a variable to set the iamge path in it
     String image_path = null;
     
-    public HMS_REGISTERACCOUNT() {
+    public HMS_USER_REGISTRATION() {
         
         // sets the look and feel to be that of the operating system's
         try { 
@@ -60,6 +63,24 @@ public class HMS_REGISTERACCOUNT extends javax.swing.JFrame {
         genderButtonGroup.add(maleButton);
         genderButtonGroup.add(femaleButton);
     }
+    
+       // limit phone number max
+       public class JTextFieldLimit extends PlainDocument {
+        private int limit;
+
+        JTextFieldLimit(int limit) {
+         super();
+         this.limit = limit;
+         }
+
+        public void insertString( int offset, String  str, AttributeSet attr ) throws BadLocationException {
+          if (str == null) return;
+
+          if ((getLength() + str.length()) <= limit) {
+            super.insertString(offset, str, attr);
+          }
+        }
+      }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -107,7 +128,7 @@ public class HMS_REGISTERACCOUNT extends javax.swing.JFrame {
 
         registerTopPanel.setBackground(new java.awt.Color(255, 255, 255));
 
-        registerMainPanel.setBackground(new java.awt.Color(255, 255, 255));
+        registerMainPanel.setBackground(new java.awt.Color(235, 241, 253));
 
         registerUsernameTf.setBackground(new java.awt.Color(204, 204, 255));
         registerUsernameTf.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
@@ -183,6 +204,7 @@ public class HMS_REGISTERACCOUNT extends javax.swing.JFrame {
                 registerPhoneNumberTfKeyTyped(evt);
             }
         });
+        registerPhoneNumberTf.setDocument(new JTextFieldLimit(11));
 
         phoneNumberClearTextButton.setBackground(new java.awt.Color(238, 245, 251));
         phoneNumberClearTextButton.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
@@ -203,12 +225,12 @@ public class HMS_REGISTERACCOUNT extends javax.swing.JFrame {
             }
         });
 
-        maleButton.setBackground(new java.awt.Color(255, 255, 255));
+        maleButton.setBackground(new java.awt.Color(235, 241, 253));
         maleButton.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         maleButton.setSelected(true);
         maleButton.setText("Male");
 
-        femaleButton.setBackground(new java.awt.Color(255, 255, 255));
+        femaleButton.setBackground(new java.awt.Color(235, 241, 253));
         femaleButton.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         femaleButton.setText("Female");
 
@@ -231,7 +253,7 @@ public class HMS_REGISTERACCOUNT extends javax.swing.JFrame {
         registerPasswordLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/healthMonitoringSystem/APP_IMAGES/login_images/passwordIconIMAGE.png"))); // NOI18N
         registerPasswordLabel.setText("Password:");
 
-        imagePathLabel.setBackground(new java.awt.Color(255, 255, 255));
+        imagePathLabel.setBackground(new java.awt.Color(235, 241, 253));
         imagePathLabel.setFont(new java.awt.Font("Sylfaen", 0, 11)); // NOI18N
         imagePathLabel.setText("image path");
 
@@ -256,7 +278,7 @@ public class HMS_REGISTERACCOUNT extends javax.swing.JFrame {
 
         registerButton.setBackground(new java.awt.Color(60, 143, 246));
         registerButton.setFont(new java.awt.Font("Verdana", 0, 24)); // NOI18N
-        registerButton.setText("Register Account");
+        registerButton.setText("Register User Account");
         registerButton.setBorder(new javax.swing.border.MatteBorder(null));
         registerButton.setBorderPainted(false);
         registerButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -335,11 +357,12 @@ public class HMS_REGISTERACCOUNT extends javax.swing.JFrame {
             .addGroup(registerMainPanelLayout.createSequentialGroup()
                 .addGroup(registerMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(registerMainPanelLayout.createSequentialGroup()
+                        .addGap(0, 12, Short.MAX_VALUE)
                         .addGroup(registerMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(registerUsernameTf, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(registerUsernameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(usernameClearTextButton))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
+                        .addGap(18, 18, 18)
                         .addGroup(registerMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(registerMainPanelLayout.createSequentialGroup()
                                 .addComponent(registerPasswordLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -383,9 +406,10 @@ public class HMS_REGISTERACCOUNT extends javax.swing.JFrame {
                 .addGap(110, 110, 110))
         );
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBackground(new java.awt.Color(235, 241, 253));
 
-        registerTopPanelImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/healthMonitoringSystem/APP_IMAGES/login_images/HMS_TOPPANEL_REGISTER.png"))); // NOI18N
+        registerTopPanelImage.setBackground(new java.awt.Color(235, 241, 253));
+        registerTopPanelImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/healthMonitoringSystem/APP_IMAGES/login_images/HMS_TOPPANEL_USER_REGISTER.png"))); // NOI18N
         registerTopPanelImage.setRequestFocusEnabled(false);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -399,7 +423,7 @@ public class HMS_REGISTERACCOUNT extends javax.swing.JFrame {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(registerTopPanelImage)
+                .addComponent(registerTopPanelImage, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
@@ -434,7 +458,7 @@ public class HMS_REGISTERACCOUNT extends javax.swing.JFrame {
             .addComponent(registerTopPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        setSize(new java.awt.Dimension(1000, 629));
+        setSize(new java.awt.Dimension(1000, 621));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -498,11 +522,11 @@ public class HMS_REGISTERACCOUNT extends javax.swing.JFrame {
                         ps.setNull(6, java.sql.Types.NULL);
 
                     } catch (FileNotFoundException ex) {
-                        Logger.getLogger(HMS_REGISTERACCOUNT.class.getName()).log(Level.SEVERE, null, ex);
+                        Logger.getLogger(HMS_USER_REGISTRATION.class.getName()).log(Level.SEVERE, null, ex);
                     }
 
                 } catch (SQLException ex) {
-                    Logger.getLogger(HMS_REGISTERACCOUNT.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(HMS_USER_REGISTRATION.class.getName()).log(Level.SEVERE, null, ex);
                 }
 
             }
@@ -551,6 +575,7 @@ public class HMS_REGISTERACCOUNT extends javax.swing.JFrame {
     private void registerPhoneNumberTfKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_registerPhoneNumberTfKeyTyped
         // allow only numbers
         if (!Character.isDigit(evt.getKeyChar())) {
+            getToolkit().beep();
             evt.consume();
         }
     }//GEN-LAST:event_registerPhoneNumberTfKeyTyped
@@ -637,7 +662,7 @@ public class HMS_REGISTERACCOUNT extends javax.swing.JFrame {
             }
         
         } catch (SQLException ex) {
-            Logger.getLogger(HMS_REGISTERACCOUNT.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(HMS_USER_REGISTRATION.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         return username_exist;
@@ -664,21 +689,23 @@ public class HMS_REGISTERACCOUNT extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(HMS_REGISTERACCOUNT.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(HMS_USER_REGISTRATION.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(HMS_REGISTERACCOUNT.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(HMS_USER_REGISTRATION.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(HMS_REGISTERACCOUNT.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(HMS_USER_REGISTRATION.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(HMS_REGISTERACCOUNT.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(HMS_USER_REGISTRATION.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new HMS_REGISTERACCOUNT().setVisible(true);
+                new HMS_USER_REGISTRATION().setVisible(true);
             }
         });
     }

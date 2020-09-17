@@ -123,7 +123,7 @@ public class HMS_MAIN {
                         null, options, options[1]); // default selection
                         if(option == 0) // pressing CONFIRM button
                         {
-                             PreparedStatement st;
+                            PreparedStatement st;
                             ResultSet rs;
                             // get the password
                             String password = String.valueOf(passwordField.getPassword());
@@ -145,7 +145,7 @@ public class HMS_MAIN {
 
                             } catch (SQLException ex) {
                                 Logger.getLogger(HMS_LOGIN.class.getName()).log(Level.SEVERE, null, ex);
-                                JOptionPane.showMessageDialog(null, "SQL Server Error.");
+                                JOptionPane.showMessageDialog(null, "SQL Server Error. Please contact administrator.");
                             }
                         }
                 }
