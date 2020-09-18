@@ -6,11 +6,18 @@
 package healthMonitoringSystem;
 
 import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
+import java.io.File;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.swing.ButtonGroup;
+import javax.swing.JFileChooser;
+import javax.swing.Timer;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.text.AttributeSet;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.PlainDocument;
@@ -20,12 +27,13 @@ import javax.swing.text.PlainDocument;
  *
  * @author Khian Orland
  */
-public class HMS_EMPLOYEE_REGISTRATION extends javax.swing.JFrame {
+public final class HMS_EMPLOYEE_REGISTRATION extends javax.swing.JFrame {
 
     /**
      * Creates new form HMS_EMPLOYEE_REGISTRATION
      */
     
+    String image_path = null;
     
     public HMS_EMPLOYEE_REGISTRATION() {
         
@@ -39,6 +47,7 @@ public class HMS_EMPLOYEE_REGISTRATION extends javax.swing.JFrame {
         
         initComponents();
         
+        
         // create a button group for Gender
         ButtonGroup genderButtonGroup = new ButtonGroup();
         genderButtonGroup.add(maleButton);
@@ -47,16 +56,40 @@ public class HMS_EMPLOYEE_REGISTRATION extends javax.swing.JFrame {
         Date dateNow = new Date();
         System.out.println(dateNow);
         
+        showDate();
+        showTime();
+        
     }
+     void showDate() {
+            Date date = new Date();
+            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+            dateLabel.setText(simpleDateFormat.format(date));
+         }
+        
+        void showTime() {
+        new Timer (0, new ActionListener() {
+           
+           @Override
+           public void actionPerformed(ActionEvent e) {
+               Date date = new Date();
+               SimpleDateFormat simpleDateFormat = new SimpleDateFormat("hh:mm:ss a");
+               timeLabel.setText(simpleDateFormat.format(date));
+           }
+        }).start();
+        }
+        
+    
+    
     // limit phone number max
        public class JTextFieldLimit extends PlainDocument {
-        private int limit;
+        private final int limit;
 
         JTextFieldLimit(int limit) {
          super();
          this.limit = limit;
          }
 
+        @Override
         public void insertString( int offset, String  str, AttributeSet attr ) throws BadLocationException {
           if (str == null) return;
 
@@ -65,7 +98,7 @@ public class HMS_EMPLOYEE_REGISTRATION extends javax.swing.JFrame {
           }
         }
       }
-    
+       
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -78,57 +111,77 @@ public class HMS_EMPLOYEE_REGISTRATION extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
+        filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(32767, 32767));
+        topBannerPanel = new javax.swing.JPanel();
+        birthdayPicker = new com.toedter.calendar.JDateChooser();
         employeeRagistrationImageLabel = new javax.swing.JLabel();
-        employeeRegistrationMainPanel = new javax.swing.JPanel();
-        fullNameLabel = new javax.swing.JLabel();
-        employeeFirstNameTf = new javax.swing.JTextField();
-        employeeMiddleInitialTf = new javax.swing.JTextField();
         employeeLastNameTf = new javax.swing.JTextField();
-        genderLabel = new javax.swing.JLabel();
-        maleButton = new javax.swing.JRadioButton();
-        femaleButton = new javax.swing.JRadioButton();
-        dateOfBirthLabel = new javax.swing.JLabel();
+        employeeMiddleInitialTf = new javax.swing.JTextField();
+        employeeFirstNameTf = new javax.swing.JTextField();
+        fullNameLabel = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         employeeHomeAddressTA = new javax.swing.JTextArea();
         homeAddressLabel1 = new javax.swing.JLabel();
-        birthdayPicker = new com.toedter.calendar.JDateChooser();
         employeePhoneNumberTf = new javax.swing.JTextField();
-        phoneNumberLabel = new javax.swing.JLabel();
+        nationalityTf = new javax.swing.JTextField();
+        nationalityLabel = new javax.swing.JLabel();
+        religionChoice = new java.awt.Choice();
+        religionLabel = new javax.swing.JLabel();
+        dateOfBirthLabel = new javax.swing.JLabel();
+        sexLabel = new javax.swing.JLabel();
+        maleButton = new javax.swing.JRadioButton();
+        femaleButton = new javax.swing.JRadioButton();
+        bloodTypeLabel = new javax.swing.JLabel();
+        bloodTypeChoice = new java.awt.Choice();
+        civilStatusChoice1 = new java.awt.Choice();
+        civilStatusLabel = new javax.swing.JLabel();
+        employeePhoneNumberLabel = new javax.swing.JLabel();
+        fatherEmailAddressLabel = new javax.swing.JLabel();
+        fatherEmailAddressTf = new javax.swing.JTextField();
+        motherEmailAddressLabel = new javax.swing.JLabel();
+        motherEmailAddressTf = new javax.swing.JTextField();
+        employeeImagePathLabel = new javax.swing.JLabel();
+        selectImageButton = new javax.swing.JButton();
+        imagePathLabel = new javax.swing.JLabel();
+        cancelButton = new javax.swing.JButton();
+        registerButton = new javax.swing.JButton();
+        bottomPanel = new javax.swing.JPanel();
+        dateLabel = new javax.swing.JLabel();
+        timeLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(235, 241, 253));
-        setMinimumSize(new java.awt.Dimension(1000, 621));
+        setMinimumSize(new java.awt.Dimension(1000, 629));
         setName("hmsEmployeeRegistrationFrame"); // NOI18N
         setUndecorated(true);
-        getContentPane().setLayout(null);
+        getContentPane().setLayout(new java.awt.GridLayout(1, 0));
 
-        jPanel1.setBackground(new java.awt.Color(235, 241, 253));
+        topBannerPanel.setBackground(new java.awt.Color(235, 241, 253));
+        topBannerPanel.setMaximumSize(new java.awt.Dimension(1000, 629));
+        topBannerPanel.setMinimumSize(new java.awt.Dimension(1000, 629));
+        topBannerPanel.setPreferredSize(new java.awt.Dimension(1000, 629));
+
+        birthdayPicker.setBackground(new java.awt.Color(204, 204, 255));
+        birthdayPicker.setToolTipText("Date of Birth");
 
         employeeRagistrationImageLabel.setBackground(new java.awt.Color(235, 241, 253));
         employeeRagistrationImageLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/healthMonitoringSystem/APP_IMAGES/login_images/HMS_TOPPANEL_EMPLOYEE_REGISTER.png"))); // NOI18N
 
-        employeeRegistrationMainPanel.setBackground(new java.awt.Color(235, 241, 253));
-
-        fullNameLabel.setBackground(new java.awt.Color(255, 255, 255));
-        fullNameLabel.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        fullNameLabel.setText("Full Name:");
-
-        employeeFirstNameTf.setBackground(new java.awt.Color(204, 204, 255));
-        employeeFirstNameTf.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        employeeFirstNameTf.setText("First Name");
-        employeeFirstNameTf.setToolTipText("First name of the Employee");
-        employeeFirstNameTf.addFocusListener(new java.awt.event.FocusAdapter() {
+        employeeLastNameTf.setBackground(new java.awt.Color(204, 204, 255));
+        employeeLastNameTf.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        employeeLastNameTf.setText("Last Name");
+        employeeLastNameTf.setToolTipText("Complete Last Name");
+        employeeLastNameTf.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                employeeFirstNameTfFocusGained(evt);
+                employeeLastNameTfFocusGained(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
-                employeeFirstNameTfFocusLost(evt);
+                employeeLastNameTfFocusLost(evt);
             }
         });
-        employeeFirstNameTf.addKeyListener(new java.awt.event.KeyAdapter() {
+        employeeLastNameTf.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                employeeFirstNameTfKeyPressed(evt);
+                employeeLastNameTfKeyPressed(evt);
             }
         });
 
@@ -150,40 +203,27 @@ public class HMS_EMPLOYEE_REGISTRATION extends javax.swing.JFrame {
             }
         });
 
-        employeeLastNameTf.setBackground(new java.awt.Color(204, 204, 255));
-        employeeLastNameTf.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        employeeLastNameTf.setText("Last Name");
-        employeeLastNameTf.setToolTipText("Complete Last Name");
-        employeeLastNameTf.addFocusListener(new java.awt.event.FocusAdapter() {
+        employeeFirstNameTf.setBackground(new java.awt.Color(204, 204, 255));
+        employeeFirstNameTf.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        employeeFirstNameTf.setText("First Name");
+        employeeFirstNameTf.setToolTipText("First name of the Employee");
+        employeeFirstNameTf.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                employeeLastNameTfFocusGained(evt);
+                employeeFirstNameTfFocusGained(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
-                employeeLastNameTfFocusLost(evt);
+                employeeFirstNameTfFocusLost(evt);
             }
         });
-        employeeLastNameTf.addKeyListener(new java.awt.event.KeyAdapter() {
+        employeeFirstNameTf.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                employeeLastNameTfKeyPressed(evt);
+                employeeFirstNameTfKeyPressed(evt);
             }
         });
 
-        genderLabel.setBackground(new java.awt.Color(255, 255, 255));
-        genderLabel.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        genderLabel.setText("Gender:");
-
-        maleButton.setBackground(new java.awt.Color(235, 241, 253));
-        maleButton.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        maleButton.setSelected(true);
-        maleButton.setText("Male");
-
-        femaleButton.setBackground(new java.awt.Color(235, 241, 253));
-        femaleButton.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        femaleButton.setText("Female");
-
-        dateOfBirthLabel.setBackground(new java.awt.Color(255, 255, 255));
-        dateOfBirthLabel.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        dateOfBirthLabel.setText("Birthday:");
+        fullNameLabel.setBackground(new java.awt.Color(255, 255, 255));
+        fullNameLabel.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        fullNameLabel.setText("Full Name:");
 
         employeeHomeAddressTA.setBackground(new java.awt.Color(204, 204, 255));
         employeeHomeAddressTA.setColumns(20);
@@ -225,157 +265,402 @@ public class HMS_EMPLOYEE_REGISTRATION extends javax.swing.JFrame {
         });
         employeePhoneNumberTf.setDocument(new JTextFieldLimit(11));
 
-        phoneNumberLabel.setBackground(new java.awt.Color(255, 255, 255));
-        phoneNumberLabel.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        phoneNumberLabel.setText("Phone Number (09xx):");
+        nationalityTf.setBackground(new java.awt.Color(204, 204, 255));
+        nationalityTf.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        nationalityTf.setToolTipText("Please indicate your Nationality (ex. Filipino)");
+        nationalityTf.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                nationalityTfKeyPressed(evt);
+            }
+        });
+        employeePhoneNumberTf.setDocument(new JTextFieldLimit(11));
 
-        javax.swing.GroupLayout employeeRegistrationMainPanelLayout = new javax.swing.GroupLayout(employeeRegistrationMainPanel);
-        employeeRegistrationMainPanel.setLayout(employeeRegistrationMainPanelLayout);
-        employeeRegistrationMainPanelLayout.setHorizontalGroup(
-            employeeRegistrationMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, employeeRegistrationMainPanelLayout.createSequentialGroup()
-                .addGroup(employeeRegistrationMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, employeeRegistrationMainPanelLayout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(homeAddressLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane1))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, employeeRegistrationMainPanelLayout.createSequentialGroup()
-                        .addGroup(employeeRegistrationMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(employeeRegistrationMainPanelLayout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(phoneNumberLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(employeePhoneNumberTf, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(dateOfBirthLabel)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(birthdayPicker, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(employeeRegistrationMainPanelLayout.createSequentialGroup()
-                                .addGap(54, 54, 54)
-                                .addComponent(fullNameLabel)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(employeeFirstNameTf, javax.swing.GroupLayout.PREFERRED_SIZE, 289, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(employeeMiddleInitialTf, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGroup(employeeRegistrationMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(employeeRegistrationMainPanelLayout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(employeeLastNameTf))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, employeeRegistrationMainPanelLayout.createSequentialGroup()
-                                .addGap(85, 85, 85)
-                                .addComponent(genderLabel)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(maleButton)
-                                .addGap(12, 12, 12)
-                                .addComponent(femaleButton)))))
-                .addGap(20, 20, 20))
+        nationalityLabel.setBackground(new java.awt.Color(255, 255, 255));
+        nationalityLabel.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        nationalityLabel.setText("Nationality:");
+
+        religionChoice.setBackground(new java.awt.Color(204, 204, 255));
+        religionChoice.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        religionChoice.add("Unspecified");
+        religionChoice.add("Catholic");
+        religionChoice.add("Islam");
+        religionChoice.add("Judaism");
+        religionChoice.add("Hinduism");
+        religionChoice.add("Buddhism");
+        religionChoice.add("Iglesia ni Cristo");
+        religionChoice.add("Non-Roman Catholic and Protestant");
+        religionChoice.add("Aglipayan");
+        religionChoice.add("Seventh-day Adventist");
+
+        religionLabel.setBackground(new java.awt.Color(255, 255, 255));
+        religionLabel.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        religionLabel.setText("Religion:");
+
+        dateOfBirthLabel.setBackground(new java.awt.Color(255, 255, 255));
+        dateOfBirthLabel.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        dateOfBirthLabel.setText("Birthday:");
+
+        sexLabel.setBackground(new java.awt.Color(255, 255, 255));
+        sexLabel.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        sexLabel.setText("Sex:");
+
+        maleButton.setBackground(new java.awt.Color(235, 241, 253));
+        maleButton.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        maleButton.setSelected(true);
+        maleButton.setText("Male");
+
+        femaleButton.setBackground(new java.awt.Color(235, 241, 253));
+        femaleButton.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        femaleButton.setText("Female");
+
+        bloodTypeLabel.setBackground(new java.awt.Color(255, 255, 255));
+        bloodTypeLabel.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        bloodTypeLabel.setText("Blood Type:");
+
+        bloodTypeChoice.setBackground(new java.awt.Color(204, 204, 255));
+        bloodTypeChoice.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        bloodTypeChoice.add("Unspecified");
+        bloodTypeChoice.add("A+");
+        bloodTypeChoice.add("A-");
+        bloodTypeChoice.add("B+");
+        bloodTypeChoice.add("B-");
+        bloodTypeChoice.add("AB+");
+        bloodTypeChoice.add("AB-");
+        bloodTypeChoice.add("O+");
+        bloodTypeChoice.add("O-");
+
+        civilStatusChoice1.setBackground(new java.awt.Color(204, 204, 255));
+        civilStatusChoice1.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        civilStatusChoice1.add("Unspecified");
+        civilStatusChoice1.add("Single");
+        civilStatusChoice1.add("Married");
+        civilStatusChoice1.add("Divorced");
+        civilStatusChoice1.add("Widowed");
+
+        civilStatusLabel.setBackground(new java.awt.Color(255, 255, 255));
+        civilStatusLabel.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        civilStatusLabel.setText("Civil Status:");
+
+        employeePhoneNumberLabel.setBackground(new java.awt.Color(255, 255, 255));
+        employeePhoneNumberLabel.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        employeePhoneNumberLabel.setText("Phone Number (09xx):");
+
+        fatherEmailAddressLabel.setBackground(new java.awt.Color(255, 255, 255));
+        fatherEmailAddressLabel.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        fatherEmailAddressLabel.setText("Father's Email Address :");
+
+        fatherEmailAddressTf.setBackground(new java.awt.Color(204, 204, 255));
+        fatherEmailAddressTf.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        fatherEmailAddressTf.setText("father_email@address.here");
+        fatherEmailAddressTf.setToolTipText("");
+        fatherEmailAddressTf.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                fatherEmailAddressTfFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                fatherEmailAddressTfFocusLost(evt);
+            }
+        });
+        fatherEmailAddressTf.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                fatherEmailAddressTfKeyPressed(evt);
+            }
+        });
+
+        motherEmailAddressLabel.setBackground(new java.awt.Color(255, 255, 255));
+        motherEmailAddressLabel.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        motherEmailAddressLabel.setText("Mother's Email Address :");
+
+        motherEmailAddressTf.setBackground(new java.awt.Color(204, 204, 255));
+        motherEmailAddressTf.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        motherEmailAddressTf.setText("mother_email@address.here");
+        motherEmailAddressTf.setToolTipText("");
+        motherEmailAddressTf.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                motherEmailAddressTfFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                motherEmailAddressTfFocusLost(evt);
+            }
+        });
+        motherEmailAddressTf.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                motherEmailAddressTfKeyPressed(evt);
+            }
+        });
+
+        employeeImagePathLabel.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        employeeImagePathLabel.setText("Employee Image:");
+
+        selectImageButton.setBackground(new java.awt.Color(255, 255, 255));
+        selectImageButton.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        selectImageButton.setText("Select Image");
+        selectImageButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                selectImageButtonActionPerformed(evt);
+            }
+        });
+
+        imagePathLabel.setBackground(new java.awt.Color(235, 241, 253));
+        imagePathLabel.setFont(new java.awt.Font("Sylfaen", 0, 11)); // NOI18N
+        imagePathLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        imagePathLabel.setText("image path");
+        imagePathLabel.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+
+        cancelButton.setBackground(new java.awt.Color(255, 102, 102));
+        cancelButton.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        cancelButton.setText("Cancel (Esc)");
+        cancelButton.setBorderPainted(false);
+        cancelButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        cancelButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cancelButtonActionPerformed(evt);
+            }
+        });
+
+        registerButton.setBackground(new java.awt.Color(60, 143, 246));
+        registerButton.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
+        registerButton.setText("Register Employee Account");
+        registerButton.setBorderPainted(false);
+        registerButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        registerButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                registerButtonActionPerformed(evt);
+            }
+        });
+
+        bottomPanel.setBackground(new java.awt.Color(153, 153, 255));
+        bottomPanel.setRequestFocusEnabled(false);
+
+        dateLabel.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        dateLabel.setForeground(new java.awt.Color(255, 255, 255));
+        dateLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        dateLabel.setText("Date");
+        dateLabel.setRequestFocusEnabled(false);
+
+        timeLabel.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        timeLabel.setForeground(new java.awt.Color(255, 255, 255));
+        timeLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        timeLabel.setText("Time");
+        timeLabel.setRequestFocusEnabled(false);
+
+        javax.swing.GroupLayout bottomPanelLayout = new javax.swing.GroupLayout(bottomPanel);
+        bottomPanel.setLayout(bottomPanelLayout);
+        bottomPanelLayout.setHorizontalGroup(
+            bottomPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(bottomPanelLayout.createSequentialGroup()
+                .addContainerGap(704, Short.MAX_VALUE)
+                .addComponent(dateLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(timeLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
-        employeeRegistrationMainPanelLayout.setVerticalGroup(
-            employeeRegistrationMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(employeeRegistrationMainPanelLayout.createSequentialGroup()
-                .addGap(2, 2, 2)
-                .addGroup(employeeRegistrationMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+        bottomPanelLayout.setVerticalGroup(
+            bottomPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(bottomPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(timeLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
+                .addComponent(dateLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout topBannerPanelLayout = new javax.swing.GroupLayout(topBannerPanel);
+        topBannerPanel.setLayout(topBannerPanelLayout);
+        topBannerPanelLayout.setHorizontalGroup(
+            topBannerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(topBannerPanelLayout.createSequentialGroup()
+                .addGroup(topBannerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(topBannerPanelLayout.createSequentialGroup()
+                        .addGap(44, 44, 44)
+                        .addComponent(fullNameLabel))
+                    .addGroup(topBannerPanelLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(homeAddressLabel1))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, topBannerPanelLayout.createSequentialGroup()
+                        .addGap(28, 28, 28)
+                        .addComponent(dateOfBirthLabel)))
+                .addGroup(topBannerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(topBannerPanelLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(topBannerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 851, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, topBannerPanelLayout.createSequentialGroup()
+                                .addComponent(employeeFirstNameTf, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(employeeMiddleInitialTf, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(employeeLastNameTf, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(topBannerPanelLayout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(birthdayPicker, javax.swing.GroupLayout.PREFERRED_SIZE, 291, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(69, 69, 69)
+                        .addGroup(topBannerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(topBannerPanelLayout.createSequentialGroup()
+                                .addGroup(topBannerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(employeePhoneNumberLabel)
+                                    .addComponent(fatherEmailAddressLabel)
+                                    .addComponent(motherEmailAddressLabel)
+                                    .addComponent(employeeImagePathLabel))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(topBannerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(fatherEmailAddressTf)
+                                    .addComponent(employeePhoneNumberTf)
+                                    .addComponent(motherEmailAddressTf)
+                                    .addComponent(selectImageButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(18, 18, 18))
+                            .addGroup(topBannerPanelLayout.createSequentialGroup()
+                                .addGroup(topBannerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(topBannerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(cancelButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(registerButton))
+                                    .addComponent(imagePathLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 478, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
+            .addGroup(topBannerPanelLayout.createSequentialGroup()
+                .addGap(34, 34, 34)
+                .addGroup(topBannerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(nationalityLabel)
+                    .addGroup(topBannerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(topBannerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(civilStatusLabel)
+                            .addComponent(bloodTypeLabel))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, topBannerPanelLayout.createSequentialGroup()
+                            .addGap(25, 25, 25)
+                            .addComponent(religionLabel))))
+                .addGap(18, 18, 18)
+                .addGroup(topBannerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(nationalityTf)
+                    .addComponent(religionChoice, javax.swing.GroupLayout.DEFAULT_SIZE, 291, Short.MAX_VALUE)
+                    .addComponent(bloodTypeChoice, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(civilStatusChoice1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(topBannerPanelLayout.createSequentialGroup()
+                .addGroup(topBannerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(topBannerPanelLayout.createSequentialGroup()
+                        .addGap(97, 97, 97)
+                        .addComponent(sexLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(maleButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(femaleButton))
+                    .addComponent(employeeRagistrationImageLabel)
+                    .addComponent(bottomPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+        topBannerPanelLayout.setVerticalGroup(
+            topBannerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(topBannerPanelLayout.createSequentialGroup()
+                .addComponent(employeeRagistrationImageLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(topBannerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(employeeFirstNameTf, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(employeeMiddleInitialTf, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(employeeLastNameTf, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(fullNameLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGroup(employeeRegistrationMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(employeeRegistrationMainPanelLayout.createSequentialGroup()
-                        .addGap(12, 12, 12)
-                        .addGroup(employeeRegistrationMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(genderLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(maleButton)
-                            .addComponent(femaleButton))
-                        .addGap(7, 7, 7))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, employeeRegistrationMainPanelLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(employeeRegistrationMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, employeeRegistrationMainPanelLayout.createSequentialGroup()
-                                .addComponent(dateOfBirthLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(1, 1, 1))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, employeeRegistrationMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(phoneNumberLabel)
-                                .addComponent(employeePhoneNumberTf, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(birthdayPicker, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
-                .addGroup(employeeRegistrationMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(homeAddressLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 46, Short.MAX_VALUE)
-                    .addGroup(employeeRegistrationMainPanelLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(357, 357, 357))
-        );
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(employeeRagistrationImageLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(employeeRegistrationMainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(employeeRagistrationImageLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(fullNameLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 47, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(employeeRegistrationMainPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(topBannerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(homeAddressLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 43, Short.MAX_VALUE))
+                .addGroup(topBannerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(topBannerPanelLayout.createSequentialGroup()
+                        .addGroup(topBannerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(maleButton, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(femaleButton)
+                            .addComponent(sexLabel))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(topBannerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(topBannerPanelLayout.createSequentialGroup()
+                                .addComponent(dateOfBirthLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(topBannerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(nationalityLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(nationalityTf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(birthdayPicker, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(topBannerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(religionChoice, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(religionLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(9, 9, 9)
+                        .addGroup(topBannerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(bloodTypeLabel)
+                            .addComponent(bloodTypeChoice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(topBannerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(civilStatusLabel)
+                            .addComponent(civilStatusChoice1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(topBannerPanelLayout.createSequentialGroup()
+                        .addGap(34, 34, 34)
+                        .addGroup(topBannerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(employeePhoneNumberTf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(employeePhoneNumberLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(topBannerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(fatherEmailAddressTf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(fatherEmailAddressLabel))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(topBannerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(motherEmailAddressTf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(topBannerPanelLayout.createSequentialGroup()
+                                .addComponent(motherEmailAddressLabel)
+                                .addGap(18, 18, 18)
+                                .addGroup(topBannerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(employeeImagePathLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(selectImageButton, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(imagePathLabel)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(registerButton, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(cancelButton, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(bottomPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(7, 7, 7))
         );
 
-        getContentPane().add(jPanel1);
-        jPanel1.setBounds(0, 0, 1000, 667);
+        getContentPane().add(topBannerPanel);
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void employeeMiddleInitialTfFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_employeeMiddleInitialTfFocusLost
-         if (employeeMiddleInitialTf.getText().trim().equals("")) // placeholder
-        {
-            employeeMiddleInitialTf.setText("Middle Initial / Middle Name");
-            employeeMiddleInitialTf.setForeground(new Color(153, 153, 153));
-        }
-    }//GEN-LAST:event_employeeMiddleInitialTfFocusLost
+    private void nationalityTfKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nationalityTfKeyPressed
 
-    private void employeeMiddleInitialTfKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_employeeMiddleInitialTfKeyPressed
-           if (evt.getKeyCode()==KeyEvent.VK_ESCAPE){
+    }//GEN-LAST:event_nationalityTfKeyPressed
+
+    private void employeePhoneNumberTfKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_employeePhoneNumberTfKeyTyped
+        // allow only numbers
+        if (!Character.isDigit(evt.getKeyChar())) {
+            getToolkit().beep();
+            evt.consume();
+        }
+    }//GEN-LAST:event_employeePhoneNumberTfKeyTyped
+
+    private void employeePhoneNumberTfKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_employeePhoneNumberTfKeyPressed
+        if (evt.getKeyCode()==KeyEvent.VK_ESCAPE){
             this.dispose();
         }
-    }//GEN-LAST:event_employeeMiddleInitialTfKeyPressed
+    }//GEN-LAST:event_employeePhoneNumberTfKeyPressed
 
-    private void employeeMiddleInitialTfFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_employeeMiddleInitialTfFocusGained
-         if (employeeMiddleInitialTf.getText().trim().equals("Middle Initial / Middle Name"))
-        {
-            employeeMiddleInitialTf.setText("");
-            employeeMiddleInitialTf.setForeground(Color.black);
-        }
-    }//GEN-LAST:event_employeeMiddleInitialTfFocusGained
-
-    private void employeeLastNameTfFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_employeeLastNameTfFocusGained
-        if (employeeLastNameTf.getText().trim().equals("") ||
-           (employeeLastNameTf.getText().trim().equals("Last Name")))
-        {
-            employeeLastNameTf.setText("");
-            employeeLastNameTf.setForeground(Color.black);
-        }
-    }//GEN-LAST:event_employeeLastNameTfFocusGained
-
-    private void employeeLastNameTfFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_employeeLastNameTfFocusLost
-        if (employeeLastNameTf.getText().trim().equals("")) // placeholder
-        {
-            employeeLastNameTf.setText("Last Name");
-            employeeLastNameTf.setForeground(new Color(153, 153, 153));
-        }
-    }//GEN-LAST:event_employeeLastNameTfFocusLost
-
-    private void employeeLastNameTfKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_employeeLastNameTfKeyPressed
-          if (evt.getKeyCode()==KeyEvent.VK_ESCAPE){
+    private void employeeHomeAddressTAKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_employeeHomeAddressTAKeyPressed
+        if (evt.getKeyCode()==KeyEvent.VK_ESCAPE){
             this.dispose();
         }
-    }//GEN-LAST:event_employeeLastNameTfKeyPressed
+    }//GEN-LAST:event_employeeHomeAddressTAKeyPressed
+
+    private void employeeHomeAddressTAFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_employeeHomeAddressTAFocusLost
+        if (employeeHomeAddressTA.getText().trim().equals("")) // placeholder
+        {
+            employeeHomeAddressTA.setText("Complete Address of the Employee...");
+            employeeHomeAddressTA.setForeground(new Color(153, 153, 153));
+        }
+    }//GEN-LAST:event_employeeHomeAddressTAFocusLost
+
+    private void employeeHomeAddressTAFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_employeeHomeAddressTAFocusGained
+        if (employeeHomeAddressTA.getText().trim().equals("Complete Address of the Employee...") ||
+            (employeeHomeAddressTA.getText().trim().equals("")))
+        {
+            employeeHomeAddressTA.setText("");
+            employeeHomeAddressTA.setForeground(Color.black);
+        }
+    }//GEN-LAST:event_employeeHomeAddressTAFocusGained
 
     private void employeeFirstNameTfKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_employeeFirstNameTfKeyPressed
         if (evt.getKeyCode()==KeyEvent.VK_ESCAPE){
@@ -393,49 +678,135 @@ public class HMS_EMPLOYEE_REGISTRATION extends javax.swing.JFrame {
 
     private void employeeFirstNameTfFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_employeeFirstNameTfFocusGained
         if (employeeFirstNameTf.getText().trim().equals("First Name") ||
-           (employeeFirstNameTf.getText().trim().equals("")))
+            (employeeFirstNameTf.getText().trim().equals("")))
         {
             employeeFirstNameTf.setText("");
             employeeFirstNameTf.setForeground(Color.black);
         }
     }//GEN-LAST:event_employeeFirstNameTfFocusGained
 
-    private void employeeHomeAddressTAKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_employeeHomeAddressTAKeyPressed
-          if (evt.getKeyCode()==KeyEvent.VK_ESCAPE){
+    private void employeeMiddleInitialTfKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_employeeMiddleInitialTfKeyPressed
+        if (evt.getKeyCode()==KeyEvent.VK_ESCAPE){
             this.dispose();
         }
-    }//GEN-LAST:event_employeeHomeAddressTAKeyPressed
+    }//GEN-LAST:event_employeeMiddleInitialTfKeyPressed
 
-    private void employeeHomeAddressTAFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_employeeHomeAddressTAFocusGained
-        if (employeeHomeAddressTA.getText().trim().equals("Complete Address of the Employee...") ||
-           (employeeHomeAddressTA.getText().trim().equals("")))
+    private void employeeMiddleInitialTfFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_employeeMiddleInitialTfFocusLost
+        if (employeeMiddleInitialTf.getText().trim().equals("")) // placeholder
         {
-            employeeHomeAddressTA.setText("");
-            employeeHomeAddressTA.setForeground(Color.black);
+            employeeMiddleInitialTf.setText("Middle Initial / Middle Name");
+            employeeMiddleInitialTf.setForeground(new Color(153, 153, 153));
         }
-    }//GEN-LAST:event_employeeHomeAddressTAFocusGained
+    }//GEN-LAST:event_employeeMiddleInitialTfFocusLost
 
-    private void employeeHomeAddressTAFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_employeeHomeAddressTAFocusLost
-        if (employeeHomeAddressTA.getText().trim().equals("")) // placeholder
+    private void employeeMiddleInitialTfFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_employeeMiddleInitialTfFocusGained
+        if (employeeMiddleInitialTf.getText().trim().equals("Middle Initial / Middle Name"))
         {
-            employeeHomeAddressTA.setText("Complete Address of the Employee...");
-            employeeHomeAddressTA.setForeground(new Color(153, 153, 153));
+            employeeMiddleInitialTf.setText("");
+            employeeMiddleInitialTf.setForeground(Color.black);
         }
-    }//GEN-LAST:event_employeeHomeAddressTAFocusLost
+    }//GEN-LAST:event_employeeMiddleInitialTfFocusGained
 
-    private void employeePhoneNumberTfKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_employeePhoneNumberTfKeyTyped
-        // allow only numbers
-        if (!Character.isDigit(evt.getKeyChar())) {
-            getToolkit().beep();
-            evt.consume();
-        }
-    }//GEN-LAST:event_employeePhoneNumberTfKeyTyped
-
-    private void employeePhoneNumberTfKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_employeePhoneNumberTfKeyPressed
-         if (evt.getKeyCode()==KeyEvent.VK_ESCAPE){
+    private void employeeLastNameTfKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_employeeLastNameTfKeyPressed
+        if (evt.getKeyCode()==KeyEvent.VK_ESCAPE){
             this.dispose();
         }
-    }//GEN-LAST:event_employeePhoneNumberTfKeyPressed
+    }//GEN-LAST:event_employeeLastNameTfKeyPressed
+
+    private void employeeLastNameTfFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_employeeLastNameTfFocusLost
+        if (employeeLastNameTf.getText().trim().equals("")) // placeholder
+        {
+            employeeLastNameTf.setText("Last Name");
+            employeeLastNameTf.setForeground(new Color(153, 153, 153));
+        }
+    }//GEN-LAST:event_employeeLastNameTfFocusLost
+
+    private void employeeLastNameTfFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_employeeLastNameTfFocusGained
+        if (employeeLastNameTf.getText().trim().equals("") ||
+            (employeeLastNameTf.getText().trim().equals("Last Name")))
+        {
+            employeeLastNameTf.setText("");
+            employeeLastNameTf.setForeground(Color.black);
+        }
+    }//GEN-LAST:event_employeeLastNameTfFocusGained
+
+    private void fatherEmailAddressTfFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_fatherEmailAddressTfFocusGained
+     if (fatherEmailAddressTf.getText().trim().equals("father_email@address.here") ||
+            (fatherEmailAddressTf.getText().trim().equals("")))
+        {
+            fatherEmailAddressTf.setText("");
+            fatherEmailAddressTf.setForeground(Color.black);
+        }
+    }//GEN-LAST:event_fatherEmailAddressTfFocusGained
+
+    private void fatherEmailAddressTfFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_fatherEmailAddressTfFocusLost
+        if (fatherEmailAddressTf.getText().trim().equals("")) // placeholder
+        {
+            fatherEmailAddressTf.setText("father_email@address.here");
+            fatherEmailAddressTf.setForeground(new Color(153, 153, 153));
+        }
+    }//GEN-LAST:event_fatherEmailAddressTfFocusLost
+
+    private void fatherEmailAddressTfKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fatherEmailAddressTfKeyPressed
+           if (evt.getKeyCode()==KeyEvent.VK_ESCAPE){
+            this.dispose();
+        }
+    }//GEN-LAST:event_fatherEmailAddressTfKeyPressed
+
+    private void motherEmailAddressTfFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_motherEmailAddressTfFocusGained
+        if (motherEmailAddressTf.getText().trim().equals("mother_email@address.here") ||
+            (motherEmailAddressTf.getText().trim().equals("")))
+        {
+            motherEmailAddressTf.setText("");
+            motherEmailAddressTf.setForeground(Color.black);
+        }
+    }//GEN-LAST:event_motherEmailAddressTfFocusGained
+
+    private void motherEmailAddressTfFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_motherEmailAddressTfFocusLost
+        if (motherEmailAddressTf.getText().trim().equals("")) // placeholder
+        {
+            motherEmailAddressTf.setText("mother_email@address.here");
+            motherEmailAddressTf.setForeground(new Color(153, 153, 153));
+        }
+    }//GEN-LAST:event_motherEmailAddressTfFocusLost
+
+    private void motherEmailAddressTfKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_motherEmailAddressTfKeyPressed
+                   if (evt.getKeyCode()==KeyEvent.VK_ESCAPE){
+            this.dispose();
+        }
+    }//GEN-LAST:event_motherEmailAddressTfKeyPressed
+
+    private void selectImageButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectImageButtonActionPerformed
+        // select an image and set the image path into a JLabel
+        String path = null;
+
+        JFileChooser chooser = new JFileChooser();
+
+        chooser.setCurrentDirectory(new File(System.getProperty("user.home")));
+
+        // File extension
+        FileNameExtensionFilter extension = new FileNameExtensionFilter("*Images","jpg","png","jpeg");
+        chooser.addChoosableFileFilter(extension);
+
+        int filestate = chooser.showSaveDialog(null);
+
+        // Check if the user select an image
+        if (filestate == JFileChooser.APPROVE_OPTION)
+        {
+            File selectedImage = chooser.getSelectedFile();
+            path = selectedImage.getAbsolutePath();
+            imagePathLabel.setText(path);
+            image_path = path;
+        }
+    }//GEN-LAST:event_selectImageButtonActionPerformed
+
+    private void registerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerButtonActionPerformed
+
+    }//GEN-LAST:event_registerButtonActionPerformed
+
+    private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelButtonActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_cancelButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -453,19 +824,16 @@ public class HMS_EMPLOYEE_REGISTRATION extends javax.swing.JFrame {
                     break;
                 }
             }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(HMS_EMPLOYEE_REGISTRATION.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(HMS_EMPLOYEE_REGISTRATION.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(HMS_EMPLOYEE_REGISTRATION.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(HMS_EMPLOYEE_REGISTRATION.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
                 new HMS_EMPLOYEE_REGISTRATION().setVisible(true);
             }
@@ -474,21 +842,41 @@ public class HMS_EMPLOYEE_REGISTRATION extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private com.toedter.calendar.JDateChooser birthdayPicker;
+    private java.awt.Choice bloodTypeChoice;
+    public javax.swing.JLabel bloodTypeLabel;
+    private javax.swing.JPanel bottomPanel;
+    private javax.swing.JButton cancelButton;
+    private java.awt.Choice civilStatusChoice1;
+    public javax.swing.JLabel civilStatusLabel;
+    private javax.swing.JLabel dateLabel;
     public javax.swing.JLabel dateOfBirthLabel;
     private javax.swing.JTextField employeeFirstNameTf;
     private javax.swing.JTextArea employeeHomeAddressTA;
+    private javax.swing.JLabel employeeImagePathLabel;
     private javax.swing.JTextField employeeLastNameTf;
     private javax.swing.JTextField employeeMiddleInitialTf;
+    public javax.swing.JLabel employeePhoneNumberLabel;
     private javax.swing.JTextField employeePhoneNumberTf;
     private javax.swing.JLabel employeeRagistrationImageLabel;
-    private javax.swing.JPanel employeeRegistrationMainPanel;
+    public javax.swing.JLabel fatherEmailAddressLabel;
+    private javax.swing.JTextField fatherEmailAddressTf;
     private javax.swing.JRadioButton femaleButton;
+    private javax.swing.Box.Filler filler1;
     public javax.swing.JLabel fullNameLabel;
-    public javax.swing.JLabel genderLabel;
     public javax.swing.JLabel homeAddressLabel1;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel imagePathLabel;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JRadioButton maleButton;
-    private javax.swing.JLabel phoneNumberLabel;
+    public javax.swing.JLabel motherEmailAddressLabel;
+    private javax.swing.JTextField motherEmailAddressTf;
+    public javax.swing.JLabel nationalityLabel;
+    private javax.swing.JTextField nationalityTf;
+    private javax.swing.JButton registerButton;
+    private java.awt.Choice religionChoice;
+    public javax.swing.JLabel religionLabel;
+    private javax.swing.JButton selectImageButton;
+    public javax.swing.JLabel sexLabel;
+    private javax.swing.JLabel timeLabel;
+    private javax.swing.JPanel topBannerPanel;
     // End of variables declaration//GEN-END:variables
 }

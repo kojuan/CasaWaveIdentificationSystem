@@ -24,21 +24,9 @@ import javax.swing.border.Border;
 import javax.swing.border.LineBorder;
 // import javax.swing.SwingConstants; // center text/label
 
-public class HMS_LOGIN extends javax.swing.JFrame {
+public final class HMS_LOGIN extends javax.swing.JFrame {
     
-    public static JFrame frame;
-    public static JPanel buttonpanel, topPanel,screenpanel,panel2, keypadpanel,
-            passwordPanel;
-    public static JLabel titleText, total, currentAmount, depositTextLabel, 
-            currentBalance, balInquiryTitle, withdrawTextLabel, passwordLabelText;
-    public static JButton exitButton, cwButton, payeeButton, bankButton, 
-            chequeHistoryButton, settingsButton, done, b1, b2, b3, b4, b5,  b6,
-            b7, b8, b9, b0, 
-            depositdone, deletechar, withdrawdone;
-    public static float balance, depositAmount, f;
-    public static TextField tf;
-    public static String new_num, a, withdrawinput, dateFormat;
-    public static Font titleTextFont;
+    public static JLabel passwordLabelText;
     
     // Absolute =  Drive +  {folders(s)} + {file} | Uniform Naming Convention
     // Relative = No drive | ..\ one level up | ..\..\ two levels up
