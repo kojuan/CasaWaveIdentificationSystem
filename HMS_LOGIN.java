@@ -114,17 +114,18 @@ public final class HMS_LOGIN extends javax.swing.JFrame {
         javax.swing.JButton adminButton = new javax.swing.JButton();
         aboutButton = new javax.swing.JButton();
         mainPanel = new javax.swing.JPanel();
-        javax.swing.JLabel usernameLabel = new javax.swing.JLabel();
-        javax.swing.JLabel passwordLabel = new javax.swing.JLabel();
-        showCBox = new javax.swing.JCheckBox();
         loginButton = new javax.swing.JButton();
         closeButton = new javax.swing.JButton();
-        passwordTf = new javax.swing.JPasswordField();
-        usernameTf = new javax.swing.JTextField();
         DATEANDTIME_PANEL = new javax.swing.JPanel();
         dateLabel = new javax.swing.JLabel();
         timeLabel = new javax.swing.JLabel();
         javax.swing.JLabel imageLabelTop = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        passwordTf = new javax.swing.JPasswordField();
+        usernameTf = new javax.swing.JTextField();
+        javax.swing.JLabel usernameLabel = new javax.swing.JLabel();
+        javax.swing.JLabel passwordLabel = new javax.swing.JLabel();
+        showCBox = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("MEDICAL HEALTH MONITORING SYSTEM");
@@ -161,6 +162,11 @@ public final class HMS_LOGIN extends javax.swing.JFrame {
                 aboutButtonMousePressed(evt);
             }
         });
+        aboutButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                aboutButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout bottomPanelLayout = new javax.swing.GroupLayout(bottomPanel);
         bottomPanel.setLayout(bottomPanelLayout);
@@ -168,7 +174,7 @@ public final class HMS_LOGIN extends javax.swing.JFrame {
             bottomPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(bottomPanelLayout.createSequentialGroup()
                 .addComponent(adminButton, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 801, Short.MAX_VALUE)
+                .addGap(801, 801, 801)
                 .addComponent(aboutButton, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         bottomPanelLayout.setVerticalGroup(
@@ -185,31 +191,15 @@ public final class HMS_LOGIN extends javax.swing.JFrame {
 
         mainPanel.setBackground(new java.awt.Color(235, 241, 253));
 
-        usernameLabel.setFont(new java.awt.Font("Trebuchet MS", 0, 36)); // NOI18N
-        usernameLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/healthMonitoringSystem/APP_IMAGES/login_images/usernameIconIMAGE.png"))); // NOI18N
-        usernameLabel.setLabelFor(usernameLabel);
-        usernameLabel.setText("Username:");
-
-        passwordLabel.setFont(new java.awt.Font("Trebuchet MS", 0, 36)); // NOI18N
-        passwordLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/healthMonitoringSystem/APP_IMAGES/login_images/passwordIconIMAGE.png"))); // NOI18N
-        passwordLabel.setLabelFor(passwordLabel);
-        passwordLabel.setText(" Password:");
-
-        showCBox.setBackground(new java.awt.Color(235, 241, 253));
-        showCBox.setText("Show");
-        showCBox.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                showCBoxActionPerformed(evt);
-            }
-        });
-
-        loginButton.setBackground(new java.awt.Color(60, 143, 246));
+        loginButton.setBackground(new java.awt.Color(153, 153, 255));
         loginButton.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
+        loginButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/healthMonitoringSystem/APP_IMAGES/mainprogram/loginIconSmall.png"))); // NOI18N
         loginButton.setText("LOGIN (Enter)");
         loginButton.setToolTipText("Log In");
         loginButton.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         loginButton.setBorderPainted(false);
         loginButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        loginButton.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
         loginButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 loginButtonMouseEntered(evt);
@@ -231,16 +221,57 @@ public final class HMS_LOGIN extends javax.swing.JFrame {
 
         closeButton.setBackground(new java.awt.Color(255, 102, 102));
         closeButton.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
+        closeButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/healthMonitoringSystem/APP_IMAGES/mainprogram/exitIconSmall.png"))); // NOI18N
         closeButton.setText("Close (Esc)");
         closeButton.setToolTipText("Exit the application");
-        closeButton.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        closeButton.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         closeButton.setBorderPainted(false);
         closeButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        closeButton.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
+        closeButton.setMargin(new java.awt.Insets(0, 0, 0, 0));
         closeButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 closeButtonActionPerformed(evt);
             }
         });
+
+        DATEANDTIME_PANEL.setBackground(new java.awt.Color(235, 241, 253));
+        DATEANDTIME_PANEL.setRequestFocusEnabled(false);
+
+        dateLabel.setFont(new java.awt.Font("Trebuchet MS", 1, 48)); // NOI18N
+        dateLabel.setForeground(new java.awt.Color(153, 153, 255));
+        dateLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        dateLabel.setText("Date");
+        dateLabel.setRequestFocusEnabled(false);
+
+        timeLabel.setFont(new java.awt.Font("Trebuchet MS", 1, 36)); // NOI18N
+        timeLabel.setForeground(new java.awt.Color(153, 153, 255));
+        timeLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        timeLabel.setText("Time");
+        timeLabel.setRequestFocusEnabled(false);
+
+        javax.swing.GroupLayout DATEANDTIME_PANELLayout = new javax.swing.GroupLayout(DATEANDTIME_PANEL);
+        DATEANDTIME_PANEL.setLayout(DATEANDTIME_PANELLayout);
+        DATEANDTIME_PANELLayout.setHorizontalGroup(
+            DATEANDTIME_PANELLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(DATEANDTIME_PANELLayout.createSequentialGroup()
+                .addGroup(DATEANDTIME_PANELLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(dateLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 381, Short.MAX_VALUE)
+                    .addComponent(timeLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(0, 20, Short.MAX_VALUE))
+        );
+        DATEANDTIME_PANELLayout.setVerticalGroup(
+            DATEANDTIME_PANELLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(DATEANDTIME_PANELLayout.createSequentialGroup()
+                .addContainerGap(123, Short.MAX_VALUE)
+                .addComponent(dateLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(timeLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+
+        imageLabelTop.setIcon(new javax.swing.ImageIcon(getClass().getResource("/healthMonitoringSystem/APP_IMAGES/login_images/HMS_TOPPANEL_LOGIN.png"))); // NOI18N
+
+        jPanel1.setBackground(new java.awt.Color(233, 247, 255));
 
         passwordTf.setBackground(new java.awt.Color(204, 204, 255));
         passwordTf.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
@@ -279,39 +310,57 @@ public final class HMS_LOGIN extends javax.swing.JFrame {
             }
         });
 
-        DATEANDTIME_PANEL.setBackground(new java.awt.Color(235, 241, 253));
-        DATEANDTIME_PANEL.setRequestFocusEnabled(false);
+        usernameLabel.setFont(new java.awt.Font("Trebuchet MS", 0, 36)); // NOI18N
+        usernameLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/healthMonitoringSystem/APP_IMAGES/login_images/usernameIconIMAGE.png"))); // NOI18N
+        usernameLabel.setLabelFor(usernameLabel);
+        usernameLabel.setText("Username:");
 
-        dateLabel.setFont(new java.awt.Font("Trebuchet MS", 1, 48)); // NOI18N
-        dateLabel.setForeground(new java.awt.Color(0, 0, 153));
-        dateLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        dateLabel.setText("Date");
-        dateLabel.setRequestFocusEnabled(false);
+        passwordLabel.setFont(new java.awt.Font("Trebuchet MS", 0, 36)); // NOI18N
+        passwordLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/healthMonitoringSystem/APP_IMAGES/login_images/passwordIconIMAGE.png"))); // NOI18N
+        passwordLabel.setLabelFor(passwordLabel);
+        passwordLabel.setText(" Password:");
 
-        timeLabel.setFont(new java.awt.Font("Trebuchet MS", 1, 36)); // NOI18N
-        timeLabel.setForeground(new java.awt.Color(0, 0, 153));
-        timeLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        timeLabel.setText("Time");
-        timeLabel.setRequestFocusEnabled(false);
+        showCBox.setBackground(new java.awt.Color(235, 241, 253));
+        showCBox.setText("Show");
+        showCBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                showCBoxActionPerformed(evt);
+            }
+        });
 
-        javax.swing.GroupLayout DATEANDTIME_PANELLayout = new javax.swing.GroupLayout(DATEANDTIME_PANEL);
-        DATEANDTIME_PANEL.setLayout(DATEANDTIME_PANELLayout);
-        DATEANDTIME_PANELLayout.setHorizontalGroup(
-            DATEANDTIME_PANELLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(dateLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 381, Short.MAX_VALUE)
-            .addComponent(timeLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(showCBox, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(passwordLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(passwordTf, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(usernameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(usernameTf)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        DATEANDTIME_PANELLayout.setVerticalGroup(
-            DATEANDTIME_PANELLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(DATEANDTIME_PANELLayout.createSequentialGroup()
-                .addGap(5, 5, 5)
-                .addComponent(dateLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(timeLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(118, Short.MAX_VALUE))
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(usernameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(usernameTf, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(passwordLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(passwordTf, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(showCBox))
         );
-
-        imageLabelTop.setIcon(new javax.swing.ImageIcon(getClass().getResource("/healthMonitoringSystem/APP_IMAGES/login_images/HMS_TOPPANEL_LOGIN.png"))); // NOI18N
 
         javax.swing.GroupLayout mainPanelLayout = new javax.swing.GroupLayout(mainPanel);
         mainPanel.setLayout(mainPanelLayout);
@@ -319,26 +368,17 @@ public final class HMS_LOGIN extends javax.swing.JFrame {
             mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(mainPanelLayout.createSequentialGroup()
                 .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(imageLabelTop)
                     .addGroup(mainPanelLayout.createSequentialGroup()
                         .addGap(47, 47, 47)
                         .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(showCBox)
-                            .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addGroup(mainPanelLayout.createSequentialGroup()
-                                    .addComponent(passwordLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(passwordTf, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(mainPanelLayout.createSequentialGroup()
-                                    .addComponent(usernameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(usernameTf, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mainPanelLayout.createSequentialGroup()
-                                    .addComponent(closeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(loginButton, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(mainPanelLayout.createSequentialGroup()
+                                .addComponent(closeButton)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(loginButton, javax.swing.GroupLayout.PREFERRED_SIZE, 298, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 554, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
-                        .addComponent(DATEANDTIME_PANEL, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(imageLabelTop))
+                        .addComponent(DATEANDTIME_PANEL, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         mainPanelLayout.setVerticalGroup(
@@ -349,16 +389,8 @@ public final class HMS_LOGIN extends javax.swing.JFrame {
                 .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(DATEANDTIME_PANEL, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(mainPanelLayout.createSequentialGroup()
-                        .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(usernameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(usernameTf, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(passwordLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(passwordTf, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(8, 8, 8)
-                        .addComponent(showCBox)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(loginButton, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(closeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))))
@@ -452,53 +484,6 @@ public final class HMS_LOGIN extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_closeButtonActionPerformed
 
-    private void adminButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adminButtonActionPerformed
-
-            passwordPanel = new JPanel();
-            passwordLabelText = new JLabel("Enter Special Code:");
-            JPasswordField passwordField = new JPasswordField(10);
-            passwordPanel.requestFocus();
-            passwordField.requestFocusInWindow();
-            passwordPanel.setBackground(new Color(0xccf5ff));
-
-            passwordPanel.add(passwordLabelText);
-            passwordPanel.add(passwordField);
-            String[] options = new String[]{"CANCEL", "ACCESS"};
-            int option = JOptionPane.showOptionDialog(null, passwordPanel, "Access Admin Tool",
-                JOptionPane.NO_OPTION, JOptionPane.PLAIN_MESSAGE,
-                null, options, options[1]); // default selection
-                if(option == 1) // pressing ACCESS button
-                {
-                    PreparedStatement st;
-                    ResultSet rs;
-                    // get the password
-                    String password = String.valueOf(passwordField.getPassword());
-                    //create a select query to check if the username and the password exist in the database
-                    String query = "SELECT * FROM adminspecialcode WHERE adminPassCodeNumber = ?";
-                    try {
-                        st = HEALTH_MONITORING_SYSTEM_DATABASE.getConnection().prepareStatement(query);
-                        st.setString(1, password);
-                        rs = st.executeQuery();
-
-                        if (rs.next())
-                        {
-                            HMS_ADMINFORM adminForm = new HMS_ADMINFORM();
-                            adminForm.setVisible(true);
-                            this.dispose();
-                        } else {
-                            // error message
-                            JOptionPane.showMessageDialog(null, "Invalid Special Code.\nPlease try again.","Special Code Invalid", 2);
-                        }
-
-
-                    } catch (SQLException ex) {
-                        Logger.getLogger(HMS_LOGIN.class.getName()).log(Level.SEVERE, null, ex);
-                        JOptionPane.showMessageDialog(null, "SQL Server Error. Please contact administrator.");
-                    }
-                }
-
-    }//GEN-LAST:event_adminButtonActionPerformed
-
     private void passwordTfFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_passwordTfFocusGained
         // clear the password field on focus if the text is "password"
         
@@ -566,11 +551,6 @@ public final class HMS_LOGIN extends javax.swing.JFrame {
         loginButton.setBackground(new Color (60, 143, 246));
     }//GEN-LAST:event_loginButtonMouseExited
 
-    private void aboutButtonMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_aboutButtonMousePressed
-         HMS_ABOUT hmsaboutForm = new HMS_ABOUT();
-         hmsaboutForm.setVisible(true);
-    }//GEN-LAST:event_aboutButtonMousePressed
-
     private void passwordTfKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_passwordTfKeyPressed
     if (evt.getKeyCode()==KeyEvent.VK_ESCAPE){
             System.exit(0);
@@ -586,6 +566,60 @@ public final class HMS_LOGIN extends javax.swing.JFrame {
             passwordTf.setEchoChar((char)0x2022);
         }
     }//GEN-LAST:event_showCBoxActionPerformed
+
+    private void aboutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aboutButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_aboutButtonActionPerformed
+
+    private void aboutButtonMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_aboutButtonMousePressed
+        HMS_ABOUT hmsaboutForm = new HMS_ABOUT();
+        hmsaboutForm.setVisible(true);
+    }//GEN-LAST:event_aboutButtonMousePressed
+
+    private void adminButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adminButtonActionPerformed
+
+        passwordPanel = new JPanel();
+        passwordLabelText = new JLabel("Enter Special Code:");
+        JPasswordField passwordField = new JPasswordField(10);
+        passwordPanel.requestFocus();
+        passwordField.requestFocusInWindow();
+        passwordPanel.setBackground(new Color(0xccf5ff));
+
+        passwordPanel.add(passwordLabelText);
+        passwordPanel.add(passwordField);
+        String[] options = new String[]{"CANCEL", "ACCESS"};
+        int option = JOptionPane.showOptionDialog(null, passwordPanel, "Access Admin Tool",
+            JOptionPane.NO_OPTION, JOptionPane.PLAIN_MESSAGE,
+            null, options, options[1]); // default selection
+        if(option == 1) // pressing ACCESS button
+        {
+            PreparedStatement st;
+            ResultSet rs;
+            // get the password
+            String password = String.valueOf(passwordField.getPassword());
+            //create a select query to check if the username and the password exist in the database
+            String query = "SELECT * FROM adminspecialcode WHERE adminPassCodeNumber = ?";
+            try {
+                st = HEALTH_MONITORING_SYSTEM_DATABASE.getConnection().prepareStatement(query);
+                st.setString(1, password);
+                rs = st.executeQuery();
+
+                if (rs.next())
+                {
+                    HMS_ADMINFORM adminForm = new HMS_ADMINFORM();
+                    adminForm.setVisible(true);
+                    this.dispose();
+                } else {
+                    // error message
+                    JOptionPane.showMessageDialog(null, "Invalid Special Code.\nPlease try again.","Special Code Invalid", 2);
+                }
+
+            } catch (SQLException ex) {
+                Logger.getLogger(HMS_LOGIN.class.getName()).log(Level.SEVERE, null, ex);
+                JOptionPane.showMessageDialog(null, "SQL Server Error. Please contact administrator.");
+            }
+        }
+    }//GEN-LAST:event_adminButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -625,6 +659,7 @@ public final class HMS_LOGIN extends javax.swing.JFrame {
     private javax.swing.JPanel bottomPanel;
     private javax.swing.JButton closeButton;
     private javax.swing.JLabel dateLabel;
+    private javax.swing.JPanel jPanel1;
     public javax.swing.JButton loginButton;
     private javax.swing.JPanel mainPanel;
     private javax.swing.JPasswordField passwordTf;

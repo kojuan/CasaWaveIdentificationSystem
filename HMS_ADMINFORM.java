@@ -278,7 +278,9 @@ public class HMS_ADMINFORM extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void registerEmployeeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerEmployeeButtonActionPerformed
-         
+         HMS_EMPLOYEE_REGISTRATION employeeRegistrationForm = new HMS_EMPLOYEE_REGISTRATION();
+        employeeRegistrationForm.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_registerEmployeeButtonActionPerformed
 
     private void adminCancelButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_adminCancelButtonMouseClicked
@@ -287,14 +289,18 @@ public class HMS_ADMINFORM extends javax.swing.JFrame {
 
     private void registerEmployeeButtonKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_registerEmployeeButtonKeyPressed
         if (evt.getKeyCode()==KeyEvent.VK_ESCAPE){
-            this.dispose();}
+            this.dispose();
+            HMS_LOGIN showLoginScreen = new HMS_LOGIN();
+            showLoginScreen.setVisible(true);}
         else{}
     }//GEN-LAST:event_registerEmployeeButtonKeyPressed
 
     private void adminCancelButtonKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_adminCancelButtonKeyPressed
         if (evt.getKeyCode()==KeyEvent.VK_ESCAPE){
+            HMS_LOGIN showLoginScreen = new HMS_LOGIN();
+            showLoginScreen.setVisible(true);
             this.dispose();}
-        else{}  
+        else{}
     }//GEN-LAST:event_adminCancelButtonKeyPressed
 
     private void adminCancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adminCancelButtonActionPerformed
@@ -334,13 +340,16 @@ public class HMS_ADMINFORM extends javax.swing.JFrame {
     }//GEN-LAST:event_manageDatabaseURLActionPerformed
 
     private void registerUserInDatabaseButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerUserInDatabaseButton1ActionPerformed
+        this.dispose();
         HMS_USER_REGISTRATION registerForm = new HMS_USER_REGISTRATION();
         registerForm.setVisible(true);
     }//GEN-LAST:event_registerUserInDatabaseButton1ActionPerformed
 
     private void registerUserInDatabaseButton1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_registerUserInDatabaseButton1KeyPressed
         if (evt.getKeyCode()==KeyEvent.VK_ESCAPE){
-            this.dispose();}
+            this.dispose();
+            HMS_LOGIN showLoginScreen = new HMS_LOGIN();
+            showLoginScreen.setVisible(true);}
         else{}  
     }//GEN-LAST:event_registerUserInDatabaseButton1KeyPressed
 
@@ -356,26 +365,34 @@ public class HMS_ADMINFORM extends javax.swing.JFrame {
 
     private void manageDatabaseURLKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_manageDatabaseURLKeyPressed
         if (evt.getKeyCode()==KeyEvent.VK_ESCAPE){
-            this.dispose();}
-        else{}  
+            this.dispose();
+            HMS_LOGIN showLoginScreen = new HMS_LOGIN();
+            showLoginScreen.setVisible(true);}
+        else{}
     }//GEN-LAST:event_manageDatabaseURLKeyPressed
 
     private void manageEmployeesButtonKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_manageEmployeesButtonKeyPressed
         if (evt.getKeyCode()==KeyEvent.VK_ESCAPE){
-            this.dispose();}
-        else{}                   
+            this.dispose();
+            HMS_LOGIN showLoginScreen = new HMS_LOGIN();
+            showLoginScreen.setVisible(true);}
+        else{}            
     }//GEN-LAST:event_manageEmployeesButtonKeyPressed
 
     private void manageUserButtonKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_manageUserButtonKeyPressed
         if (evt.getKeyCode()==KeyEvent.VK_ESCAPE){
-            this.dispose();}
-        else{}  
+            this.dispose();
+            HMS_LOGIN showLoginScreen = new HMS_LOGIN();
+            showLoginScreen.setVisible(true);}
+        else{}
     }//GEN-LAST:event_manageUserButtonKeyPressed
 
     private void managePatientsButtonKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_managePatientsButtonKeyPressed
         if (evt.getKeyCode()==KeyEvent.VK_ESCAPE){
-            this.dispose();}
-        else{}  
+            this.dispose();
+            HMS_LOGIN showLoginScreen = new HMS_LOGIN();
+            showLoginScreen.setVisible(true);}
+        else{}
     }//GEN-LAST:event_managePatientsButtonKeyPressed
 
     /**
