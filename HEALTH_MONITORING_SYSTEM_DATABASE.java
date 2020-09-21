@@ -17,7 +17,7 @@ public class HEALTH_MONITORING_SYSTEM_DATABASE {
     private static String username = "root"; // default
     private static String dbname = "health_monitoring_system_database"; // to get dbname, go to localhost/phpmyadmin
     private static Integer portnumber = 3306; // to get portnumber, go to XAMPP MySQL Port(s)
-    private static String password = ""; // default
+    private static String password = "root"; // default
     
     public static Connection getConnection()
     {
