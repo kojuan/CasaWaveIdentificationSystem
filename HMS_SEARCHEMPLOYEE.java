@@ -7,13 +7,10 @@ package healthMonitoringSystem;
 
 import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.PreparedStatement;
-import java.awt.Color;
 import java.awt.HeadlessException;
 import java.awt.event.KeyEvent;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.*;
 import java.sql.ResultSet;
 
@@ -32,11 +29,12 @@ public class HMS_SEARCHEMPLOYEE extends javax.swing.JFrame {
         } catch (ClassNotFoundException | 
             InstantiationException | 
             IllegalAccessException | 
-            UnsupportedLookAndFeelException e) {
+            UnsupportedLookAndFeelException e) {System.out.println(e);
         }
         
         initComponents();
-        JOptionPane.showMessageDialog(this, "Please input Employee ID to search for accurate search.\nThere may or may not be the same First, Middle , and Last Name. ");
+        JOptionPane.showMessageDialog(this, "Please input Employee ID for accurate search.\n"
+           + "There may or may not be the same First, Middle, and Last Name.");
     }
 
     /**
@@ -100,9 +98,7 @@ public class HMS_SEARCHEMPLOYEE extends javax.swing.JFrame {
         searchEmployeeTopPanel.setLayout(searchEmployeeTopPanelLayout);
         searchEmployeeTopPanelLayout.setHorizontalGroup(
             searchEmployeeTopPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(searchEmployeeTopPanelLayout.createSequentialGroup()
-                .addComponent(searchEmployeeHeaderImageLabel)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(searchEmployeeHeaderImageLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         searchEmployeeTopPanelLayout.setVerticalGroup(
             searchEmployeeTopPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -136,7 +132,13 @@ public class HMS_SEARCHEMPLOYEE extends javax.swing.JFrame {
         employeeFirstNameTfforSearch.setBackground(new java.awt.Color(234, 234, 250));
         employeeFirstNameTfforSearch.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         employeeFirstNameTfforSearch.setToolTipText("First name of the Employee");
+        employeeFirstNameTfforSearch.setAutoscrolls(false);
         employeeFirstNameTfforSearch.setFocusable(false);
+        employeeFirstNameTfforSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                employeeFirstNameTfforSearchActionPerformed(evt);
+            }
+        });
         employeeFirstNameTfforSearch.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 employeeFirstNameTfforSearchKeyPressed(evt);
@@ -330,21 +332,22 @@ public class HMS_SEARCHEMPLOYEE extends javax.swing.JFrame {
                 .addGroup(searchEmployeeMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(searchEmployeeMainPanelLayout.createSequentialGroup()
                         .addGap(64, 64, 64)
-                        .addGroup(searchEmployeeMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(searchEmployeeMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(searchEmployeeMainPanelLayout.createSequentialGroup()
+                                .addGap(3, 3, 3)
+                                .addComponent(bdayLabel4)
+                                .addGap(18, 18, 18)
+                                .addComponent(civilStatusTf, javax.swing.GroupLayout.DEFAULT_SIZE, 224, Short.MAX_VALUE))
                             .addGroup(searchEmployeeMainPanelLayout.createSequentialGroup()
                                 .addGroup(searchEmployeeMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(bdayLabel5)
                                     .addComponent(religionLabel))
                                 .addGap(18, 18, 18)
                                 .addGroup(searchEmployeeMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(religionTf, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(bloodTypeTf, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(searchEmployeeMainPanelLayout.createSequentialGroup()
-                                .addComponent(bdayLabel4)
-                                .addGap(18, 18, 18)
-                                .addComponent(civilStatusTf, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(motherEALabel, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(religionTf)
+                                    .addComponent(bloodTypeTf))))
+                        .addGap(39, 39, 39)
+                        .addComponent(motherEALabel, javax.swing.GroupLayout.PREFERRED_SIZE, 355, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(searchEmployeeMainPanelLayout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addGroup(searchEmployeeMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -365,32 +368,31 @@ public class HMS_SEARCHEMPLOYEE extends javax.swing.JFrame {
                     .addComponent(middleNameLabel))
                 .addGap(28, 28, 28)
                 .addGroup(searchEmployeeMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(searchEmployeeMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(employeeLastNameTf, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 178, Short.MAX_VALUE)
-                        .addComponent(employeeMiddleInitialTf, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(employeeFirstNameTfforSearch, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(employeeIdTf, javax.swing.GroupLayout.Alignment.LEADING))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 351, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(84, 84, 84)
-                .addGroup(searchEmployeeMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(searchEmployeeButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(cancelButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(resetAllFieldsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 361, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(searchEmployeeMainPanelLayout.createSequentialGroup()
+                        .addGroup(searchEmployeeMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(searchEmployeeMainPanelLayout.createSequentialGroup()
+                                .addComponent(employeeIdTf, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, searchEmployeeMainPanelLayout.createSequentialGroup()
+                                .addGroup(searchEmployeeMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(employeeLastNameTf, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(employeeMiddleInitialTf, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(employeeFirstNameTfforSearch))
+                                .addGap(224, 224, 224)))
+                        .addGroup(searchEmployeeMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(searchEmployeeButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(cancelButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(resetAllFieldsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 361, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(34, 34, 34))
+                    .addGroup(searchEmployeeMainPanelLayout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 354, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         searchEmployeeMainPanelLayout.setVerticalGroup(
             searchEmployeeMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, searchEmployeeMainPanelLayout.createSequentialGroup()
                 .addGroup(searchEmployeeMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(searchEmployeeMainPanelLayout.createSequentialGroup()
-                        .addGap(21, 21, 21)
-                        .addComponent(searchEmployeeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(resetAllFieldsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cancelButton, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, searchEmployeeMainPanelLayout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(searchEmployeeMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(employeeIdLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -399,20 +401,27 @@ public class HMS_SEARCHEMPLOYEE extends javax.swing.JFrame {
                         .addGroup(searchEmployeeMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(employeeFirstNameTfforSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(firstNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(middleNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(lastNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(lastNameLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(searchEmployeeMainPanelLayout.createSequentialGroup()
                         .addGroup(searchEmployeeMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(searchEmployeeMainPanelLayout.createSequentialGroup()
-                                .addComponent(middleNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(lastNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(lastNameLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(searchEmployeeMainPanelLayout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addContainerGap(116, Short.MAX_VALUE)
                                 .addComponent(employeeMiddleInitialTf, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(employeeLastNameTf, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(employeeLastNameTf, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(searchEmployeeMainPanelLayout.createSequentialGroup()
+                                .addContainerGap(16, Short.MAX_VALUE)
+                                .addComponent(searchEmployeeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(resetAllFieldsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(cancelButton, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(25, 25, 25)
                 .addGroup(searchEmployeeMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(searchEmployeeMainPanelLayout.createSequentialGroup()
@@ -457,7 +466,9 @@ public class HMS_SEARCHEMPLOYEE extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(searchEmployeeTopPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(searchEmployeeMainPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(searchEmployeeMainPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -528,7 +539,7 @@ public class HMS_SEARCHEMPLOYEE extends javax.swing.JFrame {
             }
             else
             {
-                JOptionPane.showMessageDialog(null, "Record of this Employee not found.");
+                JOptionPane.showMessageDialog(null, "Employee ID "+ employeeIdTf.getText() + " is not found in the System.");
             }
             conn.close();
         } catch (HeadlessException | ClassNotFoundException | NumberFormatException | SQLException ex) {
@@ -556,6 +567,10 @@ public class HMS_SEARCHEMPLOYEE extends javax.swing.JFrame {
         this.repaint();
     }//GEN-LAST:event_resetAllFieldsButtonActionPerformed
 
+    private void employeeFirstNameTfforSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_employeeFirstNameTfforSearchActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_employeeFirstNameTfforSearchActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -581,6 +596,7 @@ public class HMS_SEARCHEMPLOYEE extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
                 new HMS_SEARCHEMPLOYEE().setVisible(true);
             }

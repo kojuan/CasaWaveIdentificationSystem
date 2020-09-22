@@ -12,9 +12,6 @@ import java.sql.ResultSet;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
-import java.nio.file.FileSystems;
-import java.nio.file.Path;
-
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.sql.SQLException;
@@ -43,13 +40,13 @@ public final class HMS_LOGIN extends javax.swing.JFrame {
     } catch (ClassNotFoundException | 
         InstantiationException | 
         IllegalAccessException | 
-        UnsupportedLookAndFeelException e) {
+        UnsupportedLookAndFeelException e) {System.out.println(e);
     }
     
      
         System.out.println("Current absolute path is:" + currentAbsoluteFileDirectoryPath);
 
-           
+        this.setBackground(Color.white); // default white background color.
         
         initComponents();
         setIcon();
@@ -117,15 +114,16 @@ public final class HMS_LOGIN extends javax.swing.JFrame {
         loginButton = new javax.swing.JButton();
         closeButton = new javax.swing.JButton();
         DATEANDTIME_PANEL = new javax.swing.JPanel();
-        dateLabel = new javax.swing.JLabel();
         timeLabel = new javax.swing.JLabel();
+        dateLabel = new javax.swing.JLabel();
         javax.swing.JLabel imageLabelTop = new javax.swing.JLabel();
-        jPanel1 = new javax.swing.JPanel();
-        passwordTf = new javax.swing.JPasswordField();
         usernameTf = new javax.swing.JTextField();
-        javax.swing.JLabel usernameLabel = new javax.swing.JLabel();
-        javax.swing.JLabel passwordLabel = new javax.swing.JLabel();
+        passwordTf = new javax.swing.JPasswordField();
         showCBox = new javax.swing.JCheckBox();
+        sep1 = new javax.swing.JSeparator();
+        sep2 = new javax.swing.JSeparator();
+        userNameLabel = new javax.swing.JLabel();
+        passwordLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("MEDICAL HEALTH MONITORING SYSTEM");
@@ -191,15 +189,15 @@ public final class HMS_LOGIN extends javax.swing.JFrame {
 
         mainPanel.setBackground(new java.awt.Color(235, 241, 253));
 
-        loginButton.setBackground(new java.awt.Color(153, 153, 255));
-        loginButton.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
-        loginButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/healthMonitoringSystem/APP_IMAGES/mainprogram/loginIconSmall.png"))); // NOI18N
+        loginButton.setBackground(new java.awt.Color(60, 143, 246));
+        loginButton.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        loginButton.setForeground(new java.awt.Color(204, 255, 255));
         loginButton.setText("LOGIN (Enter)");
         loginButton.setToolTipText("Log In");
         loginButton.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         loginButton.setBorderPainted(false);
         loginButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        loginButton.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
+        loginButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         loginButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 loginButtonMouseEntered(evt);
@@ -219,15 +217,15 @@ public final class HMS_LOGIN extends javax.swing.JFrame {
             }
         });
 
-        closeButton.setBackground(new java.awt.Color(255, 102, 102));
-        closeButton.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
-        closeButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/healthMonitoringSystem/APP_IMAGES/mainprogram/exitIconSmall.png"))); // NOI18N
+        closeButton.setBackground(new java.awt.Color(255, 0, 102));
+        closeButton.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        closeButton.setForeground(new java.awt.Color(204, 255, 255));
         closeButton.setText("Close (Esc)");
         closeButton.setToolTipText("Exit the application");
         closeButton.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         closeButton.setBorderPainted(false);
         closeButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        closeButton.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
+        closeButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         closeButton.setMargin(new java.awt.Insets(0, 0, 0, 0));
         closeButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -238,43 +236,57 @@ public final class HMS_LOGIN extends javax.swing.JFrame {
         DATEANDTIME_PANEL.setBackground(new java.awt.Color(235, 241, 253));
         DATEANDTIME_PANEL.setRequestFocusEnabled(false);
 
-        dateLabel.setFont(new java.awt.Font("Trebuchet MS", 1, 48)); // NOI18N
-        dateLabel.setForeground(new java.awt.Color(153, 153, 255));
-        dateLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        dateLabel.setText("Date");
-        dateLabel.setRequestFocusEnabled(false);
-
-        timeLabel.setFont(new java.awt.Font("Trebuchet MS", 1, 36)); // NOI18N
-        timeLabel.setForeground(new java.awt.Color(153, 153, 255));
+        timeLabel.setFont(new java.awt.Font("Century Gothic", 1, 36)); // NOI18N
+        timeLabel.setForeground(new java.awt.Color(60, 175, 249));
         timeLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         timeLabel.setText("Time");
         timeLabel.setRequestFocusEnabled(false);
+
+        dateLabel.setFont(new java.awt.Font("Century Gothic", 1, 48)); // NOI18N
+        dateLabel.setForeground(new java.awt.Color(60, 175, 249));
+        dateLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        dateLabel.setText("Date");
+        dateLabel.setRequestFocusEnabled(false);
 
         javax.swing.GroupLayout DATEANDTIME_PANELLayout = new javax.swing.GroupLayout(DATEANDTIME_PANEL);
         DATEANDTIME_PANEL.setLayout(DATEANDTIME_PANELLayout);
         DATEANDTIME_PANELLayout.setHorizontalGroup(
             DATEANDTIME_PANELLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(DATEANDTIME_PANELLayout.createSequentialGroup()
-                .addGroup(DATEANDTIME_PANELLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(dateLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 381, Short.MAX_VALUE)
-                    .addComponent(timeLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(0, 20, Short.MAX_VALUE))
+            .addComponent(dateLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 332, Short.MAX_VALUE)
+            .addComponent(timeLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         DATEANDTIME_PANELLayout.setVerticalGroup(
             DATEANDTIME_PANELLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(DATEANDTIME_PANELLayout.createSequentialGroup()
-                .addContainerGap(123, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(dateLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(timeLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(timeLabel)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         imageLabelTop.setIcon(new javax.swing.ImageIcon(getClass().getResource("/healthMonitoringSystem/APP_IMAGES/login_images/HMS_TOPPANEL_LOGIN.png"))); // NOI18N
 
-        jPanel1.setBackground(new java.awt.Color(233, 247, 255));
+        usernameTf.setBackground(new java.awt.Color(235, 241, 253));
+        usernameTf.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        usernameTf.setBorder(null);
+        usernameTf.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                usernameTfFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                usernameTfFocusLost(evt);
+            }
+        });
+        usernameTf.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                usernameTfKeyPressed(evt);
+            }
+        });
 
-        passwordTf.setBackground(new java.awt.Color(204, 204, 255));
-        passwordTf.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        passwordTf.setBackground(new java.awt.Color(235, 241, 253));
+        passwordTf.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        passwordTf.setBorder(null);
         passwordTf.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 passwordTfFocusGained(evt);
@@ -294,32 +306,6 @@ public final class HMS_LOGIN extends javax.swing.JFrame {
             }
         });
 
-        usernameTf.setBackground(new java.awt.Color(204, 204, 255));
-        usernameTf.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        usernameTf.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                usernameTfFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                usernameTfFocusLost(evt);
-            }
-        });
-        usernameTf.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                usernameTfKeyPressed(evt);
-            }
-        });
-
-        usernameLabel.setFont(new java.awt.Font("Trebuchet MS", 0, 36)); // NOI18N
-        usernameLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/healthMonitoringSystem/APP_IMAGES/login_images/usernameIconIMAGE.png"))); // NOI18N
-        usernameLabel.setLabelFor(usernameLabel);
-        usernameLabel.setText("Username:");
-
-        passwordLabel.setFont(new java.awt.Font("Trebuchet MS", 0, 36)); // NOI18N
-        passwordLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/healthMonitoringSystem/APP_IMAGES/login_images/passwordIconIMAGE.png"))); // NOI18N
-        passwordLabel.setLabelFor(passwordLabel);
-        passwordLabel.setText(" Password:");
-
         showCBox.setBackground(new java.awt.Color(235, 241, 253));
         showCBox.setText("Show");
         showCBox.addActionListener(new java.awt.event.ActionListener() {
@@ -328,73 +314,68 @@ public final class HMS_LOGIN extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(showCBox, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(passwordLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(passwordTf, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(usernameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(usernameTf)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(usernameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(usernameTf, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(passwordLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(passwordTf, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(showCBox))
-        );
+        sep1.setForeground(new java.awt.Color(60, 143, 246));
+
+        sep2.setForeground(new java.awt.Color(60, 143, 246));
+
+        userNameLabel.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        userNameLabel.setForeground(new java.awt.Color(60, 143, 246));
+        userNameLabel.setText("Username:");
+
+        passwordLabel.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        passwordLabel.setForeground(new java.awt.Color(60, 143, 246));
+        passwordLabel.setText("Password:");
 
         javax.swing.GroupLayout mainPanelLayout = new javax.swing.GroupLayout(mainPanel);
         mainPanel.setLayout(mainPanelLayout);
         mainPanelLayout.setHorizontalGroup(
             mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(mainPanelLayout.createSequentialGroup()
-                .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(imageLabelTop)
-                    .addGroup(mainPanelLayout.createSequentialGroup()
-                        .addGap(47, 47, 47)
-                        .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(mainPanelLayout.createSequentialGroup()
-                                .addComponent(closeButton)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(loginButton, javax.swing.GroupLayout.PREFERRED_SIZE, 298, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 554, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addComponent(DATEANDTIME_PANEL, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addComponent(imageLabelTop)
                 .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mainPanelLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(DATEANDTIME_PANEL, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(userNameLabel)
+                        .addGroup(mainPanelLayout.createSequentialGroup()
+                            .addComponent(passwordLabel)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(showCBox))
+                        .addComponent(sep2, javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(passwordTf, javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(sep1)
+                        .addComponent(usernameTf)
+                        .addComponent(closeButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(loginButton, javax.swing.GroupLayout.DEFAULT_SIZE, 317, Short.MAX_VALUE)))
+                .addGap(59, 59, 59))
         );
         mainPanelLayout.setVerticalGroup(
             mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mainPanelLayout.createSequentialGroup()
+            .addGroup(mainPanelLayout.createSequentialGroup()
                 .addComponent(imageLabelTop)
+                .addGap(51, 51, 51)
+                .addComponent(userNameLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(usernameTf, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(sep1, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(passwordLabel)
+                    .addComponent(showCBox))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(passwordTf, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(sep2, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(loginButton, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(closeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(DATEANDTIME_PANEL, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(mainPanelLayout.createSequentialGroup()
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(loginButton, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(closeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(91, 91, 91))
+                .addComponent(DATEANDTIME_PANEL, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         getContentPane().add(mainPanel);
@@ -659,12 +640,15 @@ public final class HMS_LOGIN extends javax.swing.JFrame {
     private javax.swing.JPanel bottomPanel;
     private javax.swing.JButton closeButton;
     private javax.swing.JLabel dateLabel;
-    private javax.swing.JPanel jPanel1;
     public javax.swing.JButton loginButton;
     private javax.swing.JPanel mainPanel;
+    private javax.swing.JLabel passwordLabel;
     private javax.swing.JPasswordField passwordTf;
+    private javax.swing.JSeparator sep1;
+    private javax.swing.JSeparator sep2;
     private javax.swing.JCheckBox showCBox;
     private javax.swing.JLabel timeLabel;
+    private javax.swing.JLabel userNameLabel;
     private javax.swing.JTextField usernameTf;
     // End of variables declaration//GEN-END:variables
 

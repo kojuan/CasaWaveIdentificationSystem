@@ -5,49 +5,41 @@
  */
 package healthMonitoringSystem;
 
-import com.github.lgooddatepicker.components.DatePicker;
-import com.github.lgooddatepicker.components.DatePickerSettings;
-import com.mysql.jdbc.Connection;
-import com.toedter.calendar.JDateChooser;
+
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
-import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
-import java.io.Console;
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.InputStream;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.format.DateTimeFormatter;
-import java.util.Calendar;
 import java.util.Date;
-import java.util.Locale;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.ButtonGroup;
 import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
 import javax.swing.Timer;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.filechooser.FileNameExtensionFilter;
-import javax.swing.table.DefaultTableModel;
 import javax.swing.text.AttributeSet;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.PlainDocument;
+import com.mysql.jdbc.Connection;
+import java.awt.HeadlessException;
+import java.awt.event.KeyEvent;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.sql.ResultSet;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.ButtonGroup;
+import javax.swing.table.DefaultTableModel;
 import net.proteanit.sql.DbUtils;
 
 /**
@@ -55,7 +47,7 @@ import net.proteanit.sql.DbUtils;
  * @author Khian Orland Juan
  */
 
-public final class HMS_EMPLOYEE_REGISTRATION extends javax.swing.JFrame {
+public final class HMS_EMPLOYEE_UPDATE extends javax.swing.JFrame {
 
     /**
      * Creates new form HMS_EMPLOYEE_REGISTRATION
@@ -64,7 +56,7 @@ public final class HMS_EMPLOYEE_REGISTRATION extends javax.swing.JFrame {
     public static JPanel confirmPanel;
     String image_path = null;
     
-    public HMS_EMPLOYEE_REGISTRATION() {
+    public HMS_EMPLOYEE_UPDATE() {
         
         try { 
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
@@ -78,6 +70,7 @@ public final class HMS_EMPLOYEE_REGISTRATION extends javax.swing.JFrame {
         topBannerPanel.invalidate();
         topBannerPanel.validate();
         topBannerPanel.repaint();
+        
         
         // create a button group for Gender
         ButtonGroup genderButtonGroup = new ButtonGroup();
@@ -138,11 +131,12 @@ public final class HMS_EMPLOYEE_REGISTRATION extends javax.swing.JFrame {
     private void initComponents() {
 
         filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(32767, 32767));
+        jButton1 = new javax.swing.JButton();
         topBannerPanel = new javax.swing.JPanel();
         employeeRagistrationImageLabel = new javax.swing.JLabel();
-        employeeFirstNameTf = new javax.swing.JTextField();
-        employeeMiddleInitialTf = new javax.swing.JTextField();
         employeeLastNameTf = new javax.swing.JTextField();
+        employeeMiddleInitialTf = new javax.swing.JTextField();
+        employeeFirstNameTf = new javax.swing.JTextField();
         fullNameLabel = new javax.swing.JLabel();
         employeeHomeAddressTA_ = new javax.swing.JScrollPane();
         employeeHomeAddressTA = new javax.swing.JTextArea();
@@ -154,8 +148,6 @@ public final class HMS_EMPLOYEE_REGISTRATION extends javax.swing.JFrame {
         religionLabel = new javax.swing.JLabel();
         dateOfBirthLabel = new javax.swing.JLabel();
         sexLabel = new javax.swing.JLabel();
-        maleButton = new javax.swing.JRadioButton();
-        femaleButton = new javax.swing.JRadioButton();
         bloodTypeLabel = new javax.swing.JLabel();
         bloodTypeChoice = new java.awt.Choice();
         civilStatusChoice = new java.awt.Choice();
@@ -169,80 +161,68 @@ public final class HMS_EMPLOYEE_REGISTRATION extends javax.swing.JFrame {
         selectImageButton = new javax.swing.JButton();
         imagePathLabel = new javax.swing.JLabel();
         cancelButton = new javax.swing.JButton();
-        registerButton = new javax.swing.JButton();
+        updateButton = new javax.swing.JButton();
         bottomPanel = new javax.swing.JPanel();
         dateLabel = new javax.swing.JLabel();
         timeLabel = new javax.swing.JLabel();
         birthdayPicker = new com.github.lgooddatepicker.components.DatePicker();
         resetAllFieldsButton = new javax.swing.JButton();
         onScreenKeyboardButton = new javax.swing.JButton();
+        employeeIDNumberLabel = new javax.swing.JLabel();
+        employeeIdTf = new javax.swing.JTextField();
+        searchEmployeeButton = new javax.swing.JButton();
+        firstNameLabel = new javax.swing.JLabel();
+        middleNameLabel = new javax.swing.JLabel();
+        lastNameLabel = new javax.swing.JLabel();
+        sexTf = new javax.swing.JTextField();
+        displayedBirthday = new javax.swing.JLabel();
+        maleButton = new javax.swing.JRadioButton();
+        femaleButton = new javax.swing.JRadioButton();
+
+        jButton1.setText("jButton1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Register Employee");
+        setTitle("Update Employee Data");
         setBackground(new java.awt.Color(235, 241, 253));
-        setMinimumSize(new java.awt.Dimension(1000, 629));
+        setMinimumSize(new java.awt.Dimension(1000, 720));
         setName("hmsEmployeeRegistrationFrame"); // NOI18N
-        setUndecorated(true);
+        setResizable(false);
 
         topBannerPanel.setBackground(new java.awt.Color(235, 241, 253));
         topBannerPanel.setMaximumSize(new java.awt.Dimension(1000, 629));
         topBannerPanel.setMinimumSize(new java.awt.Dimension(1000, 629));
         topBannerPanel.setPreferredSize(new java.awt.Dimension(1000, 629));
 
-        employeeRagistrationImageLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/healthMonitoringSystem/APP_IMAGES/login_images/HMS_TOPPANEL_EMPLOYEE_REGISTER.png"))); // NOI18N
+        employeeRagistrationImageLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/healthMonitoringSystem/APP_IMAGES/mainprogram/HMS_TOPPANEL_UPDATEEMPLOYEE_fit.png"))); // NOI18N
         employeeRagistrationImageLabel.setBackground(new java.awt.Color(235, 241, 253));
 
-        employeeFirstNameTf.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        employeeFirstNameTf.setText("First Name");
-        employeeFirstNameTf.setBackground(new java.awt.Color(204, 204, 255));
-        employeeFirstNameTf.setToolTipText("First name of the Employee");
-        employeeFirstNameTf.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                employeeFirstNameTfFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                employeeFirstNameTfFocusLost(evt);
-            }
-        });
-        employeeFirstNameTf.addKeyListener(new java.awt.event.KeyAdapter() {
+        employeeLastNameTf.setEditable(false);
+        employeeLastNameTf.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        employeeLastNameTf.setBackground(new java.awt.Color(204, 204, 255));
+        employeeLastNameTf.setToolTipText("Complete Last Name");
+        employeeLastNameTf.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                employeeFirstNameTfKeyPressed(evt);
+                employeeLastNameTfKeyPressed(evt);
             }
         });
 
+        employeeMiddleInitialTf.setEditable(false);
         employeeMiddleInitialTf.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        employeeMiddleInitialTf.setText("Middle Initial / Middle Name");
         employeeMiddleInitialTf.setBackground(new java.awt.Color(204, 204, 255));
         employeeMiddleInitialTf.setToolTipText("Middle Initial or Complete Middle Name");
-        employeeMiddleInitialTf.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                employeeMiddleInitialTfFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                employeeMiddleInitialTfFocusLost(evt);
-            }
-        });
         employeeMiddleInitialTf.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 employeeMiddleInitialTfKeyPressed(evt);
             }
         });
 
-        employeeLastNameTf.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        employeeLastNameTf.setText("Last Name");
-        employeeLastNameTf.setBackground(new java.awt.Color(204, 204, 255));
-        employeeLastNameTf.setToolTipText("Complete Last Name");
-        employeeLastNameTf.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                employeeLastNameTfFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                employeeLastNameTfFocusLost(evt);
-            }
-        });
-        employeeLastNameTf.addKeyListener(new java.awt.event.KeyAdapter() {
+        employeeFirstNameTf.setEditable(false);
+        employeeFirstNameTf.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        employeeFirstNameTf.setBackground(new java.awt.Color(204, 204, 255));
+        employeeFirstNameTf.setToolTipText("First name of the Employee");
+        employeeFirstNameTf.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                employeeLastNameTfKeyPressed(evt);
+                employeeFirstNameTfKeyPressed(evt);
             }
         });
 
@@ -251,21 +231,13 @@ public final class HMS_EMPLOYEE_REGISTRATION extends javax.swing.JFrame {
         fullNameLabel.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
 
         employeeHomeAddressTA.setColumns(20);
+        employeeHomeAddressTA.setEditable(false);
         employeeHomeAddressTA.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         employeeHomeAddressTA.setLineWrap(true);
         employeeHomeAddressTA.setRows(5);
-        employeeHomeAddressTA.setText("Complete Address of the Employee...");
         employeeHomeAddressTA.setWrapStyleWord(true);
         employeeHomeAddressTA.setBackground(new java.awt.Color(204, 204, 255));
         employeeHomeAddressTA.setToolTipText("Complete Address of the Employee...");
-        employeeHomeAddressTA.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                employeeHomeAddressTAFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                employeeHomeAddressTAFocusLost(evt);
-            }
-        });
         employeeHomeAddressTA.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 employeeHomeAddressTAKeyPressed(evt);
@@ -277,6 +249,7 @@ public final class HMS_EMPLOYEE_REGISTRATION extends javax.swing.JFrame {
         homeAddressLabel.setBackground(new java.awt.Color(255, 255, 255));
         homeAddressLabel.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
 
+        employeePhoneNumberTf.setEditable(false);
         employeePhoneNumberTf.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         employeePhoneNumberTf.setBackground(new java.awt.Color(204, 204, 255));
         employeePhoneNumberTf.setToolTipText("Please indicate your Phone number starting at 09xxxxxxxx");
@@ -295,6 +268,7 @@ public final class HMS_EMPLOYEE_REGISTRATION extends javax.swing.JFrame {
         });
         employeePhoneNumberTf.setDocument(new JTextFieldLimit(11));
 
+        nationalityTf.setEditable(false);
         nationalityTf.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         nationalityTf.setBackground(new java.awt.Color(204, 204, 255));
         nationalityTf.setToolTipText("Please indicate your Nationality (ex. Filipino)");
@@ -311,6 +285,7 @@ public final class HMS_EMPLOYEE_REGISTRATION extends javax.swing.JFrame {
 
         religionChoice.setBackground(new java.awt.Color(204, 204, 255));
         religionChoice.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        religionChoice.setEnabled(false);
         religionChoice.add("Unspecified");
         religionChoice.add("Catholic");
         religionChoice.add("Islam");
@@ -334,31 +309,13 @@ public final class HMS_EMPLOYEE_REGISTRATION extends javax.swing.JFrame {
         sexLabel.setBackground(new java.awt.Color(255, 255, 255));
         sexLabel.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
 
-        maleButton.setSelected(true);
-        maleButton.setText("Male");
-        maleButton.setBackground(new java.awt.Color(235, 241, 253));
-        maleButton.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        maleButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                maleButtonActionPerformed(evt);
-            }
-        });
-
-        femaleButton.setText("Female");
-        femaleButton.setBackground(new java.awt.Color(235, 241, 253));
-        femaleButton.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        femaleButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                femaleButtonActionPerformed(evt);
-            }
-        });
-
         bloodTypeLabel.setText("Blood Type:");
         bloodTypeLabel.setBackground(new java.awt.Color(255, 255, 255));
         bloodTypeLabel.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
 
         bloodTypeChoice.setBackground(new java.awt.Color(204, 204, 255));
         bloodTypeChoice.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        bloodTypeChoice.setEnabled(false);
         bloodTypeChoice.add("Unspecified");
         bloodTypeChoice.add("A+");
         bloodTypeChoice.add("A-");
@@ -371,6 +328,7 @@ public final class HMS_EMPLOYEE_REGISTRATION extends javax.swing.JFrame {
 
         civilStatusChoice.setBackground(new java.awt.Color(204, 204, 255));
         civilStatusChoice.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        civilStatusChoice.setEnabled(false);
         civilStatusChoice.add("Unspecified");
         civilStatusChoice.add("Single");
         civilStatusChoice.add("Married");
@@ -389,7 +347,8 @@ public final class HMS_EMPLOYEE_REGISTRATION extends javax.swing.JFrame {
         fatherEmailAddressLabel.setBackground(new java.awt.Color(255, 255, 255));
         fatherEmailAddressLabel.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
 
-        fatherEmailAddressTf.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        fatherEmailAddressTf.setEditable(false);
+        fatherEmailAddressTf.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         fatherEmailAddressTf.setBackground(new java.awt.Color(204, 204, 255));
         fatherEmailAddressTf.setToolTipText("");
         fatherEmailAddressTf.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -402,7 +361,8 @@ public final class HMS_EMPLOYEE_REGISTRATION extends javax.swing.JFrame {
         motherEmailAddressLabel.setBackground(new java.awt.Color(255, 255, 255));
         motherEmailAddressLabel.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
 
-        motherEmailAddressTf.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        motherEmailAddressTf.setEditable(false);
+        motherEmailAddressTf.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         motherEmailAddressTf.setBackground(new java.awt.Color(204, 204, 255));
         motherEmailAddressTf.setToolTipText("");
         motherEmailAddressTf.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -416,6 +376,7 @@ public final class HMS_EMPLOYEE_REGISTRATION extends javax.swing.JFrame {
 
         selectImageButton.setText("Select Image");
         selectImageButton.setBackground(new java.awt.Color(255, 255, 255));
+        selectImageButton.setEnabled(false);
         selectImageButton.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         selectImageButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -440,14 +401,15 @@ public final class HMS_EMPLOYEE_REGISTRATION extends javax.swing.JFrame {
             }
         });
 
-        registerButton.setBackground(new java.awt.Color(153, 153, 255));
-        registerButton.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
-        registerButton.setText("Register Employee Account");
-        registerButton.setBorderPainted(false);
-        registerButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        registerButton.addActionListener(new java.awt.event.ActionListener() {
+        updateButton.setBackground(new java.awt.Color(153, 153, 255));
+        updateButton.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
+        updateButton.setText("Update Employee Account");
+        updateButton.setBorderPainted(false);
+        updateButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        updateButton.setEnabled(false);
+        updateButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                registerButtonActionPerformed(evt);
+                updateButtonActionPerformed(evt);
             }
         });
 
@@ -485,12 +447,14 @@ public final class HMS_EMPLOYEE_REGISTRATION extends javax.swing.JFrame {
         );
 
         birthdayPicker.setBackground(new java.awt.Color(235, 241, 253));
+        birthdayPicker.setEnabled(false);
         birthdayPicker.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
         birthdayPicker.setMaximumSize(null);
 
         resetAllFieldsButton.setText("Reset all fields");
         resetAllFieldsButton.setBackground(new java.awt.Color(153, 153, 255));
         resetAllFieldsButton.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        resetAllFieldsButton.setEnabled(false);
         resetAllFieldsButton.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         resetAllFieldsButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -509,65 +473,85 @@ public final class HMS_EMPLOYEE_REGISTRATION extends javax.swing.JFrame {
             }
         });
 
+        employeeIDNumberLabel.setText("Employee ID:");
+        employeeIDNumberLabel.setBackground(new java.awt.Color(255, 255, 255));
+        employeeIDNumberLabel.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        employeeIDNumberLabel.setForeground(new java.awt.Color(255, 51, 51));
+
+        employeeIdTf.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        employeeIdTf.setBackground(new java.awt.Color(234, 234, 250));
+
+        searchEmployeeButton.setText("Search Employee");
+        searchEmployeeButton.setBackground(new java.awt.Color(153, 204, 255));
+        searchEmployeeButton.setBorderPainted(false);
+        searchEmployeeButton.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        searchEmployeeButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchEmployeeButtonActionPerformed(evt);
+            }
+        });
+
+        firstNameLabel.setText("First Name:");
+        firstNameLabel.setBackground(new java.awt.Color(255, 255, 255));
+        firstNameLabel.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+
+        middleNameLabel.setText("Middle Name / Initial:");
+        middleNameLabel.setBackground(new java.awt.Color(255, 255, 255));
+        middleNameLabel.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+
+        lastNameLabel.setText("Last Name:");
+        lastNameLabel.setBackground(new java.awt.Color(255, 255, 255));
+        lastNameLabel.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+
+        sexTf.setEditable(false);
+        sexTf.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        sexTf.setBackground(new java.awt.Color(234, 234, 250));
+        sexTf.setEnabled(false);
+        sexTf.setFocusable(false);
+
+        displayedBirthday.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        displayedBirthday.setText("Birthday");
+        displayedBirthday.setBackground(new java.awt.Color(235, 241, 253));
+        displayedBirthday.setFont(new java.awt.Font("Tahoma", 2, 12)); // NOI18N
+        displayedBirthday.setRequestFocusEnabled(false);
+        displayedBirthday.setToolTipText("Current birthday");
+
+        maleButton.setSelected(true);
+        maleButton.setText("Male");
+        maleButton.setBackground(new java.awt.Color(235, 241, 253));
+        maleButton.setEnabled(false);
+        maleButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                maleButtonActionPerformed(evt);
+            }
+        });
+
+        femaleButton.setText("Female");
+        femaleButton.setBackground(new java.awt.Color(235, 241, 253));
+        femaleButton.setEnabled(false);
+        femaleButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                femaleButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout topBannerPanelLayout = new javax.swing.GroupLayout(topBannerPanel);
         topBannerPanel.setLayout(topBannerPanelLayout);
         topBannerPanelLayout.setHorizontalGroup(
             topBannerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(topBannerPanelLayout.createSequentialGroup()
-                .addGroup(topBannerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(topBannerPanelLayout.createSequentialGroup()
-                        .addGap(44, 44, 44)
-                        .addComponent(fullNameLabel))
-                    .addGroup(topBannerPanelLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(homeAddressLabel))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, topBannerPanelLayout.createSequentialGroup()
-                        .addGap(28, 28, 28)
-                        .addComponent(dateOfBirthLabel)))
-                .addGroup(topBannerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(topBannerPanelLayout.createSequentialGroup()
-                        .addGap(19, 19, 19)
-                        .addComponent(employeeFirstNameTf, javax.swing.GroupLayout.PREFERRED_SIZE, 291, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(employeeMiddleInitialTf, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(employeeLastNameTf, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, topBannerPanelLayout.createSequentialGroup()
+                .addGap(27, 27, 27)
+                .addGroup(topBannerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(topBannerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(topBannerPanelLayout.createSequentialGroup()
+                            .addComponent(onScreenKeyboardButton, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(resetAllFieldsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(topBannerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(topBannerPanelLayout.createSequentialGroup()
-                                .addGap(18, 18, 18)
-                                .addComponent(birthdayPicker, javax.swing.GroupLayout.PREFERRED_SIZE, 291, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(topBannerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(fatherEmailAddressLabel, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(employeePhoneNumberLabel, javax.swing.GroupLayout.Alignment.TRAILING)))
+                                .addGap(25, 25, 25)
+                                .addComponent(dateOfBirthLabel))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, topBannerPanelLayout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(topBannerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(motherEmailAddressLabel, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(employeeImagePathLabel, javax.swing.GroupLayout.Alignment.TRAILING))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(topBannerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(selectImageButton, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(fatherEmailAddressTf, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(employeePhoneNumberTf, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(motherEmailAddressTf, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap())))
-            .addGroup(topBannerPanelLayout.createSequentialGroup()
-                .addGroup(topBannerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(employeeRagistrationImageLabel)
-                    .addComponent(bottomPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(topBannerPanelLayout.createSequentialGroup()
-                        .addGap(149, 149, 149)
-                        .addComponent(employeeHomeAddressTA_, javax.swing.GroupLayout.PREFERRED_SIZE, 842, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(topBannerPanelLayout.createSequentialGroup()
-                .addGroup(topBannerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, topBannerPanelLayout.createSequentialGroup()
-                        .addGap(34, 34, 34)
-                        .addGroup(topBannerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(topBannerPanelLayout.createSequentialGroup()
                                 .addGroup(topBannerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(nationalityLabel)
                                     .addGroup(topBannerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -580,98 +564,164 @@ public final class HMS_EMPLOYEE_REGISTRATION extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addGroup(topBannerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(nationalityTf)
-                                    .addComponent(religionChoice, javax.swing.GroupLayout.DEFAULT_SIZE, 291, Short.MAX_VALUE)
+                                    .addComponent(religionChoice, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(bloodTypeChoice, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(civilStatusChoice, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                            .addGroup(topBannerPanelLayout.createSequentialGroup()
-                                .addGap(7, 7, 7)
-                                .addComponent(onScreenKeyboardButton, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(resetAllFieldsButton, javax.swing.GroupLayout.DEFAULT_SIZE, 172, Short.MAX_VALUE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(topBannerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(imagePathLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 478, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cancelButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(registerButton, javax.swing.GroupLayout.Alignment.TRAILING)))
+                                    .addComponent(civilStatusChoice, javax.swing.GroupLayout.PREFERRED_SIZE, 291, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addGroup(topBannerPanelLayout.createSequentialGroup()
-                        .addGap(97, 97, 97)
+                        .addGap(63, 63, 63)
                         .addComponent(sexLabel)
+                        .addGroup(topBannerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(topBannerPanelLayout.createSequentialGroup()
+                                .addGap(21, 21, 21)
+                                .addComponent(birthdayPicker, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(displayedBirthday, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(topBannerPanelLayout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addComponent(sexTf, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(11, 11, 11)
+                                .addComponent(maleButton)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(femaleButton)))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(topBannerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, topBannerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(updateButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(cancelButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(imagePathLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 478, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, topBannerPanelLayout.createSequentialGroup()
+                        .addGroup(topBannerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(topBannerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(fatherEmailAddressLabel, javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(employeePhoneNumberLabel, javax.swing.GroupLayout.Alignment.TRAILING))
+                            .addComponent(motherEmailAddressLabel, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(employeeImagePathLabel, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(topBannerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(selectImageButton, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(fatherEmailAddressTf, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(employeePhoneNumberTf, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(motherEmailAddressTf, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(28, 28, 28))
+            .addGroup(topBannerPanelLayout.createSequentialGroup()
+                .addGroup(topBannerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(employeeRagistrationImageLabel)
+                    .addComponent(bottomPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(topBannerPanelLayout.createSequentialGroup()
+                .addGroup(topBannerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(topBannerPanelLayout.createSequentialGroup()
+                        .addGap(44, 44, 44)
+                        .addComponent(employeeIDNumberLabel)
                         .addGap(18, 18, 18)
-                        .addComponent(maleButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(femaleButton)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                        .addComponent(employeeIdTf, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(36, 36, 36)
+                        .addComponent(searchEmployeeButton))
+                    .addGroup(topBannerPanelLayout.createSequentialGroup()
+                        .addGap(34, 34, 34)
+                        .addGroup(topBannerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(fullNameLabel)
+                            .addComponent(homeAddressLabel))
+                        .addGap(18, 18, 18)
+                        .addGroup(topBannerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(employeeHomeAddressTA_)
+                            .addGroup(topBannerPanelLayout.createSequentialGroup()
+                                .addGroup(topBannerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(employeeFirstNameTf, javax.swing.GroupLayout.PREFERRED_SIZE, 291, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(firstNameLabel))
+                                .addGap(18, 18, 18)
+                                .addGroup(topBannerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(employeeMiddleInitialTf, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(middleNameLabel))
+                                .addGap(18, 18, 18)
+                                .addGroup(topBannerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lastNameLabel)
+                                    .addComponent(employeeLastNameTf, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         topBannerPanelLayout.setVerticalGroup(
             topBannerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(topBannerPanelLayout.createSequentialGroup()
-                .addComponent(employeeRagistrationImageLabel)
+                .addComponent(employeeRagistrationImageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(49, 49, 49)
+                .addGroup(topBannerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE, false)
+                    .addComponent(employeeIDNumberLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(employeeIdTf, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(searchEmployeeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(topBannerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(employeeFirstNameTf, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(employeeMiddleInitialTf, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(employeeLastNameTf, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(fullNameLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 47, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(topBannerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(employeeHomeAddressTA_, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addComponent(homeAddressLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 43, Short.MAX_VALUE))
-                .addGroup(topBannerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(maleButton, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(femaleButton)
-                    .addComponent(sexLabel))
+                    .addComponent(firstNameLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 19, Short.MAX_VALUE)
+                    .addComponent(middleNameLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lastNameLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(2, 2, 2)
                 .addGroup(topBannerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(topBannerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(employeeMiddleInitialTf, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(employeeLastNameTf, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(topBannerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(employeeFirstNameTf, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(fullNameLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(topBannerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(homeAddressLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 43, Short.MAX_VALUE)
+                    .addComponent(employeeHomeAddressTA_, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addGroup(topBannerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(topBannerPanelLayout.createSequentialGroup()
+                        .addGap(29, 29, 29)
+                        .addGroup(topBannerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(employeePhoneNumberTf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(employeePhoneNumberLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(topBannerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(fatherEmailAddressTf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(fatherEmailAddressLabel))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(topBannerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(motherEmailAddressTf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(topBannerPanelLayout.createSequentialGroup()
+                                .addComponent(motherEmailAddressLabel)
+                                .addGap(18, 18, 18)
                                 .addGroup(topBannerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(dateOfBirthLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(birthdayPicker, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(topBannerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(nationalityLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(nationalityTf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(topBannerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(religionChoice, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(religionLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addGap(9, 9, 9)
-                                .addGroup(topBannerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(bloodTypeLabel)
-                                    .addComponent(bloodTypeChoice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(topBannerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(civilStatusLabel)
-                                    .addComponent(civilStatusChoice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(topBannerPanelLayout.createSequentialGroup()
-                                .addGroup(topBannerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(employeePhoneNumberTf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(employeePhoneNumberLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(topBannerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(fatherEmailAddressTf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(fatherEmailAddressLabel))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(topBannerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(motherEmailAddressTf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(topBannerPanelLayout.createSequentialGroup()
-                                        .addComponent(motherEmailAddressLabel)
-                                        .addGap(18, 18, 18)
-                                        .addGroup(topBannerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                            .addComponent(employeeImagePathLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(selectImageButton, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(imagePathLabel)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 75, Short.MAX_VALUE)
+                                    .addComponent(employeeImagePathLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(selectImageButton, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(4, 4, 4)
+                        .addComponent(imagePathLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(updateButton, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cancelButton, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(topBannerPanelLayout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addGroup(topBannerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(sexLabel)
+                            .addComponent(sexTf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(maleButton)
+                            .addComponent(femaleButton))
+                        .addGroup(topBannerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(displayedBirthday, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(topBannerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(dateOfBirthLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(birthdayPicker, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(topBannerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(nationalityLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(nationalityTf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(topBannerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(religionChoice, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(religionLabel))
+                        .addGap(9, 9, 9)
+                        .addGroup(topBannerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(bloodTypeLabel)
+                            .addComponent(bloodTypeChoice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(topBannerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(civilStatusLabel)
+                            .addComponent(civilStatusChoice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(topBannerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(resetAllFieldsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(onScreenKeyboardButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(topBannerPanelLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(registerButton, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cancelButton, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(onScreenKeyboardButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(19, 19, 19)
                 .addComponent(bottomPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -714,23 +764,6 @@ public final class HMS_EMPLOYEE_REGISTRATION extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_employeeHomeAddressTAKeyPressed
 
-    private void employeeHomeAddressTAFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_employeeHomeAddressTAFocusLost
-        if (employeeHomeAddressTA.getText().trim().equals("")) // placeholder
-        {
-            employeeHomeAddressTA.setText("Complete Address of the Employee...");
-            employeeHomeAddressTA.setForeground(new Color(153, 153, 153));
-        }
-    }//GEN-LAST:event_employeeHomeAddressTAFocusLost
-
-    private void employeeHomeAddressTAFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_employeeHomeAddressTAFocusGained
-        if (employeeHomeAddressTA.getText().trim().equals("Complete Address of the Employee...") ||
-            (employeeHomeAddressTA.getText().trim().equals("")))
-        {
-            employeeHomeAddressTA.setText("");
-            employeeHomeAddressTA.setForeground(Color.black);
-        }
-    }//GEN-LAST:event_employeeHomeAddressTAFocusGained
-
     private void employeeFirstNameTfKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_employeeFirstNameTfKeyPressed
         if (evt.getKeyCode()==KeyEvent.VK_ESCAPE){
             HMS_ADMINFORM showAdminForm = new HMS_ADMINFORM();
@@ -738,23 +771,6 @@ public final class HMS_EMPLOYEE_REGISTRATION extends javax.swing.JFrame {
             this.dispose();
         }
     }//GEN-LAST:event_employeeFirstNameTfKeyPressed
-
-    private void employeeFirstNameTfFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_employeeFirstNameTfFocusLost
-        if (employeeFirstNameTf.getText().trim().equals("")) // placeholder
-        {
-            employeeFirstNameTf.setText("First Name");
-            employeeFirstNameTf.setForeground(new Color(153, 153, 153));
-        }
-    }//GEN-LAST:event_employeeFirstNameTfFocusLost
-
-    private void employeeFirstNameTfFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_employeeFirstNameTfFocusGained
-        if (employeeFirstNameTf.getText().trim().equals("First Name") ||
-            (employeeFirstNameTf.getText().trim().equals("")))
-        {
-            employeeFirstNameTf.setText("");
-            employeeFirstNameTf.setForeground(Color.black);
-        }
-    }//GEN-LAST:event_employeeFirstNameTfFocusGained
 
     private void employeeMiddleInitialTfKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_employeeMiddleInitialTfKeyPressed
         if (evt.getKeyCode()==KeyEvent.VK_ESCAPE){
@@ -764,22 +780,6 @@ public final class HMS_EMPLOYEE_REGISTRATION extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_employeeMiddleInitialTfKeyPressed
 
-    private void employeeMiddleInitialTfFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_employeeMiddleInitialTfFocusLost
-        if (employeeMiddleInitialTf.getText().trim().equals("")) // placeholder
-        {
-            employeeMiddleInitialTf.setText("Middle Initial / Middle Name");
-            employeeMiddleInitialTf.setForeground(new Color(153, 153, 153));
-        }
-    }//GEN-LAST:event_employeeMiddleInitialTfFocusLost
-
-    private void employeeMiddleInitialTfFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_employeeMiddleInitialTfFocusGained
-        if (employeeMiddleInitialTf.getText().trim().equals("Middle Initial / Middle Name"))
-        {
-            employeeMiddleInitialTf.setText("");
-            employeeMiddleInitialTf.setForeground(Color.black);
-        }
-    }//GEN-LAST:event_employeeMiddleInitialTfFocusGained
-
     private void employeeLastNameTfKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_employeeLastNameTfKeyPressed
         if (evt.getKeyCode()==KeyEvent.VK_ESCAPE){
             HMS_ADMINFORM showAdminForm = new HMS_ADMINFORM();
@@ -787,23 +787,6 @@ public final class HMS_EMPLOYEE_REGISTRATION extends javax.swing.JFrame {
             this.dispose();
         }
     }//GEN-LAST:event_employeeLastNameTfKeyPressed
-
-    private void employeeLastNameTfFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_employeeLastNameTfFocusLost
-        if (employeeLastNameTf.getText().trim().equals("")) // placeholder
-        {
-            employeeLastNameTf.setText("Last Name");
-            employeeLastNameTf.setForeground(new Color(153, 153, 153));
-        }
-    }//GEN-LAST:event_employeeLastNameTfFocusLost
-
-    private void employeeLastNameTfFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_employeeLastNameTfFocusGained
-        if (employeeLastNameTf.getText().trim().equals("") ||
-            (employeeLastNameTf.getText().trim().equals("Last Name")))
-        {
-            employeeLastNameTf.setText("");
-            employeeLastNameTf.setForeground(Color.black);
-        }
-    }//GEN-LAST:event_employeeLastNameTfFocusGained
 
     private void fatherEmailAddressTfKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fatherEmailAddressTfKeyPressed
            if (evt.getKeyCode()==KeyEvent.VK_ESCAPE){
@@ -866,139 +849,155 @@ public final class HMS_EMPLOYEE_REGISTRATION extends javax.swing.JFrame {
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, e);}
         }
-    private void registerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerButtonActionPerformed
-       
-           confirmPanel = new JPanel();
-           confirmLabelText = new JLabel("Do you want to register the account?"
-                   + " :: SOME FORMS CANNOT BE CHANGED AFTER THIS.");
-           confirmPanel.add(confirmLabelText);
+    private void updateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateButtonActionPerformed
+        confirmPanel = new JPanel();
+        confirmLabelText = new JLabel("Do you want to update the employee profile?");
+        confirmPanel.add(confirmLabelText);
+        
         String[] options = new String[]{"BACK", "CONFIRM"};
           int option = JOptionPane.showOptionDialog(null, confirmPanel,"Confirm?",
               JOptionPane.NO_OPTION, JOptionPane.PLAIN_MESSAGE,
               null, options, options[1]); // default selection
               if(option == 1) // pressing CONFIRM button
               {
+                  
                 try {
                     String firstNameString = employeeFirstNameTf.getText();
                     String middleNameString = employeeMiddleInitialTf.getText();
                     String lastNameString = employeeLastNameTf.getText();
                     String homeAddressString = employeeHomeAddressTA.getText();
-
                     String selectedbDay = birthdayPicker.getDateStringOrEmptyString();
-
-                    String bloodTypeString = String.valueOf(bloodTypeChoice.getSelectedItem());
                     String phoneString = employeePhoneNumberTf.getText();
+                    String fatherEmailAddressString = fatherEmailAddressTf.getText();
+                    String motherEmailAddressString = motherEmailAddressTf.getText();
+                    String bloodTypeString = String.valueOf(bloodTypeChoice.getSelectedItem());
                     String civilStatusString = String.valueOf(civilStatusChoice.getSelectedItem());
                     String religionString = String.valueOf(religionChoice.getSelectedItem());
                     String nationalityString = nationalityTf.getText();
-                    String fatherEmailAddressString = fatherEmailAddressTf.getText();
-                    String motherEmailAddressString = motherEmailAddressTf.getText();
-
+                    String empIdString = employeeIdTf.getText();
                     String gender = "Male";
-
-                    //getting current date and time using Date class
+                    
+                     //getting current date and time using Date class
                     DateFormat getCurrentDateTimeFormat = new SimpleDateFormat("YYYY-MM-dd hh:mm:ss");
                     Date dateObject = new Date();
                     String getDateTimeCurrent = getCurrentDateTimeFormat.format(dateObject);
-
+                    
                     if (femaleButton.isSelected()) {
                         gender = "Female";
                     }
-
+                    
                     if (verifyFields()) {
-
-                        PreparedStatement ps;
-                        String registerEmployeeQuery = "INSERT INTO employees (firstName, middleInitial, lastName, employeeAddress, employeeGender, dateOfBirth, employeeBloodType, cellphoneNumber, civilStatus, employeeReligion, employeeNationality, fatherEmailAddress, motherEmailAddress, dateAndTimeRegistered, picture) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
-
+                        
+//                        Class.forName("com.mysql.jdbc.Driver");
+//                        String username = "root";
+//                        String password = "root";
+//                        Connection conn = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/health_monitoring_system_database", username, password);
+              
+                        String sql = "UPDATE employees SET firstName = ?, middleInitial = ?, lastName = ?, employeeAddress = ?, employeeGender = ?, dateOfBirth = ?, employeeBloodType = ?, cellphoneNumber = ?, civilStatus = ?, employeeReligion = ?, employeeNationality = ?, fatherEmailAddress = ?, motherEmailAddress = ?, dateAndTimeRegistered = ?, picture = ? WHERE employeeId = ?";
+                        PreparedStatement pstmt;
+                        
                         try {
-
-                            ps = HEALTH_MONITORING_SYSTEM_DATABASE.getConnection().prepareStatement(registerEmployeeQuery);
-                            ps.setString(1, firstNameString);
-                            ps.setString(2, middleNameString);
-                            ps.setString(3, lastNameString);
-                            ps.setString(4, homeAddressString);
-                            ps.setString(5, gender);
-                            ps.setString(6, selectedbDay);
-                            ps.setString(7, bloodTypeString);
-                            ps.setString(8, phoneString);
-                            ps.setString(9, civilStatusString);
-                            ps.setString(10, religionString);
-                            ps.setString(11, nationalityString);
-                            ps.setString(12, fatherEmailAddressString);
-                            ps.setString(13, motherEmailAddressString);
-                            ps.setString(14, getDateTimeCurrent);
-
+//                            pstmt = conn.prepareStatement(sql);
+                            pstmt = HEALTH_MONITORING_SYSTEM_DATABASE.getConnection().prepareStatement(sql);
+                            // set parameters
+                            pstmt.setString(1, firstNameString); // 1
+                            pstmt.setString(2, middleNameString); // 2
+                            pstmt.setString(3, lastNameString); // 3
+                            pstmt.setString(4, homeAddressString); // 4
+                            pstmt.setString(5, gender); // 5
+                            pstmt.setString(6, selectedbDay); // 6
+                            pstmt.setString(7, bloodTypeString); // 7
+                            pstmt.setString(8, phoneString); // 8
+                            pstmt.setString(9, civilStatusString); // 9
+                            pstmt.setString(10, religionString); // 10
+                            pstmt.setString(11, nationalityString); // 11
+                            pstmt.setString(12, fatherEmailAddressString); // 12
+                            pstmt.setString(13, motherEmailAddressString); // 13
+                            pstmt.setString(14, getDateTimeCurrent); // 14
+                            pstmt.setString(16, empIdString); // 16 ID
+                            // then execute
                             try {
                                 // Save the image as BLOB in the Database
-                                if (image_path != null) {
-
+                                if (image_path != null) 
+                                {
                                     InputStream image = new FileInputStream(new File(image_path));
-                                    ps.setBlob(15, image);
-                                }
-                                else if (image_path == null) {
-                                    ps.setNull(15, java.sql.Types.NULL);
+                                    pstmt.setBlob(15, image);
+                                } else if (image_path == null) {
+                                    pstmt.setNull(15, java.sql.Types.NULL);
                                     System.out.println("No image attached.");
                                 } else {
-                                    ps.setNull(15, java.sql.Types.NULL);
+                                    pstmt.setNull(15, java.sql.Types.NULL);
                                     System.out.println("No image attached.");
                                 }
-                                if (ps.executeUpdate() != 0) {
-                                    JOptionPane.showMessageDialog(null, "Employee Account has been created.");
-                                     employeeFirstNameTf.setText("First Name");
-                                    employeeMiddleInitialTf.setText("Middle Initial / Middle Name");
-                                    employeeLastNameTf.setText("Last Name");
-                                    employeeHomeAddressTA.setText("Complete Address of the Employee...");
+                                
+                                if (pstmt.executeUpdate() != 0) 
+                                {   // IF successful update
+                                    refreshTable();
+                                    JOptionPane.showMessageDialog(null, "Employee ID Profile: '" + firstNameString + " " + middleNameString + " " + lastNameString + " has been updated.");
+                                    searchEmployeeButton.setEnabled(true);
+                                    employeeIDNumberLabel.setForeground(Color.red);
+                                    employeeFirstNameTf.setText("");
+                                    employeeFirstNameTf.setEditable(false);
+                                    employeeFirstNameTf.setEnabled(false);
+                                    employeeMiddleInitialTf.setText("");
+                                    employeeMiddleInitialTf.setEditable(false);
+                                    employeeMiddleInitialTf.setEnabled(false);
+                                    employeeLastNameTf.setText("");
+                                    employeeLastNameTf.setEditable(false);
+                                    employeeLastNameTf.setEnabled(false);
+                                    employeeHomeAddressTA.setText("");
+                                    employeeHomeAddressTA.setEditable(false);
+                                    employeeHomeAddressTA.setEnabled(false);
                                     birthdayPicker.setText("");
+                                    birthdayPicker.setEnabled(false);
                                     employeePhoneNumberTf.setText("");
+                                    employeePhoneNumberTf.setEditable(false);
+                                    employeePhoneNumberTf.setEnabled(false);
                                     nationalityTf.setText("");
+                                    nationalityTf.setEditable(false);
+                                    nationalityTf.setEnabled(false);
                                     fatherEmailAddressTf.setText("");
+                                    fatherEmailAddressTf.setEditable(false);
+                                    fatherEmailAddressTf.setEnabled(false);
                                     motherEmailAddressTf.setText("");
+                                    motherEmailAddressTf.setEditable(false);
+                                    motherEmailAddressTf.setEnabled(false);
                                     religionChoice.select("Unspecified");
                                     bloodTypeChoice.select("Unspecified");
                                     civilStatusChoice.select("Unspecified");
-                                    this.repaint();
-                                    refreshTable();
+                                    religionChoice.setEnabled(false);
+                                    bloodTypeChoice.setEnabled(false);
+                                    civilStatusChoice.setEnabled(false);
+                                    imagePathLabel.setText("image path");
+                                    selectImageButton.setEnabled(false);
+                                    employeeIdTf.setText("");
+                                    employeeIdTf.setEditable(true);
+                                    employeeIdTf.setEnabled(true);
+                                    maleButton.setEnabled(false);
+                                    femaleButton.setEnabled(false);
+                                    
 
-
-                                } else {
-                                    JOptionPane.showMessageDialog(null, "Error: Check your Information.");
-                                }
-                                ps.setNull(15, java.sql.Types.NULL);
-                            } catch (FileNotFoundException ex) {
-                                System.out.println(ex);
-                            }
-                        } catch (SQLException ex) {
-                            System.out.println(ex);
-                        } // try-catch
+                                    
+                                } else {JOptionPane.showMessageDialog(null, "Error: Check your Information.");}
+                                pstmt.setNull(15, java.sql.Types.NULL);
+                                } catch (FileNotFoundException ex) {System.out.println(ex);}
+                            } catch (SQLException ex) {System.out.println(ex);} // try-catch
                     } // if-verifyField
-                } catch (ParseException ex) {
-                    System.out.println(ex);
-                }}
-    }//GEN-LAST:event_registerButtonActionPerformed
- public boolean verifyFields() throws ParseException
+                    } catch (ParseException ex) {
+                        System.out.println(ex);}
+              } // if OPTION "CONTINUE" is SELECTED.
+    }//GEN-LAST:event_updateButtonActionPerformed
+    public boolean verifyFields() throws ParseException
     {
         String firstNameString = employeeFirstNameTf.getText();
         String middleNameString = employeeMiddleInitialTf.getText();
         String lastNameString = employeeLastNameTf.getText();
         String homeAddressString = employeeHomeAddressTA.getText();
-
         String selectedbDay = birthdayPicker.getText();
-
         String bloodTypeString = String.valueOf(bloodTypeChoice.getSelectedItem());
-//        String phoneString = employeePhoneNumberTf.getText();
         String civilStatusString = String.valueOf(civilStatusChoice.getSelectedItem());
         String religionString = String.valueOf(religionChoice.getSelectedItem());
         String nationalityString = nationalityTf.getText();
-//        String fatherEmailAddressString = fatherEmailAddressTf.getText();
-//        String motherEmailAddressString = motherEmailAddressTf.getText();
-
-        
-        /*String x = JComboBox.getSelectedItem().toString();
-          will convert any value weather it is Integer, Double, Long, Short into text on the other hand,
-          String x = String.valueOf(JComboBox.getSelectedItem());
-          will avoid null values, and convert the selected item from object to string */
-        
-
         
          // Check empty fields
         if (firstNameString.trim().equals("") || middleNameString.trim().equals("") ||
@@ -1012,15 +1011,10 @@ public final class HMS_EMPLOYEE_REGISTRATION extends javax.swing.JFrame {
            return false;
         }
          // If everything is okay...
-        else {
-            return true;
-        }
+        else{return true;}
     }
-    
     private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelButtonActionPerformed
-        HMS_ADMINFORM showAdminForm = new HMS_ADMINFORM();
-        showAdminForm.setVisible(true);
-        this.dispose();
+    this.dispose();
     }//GEN-LAST:event_cancelButtonActionPerformed
 
     private void employeePhoneNumberTfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_employeePhoneNumberTfActionPerformed
@@ -1028,11 +1022,14 @@ public final class HMS_EMPLOYEE_REGISTRATION extends javax.swing.JFrame {
     }//GEN-LAST:event_employeePhoneNumberTfActionPerformed
 
     private void resetAllFieldsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resetAllFieldsButtonActionPerformed
-        employeeFirstNameTf.setText("First Name");
-        employeeMiddleInitialTf.setText("Middle Initial / Middle Name");
-        employeeLastNameTf.setText("Last Name");
-        employeeHomeAddressTA.setText("Complete Address of the Employee...");
+        employeeIDNumberLabel.setForeground(Color.red);
+        employeeIdTf.setText("");
+        employeeFirstNameTf.setText("");
+        employeeMiddleInitialTf.setText("");
+        employeeLastNameTf.setText("");
+        employeeHomeAddressTA.setText("");
         birthdayPicker.setText("");
+        birthdayPicker.setEnabled(false);
         employeePhoneNumberTf.setText("");
         nationalityTf.setText("");
         fatherEmailAddressTf.setText("");
@@ -1041,6 +1038,13 @@ public final class HMS_EMPLOYEE_REGISTRATION extends javax.swing.JFrame {
         bloodTypeChoice.select("Unspecified");
         civilStatusChoice.select("Unspecified");
         imagePathLabel.setText("image path");
+        maleButton.setEnabled(false);
+        femaleButton.setEnabled(false);
+        updateButton.setEnabled(false);
+        selectImageButton.setEnabled(false);
+        religionChoice.setEnabled(false);
+        bloodTypeChoice.setEnabled(false);
+        civilStatusChoice.setEnabled(false);
         this.repaint();
     }//GEN-LAST:event_resetAllFieldsButtonActionPerformed
 
@@ -1052,13 +1056,95 @@ public final class HMS_EMPLOYEE_REGISTRATION extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_onScreenKeyboardButtonActionPerformed
 
-    private void maleButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_maleButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_maleButtonActionPerformed
+    private void searchEmployeeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchEmployeeButtonActionPerformed
+  
+        
+        PreparedStatement pstmt;
+        ResultSet rs;
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            String username = "root";
+            String password = "root";
+            Connection conn = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/health_monitoring_system_database", username, password);
+
+            // employeeID search
+            String employeeID_sql = "SELECT * FROM employees WHERE employeeId = ?";
+            pstmt = (PreparedStatement) conn.prepareStatement(employeeID_sql);
+            pstmt.setInt(1, Integer.parseInt(employeeIdTf.getText()));
+
+            rs = pstmt.executeQuery();
+            if (rs.next())
+            {
+                
+                employeeFirstNameTf.setText(rs.getString("firstName"));
+                employeeMiddleInitialTf.setText(rs.getString("middleInitial"));
+                employeeLastNameTf.setText(rs.getString("lastName"));
+                employeeHomeAddressTA.setText(rs.getString("employeeAddress"));
+                sexTf.setText(rs.getString("employeeGender"));
+                displayedBirthday.setText(rs.getString("dateOfBirth"));
+                nationalityTf.setText(rs.getString("employeeNationality"));
+                employeePhoneNumberTf.setText(rs.getString("cellphoneNumber"));
+                religionChoice.select(rs.getString("employeeReligion"));
+                bloodTypeChoice.select(rs.getString("employeeBloodType"));
+                civilStatusChoice.select(rs.getString("civilStatus"));
+                fatherEmailAddressTf.setText(rs.getString("fatherEmailAddress"));
+                motherEmailAddressTf.setText(rs.getString("motherEmailAddress"));
+                JOptionPane.showMessageDialog(null, "User: '" + rs.getString("firstName") + " " + rs.getString("middleInitial") + " " + rs.getString("lastName") + "' will be edited.");
+                
+                // SET ENABLED AND EDITABLE (TRUE
+                searchEmployeeButton.setEnabled(false);
+                employeeIdTf.setEditable(false);
+                employeeIdTf.setEnabled(false);
+                employeeIDNumberLabel.setForeground(Color.black);
+                employeeFirstNameTf.setEnabled(true);
+                employeeFirstNameTf.setEditable(true);
+                employeeMiddleInitialTf.setEnabled(true);
+                employeeMiddleInitialTf.setEditable(true);
+                employeeLastNameTf.setEnabled(true);
+                employeeLastNameTf.setEditable(true);
+                employeeHomeAddressTA.setEnabled(true);
+                employeeHomeAddressTA.setEditable(true);
+                birthdayPicker.setEnabled(true);
+                employeePhoneNumberTf.setEnabled(true);
+                employeePhoneNumberTf.setEditable(true);
+                nationalityTf.setEnabled(true);
+                nationalityTf.setEditable(true);
+                fatherEmailAddressTf.setEnabled(true);
+                fatherEmailAddressTf.setEditable(true);
+                motherEmailAddressTf.setEnabled(true);
+                motherEmailAddressTf.setEditable(true);
+                religionChoice.setEnabled(true);
+                bloodTypeChoice.setEnabled(true);
+                maleButton.setEnabled(true);
+                femaleButton.setEnabled(true);
+                civilStatusChoice.setEnabled(true);
+                resetAllFieldsButton.setEnabled(true);
+                femaleButton.setEnabled(true);
+                femaleButton.setEnabled(true);
+                selectImageButton.setEnabled(true);
+                updateButton.setEnabled(true);
+                
+        
+
+            }
+            else
+            {
+                JOptionPane.showMessageDialog(null, "Employee ID "+ employeeIdTf.getText() + " is not found in the System.");
+            }
+            conn.close();
+        } catch (HeadlessException | ClassNotFoundException | NumberFormatException | SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Please Employee ID to Search.");
+        }
+
+    }//GEN-LAST:event_searchEmployeeButtonActionPerformed
 
     private void femaleButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_femaleButtonActionPerformed
-        // TODO add your handling code here:
+        sexTf.setText("Female");
     }//GEN-LAST:event_femaleButtonActionPerformed
+
+    private void maleButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_maleButtonActionPerformed
+        sexTf.setText("Male");
+    }//GEN-LAST:event_maleButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1077,8 +1163,9 @@ public final class HMS_EMPLOYEE_REGISTRATION extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(HMS_EMPLOYEE_REGISTRATION.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(HMS_EMPLOYEE_UPDATE.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
         
         //</editor-fold>
@@ -1087,7 +1174,7 @@ public final class HMS_EMPLOYEE_REGISTRATION extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
-                new HMS_EMPLOYEE_REGISTRATION().setVisible(true);
+                new HMS_EMPLOYEE_UPDATE().setVisible(true);
             }
         });
     }
@@ -1102,9 +1189,12 @@ public final class HMS_EMPLOYEE_REGISTRATION extends javax.swing.JFrame {
     public javax.swing.JLabel civilStatusLabel;
     private javax.swing.JLabel dateLabel;
     public javax.swing.JLabel dateOfBirthLabel;
+    private javax.swing.JLabel displayedBirthday;
     private javax.swing.JTextField employeeFirstNameTf;
     private javax.swing.JTextArea employeeHomeAddressTA;
     private javax.swing.JScrollPane employeeHomeAddressTA_;
+    public javax.swing.JLabel employeeIDNumberLabel;
+    private javax.swing.JTextField employeeIdTf;
     private javax.swing.JLabel employeeImagePathLabel;
     private javax.swing.JTextField employeeLastNameTf;
     private javax.swing.JTextField employeeMiddleInitialTf;
@@ -1115,23 +1205,29 @@ public final class HMS_EMPLOYEE_REGISTRATION extends javax.swing.JFrame {
     private javax.swing.JTextField fatherEmailAddressTf;
     private javax.swing.JRadioButton femaleButton;
     private javax.swing.Box.Filler filler1;
+    public javax.swing.JLabel firstNameLabel;
     public javax.swing.JLabel fullNameLabel;
     public javax.swing.JLabel homeAddressLabel;
     private javax.swing.JLabel imagePathLabel;
+    private javax.swing.JButton jButton1;
+    public javax.swing.JLabel lastNameLabel;
     private javax.swing.JRadioButton maleButton;
+    public javax.swing.JLabel middleNameLabel;
     public javax.swing.JLabel motherEmailAddressLabel;
     private javax.swing.JTextField motherEmailAddressTf;
     public javax.swing.JLabel nationalityLabel;
     private javax.swing.JTextField nationalityTf;
     private javax.swing.JButton onScreenKeyboardButton;
-    private javax.swing.JButton registerButton;
     private java.awt.Choice religionChoice;
     public javax.swing.JLabel religionLabel;
     private javax.swing.JButton resetAllFieldsButton;
+    private javax.swing.JButton searchEmployeeButton;
     private javax.swing.JButton selectImageButton;
     public javax.swing.JLabel sexLabel;
+    private javax.swing.JTextField sexTf;
     private javax.swing.JLabel timeLabel;
     private javax.swing.JPanel topBannerPanel;
+    private javax.swing.JButton updateButton;
     // End of variables declaration//GEN-END:variables
 
 }

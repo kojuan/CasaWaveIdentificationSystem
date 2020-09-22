@@ -53,7 +53,7 @@ public class HMS_MAIN {
     } catch (ClassNotFoundException | 
         InstantiationException | 
         IllegalAccessException | 
-        UnsupportedLookAndFeelException e) {
+        UnsupportedLookAndFeelException e) {System.out.println(e);
     }
          
         frame = new JFrame();//creating instance of JFrame    

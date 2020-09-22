@@ -33,7 +33,10 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Component id="searchEmployeeTopPanel" max="32767" attributes="0"/>
-          <Component id="searchEmployeeMainPanel" alignment="1" max="32767" attributes="0"/>
+          <Group type="102" alignment="0" attributes="0">
+              <Component id="searchEmployeeMainPanel" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+          </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
@@ -57,10 +60,7 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
-                  <Component id="searchEmployeeHeaderImageLabel" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-              </Group>
+              <Component id="searchEmployeeHeaderImageLabel" alignment="0" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
@@ -125,26 +125,27 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
                           <EmptySpace min="-2" pref="64" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="1" attributes="0">
-                              <Group type="102" alignment="1" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
+                                  <Component id="bdayLabel4" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="civilStatusTf" pref="224" max="32767" attributes="0"/>
+                              </Group>
+                              <Group type="102" attributes="0">
                                   <Group type="103" groupAlignment="1" attributes="0">
                                       <Component id="bdayLabel5" alignment="1" min="-2" max="-2" attributes="0"/>
                                       <Component id="religionLabel" alignment="1" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="religionTf" alignment="0" min="-2" pref="179" max="-2" attributes="0"/>
-                                      <Component id="bloodTypeTf" alignment="0" min="-2" pref="179" max="-2" attributes="0"/>
+                                      <Component id="religionTf" max="32767" attributes="0"/>
+                                      <Component id="bloodTypeTf" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
-                              <Group type="102" alignment="1" attributes="0">
-                                  <Component id="bdayLabel4" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="civilStatusTf" min="-2" pref="179" max="-2" attributes="0"/>
-                              </Group>
                           </Group>
-                          <EmptySpace max="32767" attributes="0"/>
-                          <Component id="motherEALabel" min="-2" pref="248" max="-2" attributes="0"/>
+                          <EmptySpace min="39" pref="39" max="-2" attributes="0"/>
+                          <Component id="motherEALabel" min="-2" pref="355" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -172,21 +173,33 @@
                   </Group>
                   <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                          <Component id="employeeLastNameTf" alignment="0" pref="178" max="32767" attributes="0"/>
-                          <Component id="employeeMiddleInitialTf" alignment="0" max="32767" attributes="0"/>
-                          <Component id="employeeFirstNameTfforSearch" alignment="0" max="32767" attributes="0"/>
-                          <Component id="employeeIdTf" alignment="0" max="32767" attributes="0"/>
+                      <Group type="102" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <Component id="employeeIdTf" min="-2" pref="178" max="-2" attributes="0"/>
+                                  <EmptySpace max="32767" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="1" attributes="0">
+                                  <Group type="103" groupAlignment="1" attributes="0">
+                                      <Component id="employeeLastNameTf" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="employeeMiddleInitialTf" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="employeeFirstNameTfforSearch" max="32767" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace min="-2" pref="224" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="searchEmployeeButton" max="32767" attributes="0"/>
+                              <Component id="cancelButton" max="32767" attributes="0"/>
+                              <Component id="resetAllFieldsButton" alignment="0" min="-2" pref="361" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
                       </Group>
-                      <Component id="jScrollPane1" min="-2" pref="351" max="-2" attributes="0"/>
+                      <Group type="102" attributes="0">
+                          <Component id="jScrollPane1" min="-2" pref="354" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
+                      </Group>
                   </Group>
-                  <EmptySpace min="-2" pref="84" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="searchEmployeeButton" max="32767" attributes="0"/>
-                      <Component id="cancelButton" max="32767" attributes="0"/>
-                      <Component id="resetAllFieldsButton" alignment="0" min="-2" pref="361" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -194,16 +207,7 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="1" attributes="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
-                          <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
-                          <Component id="searchEmployeeButton" min="-2" pref="99" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="resetAllFieldsButton" min="-2" pref="50" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="cancelButton" min="-2" pref="35" max="-2" attributes="0"/>
-                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="1" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="employeeIdLabel" alignment="3" min="-2" pref="43" max="-2" attributes="0"/>
@@ -214,23 +218,31 @@
                               <Component id="employeeFirstNameTfforSearch" alignment="3" min="-2" pref="43" max="-2" attributes="0"/>
                               <Component id="firstNameLabel" alignment="3" min="-2" pref="43" max="-2" attributes="0"/>
                           </Group>
+                          <Component id="middleNameLabel" min="-2" pref="43" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Component id="lastNameLabel" min="-2" pref="43" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Component id="lastNameLabel1" min="-2" pref="43" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="middleNameLabel" min="-2" pref="43" max="-2" attributes="0"/>
-                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Component id="lastNameLabel" min="-2" pref="43" max="-2" attributes="0"/>
-                                  <EmptySpace max="32767" attributes="0"/>
-                                  <Component id="lastNameLabel1" min="-2" pref="43" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace max="32767" attributes="0"/>
+                              <Group type="102" attributes="0">
+                                  <EmptySpace pref="116" max="32767" attributes="0"/>
                                   <Component id="employeeMiddleInitialTf" min="-2" pref="43" max="-2" attributes="0"/>
                                   <EmptySpace max="32767" attributes="0"/>
                                   <Component id="employeeLastNameTf" min="-2" pref="47" max="-2" attributes="0"/>
-                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Component id="jScrollPane1" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" attributes="0">
+                                  <EmptySpace pref="16" max="32767" attributes="0"/>
+                                  <Component id="searchEmployeeButton" min="-2" pref="99" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="resetAllFieldsButton" min="-2" pref="50" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="cancelButton" min="-2" pref="35" max="-2" attributes="0"/>
                               </Group>
                           </Group>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Component id="jScrollPane1" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace min="25" pref="25" max="-2" attributes="0"/>
@@ -342,9 +354,11 @@
               <Font name="Tahoma" size="14" style="1"/>
             </Property>
             <Property name="toolTipText" type="java.lang.String" value="First name of the Employee"/>
+            <Property name="autoscrolls" type="boolean" value="false"/>
             <Property name="focusable" type="boolean" value="false"/>
           </Properties>
           <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="employeeFirstNameTfforSearchActionPerformed"/>
             <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="employeeFirstNameTfforSearchKeyPressed"/>
           </Events>
         </Component>

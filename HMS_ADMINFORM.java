@@ -30,7 +30,7 @@ public class HMS_ADMINFORM extends javax.swing.JFrame {
     } catch (ClassNotFoundException | 
         InstantiationException | 
         IllegalAccessException | 
-        UnsupportedLookAndFeelException e) {
+        UnsupportedLookAndFeelException e) {System.out.println(e);
     }
 
         initComponents();
@@ -57,7 +57,7 @@ public class HMS_ADMINFORM extends javax.swing.JFrame {
         managePatientsButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setAutoRequestFocus(false);
+        setAlwaysOnTop(true);
         setMaximumSize(new java.awt.Dimension(1000, 629));
         setName("adminFormMainFrame"); // NOI18N
         setUndecorated(true);
@@ -299,8 +299,8 @@ public class HMS_ADMINFORM extends javax.swing.JFrame {
         if (evt.getKeyCode()==KeyEvent.VK_ESCAPE){
             HMS_LOGIN showLoginScreen = new HMS_LOGIN();
             showLoginScreen.setVisible(true);
-            this.dispose();}
-        else{}
+            this.dispose();
+        } else{}
     }//GEN-LAST:event_adminCancelButtonKeyPressed
 
     private void adminCancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adminCancelButtonActionPerformed
@@ -310,19 +310,13 @@ public class HMS_ADMINFORM extends javax.swing.JFrame {
     }//GEN-LAST:event_adminCancelButtonActionPerformed
 
     private void manageUserButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageUserButtonActionPerformed
-        this.dispose();
-        HMS_EMPLOYEE_LIST showEmployeeListForm = new HMS_EMPLOYEE_LIST();
-        showEmployeeListForm.setVisible(true);
+        
     }//GEN-LAST:event_manageUserButtonActionPerformed
 
     private void manageEmployeesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageEmployeesButtonActionPerformed
-        try {
-
-            Desktop.getDesktop().browse(new URI("http://localhost/phpmyadmin/sql.php?server=1&db=health_monitoring_system_database&table=patients&pos=0"));
-
-        } catch (IOException | URISyntaxException err1) {
-            System.out.println(err1);
-        }
+        HMS_EMPLOYEE_LIST showEmployeeListForm = new HMS_EMPLOYEE_LIST();
+        showEmployeeListForm.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_manageEmployeesButtonActionPerformed
 
     private void manageDatabaseURLActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageDatabaseURLActionPerformed

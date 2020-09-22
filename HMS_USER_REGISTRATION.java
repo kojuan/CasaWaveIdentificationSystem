@@ -20,11 +20,9 @@ import javax.swing.SwingConstants; // center text/label
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.sql.SQLException;
-import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.swing.border.Border;
-import javax.swing.border.LineBorder;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.text.AttributeSet;
 import javax.swing.text.BadLocationException;
@@ -47,7 +45,7 @@ public final class HMS_USER_REGISTRATION extends javax.swing.JFrame {
         } catch (ClassNotFoundException | 
             InstantiationException | 
             IllegalAccessException | 
-            UnsupportedLookAndFeelException e) {
+            UnsupportedLookAndFeelException e) {System.out.println(e);
         }
         
         initComponents();
