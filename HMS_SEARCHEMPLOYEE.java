@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package healthMonitoringSystem;
 
 import com.mysql.jdbc.Connection;
@@ -15,7 +11,6 @@ import javax.swing.*;
 import java.sql.ResultSet;
 
 /**
- *
  * @author Khian Orland
  */
 public class HMS_SEARCHEMPLOYEE extends javax.swing.JFrame {
@@ -24,13 +19,7 @@ public class HMS_SEARCHEMPLOYEE extends javax.swing.JFrame {
      * Creates new form HMS_SEARCHEMPLOYEE
      */
     public HMS_SEARCHEMPLOYEE() {
-        try { 
-            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-        } catch (ClassNotFoundException | 
-            InstantiationException | 
-            IllegalAccessException | 
-            UnsupportedLookAndFeelException e) {System.out.println(e);
-        }
+        
         
         initComponents();
         JOptionPane.showMessageDialog(this, "Please input Employee ID for accurate search.\n"
@@ -120,185 +109,175 @@ public class HMS_SEARCHEMPLOYEE extends javax.swing.JFrame {
             }
         });
 
+        firstNameLabel.setText("First Name:");
         firstNameLabel.setBackground(new java.awt.Color(255, 255, 255));
         firstNameLabel.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        firstNameLabel.setText("First Name:");
 
+        employeeIdLabel.setText("Employee ID:");
         employeeIdLabel.setBackground(new java.awt.Color(255, 255, 255));
         employeeIdLabel.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        employeeIdLabel.setText("Employee ID:");
 
         employeeFirstNameTfforSearch.setEditable(false);
-        employeeFirstNameTfforSearch.setBackground(new java.awt.Color(234, 234, 250));
         employeeFirstNameTfforSearch.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        employeeFirstNameTfforSearch.setToolTipText("First name of the Employee");
         employeeFirstNameTfforSearch.setAutoscrolls(false);
+        employeeFirstNameTfforSearch.setBackground(new java.awt.Color(234, 234, 250));
         employeeFirstNameTfforSearch.setFocusable(false);
+        employeeFirstNameTfforSearch.setToolTipText("First name of the Employee");
         employeeFirstNameTfforSearch.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 employeeFirstNameTfforSearchActionPerformed(evt);
             }
         });
-        employeeFirstNameTfforSearch.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                employeeFirstNameTfforSearchKeyPressed(evt);
-            }
-        });
 
         employeeIdTf.setBackground(new java.awt.Color(204, 204, 255));
         employeeIdTf.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        employeeIdTf.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                employeeIdTfKeyPressed(evt);
+            }
+        });
 
+        lastNameLabel.setText("Last Name:");
         lastNameLabel.setBackground(new java.awt.Color(255, 255, 255));
         lastNameLabel.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        lastNameLabel.setText("Last Name:");
 
         employeeMiddleInitialTf.setEditable(false);
-        employeeMiddleInitialTf.setBackground(new java.awt.Color(234, 234, 250));
         employeeMiddleInitialTf.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        employeeMiddleInitialTf.setToolTipText("Middle Initial or Complete Middle Name");
+        employeeMiddleInitialTf.setBackground(new java.awt.Color(234, 234, 250));
         employeeMiddleInitialTf.setFocusable(false);
-        employeeMiddleInitialTf.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                employeeMiddleInitialTfKeyPressed(evt);
-            }
-        });
+        employeeMiddleInitialTf.setToolTipText("Middle Initial or Complete Middle Name");
 
+        middleNameLabel.setText("Middle Name:");
         middleNameLabel.setBackground(new java.awt.Color(255, 255, 255));
         middleNameLabel.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        middleNameLabel.setText("Middle Name:");
 
         employeeLastNameTf.setEditable(false);
-        employeeLastNameTf.setBackground(new java.awt.Color(234, 234, 250));
         employeeLastNameTf.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        employeeLastNameTf.setToolTipText("Complete Last Name");
+        employeeLastNameTf.setBackground(new java.awt.Color(234, 234, 250));
         employeeLastNameTf.setFocusable(false);
-        employeeLastNameTf.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                employeeLastNameTfKeyPressed(evt);
-            }
-        });
+        employeeLastNameTf.setToolTipText("Complete Last Name");
 
-        searchEmployeeButton.setBackground(new java.awt.Color(153, 204, 255));
-        searchEmployeeButton.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
         searchEmployeeButton.setText("Search Employee");
+        searchEmployeeButton.setBackground(new java.awt.Color(153, 204, 255));
         searchEmployeeButton.setBorderPainted(false);
+        searchEmployeeButton.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
         searchEmployeeButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 searchEmployeeButtonActionPerformed(evt);
             }
         });
 
+        sexLabel.setText("Sex:");
         sexLabel.setBackground(new java.awt.Color(255, 255, 255));
         sexLabel.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        sexLabel.setText("Sex:");
 
         bdayTf.setEditable(false);
-        bdayTf.setBackground(new java.awt.Color(234, 234, 250));
         bdayTf.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        bdayTf.setBackground(new java.awt.Color(234, 234, 250));
         bdayTf.setFocusable(false);
 
         sexTf.setEditable(false);
-        sexTf.setBackground(new java.awt.Color(234, 234, 250));
         sexTf.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        sexTf.setBackground(new java.awt.Color(234, 234, 250));
         sexTf.setFocusable(false);
 
+        bdayLabel1.setText("Birthday:");
         bdayLabel1.setBackground(new java.awt.Color(255, 255, 255));
         bdayLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        bdayLabel1.setText("Birthday:");
 
         nationalityTf.setEditable(false);
-        nationalityTf.setBackground(new java.awt.Color(234, 234, 250));
         nationalityTf.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        nationalityTf.setBackground(new java.awt.Color(234, 234, 250));
         nationalityTf.setFocusable(false);
 
+        bdayLabel2.setText("Nationality:");
         bdayLabel2.setBackground(new java.awt.Color(255, 255, 255));
         bdayLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        bdayLabel2.setText("Nationality:");
 
+        bdayLabel3.setText("Phone Number:");
         bdayLabel3.setBackground(new java.awt.Color(255, 255, 255));
         bdayLabel3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        bdayLabel3.setText("Phone Number:");
 
         phoneNumberTf.setEditable(false);
-        phoneNumberTf.setBackground(new java.awt.Color(234, 234, 250));
         phoneNumberTf.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        phoneNumberTf.setBackground(new java.awt.Color(234, 234, 250));
         phoneNumberTf.setFocusable(false);
 
         civilStatusTf.setEditable(false);
-        civilStatusTf.setBackground(new java.awt.Color(234, 234, 250));
         civilStatusTf.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        civilStatusTf.setBackground(new java.awt.Color(234, 234, 250));
         civilStatusTf.setFocusable(false);
 
+        bdayLabel4.setText("Civil Status:");
         bdayLabel4.setBackground(new java.awt.Color(255, 255, 255));
         bdayLabel4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        bdayLabel4.setText("Civil Status:");
 
+        bdayLabel5.setText("Blood Type:");
         bdayLabel5.setBackground(new java.awt.Color(255, 255, 255));
         bdayLabel5.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        bdayLabel5.setText("Blood Type:");
 
         bloodTypeTf.setEditable(false);
-        bloodTypeTf.setBackground(new java.awt.Color(234, 234, 250));
         bloodTypeTf.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        bloodTypeTf.setBackground(new java.awt.Color(234, 234, 250));
         bloodTypeTf.setFocusable(false);
 
         religionTf.setEditable(false);
-        religionTf.setBackground(new java.awt.Color(234, 234, 250));
         religionTf.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        religionTf.setBackground(new java.awt.Color(234, 234, 250));
         religionTf.setFocusable(false);
 
+        religionLabel.setText("Religion:");
         religionLabel.setBackground(new java.awt.Color(255, 255, 255));
         religionLabel.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        religionLabel.setText("Religion:");
 
-        motherEALabel.setBackground(new java.awt.Color(255, 255, 255));
-        motherEALabel.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         motherEALabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         motherEALabel.setText("Image:");
+        motherEALabel.setBackground(new java.awt.Color(255, 255, 255));
+        motherEALabel.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         motherEALabel.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
+        fatherEALabel.setText("Father Email Ad.:");
         fatherEALabel.setBackground(new java.awt.Color(255, 255, 255));
         fatherEALabel.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        fatherEALabel.setText("Father Email Ad.:");
 
         motherEATf.setEditable(false);
-        motherEATf.setBackground(new java.awt.Color(234, 234, 250));
         motherEATf.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        motherEATf.setBackground(new java.awt.Color(234, 234, 250));
         motherEATf.setFocusable(false);
 
         fatherEATf.setEditable(false);
-        fatherEATf.setBackground(new java.awt.Color(234, 234, 250));
         fatherEATf.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        fatherEATf.setBackground(new java.awt.Color(234, 234, 250));
         fatherEATf.setFocusable(false);
 
+        motherEALabel1.setText("Mother Email Ad.:");
         motherEALabel1.setBackground(new java.awt.Color(255, 255, 255));
         motherEALabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        motherEALabel1.setText("Mother Email Ad.:");
 
-        resetAllFieldsButton.setBackground(new java.awt.Color(234, 234, 250));
-        resetAllFieldsButton.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         resetAllFieldsButton.setText("Clear all fields");
-        resetAllFieldsButton.setToolTipText("Clear all fields after search.");
+        resetAllFieldsButton.setBackground(new java.awt.Color(234, 234, 250));
         resetAllFieldsButton.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         resetAllFieldsButton.setBorderPainted(false);
+        resetAllFieldsButton.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
+        resetAllFieldsButton.setToolTipText("Clear all fields after search.");
         resetAllFieldsButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 resetAllFieldsButtonActionPerformed(evt);
             }
         });
 
+        lastNameLabel1.setText("Home Address:");
         lastNameLabel1.setBackground(new java.awt.Color(255, 255, 255));
         lastNameLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        lastNameLabel1.setText("Home Address:");
 
-        employeeAddressTf.setEditable(false);
-        employeeAddressTf.setBackground(new java.awt.Color(234, 234, 250));
         employeeAddressTf.setColumns(10);
+        employeeAddressTf.setEditable(false);
         employeeAddressTf.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         employeeAddressTf.setLineWrap(true);
         employeeAddressTf.setRows(4);
         employeeAddressTf.setTabSize(5);
         employeeAddressTf.setWrapStyleWord(true);
+        employeeAddressTf.setBackground(new java.awt.Color(234, 234, 250));
         employeeAddressTf.setDisabledTextColor(new java.awt.Color(204, 204, 255));
         employeeAddressTf.setFocusable(false);
         jScrollPane1.setViewportView(employeeAddressTf);
@@ -486,24 +465,6 @@ public class HMS_SEARCHEMPLOYEE extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_cancelButtonActionPerformed
 
-    private void employeeFirstNameTfforSearchKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_employeeFirstNameTfforSearchKeyPressed
-        if (evt.getKeyCode()==KeyEvent.VK_ESCAPE){
-            this.dispose();
-        }
-    }//GEN-LAST:event_employeeFirstNameTfforSearchKeyPressed
-
-    private void employeeMiddleInitialTfKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_employeeMiddleInitialTfKeyPressed
-        if (evt.getKeyCode()==KeyEvent.VK_ESCAPE){
-            this.dispose();
-        }
-    }//GEN-LAST:event_employeeMiddleInitialTfKeyPressed
-
-    private void employeeLastNameTfKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_employeeLastNameTfKeyPressed
-        if (evt.getKeyCode()==KeyEvent.VK_ESCAPE){
-            this.dispose();
-        }
-    }//GEN-LAST:event_employeeLastNameTfKeyPressed
-
     private void searchEmployeeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchEmployeeButtonActionPerformed
             PreparedStatement pstmt;
             ResultSet rs;
@@ -571,28 +532,24 @@ public class HMS_SEARCHEMPLOYEE extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_employeeFirstNameTfforSearchActionPerformed
 
+    private void employeeIdTfKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_employeeIdTfKeyPressed
+         if (evt.getKeyCode()==KeyEvent.VK_ESCAPE){
+             this.dispose();
+         }
+    }//GEN-LAST:event_employeeIdTfKeyPressed
+
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(HMS_SEARCHEMPLOYEE.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
         
-        //</editor-fold>
+        try { 
+            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+        } catch (ClassNotFoundException | 
+            InstantiationException | 
+            IllegalAccessException | 
+            UnsupportedLookAndFeelException e) {System.out.println(e);
+        }
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {

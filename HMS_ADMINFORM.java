@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package healthMonitoringSystem;
 
 import java.awt.Desktop;
@@ -24,14 +20,7 @@ public class HMS_ADMINFORM extends javax.swing.JFrame {
      */
     public HMS_ADMINFORM() {
         
-    // sets the look and feel to be that of the operating system's
-    try { 
-        UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-    } catch (ClassNotFoundException | 
-        InstantiationException | 
-        IllegalAccessException | 
-        UnsupportedLookAndFeelException e) {System.out.println(e);
-    }
+    
 
         initComponents();
         adminCancelButton.requestFocus();
@@ -385,13 +374,20 @@ public class HMS_ADMINFORM extends javax.swing.JFrame {
         else{}
     }//GEN-LAST:event_managePatientsButtonKeyPressed
 
-    /**
-     * @param args the command line arguments
-     */
     public static void HMS_MAIN() {
 //    public static void main(String args[]) {
 
+        // sets the look and feel to be that of the operating system's
+    try { 
+        UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+    } catch (ClassNotFoundException | 
+        InstantiationException | 
+        IllegalAccessException | 
+        UnsupportedLookAndFeelException e) {System.out.println(e);
+    }
+    
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
                 new HMS_ADMINFORM().setVisible(true);
             }
