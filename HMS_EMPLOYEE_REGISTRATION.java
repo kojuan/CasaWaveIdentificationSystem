@@ -184,6 +184,9 @@ public final class HMS_EMPLOYEE_REGISTRATION extends javax.swing.JFrame {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 employeeFirstNameTfKeyPressed(evt);
             }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                employeeFirstNameTfKeyTyped(evt);
+            }
         });
 
         employeeMiddleInitialTf.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -202,6 +205,9 @@ public final class HMS_EMPLOYEE_REGISTRATION extends javax.swing.JFrame {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 employeeMiddleInitialTfKeyPressed(evt);
             }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                employeeMiddleInitialTfKeyTyped(evt);
+            }
         });
 
         employeeLastNameTf.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -219,6 +225,9 @@ public final class HMS_EMPLOYEE_REGISTRATION extends javax.swing.JFrame {
         employeeLastNameTf.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 employeeLastNameTfKeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                employeeLastNameTfKeyTyped(evt);
             }
         });
 
@@ -278,6 +287,9 @@ public final class HMS_EMPLOYEE_REGISTRATION extends javax.swing.JFrame {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 nationalityTfKeyPressed(evt);
             }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                nationalityTfKeyTyped(evt);
+            }
         });
         employeePhoneNumberTf.setDocument(new JTextFieldLimit(11));
 
@@ -314,20 +326,10 @@ public final class HMS_EMPLOYEE_REGISTRATION extends javax.swing.JFrame {
         maleButton.setText("Male");
         maleButton.setBackground(new java.awt.Color(235, 241, 253));
         maleButton.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        maleButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                maleButtonActionPerformed(evt);
-            }
-        });
 
         femaleButton.setText("Female");
         femaleButton.setBackground(new java.awt.Color(235, 241, 253));
         femaleButton.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        femaleButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                femaleButtonActionPerformed(evt);
-            }
-        });
 
         bloodTypeLabel.setText("Blood Type:");
         bloodTypeLabel.setBackground(new java.awt.Color(255, 255, 255));
@@ -826,22 +828,7 @@ public final class HMS_EMPLOYEE_REGISTRATION extends javax.swing.JFrame {
     ResultSet rs;
     PreparedStatement pst;
 
-    private void refreshTable() {
-        try {
-            Connection conn = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/health_monitoring_system_database", username, password);
-            String sql = "SELECT * FROM employees";
-            pst = conn.prepareStatement(sql);
-            rs = pst.executeQuery(sql);
-            employeeListForm.employeeListTable.setModel(DbUtils.resultSetToTableModel(rs));
-            employeeListForm.employeeListTable.repaint();
-            
-            DefaultTableModel dm = (DefaultTableModel)employeeListForm.employeeListTable.getModel();
-            dm.fireTableDataChanged(); // notifies the JTable that the model has changed
-            employeeListForm.employeeListTable.repaint();
-            
-        } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, e);}
-        }
+
     private void registerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerButtonActionPerformed
        
            confirmPanel = new JPanel();
@@ -920,7 +907,7 @@ public final class HMS_EMPLOYEE_REGISTRATION extends javax.swing.JFrame {
                                 }
                                 if (ps.executeUpdate() != 0) {
                                     JOptionPane.showMessageDialog(null, "Employee Account has been created.");
-                                     employeeFirstNameTf.setText("First Name");
+                                    employeeFirstNameTf.setText("First Name");
                                     employeeMiddleInitialTf.setText("Middle Initial / Middle Name");
                                     employeeLastNameTf.setText("Last Name");
                                     employeeHomeAddressTA.setText("Complete Address of the Employee...");
@@ -933,7 +920,7 @@ public final class HMS_EMPLOYEE_REGISTRATION extends javax.swing.JFrame {
                                     bloodTypeChoice.select("Unspecified");
                                     civilStatusChoice.select("Unspecified");
                                     this.repaint();
-                                    refreshTable();
+
 
 
                                 } else {
@@ -1028,13 +1015,33 @@ public final class HMS_EMPLOYEE_REGISTRATION extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_onScreenKeyboardButtonActionPerformed
 
-    private void maleButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_maleButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_maleButtonActionPerformed
+    private void employeeFirstNameTfKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_employeeFirstNameTfKeyTyped
+       char charInputOnly = evt.getKeyChar();
+        if(!(Character.isAlphabetic(charInputOnly) || (charInputOnly == KeyEvent.VK_BACK_SPACE)|| charInputOnly == KeyEvent.VK_DELETE )) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_employeeFirstNameTfKeyTyped
 
-    private void femaleButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_femaleButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_femaleButtonActionPerformed
+    private void employeeMiddleInitialTfKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_employeeMiddleInitialTfKeyTyped
+        char charInputOnly = evt.getKeyChar();
+        if(!(Character.isAlphabetic(charInputOnly) || (charInputOnly == KeyEvent.VK_BACK_SPACE)|| charInputOnly == KeyEvent.VK_DELETE )) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_employeeMiddleInitialTfKeyTyped
+
+    private void employeeLastNameTfKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_employeeLastNameTfKeyTyped
+       char charInputOnly = evt.getKeyChar();
+        if(!(Character.isAlphabetic(charInputOnly) || (charInputOnly == KeyEvent.VK_BACK_SPACE)|| charInputOnly == KeyEvent.VK_DELETE )) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_employeeLastNameTfKeyTyped
+
+    private void nationalityTfKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nationalityTfKeyTyped
+        char charInputOnly = evt.getKeyChar();
+        if(!(Character.isAlphabetic(charInputOnly) || (charInputOnly == KeyEvent.VK_BACK_SPACE)|| charInputOnly == KeyEvent.VK_DELETE )) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_nationalityTfKeyTyped
 
     /**
      * @param args the command line arguments

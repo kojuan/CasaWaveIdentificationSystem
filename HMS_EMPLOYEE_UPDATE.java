@@ -819,22 +819,7 @@ public final class HMS_EMPLOYEE_UPDATE extends javax.swing.JFrame {
     ResultSet rs;
     PreparedStatement pst;
 
-    private void refreshTable() {
-        try {
-            Connection conn = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/health_monitoring_system_database", username, password);
-            String sql = "SELECT * FROM employees";
-            pst = conn.prepareStatement(sql);
-            rs = pst.executeQuery(sql);
-            employeeListForm.employeeListTable.setModel(DbUtils.resultSetToTableModel(rs));
-            employeeListForm.employeeListTable.repaint();
-            
-            DefaultTableModel dm = (DefaultTableModel)employeeListForm.employeeListTable.getModel();
-            dm.fireTableDataChanged(); // notifies the JTable that the model has changed
-            employeeListForm.employeeListTable.repaint();
-            
-        } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, e);}
-        }
+
     private void updateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateButtonActionPerformed
         confirmPanel = new JPanel();
         confirmLabelText = new JLabel("Do you want to update the employee profile?");
@@ -918,7 +903,6 @@ public final class HMS_EMPLOYEE_UPDATE extends javax.swing.JFrame {
                                 
                                 if (pstmt.executeUpdate() != 0) 
                                 {   // IF successful update
-                                    refreshTable();
                                     JOptionPane.showMessageDialog(null, "Employee ID Profile: '" + firstNameString + " " + middleNameString + " " + lastNameString + " has been updated.");
                                     searchEmployeeButton.setEnabled(true);
                                     employeeIDNumberLabel.setForeground(Color.red);
@@ -1009,6 +993,9 @@ public final class HMS_EMPLOYEE_UPDATE extends javax.swing.JFrame {
 
     private void resetAllFieldsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resetAllFieldsButtonActionPerformed
         employeeIDNumberLabel.setForeground(Color.red);
+        searchEmployeeButton.setEnabled(true);
+        employeeIdTf.setEditable(true);
+        employeeIdTf.setEnabled(true);
         employeeIdTf.setText("");
         employeeFirstNameTf.setText("");
         employeeMiddleInitialTf.setText("");
@@ -1031,7 +1018,10 @@ public final class HMS_EMPLOYEE_UPDATE extends javax.swing.JFrame {
         religionChoice.setEnabled(false);
         bloodTypeChoice.setEnabled(false);
         civilStatusChoice.setEnabled(false);
+        this.invalidate();
+        this.validate();
         this.repaint();
+        
     }//GEN-LAST:event_resetAllFieldsButtonActionPerformed
 
     private void onScreenKeyboardButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_onScreenKeyboardButtonActionPerformed
@@ -1119,7 +1109,7 @@ public final class HMS_EMPLOYEE_UPDATE extends javax.swing.JFrame {
             }
             conn.close();
         } catch (HeadlessException | ClassNotFoundException | NumberFormatException | SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Please Employee ID to Search.");
+            JOptionPane.showMessageDialog(null, "Please type-in Employee ID to Search.");
         }
 
     }//GEN-LAST:event_searchEmployeeButtonActionPerformed

@@ -769,22 +769,7 @@ public final class HMS_EMPLOYEE_DELETE extends javax.swing.JFrame {
     ResultSet rs;
     PreparedStatement pst;
 
-    private void refreshTable() {
-        try {
-            Connection conn = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/health_monitoring_system_database", username, password);
-            String sql = "SELECT * FROM employees";
-            pst = conn.prepareStatement(sql);
-            rs = pst.executeQuery(sql);
-            employeeListForm.employeeListTable.setModel(DbUtils.resultSetToTableModel(rs));
-            employeeListForm.employeeListTable.repaint();
-            
-            DefaultTableModel dm = (DefaultTableModel)employeeListForm.employeeListTable.getModel();
-            dm.fireTableDataChanged(); // notifies the JTable that the model has changed
-            employeeListForm.employeeListTable.repaint();
-            
-        } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, e);}
-        }
+  
     private void deleteEmployeeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteEmployeeButtonActionPerformed
         confirmPanel = new JPanel();
         confirmLabelText = new JLabel("Do you want to delete the employee profile?");
@@ -828,7 +813,6 @@ public final class HMS_EMPLOYEE_DELETE extends javax.swing.JFrame {
                 bloodTypeChoice.setEnabled(false);
                 civilStatusChoice.setEnabled(false);
                 this.repaint();
-                refreshTable();
                 JOptionPane.showMessageDialog(null, "The data is now deleted.");
 
                 } catch (SQLException | ClassNotFoundException ex) {

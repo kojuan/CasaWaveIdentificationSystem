@@ -15,6 +15,10 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.UnsupportedEncodingException;
+import java.math.BigInteger;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import javax.swing.SwingConstants; // center text/label
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -26,6 +30,7 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.text.AttributeSet;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.PlainDocument;
+
 
 public final class HMS_USER_REGISTRATION extends javax.swing.JFrame {
 
@@ -66,14 +71,10 @@ public final class HMS_USER_REGISTRATION extends javax.swing.JFrame {
             }
 
            void showTime() {
-           new Timer (0, new ActionListener() {
-
-              @Override
-              public void actionPerformed(ActionEvent e) {
-                  Date date = new Date();
-                  SimpleDateFormat simpleDateFormat = new SimpleDateFormat("hh:mm:ss a");
-                  timeLabel.setText(simpleDateFormat.format(date));
-              }
+           new Timer (0, (ActionEvent e) -> {
+               Date date = new Date();
+               SimpleDateFormat simpleDateFormat = new SimpleDateFormat("hh:mm:ss a");
+               timeLabel.setText(simpleDateFormat.format(date));
            }).start();
         }
        // limit phone number max
@@ -167,9 +168,14 @@ public final class HMS_USER_REGISTRATION extends javax.swing.JFrame {
             }
         });
 
-        registerPasswordTf.setBackground(new java.awt.Color(204, 204, 255));
         registerPasswordTf.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        registerPasswordTf.setBackground(new java.awt.Color(204, 204, 255));
         registerPasswordTf.setToolTipText("Password used to login.");
+        registerPasswordTf.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                registerPasswordTfActionPerformed(evt);
+            }
+        });
         registerPasswordTf.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 registerPasswordTfKeyPressed(evt);
@@ -532,71 +538,73 @@ public final class HMS_USER_REGISTRATION extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void registerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerButtonActionPerformed
-
-        String fname = registerFullNameField.getText();
-        String username = registerUsernameTf.getText();
-        String pass1 = String.valueOf(registerPasswordTf.getPassword());
-        String phone = registerPhoneNumberTf.getText();
-        String gender = "Male";
-
-      
-        if (femaleButton.isSelected()) {
-            gender = "Female";
-        }
-
-        if (verifyFields())
-        {
-            if (!checkUsername(username))
+        
+            
+            String fname = registerFullNameField.getText();
+            String username = registerUsernameTf.getText();
+            String pass1 = String.valueOf(registerPasswordTf.getPassword());
+            String phone = registerPhoneNumberTf.getText();
+            String gender = "Male";
+            
+            
+            if (femaleButton.isSelected()) {
+                gender = "Female";
+            }
+            
+            if (verifyFields())
             {
-                PreparedStatement ps;
-                ResultSet rs;
-                String registerUserQuery = "INSERT INTO users (full_name, usernameString, passwordString, phone, gender, picture) VALUES (?,?,?,?,?,?)";
-
-                try {
-
-                    ps = HEALTH_MONITORING_SYSTEM_DATABASE.getConnection().prepareStatement(registerUserQuery);
-                    ps.setString(1, fname);
-                    ps.setString(2, username);
-                    ps.setString(3, pass1);
-                    ps.setString(4, phone);
-                    ps.setString(5, gender);
-
+                if (!checkUsername(username))
+                {
+                    PreparedStatement ps;
+                    ResultSet rs;
+                    String registerUserQuery = "INSERT INTO users (full_name, usernameString, passwordString, phone, gender, picture) VALUES (?,?,?,?,?,?)";
+                    
                     try {
-                        // Save the image as BLOB in the Database
-                        if (image_path != null) {
-
-                            InputStream image = new FileInputStream(new File(image_path));
-                            ps.setBlob(6, image);
-
-                        }
-                        else if (image_path == null) {
+                        
+                        ps = HEALTH_MONITORING_SYSTEM_DATABASE.getConnection().prepareStatement(registerUserQuery);
+                        ps.setString(1, fname);
+                        ps.setString(2, username);
+                        ps.setString(3, pass1);
+                        ps.setString(4, phone);
+                        ps.setString(5, gender);
+                        
+                        try {
+                            // Save the image as BLOB in the Database
+                            if (image_path != null) {
+                                
+                                InputStream image = new FileInputStream(new File(image_path));
+                                ps.setBlob(6, image);
+                                
+                            }
+                            else if (image_path == null) {
+                                ps.setNull(6, java.sql.Types.NULL);
+                                System.out.println("No image attached.");
+                                
+                            } else {
+                                ps.setNull(6, java.sql.Types.NULL);
+                                System.out.println("No image attached.");
+                            }
+                            
+                            if (ps.executeUpdate() != 0) {
+                                
+                                
+                                JOptionPane.showMessageDialog(null, "Your Account has been created.");
+                            } else {
+                                JOptionPane.showMessageDialog(null, "Error: Check your Information.");
+                            }
+                            
                             ps.setNull(6, java.sql.Types.NULL);
-                            System.out.println("No image attached.");
-
-                        } else {
-                            ps.setNull(6, java.sql.Types.NULL);
-                            System.out.println("No image attached.");
+                            
+                        } catch (FileNotFoundException ex) {
+                            Logger.getLogger(HMS_USER_REGISTRATION.class.getName()).log(Level.SEVERE, null, ex);
                         }
-
-                        if (ps.executeUpdate() != 0) {
-                            JOptionPane.showMessageDialog(null, "Your Account has been created.");
-                        } else {
-                            JOptionPane.showMessageDialog(null, "Error: Check your Information.");
-                        }
-
-                        ps.setNull(6, java.sql.Types.NULL);
-
-                    } catch (FileNotFoundException ex) {
+                        
+                    } catch (SQLException ex) {
                         Logger.getLogger(HMS_USER_REGISTRATION.class.getName()).log(Level.SEVERE, null, ex);
                     }
 
-                } catch (SQLException ex) {
-                    Logger.getLogger(HMS_USER_REGISTRATION.class.getName()).log(Level.SEVERE, null, ex);
                 }
-
-            }
         }
-
     }//GEN-LAST:event_registerButtonActionPerformed
 
     private void selectImageButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectImageButtonActionPerformed
@@ -711,6 +719,10 @@ public final class HMS_USER_REGISTRATION extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_registerPhoneNumberTfKeyPressed
 
+    private void registerPasswordTfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerPasswordTfActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_registerPasswordTfActionPerformed
+
     // Create a function to verify the empty fields
     public boolean verifyFields()
     {
@@ -774,6 +786,7 @@ public final class HMS_USER_REGISTRATION extends javax.swing.JFrame {
      */
     public static void main(String args[]) {
         
+
         // sets the look and feel to be that of the operating system's
         try { 
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());

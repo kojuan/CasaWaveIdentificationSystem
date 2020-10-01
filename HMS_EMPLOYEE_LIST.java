@@ -2,6 +2,7 @@
 package healthMonitoringSystem;
 
 
+import com.mysql.jdbc.Connection;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.SimpleDateFormat;
@@ -408,7 +409,23 @@ public final class HMS_EMPLOYEE_LIST extends javax.swing.JFrame {
     }//GEN-LAST:event_formFocusLost
 
     private void refreshDataButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refreshDataButtonActionPerformed
-
+        PreparedStatement pst;
+        ResultSet rs;
+        try {
+            Connection conn = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/health_monitoring_system_database", "root", "root");
+            String sql = "SELECT * FROM employees";
+            pst = conn.prepareStatement(sql);
+            rs = pst.executeQuery(sql);
+            
+            employeeListTable.setModel(DbUtils.resultSetToTableModel(rs));
+            employeeListTable.repaint();
+            
+            DefaultTableModel dm = (DefaultTableModel)employeeListTable.getModel();
+            dm.fireTableDataChanged(); // notifies the JTable that the model has changed
+            employeeListTable.repaint();
+            
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, e);}
     }//GEN-LAST:event_refreshDataButtonActionPerformed
 
 

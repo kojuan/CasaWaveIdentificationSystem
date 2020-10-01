@@ -47,7 +47,6 @@ public class HMS_ADMINFORM extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setAlwaysOnTop(true);
-        setMaximumSize(new java.awt.Dimension(1000, 629));
         setName("adminFormMainFrame"); // NOI18N
         setUndecorated(true);
         setResizable(false);
@@ -59,10 +58,12 @@ public class HMS_ADMINFORM extends javax.swing.JFrame {
         registerEmployeeButton.setBackground(new java.awt.Color(60, 143, 246));
         registerEmployeeButton.setFont(new java.awt.Font("Verdana", 0, 24)); // NOI18N
         registerEmployeeButton.setForeground(new java.awt.Color(255, 255, 255));
+        registerEmployeeButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/healthMonitoringSystem/APP_IMAGES/mainprogram/registerIcon.png"))); // NOI18N
         registerEmployeeButton.setText("Register Employee");
         registerEmployeeButton.setToolTipText("");
         registerEmployeeButton.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         registerEmployeeButton.setBorderPainted(false);
+        registerEmployeeButton.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         registerEmployeeButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 registerEmployeeButtonActionPerformed(evt);
@@ -170,10 +171,12 @@ public class HMS_ADMINFORM extends javax.swing.JFrame {
         registerUserInDatabaseButton1.setBackground(new java.awt.Color(60, 143, 246));
         registerUserInDatabaseButton1.setFont(new java.awt.Font("Verdana", 0, 24)); // NOI18N
         registerUserInDatabaseButton1.setForeground(new java.awt.Color(255, 255, 255));
+        registerUserInDatabaseButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/healthMonitoringSystem/APP_IMAGES/mainprogram/registerIcon.png"))); // NOI18N
         registerUserInDatabaseButton1.setText("Register User Account");
         registerUserInDatabaseButton1.setToolTipText("");
         registerUserInDatabaseButton1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         registerUserInDatabaseButton1.setBorderPainted(false);
+        registerUserInDatabaseButton1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         registerUserInDatabaseButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 registerUserInDatabaseButton1ActionPerformed(evt);
@@ -213,23 +216,26 @@ public class HMS_ADMINFORM extends javax.swing.JFrame {
         mainAdminPanel.setLayout(mainAdminPanelLayout);
         mainAdminPanelLayout.setHorizontalGroup(
             mainAdminPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(adminToolHeader)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mainAdminPanelLayout.createSequentialGroup()
-                .addGap(66, 66, 66)
-                .addGroup(mainAdminPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(adminCancelButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(manageDatabaseURL, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(mainAdminPanelLayout.createSequentialGroup()
+                .addGroup(mainAdminPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(adminToolHeader)
                     .addGroup(mainAdminPanelLayout.createSequentialGroup()
-                        .addGroup(mainAdminPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(registerUserInDatabaseButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 293, Short.MAX_VALUE)
-                            .addComponent(registerEmployeeButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(manageUserButton, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(manageEmployeesButton, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(managePatientsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(77, 77, 77))
+                        .addGap(66, 66, 66)
+                        .addGroup(mainAdminPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(adminCancelButton, javax.swing.GroupLayout.DEFAULT_SIZE, 909, Short.MAX_VALUE)
+                            .addGroup(mainAdminPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(manageDatabaseURL, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(mainAdminPanelLayout.createSequentialGroup()
+                                    .addGroup(mainAdminPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(registerUserInDatabaseButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 335, Short.MAX_VALUE)
+                                        .addComponent(registerEmployeeButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addGap(28, 28, 28)
+                                    .addComponent(manageUserButton, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(manageEmployeesButton, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(managePatientsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                .addGap(0, 30, Short.MAX_VALUE))
         );
         mainAdminPanelLayout.setVerticalGroup(
             mainAdminPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

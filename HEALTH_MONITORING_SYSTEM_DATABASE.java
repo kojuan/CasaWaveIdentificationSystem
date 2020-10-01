@@ -6,6 +6,7 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -34,7 +35,8 @@ public class HEALTH_MONITORING_SYSTEM_DATABASE {
         try {
             cnx = datasource.getConnection();
         } catch (SQLException ex) {
-            Logger.getLogger("ERROR. Get Connection => " + HEALTH_MONITORING_SYSTEM_DATABASE.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, "ERROR. Please Activate Server Database Connection.\nPlease restart application with active server database connection.", "Server Offline", JOptionPane.INFORMATION_MESSAGE);
+            
         }
         
         return cnx;
