@@ -343,6 +343,7 @@
           </Properties>
           <Events>
             <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="employeeLastNameTfKeyPressed"/>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="employeeLastNameTfKeyTyped"/>
           </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="employeeMiddleInitialTf">
@@ -358,6 +359,7 @@
           </Properties>
           <Events>
             <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="employeeMiddleInitialTfKeyPressed"/>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="employeeMiddleInitialTfKeyTyped"/>
           </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="employeeFirstNameTf">
@@ -373,6 +375,7 @@
           </Properties>
           <Events>
             <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="employeeFirstNameTfKeyPressed"/>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="employeeFirstNameTfKeyTyped"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="fullNameLabel">

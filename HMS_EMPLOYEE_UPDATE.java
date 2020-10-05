@@ -1,6 +1,4 @@
-
 package healthMonitoringSystem;
-
 
 import java.awt.Color;
 import java.awt.event.ActionEvent;
@@ -39,7 +37,6 @@ import net.proteanit.sql.DbUtils;
 /**
  * @author Khian Orland Juan
  */
-
 public final class HMS_EMPLOYEE_UPDATE extends javax.swing.JFrame {
 
     /**
@@ -48,65 +45,67 @@ public final class HMS_EMPLOYEE_UPDATE extends javax.swing.JFrame {
     public static JLabel confirmLabelText;
     public static JPanel confirmPanel;
     String image_path = null;
-    
+
     public HMS_EMPLOYEE_UPDATE() {
 
-        
         initComponents();
         topBannerPanel.invalidate();
         topBannerPanel.validate();
         topBannerPanel.repaint();
-        
-        
+
         // create a button group for Gender
         ButtonGroup genderButtonGroup = new ButtonGroup();
         genderButtonGroup.add(maleButton);
         genderButtonGroup.add(femaleButton);
-        
+
         Date dateNow = new Date();
         System.out.println(dateNow);
-        
+
         showDate();
         showTime();
-        
+
     }
-     void showDate() {
-            Date date = new Date();
-            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
-            dateLabel.setText(simpleDateFormat.format(date));
-         }
-        
-        void showTime() {
-        new Timer (0, new ActionListener() {
-           
-           @Override
-           public void actionPerformed(ActionEvent e) {
-               Date date = new Date();
-               SimpleDateFormat simpleDateFormat = new SimpleDateFormat("hh:mm:ss a");
-               timeLabel.setText(simpleDateFormat.format(date));
-           }
+
+    void showDate() {
+        Date date = new Date();
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        dateLabel.setText(simpleDateFormat.format(date));
+    }
+
+    void showTime() {
+        new Timer(0, new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Date date = new Date();
+                SimpleDateFormat simpleDateFormat = new SimpleDateFormat("hh:mm:ss a");
+                timeLabel.setText(simpleDateFormat.format(date));
+            }
         }).start();
-        }
+    }
 
     // limit phone number max
-       public class JTextFieldLimit extends PlainDocument {
+    public class JTextFieldLimit extends PlainDocument {
+
         private final int limit;
 
         JTextFieldLimit(int limit) {
-         super();
-         this.limit = limit;
-         }
+            super();
+            this.limit = limit;
+        }
 
         @Override
-        public void insertString( int offset, String  str, AttributeSet attr ) throws BadLocationException {
-          if (str == null) return;
+        public void insertString(int offset, String str, AttributeSet attr) throws BadLocationException {
+            if (str == null) {
+                return;
+            }
 
-          if ((getLength() + str.length()) <= limit) {
-            super.insertString(offset, str, attr);
-          }
+            if ((getLength() + str.length()) <= limit) {
+                super.insertString(offset, str, attr);
+            }
         }
-      }
-       
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -190,6 +189,9 @@ public final class HMS_EMPLOYEE_UPDATE extends javax.swing.JFrame {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 employeeLastNameTfKeyPressed(evt);
             }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                employeeLastNameTfKeyTyped(evt);
+            }
         });
 
         employeeMiddleInitialTf.setEditable(false);
@@ -200,6 +202,9 @@ public final class HMS_EMPLOYEE_UPDATE extends javax.swing.JFrame {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 employeeMiddleInitialTfKeyPressed(evt);
             }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                employeeMiddleInitialTfKeyTyped(evt);
+            }
         });
 
         employeeFirstNameTf.setEditable(false);
@@ -209,6 +214,9 @@ public final class HMS_EMPLOYEE_UPDATE extends javax.swing.JFrame {
         employeeFirstNameTf.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 employeeFirstNameTfKeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                employeeFirstNameTfKeyTyped(evt);
             }
         });
 
@@ -719,9 +727,9 @@ public final class HMS_EMPLOYEE_UPDATE extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void nationalityTfKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nationalityTfKeyPressed
-        if (evt.getKeyCode()==KeyEvent.VK_ESCAPE){
+        if (evt.getKeyCode() == KeyEvent.VK_ESCAPE) {
             HMS_ADMINFORM showAdminForm = new HMS_ADMINFORM();
-            showAdminForm.setVisible(true); 
+            showAdminForm.setVisible(true);
             this.dispose();
         }
     }//GEN-LAST:event_nationalityTfKeyPressed
@@ -735,58 +743,58 @@ public final class HMS_EMPLOYEE_UPDATE extends javax.swing.JFrame {
     }//GEN-LAST:event_employeePhoneNumberTfKeyTyped
 
     private void employeePhoneNumberTfKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_employeePhoneNumberTfKeyPressed
-        if (evt.getKeyCode()==KeyEvent.VK_ESCAPE){
+        if (evt.getKeyCode() == KeyEvent.VK_ESCAPE) {
             HMS_ADMINFORM showAdminForm = new HMS_ADMINFORM();
-            showAdminForm.setVisible(true); 
+            showAdminForm.setVisible(true);
             this.dispose();
         }
     }//GEN-LAST:event_employeePhoneNumberTfKeyPressed
 
     private void employeeHomeAddressTAKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_employeeHomeAddressTAKeyPressed
-        if (evt.getKeyCode()==KeyEvent.VK_ESCAPE){
+        if (evt.getKeyCode() == KeyEvent.VK_ESCAPE) {
             HMS_ADMINFORM showAdminForm = new HMS_ADMINFORM();
-            showAdminForm.setVisible(true); 
+            showAdminForm.setVisible(true);
             this.dispose();
         }
     }//GEN-LAST:event_employeeHomeAddressTAKeyPressed
 
     private void employeeFirstNameTfKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_employeeFirstNameTfKeyPressed
-        if (evt.getKeyCode()==KeyEvent.VK_ESCAPE){
+        if (evt.getKeyCode() == KeyEvent.VK_ESCAPE) {
             HMS_ADMINFORM showAdminForm = new HMS_ADMINFORM();
-            showAdminForm.setVisible(true); 
+            showAdminForm.setVisible(true);
             this.dispose();
         }
     }//GEN-LAST:event_employeeFirstNameTfKeyPressed
 
     private void employeeMiddleInitialTfKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_employeeMiddleInitialTfKeyPressed
-        if (evt.getKeyCode()==KeyEvent.VK_ESCAPE){
+        if (evt.getKeyCode() == KeyEvent.VK_ESCAPE) {
             HMS_ADMINFORM showAdminForm = new HMS_ADMINFORM();
-            showAdminForm.setVisible(true); 
+            showAdminForm.setVisible(true);
             this.dispose();
         }
     }//GEN-LAST:event_employeeMiddleInitialTfKeyPressed
 
     private void employeeLastNameTfKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_employeeLastNameTfKeyPressed
-        if (evt.getKeyCode()==KeyEvent.VK_ESCAPE){
+        if (evt.getKeyCode() == KeyEvent.VK_ESCAPE) {
             HMS_ADMINFORM showAdminForm = new HMS_ADMINFORM();
-            showAdminForm.setVisible(true); 
+            showAdminForm.setVisible(true);
             this.dispose();
         }
     }//GEN-LAST:event_employeeLastNameTfKeyPressed
 
     private void fatherEmailAddressTfKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fatherEmailAddressTfKeyPressed
-           if (evt.getKeyCode()==KeyEvent.VK_ESCAPE){
+        if (evt.getKeyCode() == KeyEvent.VK_ESCAPE) {
             HMS_ADMINFORM showAdminForm = new HMS_ADMINFORM();
-            showAdminForm.setVisible(true); 
+            showAdminForm.setVisible(true);
             this.dispose();
         }
     }//GEN-LAST:event_fatherEmailAddressTfKeyPressed
 
     private void motherEmailAddressTfKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_motherEmailAddressTfKeyPressed
-        if (evt.getKeyCode()==KeyEvent.VK_ESCAPE){
-         HMS_ADMINFORM showAdminForm = new HMS_ADMINFORM();
-         showAdminForm.setVisible(true); 
-         this.dispose();
+        if (evt.getKeyCode() == KeyEvent.VK_ESCAPE) {
+            HMS_ADMINFORM showAdminForm = new HMS_ADMINFORM();
+            showAdminForm.setVisible(true);
+            this.dispose();
         }
     }//GEN-LAST:event_motherEmailAddressTfKeyPressed
 
@@ -799,14 +807,13 @@ public final class HMS_EMPLOYEE_UPDATE extends javax.swing.JFrame {
         chooser.setCurrentDirectory(new File(System.getProperty("user.home")));
 
         // File extension
-        FileNameExtensionFilter extension = new FileNameExtensionFilter("*Images","jpg","png","jpeg");
+        FileNameExtensionFilter extension = new FileNameExtensionFilter("*Images", "jpg", "png", "jpeg");
         chooser.addChoosableFileFilter(extension);
 
         int filestate = chooser.showSaveDialog(null);
 
         // Check if the user select an image
-        if (filestate == JFileChooser.APPROVE_OPTION)
-        {
+        if (filestate == JFileChooser.APPROVE_OPTION) {
             File selectedImage = chooser.getSelectedFile();
             path = selectedImage.getAbsolutePath();
             imagePathLabel.setText(path);
@@ -824,141 +831,142 @@ public final class HMS_EMPLOYEE_UPDATE extends javax.swing.JFrame {
         confirmPanel = new JPanel();
         confirmLabelText = new JLabel("Do you want to update the employee profile?");
         confirmPanel.add(confirmLabelText);
-        
+
         String[] options = new String[]{"BACK", "CONFIRM"};
-          int option = JOptionPane.showOptionDialog(null, confirmPanel,"Confirm?",
-              JOptionPane.NO_OPTION, JOptionPane.PLAIN_MESSAGE,
-              null, options, options[1]); // default selection
-              if(option == 1) // pressing CONFIRM button
-              {
-                  
-                try {
-                    String firstNameString = employeeFirstNameTf.getText();
-                    String middleNameString = employeeMiddleInitialTf.getText();
-                    String lastNameString = employeeLastNameTf.getText();
-                    String homeAddressString = employeeHomeAddressTA.getText();
-                    String selectedbDay = birthdayPicker.getDateStringOrEmptyString();
-                    String phoneString = employeePhoneNumberTf.getText();
-                    String fatherEmailAddressString = fatherEmailAddressTf.getText();
-                    String motherEmailAddressString = motherEmailAddressTf.getText();
-                    String bloodTypeString = String.valueOf(bloodTypeChoice.getSelectedItem());
-                    String civilStatusString = String.valueOf(civilStatusChoice.getSelectedItem());
-                    String religionString = String.valueOf(religionChoice.getSelectedItem());
-                    String nationalityString = nationalityTf.getText();
-                    String empIdString = employeeIdTf.getText();
-                    String gender = "Male";
-                    
-                     //getting current date and time using Date class
-                    DateFormat getCurrentDateTimeFormat = new SimpleDateFormat("YYYY-MM-dd hh:mm:ss");
-                    Date dateObject = new Date();
-                    String getDateTimeCurrent = getCurrentDateTimeFormat.format(dateObject);
-                    
-                    if (femaleButton.isSelected()) {
-                        gender = "Female";
-                    }
-                    
-                    if (verifyFields()) {
-                        
+        int option = JOptionPane.showOptionDialog(null, confirmPanel, "Confirm?",
+                JOptionPane.NO_OPTION, JOptionPane.PLAIN_MESSAGE,
+                null, options, options[1]); // default selection
+        if (option == 1) // pressing CONFIRM button
+        {
+
+            try {
+                String firstNameString = employeeFirstNameTf.getText();
+                String middleNameString = employeeMiddleInitialTf.getText();
+                String lastNameString = employeeLastNameTf.getText();
+                String homeAddressString = employeeHomeAddressTA.getText();
+                String selectedbDay = birthdayPicker.getDateStringOrEmptyString();
+                String phoneString = employeePhoneNumberTf.getText();
+                String fatherEmailAddressString = fatherEmailAddressTf.getText();
+                String motherEmailAddressString = motherEmailAddressTf.getText();
+                String bloodTypeString = String.valueOf(bloodTypeChoice.getSelectedItem());
+                String civilStatusString = String.valueOf(civilStatusChoice.getSelectedItem());
+                String religionString = String.valueOf(religionChoice.getSelectedItem());
+                String nationalityString = nationalityTf.getText();
+                String empIdString = employeeIdTf.getText();
+                String gender = "Male";
+
+                //getting current date and time using Date class
+                DateFormat getCurrentDateTimeFormat = new SimpleDateFormat("YYYY-MM-dd hh:mm:ss");
+                Date dateObject = new Date();
+                String getDateTimeCurrent = getCurrentDateTimeFormat.format(dateObject);
+
+                if (femaleButton.isSelected()) {
+                    gender = "Female";
+                }
+
+                if (verifyFields()) {
+
 //                        Class.forName("com.mysql.jdbc.Driver");
 //                        String username = "root";
 //                        String password = "root";
 //                        Connection conn = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/health_monitoring_system_database", username, password);
-              
-                        String sql = "UPDATE employees SET firstName = ?, middleInitial = ?, lastName = ?, employeeAddress = ?, employeeGender = ?, dateOfBirth = ?, employeeBloodType = ?, cellphoneNumber = ?, civilStatus = ?, employeeReligion = ?, employeeNationality = ?, fatherEmailAddress = ?, motherEmailAddress = ?, dateAndTimeRegistered = ?, picture = ? WHERE employeeId = ?";
-                        PreparedStatement pstmt;
-                        
-                        try {
-//                            pstmt = conn.prepareStatement(sql);
-                            pstmt = HEALTH_MONITORING_SYSTEM_DATABASE.getConnection().prepareStatement(sql);
-                            // set parameters
-                            pstmt.setString(1, firstNameString); // 1
-                            pstmt.setString(2, middleNameString); // 2
-                            pstmt.setString(3, lastNameString); // 3
-                            pstmt.setString(4, homeAddressString); // 4
-                            pstmt.setString(5, gender); // 5
-                            pstmt.setString(6, selectedbDay); // 6
-                            pstmt.setString(7, bloodTypeString); // 7
-                            pstmt.setString(8, phoneString); // 8
-                            pstmt.setString(9, civilStatusString); // 9
-                            pstmt.setString(10, religionString); // 10
-                            pstmt.setString(11, nationalityString); // 11
-                            pstmt.setString(12, fatherEmailAddressString); // 12
-                            pstmt.setString(13, motherEmailAddressString); // 13
-                            pstmt.setString(14, getDateTimeCurrent); // 14
-                            pstmt.setString(16, empIdString); // 16 ID
-                            // then execute
-                            try {
-                                // Save the image as BLOB in the Database
-                                if (image_path != null) 
-                                {
-                                    InputStream image = new FileInputStream(new File(image_path));
-                                    pstmt.setBlob(15, image);
-                                } else if (image_path == null) {
-                                    pstmt.setNull(15, java.sql.Types.NULL);
-                                    System.out.println("No image attached.");
-                                } else {
-                                    pstmt.setNull(15, java.sql.Types.NULL);
-                                    System.out.println("No image attached.");
-                                }
-                                
-                                if (pstmt.executeUpdate() != 0) 
-                                {   // IF successful update
-                                    JOptionPane.showMessageDialog(null, "Employee ID Profile: '" + firstNameString + " " + middleNameString + " " + lastNameString + " has been updated.");
-                                    searchEmployeeButton.setEnabled(true);
-                                    employeeIDNumberLabel.setForeground(Color.red);
-                                    employeeFirstNameTf.setText("");
-                                    employeeFirstNameTf.setEditable(false);
-                                    employeeFirstNameTf.setEnabled(false);
-                                    employeeMiddleInitialTf.setText("");
-                                    employeeMiddleInitialTf.setEditable(false);
-                                    employeeMiddleInitialTf.setEnabled(false);
-                                    employeeLastNameTf.setText("");
-                                    employeeLastNameTf.setEditable(false);
-                                    employeeLastNameTf.setEnabled(false);
-                                    employeeHomeAddressTA.setText("");
-                                    employeeHomeAddressTA.setEditable(false);
-                                    employeeHomeAddressTA.setEnabled(false);
-                                    birthdayPicker.setText("");
-                                    birthdayPicker.setEnabled(false);
-                                    employeePhoneNumberTf.setText("");
-                                    employeePhoneNumberTf.setEditable(false);
-                                    employeePhoneNumberTf.setEnabled(false);
-                                    nationalityTf.setText("");
-                                    nationalityTf.setEditable(false);
-                                    nationalityTf.setEnabled(false);
-                                    fatherEmailAddressTf.setText("");
-                                    fatherEmailAddressTf.setEditable(false);
-                                    fatherEmailAddressTf.setEnabled(false);
-                                    motherEmailAddressTf.setText("");
-                                    motherEmailAddressTf.setEditable(false);
-                                    motherEmailAddressTf.setEnabled(false);
-                                    religionChoice.select("Unspecified");
-                                    bloodTypeChoice.select("Unspecified");
-                                    civilStatusChoice.select("Unspecified");
-                                    religionChoice.setEnabled(false);
-                                    bloodTypeChoice.setEnabled(false);
-                                    civilStatusChoice.setEnabled(false);
-                                    imagePathLabel.setText("image path");
-                                    selectImageButton.setEnabled(false);
-                                    employeeIdTf.setText("");
-                                    employeeIdTf.setEditable(true);
-                                    employeeIdTf.setEnabled(true);
-                                    maleButton.setEnabled(false);
-                                    femaleButton.setEnabled(false);
-                                    
+                    String sql = "UPDATE employees SET firstName = ?, middleInitial = ?, lastName = ?, employeeAddress = ?, employeeGender = ?, dateOfBirth = ?, employeeBloodType = ?, cellphoneNumber = ?, civilStatus = ?, employeeReligion = ?, employeeNationality = ?, fatherEmailAddress = ?, motherEmailAddress = ?, dateAndTimeRegistered = ?, picture = ? WHERE employeeId = ?";
+                    PreparedStatement pstmt;
 
-                                    
-                                } else {JOptionPane.showMessageDialog(null, "Error: Check your Information.");}
+                    try {
+//                            pstmt = conn.prepareStatement(sql);
+                        pstmt = HEALTH_MONITORING_SYSTEM_DATABASE.getConnection().prepareStatement(sql);
+                        // set parameters
+                        pstmt.setString(1, firstNameString); // 1
+                        pstmt.setString(2, middleNameString); // 2
+                        pstmt.setString(3, lastNameString); // 3
+                        pstmt.setString(4, homeAddressString); // 4
+                        pstmt.setString(5, gender); // 5
+                        pstmt.setString(6, selectedbDay); // 6
+                        pstmt.setString(7, bloodTypeString); // 7
+                        pstmt.setString(8, phoneString); // 8
+                        pstmt.setString(9, civilStatusString); // 9
+                        pstmt.setString(10, religionString); // 10
+                        pstmt.setString(11, nationalityString); // 11
+                        pstmt.setString(12, fatherEmailAddressString); // 12
+                        pstmt.setString(13, motherEmailAddressString); // 13
+                        pstmt.setString(14, getDateTimeCurrent); // 14
+                        pstmt.setString(16, empIdString); // 16 ID
+                        // then execute
+                        try {
+                            // Save the image as BLOB in the Database
+                            if (image_path != null) {
+                                InputStream image = new FileInputStream(new File(image_path));
+                                pstmt.setBlob(15, image);
+                            } else if (image_path == null) {
                                 pstmt.setNull(15, java.sql.Types.NULL);
-                                } catch (FileNotFoundException ex) {System.out.println(ex);}
-                            } catch (SQLException ex) {System.out.println(ex);} // try-catch
-                    } // if-verifyField
-                    } catch (ParseException ex) {
-                        System.out.println(ex);}
-              } // if OPTION "CONTINUE" is SELECTED.
+                                System.out.println("No image attached.");
+                            } else {
+                                pstmt.setNull(15, java.sql.Types.NULL);
+                                System.out.println("No image attached.");
+                            }
+
+                            if (pstmt.executeUpdate() != 0) {   // IF successful update
+                                JOptionPane.showMessageDialog(null, "Employee ID Profile: '" + firstNameString + " " + middleNameString + " " + lastNameString + " has been updated.");
+                                searchEmployeeButton.setEnabled(true);
+                                employeeIDNumberLabel.setForeground(Color.red);
+                                employeeFirstNameTf.setText("");
+                                employeeFirstNameTf.setEditable(false);
+                                employeeFirstNameTf.setEnabled(false);
+                                employeeMiddleInitialTf.setText("");
+                                employeeMiddleInitialTf.setEditable(false);
+                                employeeMiddleInitialTf.setEnabled(false);
+                                employeeLastNameTf.setText("");
+                                employeeLastNameTf.setEditable(false);
+                                employeeLastNameTf.setEnabled(false);
+                                employeeHomeAddressTA.setText("");
+                                employeeHomeAddressTA.setEditable(false);
+                                employeeHomeAddressTA.setEnabled(false);
+                                birthdayPicker.setText("");
+                                birthdayPicker.setEnabled(false);
+                                employeePhoneNumberTf.setText("");
+                                employeePhoneNumberTf.setEditable(false);
+                                employeePhoneNumberTf.setEnabled(false);
+                                nationalityTf.setText("");
+                                nationalityTf.setEditable(false);
+                                nationalityTf.setEnabled(false);
+                                fatherEmailAddressTf.setText("");
+                                fatherEmailAddressTf.setEditable(false);
+                                fatherEmailAddressTf.setEnabled(false);
+                                motherEmailAddressTf.setText("");
+                                motherEmailAddressTf.setEditable(false);
+                                motherEmailAddressTf.setEnabled(false);
+                                religionChoice.select("Unspecified");
+                                bloodTypeChoice.select("Unspecified");
+                                civilStatusChoice.select("Unspecified");
+                                religionChoice.setEnabled(false);
+                                bloodTypeChoice.setEnabled(false);
+                                civilStatusChoice.setEnabled(false);
+                                imagePathLabel.setText("image path");
+                                selectImageButton.setEnabled(false);
+                                employeeIdTf.setText("");
+                                employeeIdTf.setEditable(true);
+                                employeeIdTf.setEnabled(true);
+                                maleButton.setEnabled(false);
+                                femaleButton.setEnabled(false);
+
+                            } else {
+                                JOptionPane.showMessageDialog(null, "Error: Check your Information.");
+                            }
+                            pstmt.setNull(15, java.sql.Types.NULL);
+                        } catch (FileNotFoundException ex) {
+                            System.out.println(ex);
+                        }
+                    } catch (SQLException ex) {
+                        System.out.println(ex);
+                    } // try-catch
+                } // if-verifyField
+            } catch (ParseException ex) {
+                System.out.println(ex);
+            }
+        } // if OPTION "CONTINUE" is SELECTED.
     }//GEN-LAST:event_updateButtonActionPerformed
-    public boolean verifyFields() throws ParseException
-    {
+    public boolean verifyFields() throws ParseException {
         String firstNameString = employeeFirstNameTf.getText();
         String middleNameString = employeeMiddleInitialTf.getText();
         String lastNameString = employeeLastNameTf.getText();
@@ -968,23 +976,23 @@ public final class HMS_EMPLOYEE_UPDATE extends javax.swing.JFrame {
         String civilStatusString = String.valueOf(civilStatusChoice.getSelectedItem());
         String religionString = String.valueOf(religionChoice.getSelectedItem());
         String nationalityString = nationalityTf.getText();
-        
-         // Check empty fields
-        if (firstNameString.trim().equals("") || middleNameString.trim().equals("") ||
-            lastNameString.trim().equals("") || homeAddressString.trim().equals("") || 
-            selectedbDay.trim().equals("") || nationalityString.trim().equals("") ||
-            religionString.trim().equals("") || bloodTypeString.trim().equals("") || civilStatusString.trim().equals(""))                  
-        {
+
+        // Check empty fields
+        if (firstNameString.trim().equals("") || middleNameString.trim().equals("")
+                || lastNameString.trim().equals("") || homeAddressString.trim().equals("")
+                || selectedbDay.trim().equals("") || nationalityString.trim().equals("")
+                || religionString.trim().equals("") || bloodTypeString.trim().equals("") || civilStatusString.trim().equals("")) {
             JOptionPane.showMessageDialog(null, "One or more fields are empty.\nPlease fill-up all forms.", "Empty fields", 2);
             this.repaint();
 
-           return false;
+            return false;
+        } // If everything is okay...
+        else {
+            return true;
         }
-         // If everything is okay...
-        else{return true;}
     }
     private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelButtonActionPerformed
-    this.dispose();
+        this.dispose();
     }//GEN-LAST:event_cancelButtonActionPerformed
 
     private void employeePhoneNumberTfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_employeePhoneNumberTfActionPerformed
@@ -1021,7 +1029,7 @@ public final class HMS_EMPLOYEE_UPDATE extends javax.swing.JFrame {
         this.invalidate();
         this.validate();
         this.repaint();
-        
+
     }//GEN-LAST:event_resetAllFieldsButtonActionPerformed
 
     private void onScreenKeyboardButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_onScreenKeyboardButtonActionPerformed
@@ -1033,8 +1041,7 @@ public final class HMS_EMPLOYEE_UPDATE extends javax.swing.JFrame {
     }//GEN-LAST:event_onScreenKeyboardButtonActionPerformed
 
     private void searchEmployeeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchEmployeeButtonActionPerformed
-  
-        
+
         PreparedStatement pstmt;
         ResultSet rs;
         try {
@@ -1049,9 +1056,8 @@ public final class HMS_EMPLOYEE_UPDATE extends javax.swing.JFrame {
             pstmt.setInt(1, Integer.parseInt(employeeIdTf.getText()));
 
             rs = pstmt.executeQuery();
-            if (rs.next())
-            {
-                
+            if (rs.next()) {
+
                 employeeFirstNameTf.setText(rs.getString("firstName"));
                 employeeMiddleInitialTf.setText(rs.getString("middleInitial"));
                 employeeLastNameTf.setText(rs.getString("lastName"));
@@ -1066,7 +1072,7 @@ public final class HMS_EMPLOYEE_UPDATE extends javax.swing.JFrame {
                 fatherEmailAddressTf.setText(rs.getString("fatherEmailAddress"));
                 motherEmailAddressTf.setText(rs.getString("motherEmailAddress"));
                 JOptionPane.showMessageDialog(null, "User: '" + rs.getString("firstName") + " " + rs.getString("middleInitial") + " " + rs.getString("lastName") + "' will be edited.");
-                
+
                 // SET ENABLED AND EDITABLE (TRUE
                 searchEmployeeButton.setEnabled(false);
                 employeeIdTf.setEditable(false);
@@ -1099,13 +1105,9 @@ public final class HMS_EMPLOYEE_UPDATE extends javax.swing.JFrame {
                 femaleButton.setEnabled(true);
                 selectImageButton.setEnabled(true);
                 updateButton.setEnabled(true);
-                
-        
 
-            }
-            else
-            {
-                JOptionPane.showMessageDialog(null, "Employee ID "+ employeeIdTf.getText() + " is not found in the System.");
+            } else {
+                JOptionPane.showMessageDialog(null, "Employee ID " + employeeIdTf.getText() + " is not found in the System.");
             }
             conn.close();
         } catch (HeadlessException | ClassNotFoundException | NumberFormatException | SQLException ex) {
@@ -1122,17 +1124,38 @@ public final class HMS_EMPLOYEE_UPDATE extends javax.swing.JFrame {
         sexTf.setText("Male");
     }//GEN-LAST:event_maleButtonActionPerformed
 
+    private void employeeFirstNameTfKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_employeeFirstNameTfKeyTyped
+        char charInputOnly = evt.getKeyChar();
+        if (!(Character.isAlphabetic(charInputOnly) || (charInputOnly == KeyEvent.VK_BACK_SPACE) || charInputOnly == KeyEvent.VK_DELETE || charInputOnly == KeyEvent.VK_SPACE)) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_employeeFirstNameTfKeyTyped
+
+    private void employeeMiddleInitialTfKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_employeeMiddleInitialTfKeyTyped
+        char charInputOnly = evt.getKeyChar();
+        if (!(Character.isAlphabetic(charInputOnly) || (charInputOnly == KeyEvent.VK_BACK_SPACE) || charInputOnly == KeyEvent.VK_DELETE || charInputOnly == KeyEvent.VK_SPACE)) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_employeeMiddleInitialTfKeyTyped
+
+    private void employeeLastNameTfKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_employeeLastNameTfKeyTyped
+        char charInputOnly = evt.getKeyChar();
+        if (!(Character.isAlphabetic(charInputOnly) || (charInputOnly == KeyEvent.VK_BACK_SPACE) || charInputOnly == KeyEvent.VK_DELETE || charInputOnly == KeyEvent.VK_SPACE)) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_employeeLastNameTfKeyTyped
+
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        
-        try { 
+
+        try {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-        } catch (ClassNotFoundException | 
-            InstantiationException | 
-            IllegalAccessException | 
-            UnsupportedLookAndFeelException e) {
+        } catch (ClassNotFoundException
+                | InstantiationException
+                | IllegalAccessException
+                | UnsupportedLookAndFeelException e) {
         }
 
         /* Create and display the form */
@@ -1196,4 +1219,3 @@ public final class HMS_EMPLOYEE_UPDATE extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
 }
-

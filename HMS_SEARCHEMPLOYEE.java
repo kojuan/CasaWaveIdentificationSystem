@@ -62,7 +62,7 @@ public class HMS_SEARCHEMPLOYEE extends javax.swing.JFrame {
         bloodTypeTf = new javax.swing.JTextField();
         religionTf = new javax.swing.JTextField();
         religionLabel = new javax.swing.JLabel();
-        motherEALabel = new javax.swing.JLabel();
+        imageLabel = new javax.swing.JLabel();
         fatherEALabel = new javax.swing.JLabel();
         motherEATf = new javax.swing.JTextField();
         fatherEATf = new javax.swing.JTextField();
@@ -109,20 +109,20 @@ public class HMS_SEARCHEMPLOYEE extends javax.swing.JFrame {
             }
         });
 
-        firstNameLabel.setText("First Name:");
         firstNameLabel.setBackground(new java.awt.Color(255, 255, 255));
         firstNameLabel.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        firstNameLabel.setText("First Name:");
 
-        employeeIdLabel.setText("Employee ID:");
         employeeIdLabel.setBackground(new java.awt.Color(255, 255, 255));
         employeeIdLabel.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        employeeIdLabel.setText("Employee ID:");
 
         employeeFirstNameTfforSearch.setEditable(false);
-        employeeFirstNameTfforSearch.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        employeeFirstNameTfforSearch.setAutoscrolls(false);
         employeeFirstNameTfforSearch.setBackground(new java.awt.Color(234, 234, 250));
-        employeeFirstNameTfforSearch.setFocusable(false);
+        employeeFirstNameTfforSearch.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         employeeFirstNameTfforSearch.setToolTipText("First name of the Employee");
+        employeeFirstNameTfforSearch.setAutoscrolls(false);
+        employeeFirstNameTfforSearch.setFocusable(false);
         employeeFirstNameTfforSearch.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 employeeFirstNameTfforSearchActionPerformed(evt);
@@ -137,138 +137,138 @@ public class HMS_SEARCHEMPLOYEE extends javax.swing.JFrame {
             }
         });
 
-        lastNameLabel.setText("Last Name:");
         lastNameLabel.setBackground(new java.awt.Color(255, 255, 255));
         lastNameLabel.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lastNameLabel.setText("Last Name:");
 
         employeeMiddleInitialTf.setEditable(false);
-        employeeMiddleInitialTf.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         employeeMiddleInitialTf.setBackground(new java.awt.Color(234, 234, 250));
-        employeeMiddleInitialTf.setFocusable(false);
+        employeeMiddleInitialTf.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         employeeMiddleInitialTf.setToolTipText("Middle Initial or Complete Middle Name");
+        employeeMiddleInitialTf.setFocusable(false);
 
-        middleNameLabel.setText("Middle Name:");
         middleNameLabel.setBackground(new java.awt.Color(255, 255, 255));
         middleNameLabel.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        middleNameLabel.setText("Middle Name:");
 
         employeeLastNameTf.setEditable(false);
-        employeeLastNameTf.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         employeeLastNameTf.setBackground(new java.awt.Color(234, 234, 250));
-        employeeLastNameTf.setFocusable(false);
+        employeeLastNameTf.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         employeeLastNameTf.setToolTipText("Complete Last Name");
+        employeeLastNameTf.setFocusable(false);
 
-        searchEmployeeButton.setText("Search Employee");
         searchEmployeeButton.setBackground(new java.awt.Color(153, 204, 255));
-        searchEmployeeButton.setBorderPainted(false);
         searchEmployeeButton.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
+        searchEmployeeButton.setText("Search Employee");
+        searchEmployeeButton.setBorderPainted(false);
         searchEmployeeButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 searchEmployeeButtonActionPerformed(evt);
             }
         });
 
-        sexLabel.setText("Sex:");
         sexLabel.setBackground(new java.awt.Color(255, 255, 255));
         sexLabel.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        sexLabel.setText("Sex:");
 
         bdayTf.setEditable(false);
-        bdayTf.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         bdayTf.setBackground(new java.awt.Color(234, 234, 250));
+        bdayTf.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         bdayTf.setFocusable(false);
 
         sexTf.setEditable(false);
-        sexTf.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         sexTf.setBackground(new java.awt.Color(234, 234, 250));
+        sexTf.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         sexTf.setFocusable(false);
 
-        bdayLabel1.setText("Birthday:");
         bdayLabel1.setBackground(new java.awt.Color(255, 255, 255));
         bdayLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        bdayLabel1.setText("Birthday:");
 
         nationalityTf.setEditable(false);
-        nationalityTf.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         nationalityTf.setBackground(new java.awt.Color(234, 234, 250));
+        nationalityTf.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         nationalityTf.setFocusable(false);
 
-        bdayLabel2.setText("Nationality:");
         bdayLabel2.setBackground(new java.awt.Color(255, 255, 255));
         bdayLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        bdayLabel2.setText("Nationality:");
 
-        bdayLabel3.setText("Phone Number:");
         bdayLabel3.setBackground(new java.awt.Color(255, 255, 255));
         bdayLabel3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        bdayLabel3.setText("Phone Number:");
 
         phoneNumberTf.setEditable(false);
-        phoneNumberTf.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         phoneNumberTf.setBackground(new java.awt.Color(234, 234, 250));
+        phoneNumberTf.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         phoneNumberTf.setFocusable(false);
 
         civilStatusTf.setEditable(false);
-        civilStatusTf.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         civilStatusTf.setBackground(new java.awt.Color(234, 234, 250));
+        civilStatusTf.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         civilStatusTf.setFocusable(false);
 
-        bdayLabel4.setText("Civil Status:");
         bdayLabel4.setBackground(new java.awt.Color(255, 255, 255));
         bdayLabel4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        bdayLabel4.setText("Civil Status:");
 
-        bdayLabel5.setText("Blood Type:");
         bdayLabel5.setBackground(new java.awt.Color(255, 255, 255));
         bdayLabel5.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        bdayLabel5.setText("Blood Type:");
 
         bloodTypeTf.setEditable(false);
-        bloodTypeTf.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         bloodTypeTf.setBackground(new java.awt.Color(234, 234, 250));
+        bloodTypeTf.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         bloodTypeTf.setFocusable(false);
 
         religionTf.setEditable(false);
-        religionTf.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         religionTf.setBackground(new java.awt.Color(234, 234, 250));
+        religionTf.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         religionTf.setFocusable(false);
 
-        religionLabel.setText("Religion:");
         religionLabel.setBackground(new java.awt.Color(255, 255, 255));
         religionLabel.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        religionLabel.setText("Religion:");
 
-        motherEALabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        motherEALabel.setText("Image:");
-        motherEALabel.setBackground(new java.awt.Color(255, 255, 255));
-        motherEALabel.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        motherEALabel.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        imageLabel.setBackground(new java.awt.Color(255, 255, 255));
+        imageLabel.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        imageLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        imageLabel.setText("Image:");
+        imageLabel.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
-        fatherEALabel.setText("Father Email Ad.:");
         fatherEALabel.setBackground(new java.awt.Color(255, 255, 255));
         fatherEALabel.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        fatherEALabel.setText("Father Email Ad.:");
 
         motherEATf.setEditable(false);
-        motherEATf.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         motherEATf.setBackground(new java.awt.Color(234, 234, 250));
+        motherEATf.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         motherEATf.setFocusable(false);
 
         fatherEATf.setEditable(false);
-        fatherEATf.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         fatherEATf.setBackground(new java.awt.Color(234, 234, 250));
+        fatherEATf.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         fatherEATf.setFocusable(false);
 
-        motherEALabel1.setText("Mother Email Ad.:");
         motherEALabel1.setBackground(new java.awt.Color(255, 255, 255));
         motherEALabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        motherEALabel1.setText("Mother Email Ad.:");
 
-        resetAllFieldsButton.setText("Clear all fields");
         resetAllFieldsButton.setBackground(new java.awt.Color(234, 234, 250));
+        resetAllFieldsButton.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
+        resetAllFieldsButton.setText("Clear all fields");
+        resetAllFieldsButton.setToolTipText("Clear all fields after search.");
         resetAllFieldsButton.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         resetAllFieldsButton.setBorderPainted(false);
-        resetAllFieldsButton.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
-        resetAllFieldsButton.setToolTipText("Clear all fields after search.");
         resetAllFieldsButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 resetAllFieldsButtonActionPerformed(evt);
             }
         });
 
-        lastNameLabel1.setText("Home Address:");
         lastNameLabel1.setBackground(new java.awt.Color(255, 255, 255));
         lastNameLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lastNameLabel1.setText("Home Address:");
 
         employeeAddressTf.setColumns(10);
         employeeAddressTf.setEditable(false);
@@ -326,7 +326,7 @@ public class HMS_SEARCHEMPLOYEE extends javax.swing.JFrame {
                                     .addComponent(religionTf)
                                     .addComponent(bloodTypeTf))))
                         .addGap(39, 39, 39)
-                        .addComponent(motherEALabel, javax.swing.GroupLayout.PREFERRED_SIZE, 355, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(imageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 355, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(searchEmployeeMainPanelLayout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addGroup(searchEmployeeMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -407,7 +407,7 @@ public class HMS_SEARCHEMPLOYEE extends javax.swing.JFrame {
                         .addGroup(searchEmployeeMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(religionTf, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(religionLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(motherEALabel, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(imageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(searchEmployeeMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(bloodTypeTf, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -579,11 +579,11 @@ public class HMS_SEARCHEMPLOYEE extends javax.swing.JFrame {
     public javax.swing.JLabel fatherEALabel;
     private javax.swing.JTextField fatherEATf;
     public javax.swing.JLabel firstNameLabel;
+    public javax.swing.JLabel imageLabel;
     private javax.swing.JScrollPane jScrollPane1;
     public javax.swing.JLabel lastNameLabel;
     public javax.swing.JLabel lastNameLabel1;
     public javax.swing.JLabel middleNameLabel;
-    public javax.swing.JLabel motherEALabel;
     public javax.swing.JLabel motherEALabel1;
     private javax.swing.JTextField motherEATf;
     private javax.swing.JTextField nationalityTf;

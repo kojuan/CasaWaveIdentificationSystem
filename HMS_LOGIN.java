@@ -1,4 +1,3 @@
-
 package healthMonitoringSystem;
 
 import static healthMonitoringSystem.HMS_MAIN.passwordPanel;
@@ -18,18 +17,16 @@ import javax.swing.border.LineBorder;
 // import javax.swing.SwingConstants; // center text/label
 
 public final class HMS_LOGIN extends javax.swing.JFrame {
-    
+
     public static JLabel passwordLabelText;
-    
 
     /**
      * Creates new form BCLOGIN
      */
     public HMS_LOGIN() {
 
-
         this.setBackground(Color.white); // default white background color.
-        
+
         initComponents();
 
         /* - Download The Connector For JAVA & MySQL Database 
@@ -37,48 +34,38 @@ public final class HMS_LOGIN extends javax.swing.JFrame {
         // OPEN XAMPP and Start Apache & MySQL
         // Go to : http://localhost/phpmyadmin and create a new database
         // Create a Connection with the database
-        
-        
         // center the form
-
-          
         Border glob_panel_border = BorderFactory.createMatteBorder(1, 0, 0, 0, Color.blue);
         bottomPanel.setBorder(glob_panel_border);
-        
+
         // create border for the username and password field
         Border textfields_panel_border = BorderFactory.createMatteBorder(1, 0, 1, 1, Color.blue);
         usernameTf.setBorder(textfields_panel_border);
         passwordTf.setBorder(textfields_panel_border);
-        
+
         Border roundedBorder = new LineBorder(Color.blue, 1, true); // the third parameter - true, says it's round
         usernameTf.setBorder(roundedBorder);
         passwordTf.setBorder(roundedBorder);
-        
+
         showDate();
         showTime();
-        
+
     }
-    
-     
-        
-        void showDate() {
+
+    void showDate() {
+        Date date = new Date();
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        dateLabel.setText(simpleDateFormat.format(date));
+    }
+
+    void showTime() {
+        new Timer(0, (ActionEvent e) -> {
             Date date = new Date();
-            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
-            dateLabel.setText(simpleDateFormat.format(date));
-         }
-        
-        void showTime() {
-        new Timer (0, new ActionListener() {
-           
-           @Override
-           public void actionPerformed(ActionEvent e) {
-               Date date = new Date();
-               SimpleDateFormat simpleDateFormat = new SimpleDateFormat("hh:mm:ss a");
-               timeLabel.setText(simpleDateFormat.format(date));
-           }
+            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("hh:mm:ss a");
+            timeLabel.setText(simpleDateFormat.format(date));
         }).start();
-        }
-       
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -410,74 +397,62 @@ public final class HMS_LOGIN extends javax.swing.JFrame {
     }//GEN-LAST:event_passwordTfActionPerformed
 
     private void loginButtonKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_loginButtonKeyPressed
-        if (evt.getKeyCode()==KeyEvent.VK_ENTER){
-        JOptionPane.showMessageDialog(null , "Login success.");
-    }
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            JOptionPane.showMessageDialog(null, "Login success.");
+        }
     }//GEN-LAST:event_loginButtonKeyPressed
 
     private void usernameTfKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_usernameTfKeyPressed
-        if (evt.getKeyCode()==KeyEvent.VK_ENTER){
-        passwordTf.requestFocusInWindow();
-    }
-        else if (evt.getKeyCode()==KeyEvent.VK_ESCAPE){
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            passwordTf.requestFocusInWindow();
+        } else if (evt.getKeyCode() == KeyEvent.VK_ESCAPE) {
             System.exit(0);
-    }
+        }
     }//GEN-LAST:event_usernameTfKeyPressed
 
     private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
-        
+
         PreparedStatement st;
         ResultSet rs;
-        
+
         // get the username & password
         String username = usernameTf.getText();
         String password = String.valueOf(passwordTf.getPassword());
         //create a select query to check if the username and the password exist in the database
         String query = "SELECT * FROM users WHERE usernameString = ? AND passwordString = ?";
-        
-        // Show a message if the username or the password fields are empty.
-        if (username.trim().equals("username"))
-        {
-            JOptionPane.showMessageDialog(null, "Enter Your Username", "Blank Username or Password", 2);
-        }
-        else if (password.trim().equals("password"))
-        {
-            JOptionPane.showMessageDialog(null, "Enter Your Password", "Blank Username or Password", 2);
-        }
-        else
-        {
-            try {
-            st = HEALTH_MONITORING_SYSTEM_DATABASE.getConnection().prepareStatement(query);
-                 
-            st.setString(1, username);
-            st.setString(2, password);
-            rs = st.executeQuery();
-            
-            if (rs.next())
-            {
-                // show a new form
-                HMS_MAIN.HMS_MAIN();
-                HMS_MAIN.frame.setVisible(true);
-//                 close the current form(login form)
-                this.dispose();
 
-            } else {
-                // error message
-                JOptionPane.showMessageDialog(null, "Invalid Username or Password.\nPlease try again.","Login Error", 2);
+        // Show a message if the username or the password fields are empty.
+        if (username.trim().equals("username")) {
+            JOptionPane.showMessageDialog(null, "Enter Your Username", "Blank Username or Password", 2);
+        } else if (password.trim().equals("password")) {
+            JOptionPane.showMessageDialog(null, "Enter Your Password", "Blank Username or Password", 2);
+        } else {
+            try {
+                st = HEALTH_MONITORING_SYSTEM_DATABASE.getConnection().prepareStatement(query);
+
+                st.setString(1, username);
+                st.setString(2, password);
+                rs = st.executeQuery();
+
+                if (rs.next()) {
+                    // show a new form
+                    HMS_MAIN.HMS_MAIN();
+                    HMS_MAIN.frame.setVisible(true);
+//                 close the current form(login form)
+                    this.dispose();
+
+                } else {
+                    // error message
+                    JOptionPane.showMessageDialog(null, "Invalid Username or Password.\nPlease try again.", "Login Error", 2);
+                }
+
+            } catch (SQLException ex) {
+                Logger.getLogger(HMS_LOGIN.class.getName()).log(Level.SEVERE, null, ex);
+                JOptionPane.showMessageDialog(null, "SQL Server Error.");
             }
-            
-            
-        } catch (SQLException ex) {
-            Logger.getLogger(HMS_LOGIN.class.getName()).log(Level.SEVERE, null, ex);
-            JOptionPane.showMessageDialog(null, "SQL Server Error.");
         }
-        }
-        
-        
-        
-        
-   
-        
+
+
     }//GEN-LAST:event_loginButtonActionPerformed
 
     private void closeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_closeButtonActionPerformed
@@ -486,23 +461,21 @@ public final class HMS_LOGIN extends javax.swing.JFrame {
 
     private void passwordTfFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_passwordTfFocusGained
         // clear the password field on focus if the text is "password"
-        
+
         // get the password text
         String pass = String.valueOf(passwordTf.getPassword());
-        if (pass.trim().toLowerCase().equals("password"))
-        {
+        if (pass.trim().toLowerCase().equals("password")) {
             passwordTf.setText("");
             passwordTf.setForeground(Color.black);
         }
-        
+
         // set a yellow border to the Username Icon
         //Border password_icon = BorderFactory.createMatteBorder(1, 1, 1, 1, Color.yellow);
         //passwordLabel.setBorder(password_icon);
     }//GEN-LAST:event_passwordTfFocusGained
 
     private void usernameTfFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_usernameTfFocusGained
-         if (usernameTf.getText().trim().toLowerCase().equals("username"))
-        {
+        if (usernameTf.getText().trim().toLowerCase().equals("username")) {
             usernameTf.setText("");
             usernameTf.setForeground(Color.black);
         }
@@ -512,58 +485,58 @@ public final class HMS_LOGIN extends javax.swing.JFrame {
     }//GEN-LAST:event_usernameTfFocusGained
 
     private void usernameTfFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_usernameTfFocusLost
-        /** if the text field is equal to username or empty
-        *   we will set the "username" text in the field
-            on focus lost event */
-        if (usernameTf.getText().trim().equals("") ||  //placeholder
-            usernameTf.getText().trim().toLowerCase().equals("username"))
-        {
+        /**
+         * if the text field is equal to username or empty we will set the
+         * "username" text in the field on focus lost event
+         */
+        if (usernameTf.getText().trim().equals("")
+                || //placeholder
+                usernameTf.getText().trim().toLowerCase().equals("username")) {
             usernameTf.setText("username");
             usernameTf.setForeground(new Color(153, 153, 153));
         }
-        
+
 
     }//GEN-LAST:event_usernameTfFocusLost
 
     private void passwordTfFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_passwordTfFocusLost
-         /** if the text field is equal to password or empty
-        *   we will set the "password" text in the field
-            on focus lost event */
-         // get password text
-         String pass = String.valueOf(passwordTf.getPassword());
-        if (pass.trim().equals("") || // placeholder
-            pass.trim().toLowerCase().equals("password"))
-        {
+        /**
+         * if the text field is equal to password or empty we will set the
+         * "password" text in the field on focus lost event
+         */
+        // get password text
+        String pass = String.valueOf(passwordTf.getPassword());
+        if (pass.trim().equals("")
+                || // placeholder
+                pass.trim().toLowerCase().equals("password")) {
             passwordTf.setText("password");
             passwordTf.setForeground(new Color(153, 153, 153));
         }
-        
+
 
     }//GEN-LAST:event_passwordTfFocusLost
 
     private void loginButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loginButtonMouseEntered
         // set Login Button Background
-        loginButton.setBackground(new Color (94, 126, 162));
+        loginButton.setBackground(new Color(94, 126, 162));
     }//GEN-LAST:event_loginButtonMouseEntered
 
     private void loginButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loginButtonMouseExited
         // set Login Button Background
-        loginButton.setBackground(new Color (60, 143, 246));
+        loginButton.setBackground(new Color(60, 143, 246));
     }//GEN-LAST:event_loginButtonMouseExited
 
     private void passwordTfKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_passwordTfKeyPressed
-    if (evt.getKeyCode()==KeyEvent.VK_ESCAPE){
+        if (evt.getKeyCode() == KeyEvent.VK_ESCAPE) {
             System.exit(0);
-    }
+        }
     }//GEN-LAST:event_passwordTfKeyPressed
 
     private void showCBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showCBoxActionPerformed
-        if (showCBox.isSelected())
-        {
-            passwordTf.setEchoChar((char)0);
-        } else
-        {
-            passwordTf.setEchoChar((char)0x2022);
+        if (showCBox.isSelected()) {
+            passwordTf.setEchoChar((char) 0);
+        } else {
+            passwordTf.setEchoChar((char) 0x2022);
         }
     }//GEN-LAST:event_showCBoxActionPerformed
 
@@ -589,9 +562,9 @@ public final class HMS_LOGIN extends javax.swing.JFrame {
         passwordPanel.add(passwordField);
         String[] options = new String[]{"CANCEL", "ACCESS"};
         int option = JOptionPane.showOptionDialog(null, passwordPanel, "Access Admin Tool",
-            JOptionPane.NO_OPTION, JOptionPane.PLAIN_MESSAGE,
-            null, options, options[1]); // default selection
-        if(option == 1) // pressing ACCESS button
+                JOptionPane.NO_OPTION, JOptionPane.PLAIN_MESSAGE,
+                null, options, options[1]); // default selection
+        if (option == 1) // pressing ACCESS button
         {
             PreparedStatement st;
             ResultSet rs;
@@ -604,14 +577,13 @@ public final class HMS_LOGIN extends javax.swing.JFrame {
                 st.setString(1, password);
                 rs = st.executeQuery();
 
-                if (rs.next())
-                {
+                if (rs.next()) {
                     HMS_ADMINFORM adminForm = new HMS_ADMINFORM();
                     adminForm.setVisible(true);
                     this.dispose();
                 } else {
                     // error message
-                    JOptionPane.showMessageDialog(null, "Invalid Special Code.\nPlease try again.","Special Code Invalid", 2);
+                    JOptionPane.showMessageDialog(null, "Invalid Special Code.\nPlease try again.", "Special Code Invalid", 2);
                 }
 
             } catch (SQLException ex) {
@@ -626,22 +598,23 @@ public final class HMS_LOGIN extends javax.swing.JFrame {
      * @throws java.io.IOException
      */
     public static void main(String args[]) throws IOException {
-          // sets the look and feel to be that of the operating system's
-        try { 
+        // sets the look and feel to be that of the operating system's
+        try {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | 
-            UnsupportedLookAndFeelException e) {System.out.println(e + "\n The UI is not compatible for this Operating System. Please contact admin.");}
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException
+                | UnsupportedLookAndFeelException e) {
+            System.out.println(e + "\n The UI is not compatible for this Operating System. Please contact admin.");
+        }
 
-            // Absolute =  Drive +  {folders(s)} + {file} | Uniform Naming Convention
-    // Relative = No drive | ..\ one level up | ..\..\ two levels up
+        // Absolute =  Drive +  {folders(s)} + {file} | Uniform Naming Convention
+        // Relative = No drive | ..\ one level up | ..\..\ two levels up
         final String currentAbsoluteFileDirectoryPath = System.getProperty("user.dir");
         System.out.println("Current absolute path is:" + currentAbsoluteFileDirectoryPath);
-    
+
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(() -> {
             new HMS_LOGIN().setVisible(true);
         });
-     
 
     }
 
@@ -664,6 +637,5 @@ public final class HMS_LOGIN extends javax.swing.JFrame {
     private javax.swing.JLabel userNameLabel;
     private javax.swing.JTextField usernameTf;
     // End of variables declaration//GEN-END:variables
-
 
 }

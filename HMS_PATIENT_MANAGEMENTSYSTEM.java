@@ -1,19 +1,3 @@
-/*
- * Copyright (C) 2020 khian
- *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
- */
 package healthMonitoringSystem;
 
 import com.mysql.jdbc.PreparedStatement;
@@ -37,16 +21,14 @@ import javax.swing.text.AttributeSet;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.PlainDocument;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.sql.Statement;
-import java.sql.ResultSet;
 import java.text.ParseException;
-import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
 import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
@@ -56,14 +38,9 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
  *
  * @author khian
  */
-public final class HMS_PATIENT_MANAGEMENTSYSTEM extends javax.swing.JFrame {
+public class HMS_PATIENT_MANAGEMENTSYSTEM extends javax.swing.JFrame {
 
-    // get database authentication
-    String dbUsername = "root";
-    String dbPassword = "root";
-    String dbServerUrl = "jdbc:mysql://localhost:3306/health_monitoring_system_database";
-    String dbClassPathUrl = "com.mysql.jdbc.Driver";
-
+    HMS_DATABASECONNECTION dbConnect = new HMS_DATABASECONNECTION();
     //get Strings of 'em all
     String patientIdString = "";
     String firstName = "";
@@ -78,95 +55,18 @@ public final class HMS_PATIENT_MANAGEMENTSYSTEM extends javax.swing.JFrame {
     String cellphoneNumber = "";
     String image_path = null;
     Connection connx;
-    DefaultTableModel model;
+    static DefaultTableModel model;
     int currentPosition = 0;
+    HMS_DATAACESSOBJECT_IMPLEMENTATION dao = new HMS_DATAACESSOBJECT_IMPLEMENTATION();
 
     /**
      * Creates new form HMS_PATIENT_MANAGEMENTSYSTEM
      */
     public HMS_PATIENT_MANAGEMENTSYSTEM() throws Exception {
         initComponents();
-        connx = databaseConnection();
+        connx = dbConnect.databaseConnection();
         // Populating patientDataTable
-        populatepatientDataTableFromMySQLDatabase();
-    }
-
-    public Connection databaseConnection() {
-        Connection conn;
-        try {
-            Class.forName(dbClassPathUrl); // load driver
-            JOptionPane.showMessageDialog(null, "Driver loaded.");
-            // connect to database 
-            conn = DriverManager.getConnection(dbServerUrl, dbUsername, dbPassword);
-            JOptionPane.showMessageDialog(null, "Connected.");
-            return conn;
-        } catch (SQLException ex) {
-            return null;
-        } catch (ClassNotFoundException ex) {
-        }
-        return null;
-    }
-
-    // Store database results in Arrayist Method
-    public ArrayList<Patient> patientList() throws SQLException {
-        ArrayList<Patient> patientList = new ArrayList<>();
-        String selectAllSQLQuery = "SELECT * FROM `patients`";
-        Statement stmt;
-        ResultSet rs;
-
-        try {
-            stmt = connx.createStatement();
-            rs = stmt.executeQuery(selectAllSQLQuery);
-
-            // Loop through the results 
-            while (rs.next()) {
-                Patient patient = new Patient();
-                // populate Phone Setters
-                patient.setId(rs.getInt("id"));
-                patient.setfirstName(rs.getString("FirstName"));
-                patient.setmiddleName(rs.getString("MiddleName"));
-                patient.setlastName(rs.getString("LastName"));
-                patient.setGender(rs.getString("Gender"));
-                patient.setdateOfBirth(rs.getString("DateOfBirth"));
-                patient.setbloodType(rs.getString("BloodType"));
-                patient.setcivilStatus(rs.getString("CivilStatus"));
-                patient.setReligion(rs.getString("Religion"));
-                patient.setNationality(rs.getString("Nationality"));
-                patient.setphoneNumber(rs.getString("CellphoneNumber"));
-                patient.setimagePath(rs.getBytes("ImagePath"));
-                patientList.add(patient);
-            }
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, ex);
-        }
-        return patientList;
-    }
-
-    // Populate patientDataTable with Data from Database
-    public void populatepatientDataTableFromMySQLDatabase() throws SQLException {
-        ArrayList<Patient> dataArray = patientList();
-        model = (DefaultTableModel) patientDataTable.getModel();
-        // Clear patientDataTable Rows
-        model.setRowCount(0);
-        Object[] rows = new Object[12];
-
-        // Loop through the ArrayList to Populate patientDataTable
-        for (int i = 0; i < dataArray.size(); i++) {
-            rows[0] = dataArray.get(i).getID();
-            rows[1] = dataArray.get(i).getfirstName();
-            rows[2] = dataArray.get(i).getMiddleName();
-            rows[3] = dataArray.get(i).getLastName();
-            rows[4] = dataArray.get(i).getGender();
-            rows[5] = dataArray.get(i).getdateOfBirth();
-            rows[6] = dataArray.get(i).getbloodType();
-            rows[7] = dataArray.get(i).getcivilStatus();
-            rows[8] = dataArray.get(i).getReligion();
-            rows[9] = dataArray.get(i).getNationality();
-            rows[10] = dataArray.get(i).getphoneNumber();
-            model.addRow(rows);
-
-        }
-
+        dao.populatepatientDataTableFromMySQLDatabase(model, patientDataTable);
     }
 
     /**
@@ -211,10 +111,9 @@ public final class HMS_PATIENT_MANAGEMENTSYSTEM extends javax.swing.JFrame {
         updateButton = new javax.swing.JButton();
         deleteButton = new javax.swing.JButton();
         clearButton = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
-        jButton8 = new javax.swing.JButton();
-        jButton9 = new javax.swing.JButton();
+        moveRowUpButton = new javax.swing.JButton();
+        moveRowDownButton = new javax.swing.JButton();
+        listSelectedButton = new javax.swing.JButton();
         exportExcelButton = new javax.swing.JButton();
         importExcelButton = new javax.swing.JButton();
         printButton = new javax.swing.JButton();
@@ -226,15 +125,16 @@ public final class HMS_PATIENT_MANAGEMENTSYSTEM extends javax.swing.JFrame {
         lastItemInListButton = new javax.swing.JButton();
         nextItemInListButton = new javax.swing.JButton();
         previousItemInListButton = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        filterSearchTf = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("MHMS Patient Data Management System");
         setBackground(new java.awt.Color(255, 255, 255));
         setMaximumSize(new java.awt.Dimension(1920, 1080));
-        setMinimumSize(new java.awt.Dimension(1366, 768));
+        setMinimumSize(new java.awt.Dimension(1920, 1080));
         setName("patientMainFrame"); // NOI18N
         setUndecorated(true);
-        setPreferredSize(new java.awt.Dimension(1920, 1080));
         setResizable(false);
 
         patientFullMainPanel.setBackground(new java.awt.Color(255, 255, 255));
@@ -253,7 +153,7 @@ public final class HMS_PATIENT_MANAGEMENTSYSTEM extends javax.swing.JFrame {
         lastNameLabel.setText("Last Name:");
         lastNameLabel.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
 
-        genderLabel.setText("Gender:");
+        genderLabel.setText("Sex:");
         genderLabel.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
 
         dateOfBirthLabel.setText("Date of Birth:");
@@ -343,7 +243,7 @@ public final class HMS_PATIENT_MANAGEMENTSYSTEM extends javax.swing.JFrame {
         imagePathTf.setEnabled(false);
         imagePathTf.setFocusable(false);
 
-        labelImage.setBackground(new java.awt.Color(102, 102, 0));
+        labelImage.setBackground(new java.awt.Color(102, 102, 102));
         labelImage.setOpaque(true);
 
         browseImageButton.setText("Browse Image");
@@ -354,63 +254,105 @@ public final class HMS_PATIENT_MANAGEMENTSYSTEM extends javax.swing.JFrame {
             }
         });
 
+        addButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/healthMonitoringSystem/APP_IMAGES/mainprogram/addIcon.png"))); // NOI18N
         addButton.setText("Add");
+        addButton.setBackground(new java.awt.Color(235, 245, 255));
+        addButton.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
         addButton.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        addButton.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
         addButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addButtonActionPerformed(evt);
             }
         });
 
+        updateButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/healthMonitoringSystem/APP_IMAGES/mainprogram/refreshIcon.png"))); // NOI18N
         updateButton.setText("Update");
+        updateButton.setBackground(new java.awt.Color(235, 245, 255));
+        updateButton.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
         updateButton.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        updateButton.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
         updateButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 updateButtonActionPerformed(evt);
             }
         });
 
+        deleteButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/healthMonitoringSystem/APP_IMAGES/mainprogram/deleteIcon.png"))); // NOI18N
         deleteButton.setText("Delete");
+        deleteButton.setBackground(new java.awt.Color(235, 245, 255));
+        deleteButton.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
         deleteButton.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        deleteButton.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
         deleteButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 deleteButtonActionPerformed(evt);
             }
         });
 
+        clearButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/healthMonitoringSystem/APP_IMAGES/mainprogram/clearIcon.png"))); // NOI18N
         clearButton.setText("Clear");
+        clearButton.setBackground(new java.awt.Color(235, 245, 255));
+        clearButton.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
         clearButton.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        clearButton.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
         clearButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 clearButtonActionPerformed(evt);
             }
         });
 
-        jButton6.setText("Move Row Up");
-        jButton6.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        moveRowUpButton.setText("Move Row Up");
+        moveRowUpButton.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        moveRowUpButton.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
+        moveRowUpButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                moveRowUpButtonActionPerformed(evt);
+            }
+        });
 
-        jButton7.setText("Move Row Down");
-        jButton7.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        moveRowDownButton.setText("Move Row Down");
+        moveRowDownButton.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        moveRowDownButton.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
+        moveRowDownButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                moveRowDownButtonActionPerformed(evt);
+            }
+        });
 
-        jButton8.setText("View Selected");
-        jButton8.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        listSelectedButton.setText("List Selected");
+        listSelectedButton.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        listSelectedButton.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
+        listSelectedButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                listSelectedButtonActionPerformed(evt);
+            }
+        });
 
-        jButton9.setText("List Selected");
-        jButton9.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-
+        exportExcelButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/healthMonitoringSystem/APP_IMAGES/mainprogram/excel.png"))); // NOI18N
         exportExcelButton.setText("Export (Excel)");
         exportExcelButton.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        exportExcelButton.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
         exportExcelButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 exportExcelButtonActionPerformed(evt);
             }
         });
 
+        importExcelButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/healthMonitoringSystem/APP_IMAGES/mainprogram/excel.png"))); // NOI18N
         importExcelButton.setText("Import (Excel)");
         importExcelButton.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        importExcelButton.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
+        importExcelButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                importExcelButtonActionPerformed(evt);
+            }
+        });
 
-        printButton.setText("Print");
+        printButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/healthMonitoringSystem/APP_IMAGES/mainprogram/printerIcon.png"))); // NOI18N
+        printButton.setText("Print Entire Patient Database");
         printButton.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        printButton.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
         printButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 printButtonActionPerformed(evt);
@@ -440,10 +382,18 @@ public final class HMS_PATIENT_MANAGEMENTSYSTEM extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        patientDataTable.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         patientDataTable.setGridColor(new java.awt.Color(204, 204, 255));
+        patientDataTable.setMaximumSize(new java.awt.Dimension(800, 0));
+        patientDataTable.setMinimumSize(new java.awt.Dimension(800, 0));
         patientDataTable.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 patientDataTableMouseClicked(evt);
+            }
+        });
+        patientDataTable.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                patientDataTableKeyReleased(evt);
             }
         });
         jScrollPane1.setViewportView(patientDataTable);
@@ -460,35 +410,56 @@ public final class HMS_PATIENT_MANAGEMENTSYSTEM extends javax.swing.JFrame {
         imageNameTf.setEnabled(false);
         imageNameTf.setFocusable(false);
 
+        firstItemInListButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/healthMonitoringSystem/APP_IMAGES/mainprogram/first.png"))); // NOI18N
         firstItemInListButton.setText("First");
         firstItemInListButton.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        firstItemInListButton.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
         firstItemInListButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 firstItemInListButtonActionPerformed(evt);
             }
         });
 
-        lastItemInListButton.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lastItemInListButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/healthMonitoringSystem/APP_IMAGES/mainprogram/last.png"))); // NOI18N
         lastItemInListButton.setText("Last");
+        lastItemInListButton.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lastItemInListButton.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
         lastItemInListButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 lastItemInListButtonActionPerformed(evt);
             }
         });
 
-        nextItemInListButton.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        nextItemInListButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/healthMonitoringSystem/APP_IMAGES/mainprogram/next.png"))); // NOI18N
         nextItemInListButton.setText("Next");
+        nextItemInListButton.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        nextItemInListButton.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
         nextItemInListButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 nextItemInListButtonActionPerformed(evt);
             }
         });
 
-        previousItemInListButton.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        previousItemInListButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/healthMonitoringSystem/APP_IMAGES/mainprogram/previous.png"))); // NOI18N
         previousItemInListButton.setText("Previous");
+        previousItemInListButton.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        previousItemInListButton.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
         previousItemInListButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 previousItemInListButtonActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setBackground(new java.awt.Color(235, 241, 253));
+        jLabel1.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        jLabel1.setText("Filter Search:");
+
+        filterSearchTf.setBackground(new java.awt.Color(204, 204, 255));
+        filterSearchTf.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        filterSearchTf.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        filterSearchTf.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                filterSearchTfKeyReleased(evt);
             }
         });
 
@@ -496,79 +467,96 @@ public final class HMS_PATIENT_MANAGEMENTSYSTEM extends javax.swing.JFrame {
         patientFullMainPanel.setLayout(patientFullMainPanelLayout);
         patientFullMainPanelLayout.setHorizontalGroup(
             patientFullMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, patientFullMainPanelLayout.createSequentialGroup()
-                .addContainerGap(30, Short.MAX_VALUE)
+            .addGroup(patientFullMainPanelLayout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(patientFullMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(patientFullMainPanelLayout.createSequentialGroup()
-                        .addGroup(patientFullMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(patientFullMainPanelLayout.createSequentialGroup()
-                                .addGroup(patientFullMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(firstNameLabel)
-                                    .addComponent(patientIDLabel)
-                                    .addComponent(middleNameLabel)
-                                    .addComponent(lastNameLabel)
-                                    .addComponent(genderLabel)
-                                    .addComponent(dateOfBirthLabel)
-                                    .addComponent(bloodTypeLabel)
-                                    .addComponent(civilStatusLabel)
-                                    .addComponent(religionLabel)
-                                    .addComponent(nationalityLabel)
-                                    .addComponent(cellphoneNumberLabel))
-                                .addGap(19, 19, 19)
-                                .addGroup(patientFullMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(middleNameTf, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(lastNameTf, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addGroup(patientFullMainPanelLayout.createSequentialGroup()
-                                        .addComponent(maleCbButton)
-                                        .addGap(29, 29, 29)
-                                        .addComponent(femaleCbButton))
-                                    .addComponent(dateOfBirthPicker, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(bloodTypeCB, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(phoneNumberTf, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(nationalityTf)
-                                    .addComponent(religionCB, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(civilStatusCB, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(firstNameTf)
-                                    .addComponent(patientIdTf, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(patientFullMainPanelLayout.createSequentialGroup()
-                                .addGroup(patientFullMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(imagePathLabel)
-                                    .addComponent(imageNameLabel))
-                                .addGap(68, 68, 68)
-                                .addGroup(patientFullMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(imagePathTf)
-                                    .addComponent(imageNameTf))))
-                        .addGap(18, 18, 18)
-                        .addGroup(patientFullMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(labelImage, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(browseImageButton, javax.swing.GroupLayout.DEFAULT_SIZE, 383, Short.MAX_VALUE))
-                        .addGap(18, 18, 18)
-                        .addGroup(patientFullMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(deleteButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(updateButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 235, Short.MAX_VALUE)
-                            .addComponent(addButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(clearButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(18, 18, 18)
-                        .addGroup(patientFullMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jButton7, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton6, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(patientFullMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(importExcelButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 230, Short.MAX_VALUE)
-                            .addComponent(printButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(exportExcelButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(18, 18, 18)
                         .addGroup(patientFullMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(firstItemInListButton, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lastItemInListButton, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(nextItemInListButton, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(previousItemInListButton, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(52, 52, 52))
-                    .addGroup(patientFullMainPanelLayout.createSequentialGroup()
-                        .addComponent(jScrollPane1)
-                        .addGap(125, 125, 125))))
+                            .addGroup(patientFullMainPanelLayout.createSequentialGroup()
+                                .addGroup(patientFullMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addGroup(patientFullMainPanelLayout.createSequentialGroup()
+                                        .addGroup(patientFullMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addGroup(patientFullMainPanelLayout.createSequentialGroup()
+                                                .addGroup(patientFullMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(firstNameLabel)
+                                                    .addComponent(patientIDLabel)
+                                                    .addComponent(middleNameLabel)
+                                                    .addComponent(dateOfBirthLabel)
+                                                    .addComponent(bloodTypeLabel)
+                                                    .addComponent(civilStatusLabel)
+                                                    .addComponent(religionLabel)
+                                                    .addComponent(nationalityLabel)
+                                                    .addComponent(cellphoneNumberLabel)
+                                                    .addComponent(lastNameLabel))
+                                                .addGap(19, 19, 19))
+                                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, patientFullMainPanelLayout.createSequentialGroup()
+                                                .addComponent(genderLabel)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                                        .addGroup(patientFullMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(middleNameTf, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(lastNameTf, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGroup(patientFullMainPanelLayout.createSequentialGroup()
+                                                .addComponent(maleCbButton)
+                                                .addGap(29, 29, 29)
+                                                .addComponent(femaleCbButton))
+                                            .addComponent(dateOfBirthPicker, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(bloodTypeCB, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(phoneNumberTf, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(nationalityTf, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(religionCB, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(civilStatusCB, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(firstNameTf, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(patientIdTf, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGroup(patientFullMainPanelLayout.createSequentialGroup()
+                                        .addGroup(patientFullMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(imagePathLabel)
+                                            .addComponent(imageNameLabel))
+                                        .addGap(68, 68, 68)
+                                        .addGroup(patientFullMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(imagePathTf, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(imageNameTf, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addGap(18, 18, 18)
+                                .addGroup(patientFullMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(labelImage, javax.swing.GroupLayout.PREFERRED_SIZE, 383, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(browseImageButton, javax.swing.GroupLayout.PREFERRED_SIZE, 383, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(patientFullMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(deleteButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(updateButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(addButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(clearButton, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, patientFullMainPanelLayout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addGap(82, 82, 82)
+                                .addComponent(filterSearchTf)))
+                        .addGap(86, 86, 86)
+                        .addGroup(patientFullMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, patientFullMainPanelLayout.createSequentialGroup()
+                                .addGap(10, 10, 10)
+                                .addComponent(listSelectedButton, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(moveRowUpButton, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(moveRowDownButton, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(patientFullMainPanelLayout.createSequentialGroup()
+                                .addGroup(patientFullMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(patientFullMainPanelLayout.createSequentialGroup()
+                                        .addComponent(firstItemInListButton, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(lastItemInListButton, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(importExcelButton, javax.swing.GroupLayout.PREFERRED_SIZE, 346, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(patientFullMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(exportExcelButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, patientFullMainPanelLayout.createSequentialGroup()
+                                        .addComponent(previousItemInListButton, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(nextItemInListButton, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(patientFullMainPanelLayout.createSequentialGroup()
+                                .addComponent(printButton, javax.swing.GroupLayout.PREFERRED_SIZE, 346, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(162, 162, 162))))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1865, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
         );
         patientFullMainPanelLayout.setVerticalGroup(
             patientFullMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -576,165 +564,160 @@ public final class HMS_PATIENT_MANAGEMENTSYSTEM extends javax.swing.JFrame {
                 .addGap(41, 41, 41)
                 .addGroup(patientFullMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(patientFullMainPanelLayout.createSequentialGroup()
-                        .addGroup(patientFullMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(patientIDLabel)
-                            .addComponent(patientIdTf, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(patientFullMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(firstNameLabel)
-                            .addComponent(firstNameTf, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(patientFullMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(middleNameLabel)
-                            .addComponent(middleNameTf, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(patientFullMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lastNameLabel)
-                            .addComponent(lastNameTf, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(patientFullMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(genderLabel)
-                            .addComponent(maleCbButton)
-                            .addComponent(femaleCbButton))
-                        .addGap(18, 18, 18)
-                        .addGroup(patientFullMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(dateOfBirthLabel)
-                            .addComponent(dateOfBirthPicker, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(patientFullMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(bloodTypeLabel)
-                            .addComponent(bloodTypeCB))
-                        .addGap(18, 18, 18)
-                        .addGroup(patientFullMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(civilStatusLabel)
-                            .addComponent(civilStatusCB))
-                        .addGap(18, 18, 18)
-                        .addGroup(patientFullMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(religionLabel)
-                            .addComponent(religionCB))
-                        .addGap(18, 18, 18)
-                        .addGroup(patientFullMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(nationalityLabel)
-                            .addComponent(nationalityTf, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(patientFullMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(cellphoneNumberLabel)
-                            .addComponent(phoneNumberTf, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18))
-                    .addGroup(patientFullMainPanelLayout.createSequentialGroup()
                         .addGroup(patientFullMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(labelImage, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(patientFullMainPanelLayout.createSequentialGroup()
                                 .addGap(14, 14, 14)
-                                .addGroup(patientFullMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(patientFullMainPanelLayout.createSequentialGroup()
-                                        .addComponent(addButton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(updateButton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(deleteButton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(clearButton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(patientFullMainPanelLayout.createSequentialGroup()
-                                        .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(patientFullMainPanelLayout.createSequentialGroup()
-                                        .addGroup(patientFullMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                            .addComponent(printButton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(firstItemInListButton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGap(18, 18, 18)
-                                        .addGroup(patientFullMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                            .addComponent(importExcelButton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(lastItemInListButton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGap(18, 18, 18)
-                                        .addGroup(patientFullMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                            .addComponent(exportExcelButton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(nextItemInListButton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGap(18, 18, 18)
-                                        .addGroup(patientFullMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                            .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(previousItemInListButton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                        .addGap(15, 15, 15)))
-                .addGroup(patientFullMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(addButton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(updateButton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(deleteButton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(clearButton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, patientFullMainPanelLayout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(printButton)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(patientFullMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(exportExcelButton)
+                                    .addComponent(importExcelButton))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(patientFullMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(firstItemInListButton)
+                                    .addComponent(lastItemInListButton)
+                                    .addComponent(previousItemInListButton)
+                                    .addComponent(nextItemInListButton))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                        .addGroup(patientFullMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(listSelectedButton)
+                            .addComponent(moveRowUpButton)
+                            .addComponent(moveRowDownButton)
+                            .addComponent(filterSearchTf, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
                     .addGroup(patientFullMainPanelLayout.createSequentialGroup()
-                        .addGroup(patientFullMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(imagePathTf, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(imagePathLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(patientFullMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(patientFullMainPanelLayout.createSequentialGroup()
+                                .addGroup(patientFullMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(patientIDLabel)
+                                    .addComponent(patientIdTf, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addGroup(patientFullMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(firstNameLabel)
+                                    .addComponent(firstNameTf, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addGroup(patientFullMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(middleNameLabel)
+                                    .addComponent(middleNameTf, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addGroup(patientFullMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(lastNameLabel)
+                                    .addComponent(lastNameTf, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addGroup(patientFullMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(genderLabel)
+                                    .addComponent(maleCbButton)
+                                    .addComponent(femaleCbButton))
+                                .addGap(18, 18, 18)
+                                .addGroup(patientFullMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(dateOfBirthLabel)
+                                    .addComponent(dateOfBirthPicker, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addGroup(patientFullMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(bloodTypeLabel)
+                                    .addComponent(bloodTypeCB))
+                                .addGap(18, 18, 18)
+                                .addGroup(patientFullMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(civilStatusLabel)
+                                    .addComponent(civilStatusCB))
+                                .addGap(18, 18, 18)
+                                .addGroup(patientFullMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(religionLabel)
+                                    .addComponent(religionCB))
+                                .addGap(18, 18, 18)
+                                .addGroup(patientFullMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(nationalityLabel)
+                                    .addComponent(nationalityTf, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addGroup(patientFullMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(cellphoneNumberLabel)
+                                    .addComponent(phoneNumberTf, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(labelImage, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(18, 18, 18)
+                        .addGroup(patientFullMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(patientFullMainPanelLayout.createSequentialGroup()
+                                .addGroup(patientFullMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(imagePathTf, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(imagePathLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(patientFullMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(imageNameLabel)
+                                    .addComponent(imageNameTf, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(browseImageButton, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(patientFullMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(imageNameLabel)
-                            .addComponent(imageNameTf, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(browseImageButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(23, 23, 23)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(28, 28, 28))
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 394, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(32, 32, 32))
         );
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(patientFullMainPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(patientFullMainPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
+        getContentPane().add(patientFullMainPanel, java.awt.BorderLayout.CENTER);
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void selectPatient(int counter) {
+        patientIdTf.setText(Integer.toString(dao.patientList().get(counter).getID()));
+        firstNameTf.setText(dao.patientList().get(counter).getfirstName());
+        middleNameTf.setText(dao.patientList().get(counter).getMiddleName());
+        lastNameTf.setText(dao.patientList().get(counter).getLastName());
+        String gender = dao.patientList().get(counter).getGender();
+        if (gender.equals("Male")) {
+            maleCbButton.setSelected(true);
+        } else if (gender.contains("Female")) {
+            femaleCbButton.setSelected(true);
+        }
+        String bloodTypeString = dao.patientList().get(counter).getbloodType();
+        for (int row = 0; row < bloodTypeCB.getItemCount(); row++) {
+            if (bloodTypeCB.getItemAt(row).equalsIgnoreCase(bloodTypeString)) {
+                bloodTypeCB.setSelectedIndex(row);
+            }
+        }
+        String civilStatusString = dao.patientList().get(counter).getcivilStatus();
+        for (int row = 0; row < civilStatusCB.getItemCount(); row++) {
+            if (civilStatusCB.getItemAt(row).equalsIgnoreCase(civilStatusString)) {
+                civilStatusCB.setSelectedIndex(row);
+            }
+        }
+        String religionString = dao.patientList().get(counter).getReligion();
+        for (int row = 0; row < religionCB.getItemCount(); row++) {
+            if (religionCB.getItemAt(row).equalsIgnoreCase(religionString)) {
+                religionCB.setSelectedIndex(row);
+            }
+        }
+        nationalityTf.setText(dao.patientList().get(counter).getNationality());
+        phoneNumberTf.setText(dao.patientList().get(counter).getphoneNumber());
+
         try {
-            patientIdTf.setText(Integer.toString(patientList().get(counter).getID()));
-            firstNameTf.setText(patientList().get(counter).getfirstName());
-            middleNameTf.setText(patientList().get(counter).getMiddleName());
-            lastNameTf.setText(patientList().get(counter).getLastName());
-            String gender = patientList().get(counter).getGender();
-            if (gender.equals("Male")) {
-                maleCbButton.setSelected(true);
-            } else if (gender.contains("Female")) {
-                femaleCbButton.setSelected(true);
-            }
-
-            String bloodTypeString = patientList().get(counter).getbloodType();
-            for (int row = 0; row < bloodTypeCB.getItemCount(); row++) {
-                if (bloodTypeCB.getItemAt(row).equalsIgnoreCase(bloodTypeString)) {
-                    bloodTypeCB.setSelectedIndex(row);
-                }
-            }
-
-            String civilStatusString = patientList().get(counter).getcivilStatus();
-            for (int row = 0; row < civilStatusCB.getItemCount(); row++) {
-                if (civilStatusCB.getItemAt(row).equalsIgnoreCase(civilStatusString)) {
-                    civilStatusCB.setSelectedIndex(row);
-                }
-            }
-
-            String religionString = patientList().get(counter).getReligion();
-            for (int row = 0; row < religionCB.getItemCount(); row++) {
-                if (religionCB.getItemAt(row).equalsIgnoreCase(religionString)) {
-                    religionCB.setSelectedIndex(row);
-                }
-            }
-
-            nationalityTf.setText(patientList().get(counter).getNationality());
-            phoneNumberTf.setText(patientList().get(counter).getphoneNumber());
-            labelImage.setIcon(new ImageIcon(new ImageIcon(patientList().get(counter).getimagePath()).getImage().getScaledInstance(labelImage.getWidth(), labelImage.getHeight(), Image.SCALE_SMOOTH)));
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, ex);
+            labelImage.setIcon(new ImageIcon(new ImageIcon(dao.patientList().get(counter).getimagePath()).getImage().getScaledInstance(labelImage.getWidth(), labelImage.getHeight(), Image.SCALE_SMOOTH)));
+        } catch (Exception err) {
+            this.invalidate();
+            this.validate();
+            this.repaint();
+        } finally {
+            labelImage.setIcon(new ImageIcon(new ImageIcon(dao.patientList().get(counter).getimagePath()).getImage().getScaledInstance(labelImage.getWidth(), labelImage.getHeight(), Image.SCALE_SMOOTH)));
         }
     }
     // limit phone number max
+
+    // FILTER DATA
+    private void filter(String query) {
+        DefaultTableModel dm = (DefaultTableModel) patientDataTable.getModel();
+        TableRowSorter<DefaultTableModel> tr = new TableRowSorter<>(dm);
+        patientDataTable.setRowSorter(tr);
+        tr.setRowFilter(RowFilter.regexFilter(query));
+    }
 
     public class JTextFieldLimit extends PlainDocument {
 
@@ -811,103 +794,110 @@ public final class HMS_PATIENT_MANAGEMENTSYSTEM extends javax.swing.JFrame {
         }
     }
     private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
-        try {
-            firstName = firstNameTf.getText();
-            middleName = middleNameTf.getText();
-            lastName = lastNameTf.getText();
+        if (image_path == null) {
+            JOptionPane.showMessageDialog(null, "It is recommended to have an image of the patient to verify identity.", "Information", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            try {
+                firstName = firstNameTf.getText();
+                middleName = middleNameTf.getText();
+                lastName = lastNameTf.getText();
 
-            if (maleCbButton.isSelected()) {
-                genderSelect = "Male";
-            } else if (femaleCbButton.isSelected()) {
-                genderSelect = "Female";
-            }
-
-            dateOfBirth = dateOfBirthPicker.getDateStringOrEmptyString(); // bday
-            bloodType = String.valueOf(bloodTypeCB.getSelectedItem());
-            civilStatus = String.valueOf(civilStatusCB.getSelectedItem());
-            religion = String.valueOf(religionCB.getSelectedItem());
-            nationality = nationalityTf.getText();
-            cellphoneNumber = phoneNumberTf.getText();
-
-            if (verifyFields()) {
-                PreparedStatement pst;
-                String registerPatientQuery = "INSERT INTO `patients`(`FirstName`, `MiddleName`, `LastName`, `Gender`, `DateOfBirth`, `BloodType`, `CivilStatus`, `Religion`, `Nationality`, `CellphoneNumber`, `ImagePath`) VALUES (?,?,?,?,?,?,?,?,?,?,?)";
-
-                try {
-
-                    pst = (PreparedStatement) HEALTH_MONITORING_SYSTEM_DATABASE.getConnection().prepareStatement(registerPatientQuery);
-                    pst.setString(1, firstName);
-                    pst.setString(2, middleName);
-                    pst.setString(3, lastName);
-                    pst.setString(4, genderSelect);
-                    pst.setString(5, dateOfBirth);
-                    pst.setString(6, bloodType);
-                    pst.setString(7, civilStatus);
-                    pst.setString(8, religion);
-                    pst.setString(9, nationality);
-                    pst.setString(10, cellphoneNumber);
-
-                    try {
-                        // Save the image as BLOB in the Database
-                        if (image_path != null) {
-
-                            InputStream image = new FileInputStream(new File(image_path));
-                            pst.setBlob(11, image);
-                        } else if (image_path == null) {
-                            pst.setNull(11, java.sql.Types.NULL);
-                            System.out.println("No image attached.");
-                        } else {
-                            pst.setNull(1, java.sql.Types.NULL);
-                            System.out.println("No image attached.");
-                        }
-                        if (pst.executeUpdate() != 0) {
-                            JOptionPane.showMessageDialog(null, "Patient data added.");
-                            clearAllInputFields();
-                            // Refresh patientDataTable after adding new entry to database
-                            populatepatientDataTableFromMySQLDatabase();
-                        } else {
-                            JOptionPane.showMessageDialog(null, "Error: Check your Information.");
-                        }
-                        pst.setNull(11, java.sql.Types.NULL);
-                    } catch (FileNotFoundException ex) {
-                        JOptionPane.showMessageDialog(null, ex);
-                    }
-                } catch (HeadlessException | SQLException ex) {
-                    JOptionPane.showMessageDialog(null, ex);
+                if (maleCbButton.isSelected()) {
+                    genderSelect = "Male";
+                } else if (femaleCbButton.isSelected()) {
+                    genderSelect = "Female";
                 }
 
-            }
-        } catch (ParseException ex) {
-            Logger.getLogger(HMS_PATIENT_MANAGEMENTSYSTEM.class.getName()).log(Level.SEVERE, null, ex);
-        }
+                dateOfBirth = dateOfBirthPicker.getDateStringOrEmptyString(); // bday
+                bloodType = String.valueOf(bloodTypeCB.getSelectedItem());
+                civilStatus = String.valueOf(civilStatusCB.getSelectedItem());
+                religion = String.valueOf(religionCB.getSelectedItem());
+                nationality = nationalityTf.getText();
+                cellphoneNumber = phoneNumberTf.getText();
 
+                if (verifyFields()) {
+                    PreparedStatement pst;
+                    String registerPatientQuery = "INSERT INTO `patients`(`FirstName`, `MiddleName`, `LastName`, `Gender`, `DateOfBirth`, `BloodType`, `CivilStatus`, `Religion`, `Nationality`, `CellphoneNumber`, `ImagePath`) VALUES (?,?,?,?,?,?,?,?,?,?,?)";
+
+                    try {
+
+                        pst = (PreparedStatement) HEALTH_MONITORING_SYSTEM_DATABASE.getConnection().prepareStatement(registerPatientQuery);
+                        pst.setString(1, firstName);
+                        pst.setString(2, middleName);
+                        pst.setString(3, lastName);
+                        pst.setString(4, genderSelect);
+                        pst.setString(5, dateOfBirth);
+                        pst.setString(6, bloodType);
+                        pst.setString(7, civilStatus);
+                        pst.setString(8, religion);
+                        pst.setString(9, nationality);
+                        pst.setString(10, cellphoneNumber);
+
+                        try {
+                            // Save the image as BLOB in the Database
+                            if (image_path != null) {
+
+                                InputStream image = new FileInputStream(new File(image_path));
+                                pst.setBlob(11, image);
+                            } else if (image_path == null) {
+                                pst.setNull(11, java.sql.Types.NULL);
+                                System.out.println("No image attached.");
+                            } else {
+                                pst.setNull(1, java.sql.Types.NULL);
+                                System.out.println("No image attached.");
+                            }
+                            if (pst.executeUpdate() != 0) {
+                                JOptionPane.showMessageDialog(null, "Patient data added.");
+                                clearAllInputFields();
+                                // Refresh patientDataTable after adding new entry to database
+                                dao.populatepatientDataTableFromMySQLDatabase(model, patientDataTable);
+
+                                this.invalidate();
+                                this.validate();
+                                this.repaint();
+                            } else {
+                                JOptionPane.showMessageDialog(null, "Error: Check your Information.");
+                            }
+                            pst.setNull(11, java.sql.Types.NULL);
+                        } catch (FileNotFoundException ex) {
+                            JOptionPane.showMessageDialog(null, ex);
+                        }
+                    } catch (HeadlessException | SQLException ex) {
+                        JOptionPane.showMessageDialog(null, ex);
+                    }
+
+                }
+            } catch (ParseException ex) {
+                Logger.getLogger(HMS_PATIENT_MANAGEMENTSYSTEM.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
 
     }//GEN-LAST:event_addButtonActionPerformed
 
     private void nationalityTfKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nationalityTfKeyTyped
         char charInputOnly = evt.getKeyChar();
-        if (!(Character.isAlphabetic(charInputOnly) || (charInputOnly == KeyEvent.VK_BACK_SPACE) || charInputOnly == KeyEvent.VK_DELETE)) {
+        if (!(Character.isAlphabetic(charInputOnly) || (charInputOnly == KeyEvent.VK_BACK_SPACE) || charInputOnly == KeyEvent.VK_DELETE || charInputOnly == KeyEvent.VK_SPACE)) {
             evt.consume();
         }
     }//GEN-LAST:event_nationalityTfKeyTyped
 
     private void firstNameTfKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_firstNameTfKeyTyped
         char charInputOnly = evt.getKeyChar();
-        if (!(Character.isAlphabetic(charInputOnly) || (charInputOnly == KeyEvent.VK_BACK_SPACE) || charInputOnly == KeyEvent.VK_DELETE)) {
+        if (!(Character.isAlphabetic(charInputOnly) || (charInputOnly == KeyEvent.VK_BACK_SPACE) || charInputOnly == KeyEvent.VK_DELETE || charInputOnly == KeyEvent.VK_SPACE)) {
             evt.consume();
         }
     }//GEN-LAST:event_firstNameTfKeyTyped
 
     private void middleNameTfKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_middleNameTfKeyTyped
         char charInputOnly = evt.getKeyChar();
-        if (!(Character.isAlphabetic(charInputOnly) || (charInputOnly == KeyEvent.VK_BACK_SPACE) || charInputOnly == KeyEvent.VK_DELETE)) {
+        if (!(Character.isAlphabetic(charInputOnly) || (charInputOnly == KeyEvent.VK_BACK_SPACE) || charInputOnly == KeyEvent.VK_DELETE || charInputOnly == KeyEvent.VK_SPACE)) {
             evt.consume();
         }
     }//GEN-LAST:event_middleNameTfKeyTyped
 
     private void lastNameTfKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_lastNameTfKeyTyped
         char charInputOnly = evt.getKeyChar();
-        if (!(Character.isAlphabetic(charInputOnly) || (charInputOnly == KeyEvent.VK_BACK_SPACE) || charInputOnly == KeyEvent.VK_DELETE)) {
+        if (!(Character.isAlphabetic(charInputOnly) || (charInputOnly == KeyEvent.VK_BACK_SPACE) || charInputOnly == KeyEvent.VK_DELETE || charInputOnly == KeyEvent.VK_SPACE)) {
             evt.consume();
         }
     }//GEN-LAST:event_lastNameTfKeyTyped
@@ -924,15 +914,20 @@ public final class HMS_PATIENT_MANAGEMENTSYSTEM extends javax.swing.JFrame {
         phoneNumberTf.setText("");
         labelImage.setIcon(null);
         image_path = null;
+        imagePathTf.setText("");
+        imageNameTf.setText("");
 
     }
     private void clearButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearButtonActionPerformed
         clearAllInputFields();
+        this.invalidate();
+        this.validate();
+        this.repaint();
     }//GEN-LAST:event_clearButtonActionPerformed
 
-
+    int patientDataTableSelectedRow;
     private void patientDataTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_patientDataTableMouseClicked
-        int patientDataTableSelectedRow = patientDataTable.getSelectedRow();
+        patientDataTableSelectedRow = patientDataTable.getSelectedRow();
 
         // make currentPosition start counting from the selected JTable Row
         currentPosition = patientDataTableSelectedRow;
@@ -945,11 +940,7 @@ public final class HMS_PATIENT_MANAGEMENTSYSTEM extends javax.swing.JFrame {
     }//GEN-LAST:event_firstItemInListButtonActionPerformed
 
     private void lastItemInListButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lastItemInListButtonActionPerformed
-        try {
-            currentPosition = patientList().size() - 1;
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, ex);
-        }
+        currentPosition = dao.patientList().size() - 1;
         selectPatient(currentPosition);
     }//GEN-LAST:event_lastItemInListButtonActionPerformed
 
@@ -958,15 +949,11 @@ public final class HMS_PATIENT_MANAGEMENTSYSTEM extends javax.swing.JFrame {
 
         currentPosition++;
 
-        try {
-            if (currentPosition > patientList().size() - 1) {
-                currentPosition = 0;
-            }
-
-            // If you reach the last item , move back to the first item.
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, ex);
+        if (currentPosition > dao.patientList().size() - 1) {
+            currentPosition = 0;
         }
+
+        // If you reach the last item , move back to the first item.
         selectPatient(currentPosition);
     }//GEN-LAST:event_nextItemInListButtonActionPerformed
 
@@ -975,11 +962,7 @@ public final class HMS_PATIENT_MANAGEMENTSYSTEM extends javax.swing.JFrame {
 
         currentPosition--;
         if (currentPosition < 0) {
-            try {
-                currentPosition = patientList().size() - 1;
-            } catch (SQLException ex) {
-                JOptionPane.showMessageDialog(null, ex);
-            }
+            currentPosition = dao.patientList().size() - 1;
         }
         selectPatient(currentPosition);
     }//GEN-LAST:event_previousItemInListButtonActionPerformed
@@ -1007,7 +990,10 @@ public final class HMS_PATIENT_MANAGEMENTSYSTEM extends javax.swing.JFrame {
                     // Close inpt fields after deleting  
                     clearAllInputFields();
                     // Refresh JTable to remove deleted row
-                    populatepatientDataTableFromMySQLDatabase();
+                    dao.populatepatientDataTableFromMySQLDatabase(model, patientDataTable);
+                    this.invalidate();
+                    this.validate();
+                    this.repaint();
 
                 }
             } catch (SQLException ex) {
@@ -1032,74 +1018,83 @@ public final class HMS_PATIENT_MANAGEMENTSYSTEM extends javax.swing.JFrame {
         if (patientIdTf.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "ID Field is Empty.");
         } else {
-            try {
-                firstName = firstNameTf.getText();
-                middleName = middleNameTf.getText();
-                lastName = lastNameTf.getText();
 
-                if (maleCbButton.isSelected()) {
-                    genderSelect = "Male";
-                } else if (femaleCbButton.isSelected()) {
-                    genderSelect = "Female";
-                }
+            if (labelImage == null) {
+                JOptionPane.showMessageDialog(null, "It is recommended to have an image of the patient to verify identity.\nPlease insert or update the image.", "Information", JOptionPane.INFORMATION_MESSAGE);
+            } else {
 
-                dateOfBirth = dateOfBirthPicker.getDateStringOrEmptyString(); // bday
-                bloodType = String.valueOf(bloodTypeCB.getSelectedItem());
-                civilStatus = String.valueOf(civilStatusCB.getSelectedItem());
-                religion = String.valueOf(religionCB.getSelectedItem());
-                nationality = nationalityTf.getText();
-                cellphoneNumber = phoneNumberTf.getText();
+                try {
+                    firstName = firstNameTf.getText();
+                    middleName = middleNameTf.getText();
+                    lastName = lastNameTf.getText();
 
-                if (verifyFields()) {
-                    PreparedStatement pst;
-                    String updatePatientQuery = "UPDATE `patients` SET `FirstName`=?,`MiddleName`=?,`LastName`=?,`Gender`=?,`DateOfBirth`=?,`BloodType`=?,`CivilStatus`=?,`Religion`=?,`Nationality`=?,`CellphoneNumber`=?,`ImagePath`=? WHERE id = " + patientIdTf.getText();
-
-                    try {
-
-                        pst = (PreparedStatement) HEALTH_MONITORING_SYSTEM_DATABASE.getConnection().prepareStatement(updatePatientQuery);
-                        pst.setString(1, firstName);
-                        pst.setString(2, middleName);
-                        pst.setString(3, lastName);
-                        pst.setString(4, genderSelect);
-                        pst.setString(5, dateOfBirth);
-                        pst.setString(6, bloodType);
-                        pst.setString(7, civilStatus);
-                        pst.setString(8, religion);
-                        pst.setString(9, nationality);
-                        pst.setString(10, cellphoneNumber);
-
-                        try {
-                            // Save the image as BLOB in the Database
-                            if (image_path != null) {
-
-                                InputStream image = new FileInputStream(new File(image_path));
-                                pst.setBlob(11, image);
-                            } else if (image_path == null) {
-                                pst.setNull(11, java.sql.Types.NULL);
-                                System.out.println("No image attached.");
-                            } else {
-                                pst.setNull(1, java.sql.Types.NULL);
-                                System.out.println("No image attached.");
-                            }
-                            if (pst.executeUpdate() != 0) {
-                                JOptionPane.showMessageDialog(null, "Patient data has been updated.");
-                                clearAllInputFields();
-                                // Refresh patientDataTable after adding new entry to database
-                                populatepatientDataTableFromMySQLDatabase();
-                            } else {
-                                JOptionPane.showMessageDialog(null, "Error: Check your Information.");
-                            }
-                            pst.setNull(11, java.sql.Types.NULL);
-                        } catch (FileNotFoundException ex) {
-                            JOptionPane.showMessageDialog(null, ex);
-                        }
-                    } catch (HeadlessException | SQLException ex) {
-                        JOptionPane.showMessageDialog(null, ex);
+                    if (maleCbButton.isSelected()) {
+                        genderSelect = "Male";
+                    } else if (femaleCbButton.isSelected()) {
+                        genderSelect = "Female";
                     }
 
+                    dateOfBirth = dateOfBirthPicker.getDateStringOrEmptyString(); // bday
+                    bloodType = String.valueOf(bloodTypeCB.getSelectedItem());
+                    civilStatus = String.valueOf(civilStatusCB.getSelectedItem());
+                    religion = String.valueOf(religionCB.getSelectedItem());
+                    nationality = nationalityTf.getText();
+                    cellphoneNumber = phoneNumberTf.getText();
+
+                    if (verifyFields()) {
+                        PreparedStatement pst;
+                        String updatePatientQuery = "UPDATE `patients` SET `FirstName`=?,`MiddleName`=?,`LastName`=?,`Gender`=?,`DateOfBirth`=?,`BloodType`=?,`CivilStatus`=?,`Religion`=?,`Nationality`=?,`CellphoneNumber`=?,`ImagePath`=? WHERE id = " + patientIdTf.getText();
+
+                        try {
+
+                            pst = (PreparedStatement) HEALTH_MONITORING_SYSTEM_DATABASE.getConnection().prepareStatement(updatePatientQuery);
+                            pst.setString(1, firstName);
+                            pst.setString(2, middleName);
+                            pst.setString(3, lastName);
+                            pst.setString(4, genderSelect);
+                            pst.setString(5, dateOfBirth);
+                            pst.setString(6, bloodType);
+                            pst.setString(7, civilStatus);
+                            pst.setString(8, religion);
+                            pst.setString(9, nationality);
+                            pst.setString(10, cellphoneNumber);
+
+                            try {
+                                // Save the image as BLOB in the Database
+                                if (image_path != null) {
+
+                                    InputStream image = new FileInputStream(new File(image_path));
+                                    pst.setBlob(11, image);
+                                } else if (image_path == null) {
+                                    pst.setNull(11, java.sql.Types.NULL);
+                                    System.out.println("No image attached.");
+                                } else {
+                                    pst.setNull(1, java.sql.Types.NULL);
+                                    System.out.println("No image attached.");
+                                }
+                                if (pst.executeUpdate() != 0) {
+                                    JOptionPane.showMessageDialog(null, "Patient data has been updated.");
+                                    clearAllInputFields();
+                                    this.invalidate();
+                                    this.validate();
+                                    this.repaint();
+                                    // Refresh patientDataTable after adding new entry to database
+                                    dao.populatepatientDataTableFromMySQLDatabase(model, patientDataTable);
+                                } else {
+                                    JOptionPane.showMessageDialog(null, "Error: Check your Information.");
+                                }
+                                pst.setNull(11, java.sql.Types.NULL);
+                            } catch (FileNotFoundException ex) {
+                                JOptionPane.showMessageDialog(null, ex);
+                            }
+                        } catch (HeadlessException | SQLException ex) {
+                            JOptionPane.showMessageDialog(null, ex);
+                        }
+
+                    }
+                } catch (ParseException ex) {
+                    JOptionPane.showMessageDialog(null, ex);
                 }
-            } catch (ParseException ex) {
-                JOptionPane.showMessageDialog(null, ex);
             }
         }
 
@@ -1143,30 +1138,102 @@ public final class HMS_PATIENT_MANAGEMENTSYSTEM extends javax.swing.JFrame {
                 excelXSSFWorkBookExporter.close();
             } catch (IOException iOException) {
             }
+            JOptionPane.showMessageDialog(null, "Exported data successfully.");
         }
-
-
     }//GEN-LAST:event_exportExcelButtonActionPerformed
 
     private void printButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_printButtonActionPerformed
-
         try {
             boolean printPatientTable = patientDataTable.print();
-            
-            if (!printPatientTable) {  
+
+            if (!printPatientTable) {
             } else {
                 JOptionPane.showMessageDialog(null, "Printed successfully.");
             }
-            
-            
+
         } catch (PrinterException ex) {
             JOptionPane.showMessageDialog(null, ex);
         }
     }//GEN-LAST:event_printButtonActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
+    private void listSelectedButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listSelectedButtonActionPerformed
+        ListSelectedJTableRowsJFrame showListSelectedRows = new ListSelectedJTableRowsJFrame();
+
+        int modelSelectedRow = patientDataTable.getSelectedRow();
+        if (modelSelectedRow == -1) {
+            JOptionPane.showMessageDialog(null, "No selected row in the list.", "Nothing selected", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            showListSelectedRows.setVisible(true);
+
+            // Clear all rows before populating 
+            showListSelectedRows.listSelectedJTableRowsJFrameModel.setRowCount(0);
+            // Store selected rows in an integer array
+            int[] getSelectedRows = patientDataTable.getSelectedRows();
+            Object[] objects = new Object[11];
+
+            for (int row = 0; row < getSelectedRows.length; row++) {
+                objects[0] = model.getValueAt(getSelectedRows[row], 0);
+                objects[1] = model.getValueAt(getSelectedRows[row], 1);
+                objects[2] = model.getValueAt(getSelectedRows[row], 2);
+                objects[3] = model.getValueAt(getSelectedRows[row], 3);
+                objects[4] = model.getValueAt(getSelectedRows[row], 4);
+                objects[5] = model.getValueAt(getSelectedRows[row], 5);
+                objects[6] = model.getValueAt(getSelectedRows[row], 6);
+                objects[7] = model.getValueAt(getSelectedRows[row], 7);
+                objects[8] = model.getValueAt(getSelectedRows[row], 8);
+                objects[9] = model.getValueAt(getSelectedRows[row], 9);
+                objects[10] = model.getValueAt(getSelectedRows[row], 10);
+
+                showListSelectedRows.listSelectedJTableRowsJFrameModel.addRow(objects);
+
+            }
+
+        }
+
+
+    }//GEN-LAST:event_listSelectedButtonActionPerformed
+
+    private void importExcelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_importExcelButtonActionPerformed
+        ImportDataFromExcel showImportDataFromExcelFrame = new ImportDataFromExcel();
+        showImportDataFromExcelFrame.setVisible(true);
+    }//GEN-LAST:event_importExcelButtonActionPerformed
+
+    private void moveRowUpButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_moveRowUpButtonActionPerformed
+
+        // GetSelectedRow First and Store its value in a variable
+        int getSelectedRow = patientDataTable.getSelectedRow();
+        if (getSelectedRow > 0) {
+            System.out.println(getSelectedRow);
+            model.moveRow(getSelectedRow, getSelectedRow, getSelectedRow - 1);
+            patientDataTable.getSelectionModel().setSelectionInterval(getSelectedRow - 1, getSelectedRow - 1);
+        } else {
+            JOptionPane.showMessageDialog(null, "You have reached the top row.");
+        }
+    }//GEN-LAST:event_moveRowUpButtonActionPerformed
+
+    private void moveRowDownButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_moveRowDownButtonActionPerformed
+        int getSelectedRow = patientDataTable.getSelectedRow();
+        if (getSelectedRow > 0) {
+            model.moveRow(getSelectedRow, getSelectedRow, getSelectedRow + 1);
+            patientDataTable.getSelectionModel().setSelectionInterval(getSelectedRow + 1, getSelectedRow + 1);
+        } else {
+            JOptionPane.showMessageDialog(null, "You have reached the bottom row.");
+        }
+    }//GEN-LAST:event_moveRowDownButtonActionPerformed
+
+    private void patientDataTableKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_patientDataTableKeyReleased
+        // Get the selected row index
+        patientDataTableSelectedRow = patientDataTable.getSelectedRow();
+        if (evt.getKeyCode() == KeyEvent.VK_UP || evt.getKeyCode() == KeyEvent.VK_DOWN) {
+            selectPatient(patientDataTableSelectedRow);
+        }
+    }//GEN-LAST:event_patientDataTableKeyReleased
+
+    private void filterSearchTfKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_filterSearchTfKeyReleased
+        String query = filterSearchTf.getText();
+        filter(query);
+    }//GEN-LAST:event_filterSearchTfKeyReleased
+
     public static void main(String args[]) {
         try {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
@@ -1201,6 +1268,7 @@ public final class HMS_PATIENT_MANAGEMENTSYSTEM extends javax.swing.JFrame {
     private javax.swing.JButton deleteButton;
     private javax.swing.JButton exportExcelButton;
     private javax.swing.JCheckBox femaleCbButton;
+    private javax.swing.JTextField filterSearchTf;
     private javax.swing.JButton firstItemInListButton;
     private javax.swing.JLabel firstNameLabel;
     private javax.swing.JTextField firstNameTf;
@@ -1211,22 +1279,22 @@ public final class HMS_PATIENT_MANAGEMENTSYSTEM extends javax.swing.JFrame {
     private javax.swing.JLabel imagePathLabel;
     private javax.swing.JTextField imagePathTf;
     private javax.swing.JButton importExcelButton;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
-    private javax.swing.JButton jButton9;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel labelImage;
     private javax.swing.JButton lastItemInListButton;
     private javax.swing.JLabel lastNameLabel;
     private javax.swing.JTextField lastNameTf;
+    private javax.swing.JButton listSelectedButton;
     private javax.swing.JCheckBox maleCbButton;
     private javax.swing.JLabel middleNameLabel;
     private javax.swing.JTextField middleNameTf;
+    private javax.swing.JButton moveRowDownButton;
+    private javax.swing.JButton moveRowUpButton;
     private javax.swing.JLabel nationalityLabel;
     private javax.swing.JTextField nationalityTf;
     private javax.swing.JButton nextItemInListButton;
-    private javax.swing.JTable patientDataTable;
+    public static javax.swing.JTable patientDataTable;
     private javax.swing.JPanel patientFullMainPanel;
     private javax.swing.JLabel patientIDLabel;
     private javax.swing.JTextField patientIdTf;

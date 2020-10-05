@@ -1,4 +1,3 @@
-
 package healthMonitoringSystem;
 
 import java.awt.Desktop;
@@ -6,6 +5,10 @@ import java.awt.event.KeyEvent;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
@@ -19,8 +22,6 @@ public class HMS_ADMINFORM extends javax.swing.JFrame {
      * Creates new form HMS_ADMINTOOLFORM
      */
     public HMS_ADMINFORM() {
-        
-    
 
         initComponents();
         adminCancelButton.requestFocus();
@@ -273,7 +274,7 @@ public class HMS_ADMINFORM extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void registerEmployeeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerEmployeeButtonActionPerformed
-         HMS_EMPLOYEE_REGISTRATION employeeRegistrationForm = new HMS_EMPLOYEE_REGISTRATION();
+        HMS_EMPLOYEE_REGISTRATION employeeRegistrationForm = new HMS_EMPLOYEE_REGISTRATION();
         employeeRegistrationForm.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_registerEmployeeButtonActionPerformed
@@ -283,19 +284,21 @@ public class HMS_ADMINFORM extends javax.swing.JFrame {
     }//GEN-LAST:event_adminCancelButtonMouseClicked
 
     private void registerEmployeeButtonKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_registerEmployeeButtonKeyPressed
-        if (evt.getKeyCode()==KeyEvent.VK_ESCAPE){
+        if (evt.getKeyCode() == KeyEvent.VK_ESCAPE) {
             this.dispose();
             HMS_LOGIN showLoginScreen = new HMS_LOGIN();
-            showLoginScreen.setVisible(true);}
-        else{}
+            showLoginScreen.setVisible(true);
+        } else {
+        }
     }//GEN-LAST:event_registerEmployeeButtonKeyPressed
 
     private void adminCancelButtonKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_adminCancelButtonKeyPressed
-        if (evt.getKeyCode()==KeyEvent.VK_ESCAPE){
+        if (evt.getKeyCode() == KeyEvent.VK_ESCAPE) {
             HMS_LOGIN showLoginScreen = new HMS_LOGIN();
             showLoginScreen.setVisible(true);
             this.dispose();
-        } else{}
+        } else {
+        }
     }//GEN-LAST:event_adminCancelButtonKeyPressed
 
     private void adminCancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adminCancelButtonActionPerformed
@@ -305,7 +308,7 @@ public class HMS_ADMINFORM extends javax.swing.JFrame {
     }//GEN-LAST:event_adminCancelButtonActionPerformed
 
     private void manageUserButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageUserButtonActionPerformed
-        
+
     }//GEN-LAST:event_manageUserButtonActionPerformed
 
     private void manageEmployeesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageEmployeesButtonActionPerformed
@@ -331,67 +334,75 @@ public class HMS_ADMINFORM extends javax.swing.JFrame {
     }//GEN-LAST:event_registerUserInDatabaseButton1ActionPerformed
 
     private void registerUserInDatabaseButton1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_registerUserInDatabaseButton1KeyPressed
-        if (evt.getKeyCode()==KeyEvent.VK_ESCAPE){
+        if (evt.getKeyCode() == KeyEvent.VK_ESCAPE) {
             this.dispose();
             HMS_LOGIN showLoginScreen = new HMS_LOGIN();
-            showLoginScreen.setVisible(true);}
-        else{}  
+            showLoginScreen.setVisible(true);
+        } else {
+        }
     }//GEN-LAST:event_registerUserInDatabaseButton1KeyPressed
 
     private void managePatientsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_managePatientsButtonActionPerformed
         try {
-
-            Desktop.getDesktop().browse(new URI("http://localhost/phpmyadmin/sql.php?server=1&db=health_monitoring_system_database&table=patients&pos=0"));
-
-        } catch (IOException | URISyntaxException err1) {
-            System.out.println(err1);
+            HMS_PATIENT_MANAGEMENTSYSTEM showPatientDataList = new HMS_PATIENT_MANAGEMENTSYSTEM();
+            showPatientDataList.setVisible(true);
+            this.dispose();
+        } catch (SQLException exception) {
+            JOptionPane.showMessageDialog(null, "Try again.");
+        } catch (Exception ex) {
+            Logger.getLogger(HMS_ADMINFORM.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_managePatientsButtonActionPerformed
 
     private void manageDatabaseURLKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_manageDatabaseURLKeyPressed
-        if (evt.getKeyCode()==KeyEvent.VK_ESCAPE){
+        if (evt.getKeyCode() == KeyEvent.VK_ESCAPE) {
             this.dispose();
             HMS_LOGIN showLoginScreen = new HMS_LOGIN();
-            showLoginScreen.setVisible(true);}
-        else{}
+            showLoginScreen.setVisible(true);
+        } else {
+        }
     }//GEN-LAST:event_manageDatabaseURLKeyPressed
 
     private void manageEmployeesButtonKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_manageEmployeesButtonKeyPressed
-        if (evt.getKeyCode()==KeyEvent.VK_ESCAPE){
+        if (evt.getKeyCode() == KeyEvent.VK_ESCAPE) {
             this.dispose();
             HMS_LOGIN showLoginScreen = new HMS_LOGIN();
-            showLoginScreen.setVisible(true);}
-        else{}            
+            showLoginScreen.setVisible(true);
+        } else {
+        }
     }//GEN-LAST:event_manageEmployeesButtonKeyPressed
 
     private void manageUserButtonKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_manageUserButtonKeyPressed
-        if (evt.getKeyCode()==KeyEvent.VK_ESCAPE){
+        if (evt.getKeyCode() == KeyEvent.VK_ESCAPE) {
             this.dispose();
             HMS_LOGIN showLoginScreen = new HMS_LOGIN();
-            showLoginScreen.setVisible(true);}
-        else{}
+            showLoginScreen.setVisible(true);
+        } else {
+        }
     }//GEN-LAST:event_manageUserButtonKeyPressed
 
     private void managePatientsButtonKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_managePatientsButtonKeyPressed
-        if (evt.getKeyCode()==KeyEvent.VK_ESCAPE){
+        if (evt.getKeyCode() == KeyEvent.VK_ESCAPE) {
             this.dispose();
             HMS_LOGIN showLoginScreen = new HMS_LOGIN();
-            showLoginScreen.setVisible(true);}
-        else{}
+            showLoginScreen.setVisible(true);
+        } else {
+        }
     }//GEN-LAST:event_managePatientsButtonKeyPressed
 
     public static void HMS_MAIN() {
 //    public static void main(String args[]) {
 
         // sets the look and feel to be that of the operating system's
-    try { 
-        UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-    } catch (ClassNotFoundException | 
-        InstantiationException | 
-        IllegalAccessException | 
-        UnsupportedLookAndFeelException e) {System.out.println(e);
-    }
-    
+        try {
+            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+        } catch (ClassNotFoundException
+                | InstantiationException
+                | IllegalAccessException
+                | UnsupportedLookAndFeelException e) {
+            System.out.println(e);
+        }
+
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
