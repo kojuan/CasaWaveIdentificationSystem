@@ -1,6 +1,5 @@
 package healthMonitoringSystem;
 
-import static healthMonitoringSystem.HMS_MAIN.passwordPanel;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import javax.swing.*;
@@ -19,6 +18,7 @@ import javax.swing.border.LineBorder;
 public final class HMS_LOGIN extends javax.swing.JFrame {
 
     public static JLabel passwordLabelText;
+    public static JPanel passwordPanel;
 
     /**
      * Creates new form BCLOGIN
@@ -93,7 +93,6 @@ public final class HMS_LOGIN extends javax.swing.JFrame {
         userNameLabel = new javax.swing.JLabel();
         passwordLabel = new javax.swing.JLabel();
         leftPanel = new javax.swing.JPanel();
-        tbiytcImage = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("MEDICAL HEALTH MONITORING SYSTEM");
@@ -293,23 +292,15 @@ public final class HMS_LOGIN extends javax.swing.JFrame {
 
         leftPanel.setBackground(new java.awt.Color(235, 241, 253));
 
-        tbiytcImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/healthMonitoringSystem/APP_IMAGES/login_images/TBIYTC.png"))); // NOI18N
-
         javax.swing.GroupLayout leftPanelLayout = new javax.swing.GroupLayout(leftPanel);
         leftPanel.setLayout(leftPanelLayout);
         leftPanelLayout.setHorizontalGroup(
             leftPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, leftPanelLayout.createSequentialGroup()
-                .addContainerGap(106, Short.MAX_VALUE)
-                .addComponent(tbiytcImage)
-                .addGap(68, 68, 68))
+            .addGap(0, 574, Short.MAX_VALUE)
         );
         leftPanelLayout.setVerticalGroup(
             leftPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(leftPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(tbiytcImage, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGap(0, 432, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout mainPanelLayout = new javax.swing.GroupLayout(mainPanel);
@@ -436,8 +427,8 @@ public final class HMS_LOGIN extends javax.swing.JFrame {
 
                 if (rs.next()) {
                     // show a new form
-                    HMS_MAIN.HMS_MAIN();
-                    HMS_MAIN.frame.setVisible(true);
+                    HMS_MAIN openMain = new HMS_MAIN();
+                    openMain.setVisible(true);
 //                 close the current form(login form)
                     this.dispose();
 
@@ -632,7 +623,6 @@ public final class HMS_LOGIN extends javax.swing.JFrame {
     private javax.swing.JSeparator sep1;
     private javax.swing.JSeparator sep2;
     private javax.swing.JCheckBox showCBox;
-    private javax.swing.JLabel tbiytcImage;
     private javax.swing.JLabel timeLabel;
     private javax.swing.JLabel userNameLabel;
     private javax.swing.JTextField usernameTf;

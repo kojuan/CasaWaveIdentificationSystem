@@ -3,8 +3,7 @@ package healthMonitoringSystem;
 import com.mysql.jdbc.jdbc2.optional.MysqlDataSource;
 import java.sql.Connection;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
 import javax.swing.JOptionPane;
 
 /**
@@ -34,9 +33,7 @@ public class HEALTH_MONITORING_SYSTEM_DATABASE {
             cnx = datasource.getConnection();
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "ERROR. Please Activate Server Database Connection.\nPlease restart application with active server database connection.", "Server Offline", JOptionPane.INFORMATION_MESSAGE);
-
         }
-
         return cnx;
     }
 
