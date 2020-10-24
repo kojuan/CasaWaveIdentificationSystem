@@ -53,7 +53,11 @@ public class HMS_MAIN extends javax.swing.JFrame {
     HMS_DATAACESSOBJECT_IMPLEMENTATION dao = new HMS_DATAACESSOBJECT_IMPLEMENTATION();
 
     public HMS_MAIN() {
+
         initComponents();
+        dashboardPanel.setVisible(true);
+        employeePanel.setVisible(false);
+        patientPanel.setVisible(false);
         HomeTab.setBackground(Color.white);
         showDate();
         showTime();
@@ -130,13 +134,12 @@ public class HMS_MAIN extends javax.swing.JFrame {
         PatientLabel = new javax.swing.JLabel();
         SettingsTab = new javax.swing.JPanel();
         SettingsLabel = new javax.swing.JLabel();
-        AboutTab = new javax.swing.JPanel();
-        AboutLabel = new javax.swing.JLabel();
         ExitTab = new javax.swing.JPanel();
         ExitLabel = new javax.swing.JLabel();
         loggedInUsername = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         mainWindowPanel = new javax.swing.JPanel();
+        layeredPanel = new javax.swing.JLayeredPane();
         dashboardPanel = new javax.swing.JPanel();
         employeeCountLabel = new javax.swing.JLabel();
         patientCountLabel = new javax.swing.JLabel();
@@ -339,31 +342,6 @@ public class HMS_MAIN extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        AboutTab.setBackground(new java.awt.Color(238, 238, 254));
-        AboutTab.setMaximumSize(new java.awt.Dimension(165, 86));
-
-        AboutLabel.setBackground(new java.awt.Color(255, 255, 255));
-        AboutLabel.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
-        AboutLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        AboutLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/healthMonitoringSystem/APP_IMAGES/mainprogram/aboutIcon.png"))); // NOI18N
-        AboutLabel.setText(" About");
-
-        javax.swing.GroupLayout AboutTabLayout = new javax.swing.GroupLayout(AboutTab);
-        AboutTab.setLayout(AboutTabLayout);
-        AboutTabLayout.setHorizontalGroup(
-            AboutTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, AboutTabLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(AboutLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        AboutTabLayout.setVerticalGroup(
-            AboutTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(AboutTabLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(AboutLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
         ExitTab.setBackground(new java.awt.Color(238, 238, 254));
         ExitTab.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -404,7 +382,6 @@ public class HMS_MAIN extends javax.swing.JFrame {
         leftPanelLayout.setHorizontalGroup(
             leftPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(HomeTab, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(AboutTab, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(SettingsTab, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 390, Short.MAX_VALUE)
             .addComponent(ExitTab, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(EmployeeTab, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -429,11 +406,9 @@ public class HMS_MAIN extends javax.swing.JFrame {
                 .addComponent(EmployeeTab, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(PatientTab, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 271, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 361, Short.MAX_VALUE)
                 .addComponent(SettingsTab, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(AboutTab, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addComponent(ExitTab, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(21, 21, 21))
         );
@@ -442,7 +417,8 @@ public class HMS_MAIN extends javax.swing.JFrame {
 
         mainWindowPanel.setBackground(new java.awt.Color(235, 241, 253));
         mainWindowPanel.setMaximumSize(new java.awt.Dimension(1520, 970));
-        mainWindowPanel.setLayout(new javax.swing.OverlayLayout(mainWindowPanel));
+        mainWindowPanel.setRequestFocusEnabled(false);
+        mainWindowPanel.setLayout(null);
 
         dashboardPanel.setBackground(new java.awt.Color(235, 241, 253));
         dashboardPanel.setMaximumSize(new java.awt.Dimension(1520, 970));
@@ -535,10 +511,10 @@ public class HMS_MAIN extends javax.swing.JFrame {
             dashboardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(dashboardPanelLayout.createSequentialGroup()
                 .addGap(53, 53, 53)
-                .addGroup(dashboardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(employeeCountLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 285, Short.MAX_VALUE)
+                .addGroup(dashboardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(employeeCountLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 636, Short.MAX_VALUE)
                     .addComponent(patientCountLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 767, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 416, Short.MAX_VALUE)
                 .addComponent(backuporrestorePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -556,8 +532,6 @@ public class HMS_MAIN extends javax.swing.JFrame {
                         .addComponent(backuporrestorePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(738, Short.MAX_VALUE))
         );
-
-        mainWindowPanel.add(dashboardPanel);
 
         employeePanel.setBackground(new java.awt.Color(235, 241, 253));
         employeePanel.setMaximumSize(new java.awt.Dimension(1520, 970));
@@ -675,7 +649,7 @@ public class HMS_MAIN extends javax.swing.JFrame {
             .addGroup(employeePanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(employeePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(employeeHeaderLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 1500, Short.MAX_VALUE)
+                    .addComponent(employeeHeaderLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addGroup(employeePanelLayout.createSequentialGroup()
                         .addGroup(employeePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(filterSearchLabel)
@@ -685,7 +659,7 @@ public class HMS_MAIN extends javax.swing.JFrame {
                             .addComponent(filterSearchTf)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, employeePanelLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGap(0, 350, Short.MAX_VALUE)
                         .addComponent(searchEmployeeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 460, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(updateEmployeeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 335, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -712,8 +686,6 @@ public class HMS_MAIN extends javax.swing.JFrame {
                     .addComponent(searchEmployeeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
-
-        mainWindowPanel.add(employeePanel);
 
         patientPanel.setBackground(new java.awt.Color(235, 241, 253));
         patientPanel.setMaximumSize(new java.awt.Dimension(1520, 970));
@@ -828,7 +800,6 @@ public class HMS_MAIN extends javax.swing.JFrame {
         patientPanel.setLayout(patientPanelLayout);
         patientPanelLayout.setHorizontalGroup(
             patientPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(PatientHeader, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(patientPanelLayout.createSequentialGroup()
                 .addGroup(patientPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(patientPanelLayout.createSequentialGroup()
@@ -837,12 +808,13 @@ public class HMS_MAIN extends javax.swing.JFrame {
                     .addGroup(patientPanelLayout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(patientTrackerPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(patientPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(managePatientsButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(patientSearchTf)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 1177, Short.MAX_VALUE))
-                .addGap(409, 409, 409))
+                    .addComponent(jScrollPane2)
+                    .addComponent(patientSearchTf, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addContainerGap())
+            .addComponent(PatientHeader, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 1520, Short.MAX_VALUE)
         );
         patientPanelLayout.setVerticalGroup(
             patientPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -861,7 +833,39 @@ public class HMS_MAIN extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        mainWindowPanel.add(patientPanel);
+        layeredPanel.setLayer(dashboardPanel, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        layeredPanel.setLayer(employeePanel, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        layeredPanel.setLayer(patientPanel, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        javax.swing.GroupLayout layeredPanelLayout = new javax.swing.GroupLayout(layeredPanel);
+        layeredPanel.setLayout(layeredPanelLayout);
+        layeredPanelLayout.setHorizontalGroup(
+            layeredPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1530, Short.MAX_VALUE)
+            .addGroup(layeredPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layeredPanelLayout.createSequentialGroup()
+                    .addGap(0, 5, Short.MAX_VALUE)
+                    .addGroup(layeredPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(patientPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(dashboardPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(employeePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGap(0, 5, Short.MAX_VALUE)))
+        );
+        layeredPanelLayout.setVerticalGroup(
+            layeredPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 970, Short.MAX_VALUE)
+            .addGroup(layeredPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layeredPanelLayout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addGroup(layeredPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(patientPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(dashboardPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(employeePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGap(0, 0, Short.MAX_VALUE)))
+        );
+
+        mainWindowPanel.add(layeredPanel);
+        layeredPanel.setBounds(0, 0, 1530, 970);
 
         getContentPane().add(mainWindowPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 110, 1530, 970));
 
@@ -1061,8 +1065,6 @@ public class HMS_MAIN extends javax.swing.JFrame {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel AboutLabel;
-    private javax.swing.JPanel AboutTab;
     private javax.swing.JLabel EmployeeLabel;
     private javax.swing.JPanel EmployeeTab;
     private javax.swing.JLabel ExitLabel;
@@ -1092,6 +1094,7 @@ public class HMS_MAIN extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JLayeredPane layeredPanel;
     private javax.swing.JPanel leftPanel;
     public static javax.swing.JLabel loggedInUsername;
     private javax.swing.JLabel logoLabel;
