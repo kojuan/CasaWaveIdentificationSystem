@@ -60,7 +60,7 @@ public final class HMS_EMPLOYEE_LIST extends javax.swing.JFrame {
     }
 
     // FILTER DATA
-    private void filter (String query) {
+    private void filter(String query) {
         DefaultTableModel dm = (DefaultTableModel) employeeListTable.getModel();
         TableRowSorter<DefaultTableModel> tr = new TableRowSorter<>(dm);
         employeeListTable.setRowSorter(tr);
@@ -113,11 +113,9 @@ public final class HMS_EMPLOYEE_LIST extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
-        setMaximumSize(new java.awt.Dimension(1920, 1080));
         setMinimumSize(new java.awt.Dimension(1920, 1080));
         setName("hmsEmployeeFrame"); // NOI18N
         setUndecorated(true);
-        setPreferredSize(new java.awt.Dimension(1920, 1080));
         setResizable(false);
         addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {

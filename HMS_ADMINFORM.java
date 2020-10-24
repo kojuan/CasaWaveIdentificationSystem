@@ -346,7 +346,6 @@ public class HMS_ADMINFORM extends javax.swing.JFrame {
         try {
             HMS_PATIENT_MANAGEMENTSYSTEM showPatientDataList = new HMS_PATIENT_MANAGEMENTSYSTEM();
             showPatientDataList.setVisible(true);
-            this.dispose();
         } catch (SQLException exception) {
             JOptionPane.showMessageDialog(null, "Try again.");
         } catch (Exception ex) {

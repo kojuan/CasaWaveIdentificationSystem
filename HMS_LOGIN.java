@@ -19,6 +19,7 @@ public final class HMS_LOGIN extends javax.swing.JFrame {
 
     public static JLabel passwordLabelText;
     public static JPanel passwordPanel;
+    public static String username, password, query;
 
     /**
      * Creates new form BCLOGIN
@@ -77,7 +78,6 @@ public final class HMS_LOGIN extends javax.swing.JFrame {
 
         bottomPanel = new javax.swing.JPanel();
         javax.swing.JButton adminButton = new javax.swing.JButton();
-        aboutButton = new javax.swing.JButton();
         mainPanel = new javax.swing.JPanel();
         loginButton = new javax.swing.JButton();
         closeButton = new javax.swing.JButton();
@@ -116,38 +116,18 @@ public final class HMS_LOGIN extends javax.swing.JFrame {
             }
         });
 
-        aboutButton.setBackground(new java.awt.Color(153, 204, 255));
-        aboutButton.setText("ABOUT");
-        aboutButton.setToolTipText("About the application.");
-        aboutButton.setBorder(javax.swing.BorderFactory.createCompoundBorder());
-        aboutButton.setBorderPainted(false);
-        aboutButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        aboutButton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                aboutButtonMousePressed(evt);
-            }
-        });
-        aboutButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                aboutButtonActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout bottomPanelLayout = new javax.swing.GroupLayout(bottomPanel);
         bottomPanel.setLayout(bottomPanelLayout);
         bottomPanelLayout.setHorizontalGroup(
             bottomPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(bottomPanelLayout.createSequentialGroup()
                 .addComponent(adminButton, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(765, 765, 765)
-                .addComponent(aboutButton, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(847, 847, 847))
         );
         bottomPanelLayout.setVerticalGroup(
             bottomPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(bottomPanelLayout.createSequentialGroup()
-                .addGroup(bottomPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(adminButton, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
-                    .addComponent(aboutButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(adminButton, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
@@ -407,10 +387,10 @@ public final class HMS_LOGIN extends javax.swing.JFrame {
         ResultSet rs;
 
         // get the username & password
-        String username = usernameTf.getText();
-        String password = String.valueOf(passwordTf.getPassword());
+        username = usernameTf.getText();
+        password = String.valueOf(passwordTf.getPassword());
         //create a select query to check if the username and the password exist in the database
-        String query = "SELECT * FROM users WHERE usernameString = ? AND passwordString = ?";
+        query = "SELECT * FROM users WHERE usernameString = ? AND passwordString = ?";
 
         // Show a message if the username or the password fields are empty.
         if (username.trim().equals("username")) {
@@ -431,7 +411,7 @@ public final class HMS_LOGIN extends javax.swing.JFrame {
                     openMain.setVisible(true);
 //                 close the current form(login form)
                     this.dispose();
-
+                    
                 } else {
                     // error message
                     JOptionPane.showMessageDialog(null, "Invalid Username or Password.\nPlease try again.", "Login Error", 2);
@@ -531,15 +511,6 @@ public final class HMS_LOGIN extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_showCBoxActionPerformed
 
-    private void aboutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aboutButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_aboutButtonActionPerformed
-
-    private void aboutButtonMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_aboutButtonMousePressed
-        HMS_ABOUT hmsaboutForm = new HMS_ABOUT();
-        hmsaboutForm.setVisible(true);
-    }//GEN-LAST:event_aboutButtonMousePressed
-
     private void adminButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adminButtonActionPerformed
 
         passwordPanel = new JPanel();
@@ -611,7 +582,6 @@ public final class HMS_LOGIN extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel DATEANDTIME_PANEL;
-    private javax.swing.JButton aboutButton;
     private javax.swing.JPanel bottomPanel;
     private javax.swing.JButton closeButton;
     private javax.swing.JLabel dateLabel;
@@ -625,7 +595,7 @@ public final class HMS_LOGIN extends javax.swing.JFrame {
     private javax.swing.JCheckBox showCBox;
     private javax.swing.JLabel timeLabel;
     private javax.swing.JLabel userNameLabel;
-    private javax.swing.JTextField usernameTf;
+    public javax.swing.JTextField usernameTf;
     // End of variables declaration//GEN-END:variables
 
 }
