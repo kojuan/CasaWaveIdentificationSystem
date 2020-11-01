@@ -609,6 +609,8 @@ public class HMS_MAIN extends javax.swing.JFrame {
         filterSearchLabel.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         filterSearchLabel.setText("Filter Search:");
 
+        employeeListTable.setFillsViewportHeight(true);
+        employeeListTable.setBackground(new Color(235, 240, 255));
         employeeListTable.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         employeeListTable.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         employeeListTable.setModel(new javax.swing.table.DefaultTableModel(
@@ -616,7 +618,7 @@ public class HMS_MAIN extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Employee ID", "FIRST NAME", "MIDDLE NAME", "LAST NAME", "Address", "Sex", "Birthday", "Blood Type", "Cellphone Number", "Civil Status", "Religion", "Nationality", "Father's Email Ad.", "Mother's Email Ad."
+                "Employee ID", "FIRST NAME", "MIDDLE NAME", "LAST NAME", "Address", "Sex", "Birthday", "Blood Type", "Cellphone Number", "Civil Status", "Religion", "Nationality", "Father's Email Ad.", "Mother's Email Ad"
             }
         ) {
             Class[] types = new Class [] {
@@ -649,22 +651,21 @@ public class HMS_MAIN extends javax.swing.JFrame {
             .addGroup(employeePanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(employeePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(employeeHeaderLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(employeeHeaderLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 1500, Short.MAX_VALUE)
                     .addGroup(employeePanelLayout.createSequentialGroup()
                         .addGroup(employeePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(filterSearchLabel)
                             .addComponent(employeeTrackerPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(employeePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(employeePanelLayout.createSequentialGroup()
+                                .addComponent(searchEmployeeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 460, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(updateEmployeeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 335, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(deleteEmployeeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 335, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(filterSearchTf)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, employeePanelLayout.createSequentialGroup()
-                        .addGap(0, 350, Short.MAX_VALUE)
-                        .addComponent(searchEmployeeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 460, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(updateEmployeeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 335, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(deleteEmployeeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 335, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING))))
                 .addContainerGap())
         );
         employeePanelLayout.setVerticalGroup(
@@ -707,8 +708,8 @@ public class HMS_MAIN extends javax.swing.JFrame {
         patientTrackerPanel1Layout.setHorizontalGroup(
             patientTrackerPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(patientTrackerPanel1Layout.createSequentialGroup()
-                .addComponent(totalPatientCountLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(totalPatientCountLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 294, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         patientTrackerPanel1Layout.setVerticalGroup(
             patientTrackerPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -721,6 +722,8 @@ public class HMS_MAIN extends javax.swing.JFrame {
         PatientHeader.setIcon(new javax.swing.ImageIcon(getClass().getResource("/healthMonitoringSystem/APP_IMAGES/mainprogram/HMS_TOPPANEL_PATIENTS_fit.png"))); // NOI18N
         PatientHeader.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
+        patientDataTable.setFillsViewportHeight(true);
+        patientDataTable.setBackground(new Color(235, 240, 255));
         patientDataTable.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         patientDataTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -773,6 +776,11 @@ public class HMS_MAIN extends javax.swing.JFrame {
         patientSearchTf.setBackground(new java.awt.Color(204, 204, 255));
         patientSearchTf.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         patientSearchTf.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        patientSearchTf.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                patientSearchTfActionPerformed(evt);
+            }
+        });
         patientSearchTf.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 patientSearchTfKeyReleased(evt);
@@ -800,21 +808,22 @@ public class HMS_MAIN extends javax.swing.JFrame {
         patientPanel.setLayout(patientPanelLayout);
         patientPanelLayout.setHorizontalGroup(
             patientPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(PatientHeader, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 1520, Short.MAX_VALUE)
             .addGroup(patientPanelLayout.createSequentialGroup()
                 .addGroup(patientPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(patientPanelLayout.createSequentialGroup()
                         .addGap(231, 231, 231)
-                        .addComponent(patientFilterSearchLabel))
+                        .addComponent(patientFilterSearchLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(patientPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(managePatientsButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(patientSearchTf, javax.swing.GroupLayout.Alignment.TRAILING)))
                     .addGroup(patientPanelLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(patientTrackerPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(patientPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(managePatientsButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jScrollPane2)
-                    .addComponent(patientSearchTf, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addComponent(patientTrackerPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane2)))
                 .addContainerGap())
-            .addComponent(PatientHeader, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 1520, Short.MAX_VALUE)
         );
         patientPanelLayout.setVerticalGroup(
             patientPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1044,6 +1053,10 @@ public class HMS_MAIN extends javax.swing.JFrame {
         pathToBackup.setText("");
         backupEntireDatabaseButton.setEnabled(false);
     }//GEN-LAST:event_backupResetButtonActionPerformed
+
+    private void patientSearchTfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_patientSearchTfActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_patientSearchTfActionPerformed
 
     public static void main(String args[]) {
         // sets the look and feel to be that of the operating system's

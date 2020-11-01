@@ -1,20 +1,21 @@
-
 package healthMonitoringSystem;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
+public class HMS_DATAACESSOBJECT_IMPLEMENTATION implements HMS_DATAACCESSOBJECT {
 
-public class HMS_DATAACESSOBJECT_IMPLEMENTATION implements HMS_DATAACCESSOBJECT{
-HMS_DATABASECONNECTION connx = new HMS_DATABASECONNECTION();
+    HMS_DATABASECONNECTION connx = new HMS_DATABASECONNECTION();
+
     @Override
-        // Store database results in Arrayist Method
-    public ArrayList<Patient> patientList()  {
+    // Store database results in Arrayist Method
+    public ArrayList<Patient> patientList() {
         ArrayList<Patient> patientList = new ArrayList<>();
         String selectAllSQLQuery = "SELECT * FROM `patients`";
         Statement stmt = null;
@@ -64,9 +65,9 @@ HMS_DATABASECONNECTION connx = new HMS_DATABASECONNECTION();
         return patientList;
     }
 
-@Override
+    @Override
     public void populatepatientDataTableFromMySQLDatabase(DefaultTableModel model, JTable patientDataTable) {
-         ArrayList<Patient> dataArray = patientList();
+        ArrayList<Patient> dataArray = patientList();
         model = (DefaultTableModel) patientDataTable.getModel();
         // Clear patientDataTable Rows
         model.setRowCount(0);
@@ -90,4 +91,3 @@ HMS_DATABASECONNECTION connx = new HMS_DATABASECONNECTION();
         }
     }
 }
-        

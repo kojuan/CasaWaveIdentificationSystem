@@ -32,7 +32,7 @@
     <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
     <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
-    <AuxValue name="designerSize" type="java.awt.Dimension" value="-84,-19,0,5,115,114,0,18,106,97,118,97,46,97,119,116,46,68,105,109,101,110,115,105,111,110,65,-114,-39,-41,-84,95,68,20,2,0,2,73,0,6,104,101,105,103,104,116,73,0,5,119,105,100,116,104,120,112,0,0,4,55,0,0,7,93"/>
+    <AuxValue name="designerSize" type="java.awt.Dimension" value="-84,-19,0,5,115,114,0,18,106,97,118,97,46,97,119,116,46,68,105,109,101,110,115,105,111,110,65,-114,-39,-41,-84,95,68,20,2,0,2,73,0,6,104,101,105,103,104,116,73,0,5,119,105,100,116,104,120,112,0,0,4,56,0,0,7,-116"/>
   </AuxValues>
 
   <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout"/>
@@ -40,7 +40,7 @@
     <Container class="javax.swing.JPanel" name="patientFullMainPanel">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="ff" green="ff" red="ff" type="rgb"/>
+          <Color blue="fd" green="f1" red="eb" type="rgb"/>
         </Property>
         <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
           <Dimension value="[1920, 1080]"/>
@@ -59,127 +59,174 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
-                  <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                              <Group type="102" alignment="1" attributes="0">
+                                  <Group type="103" groupAlignment="1" attributes="0">
+                                      <Group type="102" attributes="0">
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="firstNameLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Component id="patientIDLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Component id="middleNameLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Component id="dateOfBirthLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Component id="bloodTypeLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Component id="civilStatusLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Component id="religionLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Component id="nationalityLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Component id="cellphoneNumberLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Component id="lastNameLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Component id="genderLabel" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="middleNameTf" alignment="1" min="-2" pref="260" max="-2" attributes="0"/>
+                                      <Component id="lastNameTf" alignment="1" min="-2" pref="260" max="-2" attributes="0"/>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Component id="maleCbButton" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
+                                          <Component id="femaleCbButton" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Component id="dateOfBirthPicker" alignment="1" min="-2" pref="260" max="-2" attributes="0"/>
+                                      <Component id="bloodTypeCB" alignment="1" min="-2" pref="260" max="-2" attributes="0"/>
+                                      <Component id="phoneNumberTf" min="-2" pref="260" max="-2" attributes="0"/>
+                                      <Component id="nationalityTf" alignment="0" min="-2" pref="260" max="-2" attributes="0"/>
+                                      <Component id="religionCB" alignment="0" min="-2" pref="260" max="-2" attributes="0"/>
+                                      <Component id="civilStatusCB" alignment="0" min="-2" pref="260" max="-2" attributes="0"/>
+                                      <Component id="firstNameTf" min="-2" pref="260" max="-2" attributes="0"/>
+                                      <Component id="patientIdTf" min="-2" pref="260" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <Group type="102" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="imagePathLabel" min="-2" max="-2" attributes="0"/>
+                                      <Component id="imageNameLabel" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace min="-2" pref="68" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="imagePathTf" min="-2" pref="260" max="-2" attributes="0"/>
+                                      <Component id="imageNameTf" min="-2" pref="260" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                          </Group>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="labelImage" min="-2" pref="383" max="-2" attributes="0"/>
+                              <Component id="browseImageButton" min="-2" pref="383" max="-2" attributes="0"/>
+                          </Group>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" attributes="0">
-                                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                      <Group type="102" alignment="1" attributes="0">
-                                          <Group type="103" groupAlignment="1" attributes="0">
-                                              <Group type="102" attributes="0">
-                                                  <Group type="103" groupAlignment="0" attributes="0">
-                                                      <Component id="firstNameLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                      <Component id="patientIDLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                      <Component id="middleNameLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                      <Component id="dateOfBirthLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                      <Component id="bloodTypeLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                      <Component id="civilStatusLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                      <Component id="religionLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                      <Component id="nationalityLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                      <Component id="cellphoneNumberLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                      <Component id="lastNameLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                  </Group>
-                                                  <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
-                                              </Group>
-                                              <Group type="102" alignment="0" attributes="0">
-                                                  <Component id="genderLabel" min="-2" max="-2" attributes="0"/>
-                                                  <EmptySpace max="-2" attributes="0"/>
-                                              </Group>
-                                          </Group>
-                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                              <Component id="middleNameTf" alignment="1" min="-2" pref="260" max="-2" attributes="0"/>
-                                              <Component id="lastNameTf" alignment="1" min="-2" pref="260" max="-2" attributes="0"/>
-                                              <Group type="102" alignment="0" attributes="0">
-                                                  <Component id="maleCbButton" min="-2" max="-2" attributes="0"/>
-                                                  <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
-                                                  <Component id="femaleCbButton" min="-2" max="-2" attributes="0"/>
-                                              </Group>
-                                              <Component id="dateOfBirthPicker" alignment="1" min="-2" pref="260" max="-2" attributes="0"/>
-                                              <Component id="bloodTypeCB" alignment="1" min="-2" pref="260" max="-2" attributes="0"/>
-                                              <Component id="phoneNumberTf" min="-2" pref="260" max="-2" attributes="0"/>
-                                              <Component id="nationalityTf" alignment="0" min="-2" pref="260" max="-2" attributes="0"/>
-                                              <Component id="religionCB" alignment="0" min="-2" pref="260" max="-2" attributes="0"/>
-                                              <Component id="civilStatusCB" alignment="0" min="-2" pref="260" max="-2" attributes="0"/>
-                                              <Component id="firstNameTf" min="-2" pref="260" max="-2" attributes="0"/>
-                                              <Component id="patientIdTf" min="-2" pref="260" max="-2" attributes="0"/>
-                                          </Group>
+                                  <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="102" attributes="0">
+                                          <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
+                                          <Component id="temperatureStatus" max="32767" attributes="0"/>
+                                          <EmptySpace min="-2" pref="801" max="-2" attributes="0"/>
                                       </Group>
                                       <Group type="102" attributes="0">
                                           <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="imagePathLabel" min="-2" max="-2" attributes="0"/>
-                                              <Component id="imageNameLabel" min="-2" max="-2" attributes="0"/>
+                                              <Group type="102" alignment="0" attributes="0">
+                                                  <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
+                                                  <Component id="patientIDLabel1" min="-2" max="-2" attributes="0"/>
+                                              </Group>
+                                              <Component id="temperatureBox2" min="-2" max="-2" attributes="0"/>
+                                              <Group type="103" alignment="0" groupAlignment="1" attributes="0">
+                                                  <Group type="102" attributes="0">
+                                                      <Component id="temperatureBox1" min="-2" max="-2" attributes="0"/>
+                                                      <EmptySpace max="-2" attributes="0"/>
+                                                      <Component id="temperatureTf1" min="-2" pref="203" max="-2" attributes="0"/>
+                                                  </Group>
+                                                  <Group type="102" attributes="0">
+                                                      <Component id="temperatureConvertButton1" min="-2" pref="128" max="-2" attributes="0"/>
+                                                      <EmptySpace max="-2" attributes="0"/>
+                                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                                          <Component id="temperatureTf2" max="32767" attributes="0"/>
+                                                          <Component id="temperatureClearAllButton" max="32767" attributes="0"/>
+                                                      </Group>
+                                                  </Group>
+                                              </Group>
                                           </Group>
-                                          <EmptySpace min="-2" pref="68" max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="imagePathTf" min="-2" pref="260" max="-2" attributes="0"/>
-                                              <Component id="imageNameTf" min="-2" pref="260" max="-2" attributes="0"/>
-                                          </Group>
+                                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="labelImage" min="-2" pref="383" max="-2" attributes="0"/>
-                                      <Component id="browseImageButton" min="-2" pref="383" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace max="32767" attributes="0"/>
-                                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                      <Component id="deleteButton" alignment="0" min="-2" pref="235" max="-2" attributes="0"/>
-                                      <Component id="updateButton" alignment="0" min="-2" pref="235" max="-2" attributes="0"/>
-                                      <Component id="addButton" alignment="0" min="-2" pref="235" max="-2" attributes="0"/>
-                                      <Component id="clearButton" min="-2" pref="235" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
-                              <Group type="102" alignment="1" attributes="0">
-                                  <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="82" max="-2" attributes="0"/>
-                                  <Component id="filterSearchTf" max="32767" attributes="0"/>
-                              </Group>
-                          </Group>
-                          <Group type="103" groupAlignment="1" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="-2" pref="96" max="-2" attributes="0"/>
-                                  <Component id="listSelectedButton" min="-2" pref="209" max="-2" attributes="0"/>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="moveRowUpButton" min="-2" pref="209" max="-2" attributes="0"/>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="moveRowDownButton" min="-2" pref="209" max="-2" attributes="0"/>
-                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                               </Group>
                               <Group type="102" attributes="0">
-                                  <EmptySpace max="32767" attributes="0"/>
-                                  <Group type="103" groupAlignment="1" attributes="0">
-                                      <Group type="102" alignment="1" attributes="0">
-                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="103" groupAlignment="1" attributes="0">
+                                          <Component id="detectBPMButton" alignment="1" min="-2" pref="217" max="-2" attributes="0"/>
+                                          <Component id="bpmTf" min="-2" pref="221" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Component id="patientIDLabel2" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="102" attributes="0">
+                                          <EmptySpace min="0" pref="108" max="32767" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Group type="102" attributes="0">
                                                   <Component id="firstItemInListButton" min="-2" pref="170" max="-2" attributes="0"/>
                                                   <EmptySpace max="-2" attributes="0"/>
                                                   <Component id="lastItemInListButton" min="-2" pref="170" max="-2" attributes="0"/>
-                                              </Group>
-                                              <Component id="importExcelButton" min="-2" pref="346" max="-2" attributes="0"/>
-                                          </Group>
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                              <Component id="exportExcelButton" alignment="1" max="32767" attributes="0"/>
-                                              <Group type="102" alignment="1" attributes="0">
+                                                  <EmptySpace max="-2" attributes="0"/>
                                                   <Component id="previousItemInListButton" min="-2" pref="170" max="-2" attributes="0"/>
                                                   <EmptySpace max="-2" attributes="0"/>
                                                   <Component id="nextItemInListButton" min="-2" pref="170" max="-2" attributes="0"/>
                                               </Group>
+                                              <Group type="103" alignment="1" groupAlignment="0" max="-2" attributes="0">
+                                                  <Group type="102" alignment="1" attributes="0">
+                                                      <Component id="importExcelButton" max="32767" attributes="0"/>
+                                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                                      <Component id="exportExcelButton" min="-2" pref="235" max="-2" attributes="0"/>
+                                                  </Group>
+                                                  <Group type="102" alignment="1" attributes="0">
+                                                      <Component id="deleteButton" max="32767" attributes="0"/>
+                                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                                      <Component id="clearButton" min="-2" pref="235" max="-2" attributes="0"/>
+                                                  </Group>
+                                                  <Group type="103" alignment="1" groupAlignment="0" attributes="0">
+                                                      <Component id="closeButton" alignment="0" min="-2" pref="486" max="-2" attributes="0"/>
+                                                      <Group type="102" alignment="1" attributes="0">
+                                                          <Component id="addButton" min="-2" pref="235" max="-2" attributes="0"/>
+                                                          <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
+                                                          <Component id="updateButton" min="-2" pref="235" max="-2" attributes="0"/>
+                                                      </Group>
+                                                  </Group>
+                                              </Group>
                                           </Group>
                                       </Group>
-                                      <Group type="102" alignment="1" attributes="0">
-                                          <Component id="printButton" min="-2" pref="346" max="-2" attributes="0"/>
-                                          <EmptySpace min="-2" pref="162" max="-2" attributes="0"/>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Component id="temperatureClearAllButton1" min="-2" pref="108" max="-2" attributes="0"/>
+                                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                       </Group>
-                                      <Component id="closeButton" alignment="1" min="-2" pref="330" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
                       </Group>
-                      <Component id="jScrollPane1" min="-2" pref="1865" max="-2" attributes="0"/>
+                      <Group type="102" alignment="1" attributes="0">
+                          <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="filterSearchTf" min="-2" pref="698" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="163" max="-2" attributes="0"/>
+                          <Component id="moveRowUpButton" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="moveRowDownButton" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Component id="printButton" min="-2" pref="415" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
-                  <EmptySpace max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
+              </Group>
+              <Group type="102" alignment="1" attributes="0">
+                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                  <Component id="jScrollPane1" min="-2" pref="1885" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -189,127 +236,148 @@
                   <EmptySpace min="-2" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <Group type="103" groupAlignment="1" attributes="0">
-                              <Group type="102" attributes="0">
-                                  <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
-                                  <Component id="addButton" min="-2" pref="100" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="labelImage" max="32767" attributes="0"/>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="patientIDLabel1" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="updateButton" min="-2" pref="100" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="deleteButton" min="-2" pref="100" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="clearButton" min="-2" pref="100" max="-2" attributes="0"/>
-                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="1" attributes="0">
-                                  <Component id="closeButton" min="-2" pref="60" max="-2" attributes="0"/>
-                                  <EmptySpace max="32767" attributes="0"/>
-                                  <Component id="printButton" min="-2" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="temperatureBox1" min="-2" max="-2" attributes="0"/>
+                                      <Component id="temperatureTf1" min="-2" pref="27" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
+                                  <Component id="temperatureStatus" min="-2" pref="25" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="exportExcelButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="importExcelButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="temperatureTf2" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
+                                      <Component id="temperatureBox2" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
+                                  <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
+                                  <Component id="temperatureConvertButton1" min="-2" pref="23" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+                                  <Component id="patientIDLabel2" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="bpmTf" min="-2" pref="31" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="firstItemInListButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="lastItemInListButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="previousItemInListButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="nextItemInListButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="detectBPMButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="temperatureClearAllButton1" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace max="-2" attributes="0"/>
                               </Group>
                           </Group>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="browseImageButton" min="-2" pref="57" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="closeButton" min="-2" pref="60" max="-2" attributes="0"/>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="-2" pref="131" max="-2" attributes="0"/>
+                                  <Component id="temperatureClearAllButton" min="-2" pref="23" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <EmptySpace max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="listSelectedButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="moveRowUpButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="moveRowDownButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="filterSearchTf" alignment="3" min="-2" pref="29" max="-2" attributes="0"/>
+                              <Component id="updateButton" alignment="3" min="-2" pref="100" max="-2" attributes="0"/>
+                              <Component id="addButton" alignment="3" min="-2" pref="100" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="clearButton" alignment="3" min="-2" pref="99" max="-2" attributes="0"/>
+                              <Component id="deleteButton" alignment="3" min="-2" pref="100" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="exportExcelButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="importExcelButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="firstItemInListButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="lastItemInListButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="previousItemInListButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="nextItemInListButton" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="patientIDLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="patientIdTf" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="firstNameLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="firstNameTf" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="middleNameLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="middleNameTf" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="lastNameLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="lastNameTf" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="genderLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="maleCbButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="femaleCbButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="dateOfBirthLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="dateOfBirthPicker" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="bloodTypeLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="bloodTypeCB" alignment="3" max="32767" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="civilStatusLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="civilStatusCB" alignment="3" max="32767" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="religionLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="religionCB" alignment="3" max="32767" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="nationalityLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="nationalityTf" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="cellphoneNumberLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="phoneNumberTf" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
-                              <Component id="labelImage" max="32767" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="patientIDLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="patientIdTf" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Group type="102" attributes="0">
-                                  <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="imagePathTf" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
-                                      <Component id="imagePathLabel" alignment="3" max="32767" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="imageNameLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="imageNameTf" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
-                              <Component id="browseImageButton" min="-2" pref="57" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="firstNameLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="firstNameTf" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="middleNameLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="middleNameTf" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="lastNameLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="lastNameTf" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="genderLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="maleCbButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="femaleCbButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="dateOfBirthLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="dateOfBirthPicker" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="bloodTypeLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="bloodTypeCB" alignment="3" max="32767" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="civilStatusLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="civilStatusCB" alignment="3" max="32767" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="religionLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="religionCB" alignment="3" max="32767" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="nationalityLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="nationalityTf" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="cellphoneNumberLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="phoneNumberTf" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="imagePathTf" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
+                              <Component id="imagePathLabel" alignment="3" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jLabel1" min="-2" pref="31" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="imageNameLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="imageNameTf" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="80" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace max="-2" attributes="0"/>
                   <Component id="jScrollPane1" min="-2" pref="394" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="jLabel1" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
+                      <Component id="filterSearchTf" alignment="3" min="-2" pref="29" max="-2" attributes="0"/>
+                      <Component id="moveRowUpButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="moveRowDownButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="printButton" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                  </Group>
               </Group>
           </Group>
         </DimensionLayout>
@@ -453,7 +521,7 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Male"/>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+              <Color blue="fd" green="f1" red="eb" type="rgb"/>
             </Property>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="14" style="0"/>
@@ -467,7 +535,7 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Female"/>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+              <Color blue="fd" green="f1" red="eb" type="rgb"/>
             </Property>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="14" style="0"/>
@@ -579,8 +647,15 @@
         </Component>
         <Component class="javax.swing.JLabel" name="labelImage">
           <Properties>
+            <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="66" green="66" red="66" type="rgb"/>
+            </Property>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="18" style="1"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
             <Property name="opaque" type="boolean" value="true"/>
           </Properties>
@@ -710,18 +785,6 @@
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="moveRowDownButtonActionPerformed"/>
-          </Events>
-        </Component>
-        <Component class="javax.swing.JButton" name="listSelectedButton">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="List Selected"/>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Tahoma" size="18" style="0"/>
-            </Property>
-            <Property name="horizontalAlignment" type="int" value="10"/>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="listSelectedButtonActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JButton" name="exportExcelButton">
@@ -856,7 +919,7 @@
                   <Font name="Tahoma" size="14" style="0"/>
                 </Property>
                 <Property name="gridColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="ff" green="cc" red="cc" type="rgb"/>
+                  <Color blue="fd" green="f1" red="eb" type="rgb"/>
                 </Property>
                 <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[800, 0]"/>
@@ -864,6 +927,7 @@
                 <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[800, 0]"/>
                 </Property>
+                <Property name="rowHeight" type="int" value="20"/>
                 <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
                   <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
                 </Property>
@@ -873,6 +937,7 @@
                 <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="patientDataTableKeyReleased"/>
               </Events>
               <AuxValues>
+                <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="patientDataTable.setFillsViewportHeight(true);&#xa;patientDataTable.setBackground(new Color(235, 240, 255));"/>
                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
               </AuxValues>
             </Component>
@@ -963,7 +1028,7 @@
               <Color blue="fd" green="f1" red="eb" type="rgb"/>
             </Property>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Verdana" size="14" style="0"/>
+              <Font name="Verdana" size="14" style="1"/>
             </Property>
           </Properties>
         </Component>
@@ -987,17 +1052,10 @@
         </Component>
         <Component class="javax.swing.JButton" name="closeButton">
           <Properties>
+            <Property name="text" type="java.lang.String" value="Close"/>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="66" green="0" red="ff" type="rgb"/>
             </Property>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Century Gothic" size="14" style="0"/>
-            </Property>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="ff" red="cc" type="rgb"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Close"/>
-            <Property name="toolTipText" type="java.lang.String" value="Exit the application"/>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
                 <EmptyBorder/>
@@ -1007,13 +1065,163 @@
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
               <Color id="Hand Cursor"/>
             </Property>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Century Gothic" size="14" style="0"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="cc" type="rgb"/>
+            </Property>
             <Property name="horizontalTextPosition" type="int" value="0"/>
             <Property name="margin" type="java.awt.Insets" editor="org.netbeans.beaninfo.editors.InsetsEditor">
               <Insets value="[0, 0, 0, 0]"/>
             </Property>
+            <Property name="toolTipText" type="java.lang.String" value="Exit the application"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="closeButtonActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JTextField" name="temperatureTf1">
+          <Properties>
+            <Property name="editable" type="boolean" value="false"/>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="14" style="0"/>
+            </Property>
+            <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+              <Dimension value="[7, 20]"/>
+            </Property>
+            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+              <Dimension value="[7, 20]"/>
+            </Property>
+            <Property name="toolTipText" type="java.lang.String" value="Please indicate your Phone number starting at 09xxxxxxxx"/>
+          </Properties>
+          <Events>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="temperatureTf1KeyTyped"/>
+          </Events>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_ListenersCodePost" type="java.lang.String" value="phoneNumberTf.setDocument(new JTextFieldLimit(11));"/>
+          </AuxValues>
+        </Component>
+        <Component class="javax.swing.JTextField" name="temperatureTf2">
+          <Properties>
+            <Property name="editable" type="boolean" value="false"/>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="14" style="0"/>
+            </Property>
+            <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+              <Dimension value="[7, 20]"/>
+            </Property>
+            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+              <Dimension value="[7, 20]"/>
+            </Property>
+            <Property name="toolTipText" type="java.lang.String" value="Please indicate your Phone number starting at 09xxxxxxxx"/>
+          </Properties>
+          <Events>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="temperatureTf2KeyTyped"/>
+          </Events>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_ListenersCodePost" type="java.lang.String" value="phoneNumberTf.setDocument(new JTextFieldLimit(11));"/>
+          </AuxValues>
+        </Component>
+        <Component class="javax.swing.JComboBox" name="temperatureBox1">
+          <Properties>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+              <StringArray count="2">
+                <StringItem index="0" value="Celsius"/>
+                <StringItem index="1" value="Fahrenheit"/>
+              </StringArray>
+            </Property>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Segoe UI" size="18" style="1"/>
+            </Property>
+          </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+          </AuxValues>
+        </Component>
+        <Component class="javax.swing.JLabel" name="patientIDLabel1">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Temperature:"/>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="18" style="1"/>
+            </Property>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JComboBox" name="temperatureBox2">
+          <Properties>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+              <StringArray count="2">
+                <StringItem index="0" value="Celsius"/>
+                <StringItem index="1" value="Fahrenheit"/>
+              </StringArray>
+            </Property>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Segoe UI" size="18" style="1"/>
+            </Property>
+          </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+          </AuxValues>
+        </Component>
+        <Component class="javax.swing.JButton" name="temperatureConvertButton1">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Detect"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="temperatureConvertButton1ActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JButton" name="temperatureClearAllButton">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Clear All Temperature Input/Output"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="temperatureClearAllButtonActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JLabel" name="temperatureStatus">
+        </Component>
+        <Component class="javax.swing.JLabel" name="patientIDLabel2">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="BPM (beats per minute):"/>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="18" style="1"/>
+            </Property>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="bpmTf">
+          <Properties>
+            <Property name="editable" type="boolean" value="false"/>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="14" style="0"/>
+            </Property>
+            <Property name="horizontalAlignment" type="int" value="0"/>
+            <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+              <Dimension value="[7, 20]"/>
+            </Property>
+            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+              <Dimension value="[7, 20]"/>
+            </Property>
+            <Property name="toolTipText" type="java.lang.String" value="Please indicate your Phone number starting at 09xxxxxxxx"/>
+          </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_ListenersCodePost" type="java.lang.String" value="phoneNumberTf.setDocument(new JTextFieldLimit(11));"/>
+          </AuxValues>
+        </Component>
+        <Component class="javax.swing.JButton" name="detectBPMButton">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Detect"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="detectBPMButtonActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JButton" name="temperatureClearAllButton1">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Clear BPM"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="temperatureClearAllButton1ActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>

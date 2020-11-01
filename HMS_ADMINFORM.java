@@ -308,7 +308,13 @@ public class HMS_ADMINFORM extends javax.swing.JFrame {
     }//GEN-LAST:event_adminCancelButtonActionPerformed
 
     private void manageUserButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageUserButtonActionPerformed
+try {
 
+            Desktop.getDesktop().browse(new URI("http://localhost/phpmyadmin/sql.php?db=health_monitoring_system_database&table=users&pos=0"));
+
+        } catch (IOException | URISyntaxException err1) {
+            System.out.println(err1);
+        }
     }//GEN-LAST:event_manageUserButtonActionPerformed
 
     private void manageEmployeesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageEmployeesButtonActionPerformed

@@ -1,10 +1,9 @@
-
 package healthMonitoringSystem;
-
 
 import com.mysql.jdbc.Connection;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.*;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.swing.JOptionPane;
@@ -28,22 +27,20 @@ public final class HMS_EMPLOYEE_LIST extends javax.swing.JFrame {
     /**
      * Creates new form HMS_EMPLOYEE_LIST
      */
-    
     public HMS_EMPLOYEE_LIST() {
 
-       
-        
         initComponents();
         DisplayTable();
         showDate();
         showTime();
     }
-    public void DisplayTable(){
+
+    public void DisplayTable() {
         PreparedStatement pstmt;
         ResultSet rs;
         DefaultTableModel dm = (DefaultTableModel) employeeListTable.getModel();
         dm.fireTableDataChanged();
-        try{
+        try {
             Class.forName("com.mysql.jdbc.Driver");
             String username = "root";
             String password = "root";
@@ -53,10 +50,9 @@ public final class HMS_EMPLOYEE_LIST extends javax.swing.JFrame {
             rs = pstmt.executeQuery();
             employeeListTable.setModel(DbUtils.resultSetToTableModel(rs));
 
-       
-        } catch(ClassNotFoundException | SQLException err) {
+        } catch (ClassNotFoundException | SQLException err) {
             JOptionPane.showMessageDialog(null, err);
-        } 
+        }
     }
 
     // FILTER DATA
@@ -66,24 +62,24 @@ public final class HMS_EMPLOYEE_LIST extends javax.swing.JFrame {
         employeeListTable.setRowSorter(tr);
         tr.setRowFilter(RowFilter.regexFilter(query));
     }
-    
+
     void showDate() {
-            Date date = new Date();
-            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
-            dateLabel.setText(simpleDateFormat.format(date));
-         }
-        
-        void showTime() {
-        new Timer (0, new ActionListener() {
-           
-           @Override
-           public void actionPerformed(ActionEvent e) {
-               Date date = new Date();
-               SimpleDateFormat simpleDateFormat = new SimpleDateFormat("hh:mm:ss a");
-               timeLabel.setText(simpleDateFormat.format(date));
-           }
+        Date date = new Date();
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        dateLabel.setText(simpleDateFormat.format(date));
+    }
+
+    void showTime() {
+        new Timer(0, new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Date date = new Date();
+                SimpleDateFormat simpleDateFormat = new SimpleDateFormat("hh:mm:ss a");
+                timeLabel.setText(simpleDateFormat.format(date));
+            }
         }).start();
-        }
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -198,6 +194,8 @@ public final class HMS_EMPLOYEE_LIST extends javax.swing.JFrame {
         mainEmployeePanel.setRequestFocusEnabled(false);
         mainEmployeePanel.setVerifyInputWhenFocusTarget(false);
 
+        employeeListTable.setFillsViewportHeight(true);
+        employeeListTable.setBackground(new Color(235, 240, 255));
         employeeListTable.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         employeeListTable.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         employeeListTable.setModel(new javax.swing.table.DefaultTableModel(
@@ -383,7 +381,7 @@ public final class HMS_EMPLOYEE_LIST extends javax.swing.JFrame {
     }//GEN-LAST:event_filterSearchTfKeyReleased
 
     private void updateEmployeeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateEmployeeButtonActionPerformed
-       HMS_EMPLOYEE_UPDATE showEmployeeUpdateForm = new HMS_EMPLOYEE_UPDATE();
+        HMS_EMPLOYEE_UPDATE showEmployeeUpdateForm = new HMS_EMPLOYEE_UPDATE();
         showEmployeeUpdateForm.setVisible(true);
     }//GEN-LAST:event_updateEmployeeButtonActionPerformed
 
@@ -394,14 +392,14 @@ public final class HMS_EMPLOYEE_LIST extends javax.swing.JFrame {
 
     private void formFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_formFocusGained
         this.repaint();
-        DefaultTableModel dm = (DefaultTableModel)employeeListTable.getModel();
+        DefaultTableModel dm = (DefaultTableModel) employeeListTable.getModel();
         dm.fireTableDataChanged(); // notifies the JTable that the model has changed
         employeeListTable.repaint();
     }//GEN-LAST:event_formFocusGained
 
     private void formFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_formFocusLost
         this.repaint();
-        DefaultTableModel dm = (DefaultTableModel)employeeListTable.getModel();
+        DefaultTableModel dm = (DefaultTableModel) employeeListTable.getModel();
         dm.fireTableDataChanged(); // notifies the JTable that the model has changed
         employeeListTable.repaint();
     }//GEN-LAST:event_formFocusLost
@@ -414,32 +412,31 @@ public final class HMS_EMPLOYEE_LIST extends javax.swing.JFrame {
             String sql = "SELECT * FROM employees";
             pst = conn.prepareStatement(sql);
             rs = pst.executeQuery(sql);
-            
+
             employeeListTable.setModel(DbUtils.resultSetToTableModel(rs));
             employeeListTable.repaint();
-            
-            DefaultTableModel dm = (DefaultTableModel)employeeListTable.getModel();
+
+            DefaultTableModel dm = (DefaultTableModel) employeeListTable.getModel();
             dm.fireTableDataChanged(); // notifies the JTable that the model has changed
             employeeListTable.repaint();
-            
+
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, e);}
+            JOptionPane.showMessageDialog(null, e);
+        }
     }//GEN-LAST:event_refreshDataButtonActionPerformed
 
-
-    
-    
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-                
-        try { 
-        UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-        } catch (ClassNotFoundException | 
-        InstantiationException | 
-        IllegalAccessException | 
-        UnsupportedLookAndFeelException e) {System.out.println(e);
+
+        try {
+            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+        } catch (ClassNotFoundException
+                | InstantiationException
+                | IllegalAccessException
+                | UnsupportedLookAndFeelException e) {
+            System.out.println(e);
         }
 
         /* Create and display the form */

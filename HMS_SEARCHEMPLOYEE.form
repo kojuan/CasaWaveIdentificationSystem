@@ -123,7 +123,7 @@
                       </Group>
                   </Group>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="64" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" attributes="0">
@@ -144,8 +144,7 @@
                                   </Group>
                               </Group>
                           </Group>
-                          <EmptySpace min="39" pref="39" max="-2" attributes="0"/>
-                          <Component id="imageLabel" min="-2" pref="355" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="66" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -161,6 +160,8 @@
                           <EmptySpace max="32767" attributes="0"/>
                       </Group>
                   </Group>
+                  <Component id="labelImage" min="-2" pref="253" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="75" max="-2" attributes="0"/>
               </Group>
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
@@ -198,6 +199,8 @@
                       <Group type="102" attributes="0">
                           <Component id="jScrollPane1" min="-2" pref="354" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
+                          <Component id="imageLabel" min="-2" pref="355" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -242,57 +245,68 @@
                               </Group>
                           </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="jScrollPane1" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="1" attributes="0">
+                              <Component id="jScrollPane1" min="-2" max="-2" attributes="0"/>
+                              <Component id="imageLabel" min="-2" pref="43" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
                   </Group>
-                  <EmptySpace min="25" pref="25" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="1" attributes="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="religionTf" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
-                              <Component id="religionLabel" alignment="3" min="-2" pref="43" max="-2" attributes="0"/>
-                              <Component id="imageLabel" alignment="3" min="-2" pref="43" max="-2" attributes="0"/>
+                          <EmptySpace min="25" pref="25" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="1" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="religionTf" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
+                                      <Component id="religionLabel" alignment="3" min="-2" pref="43" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="bloodTypeTf" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
+                                      <Component id="bdayLabel5" alignment="3" min="-2" pref="43" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <Group type="102" attributes="0">
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="sexTf" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
+                                      <Component id="sexLabel" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="bdayTf" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
+                                      <Component id="bdayLabel1" alignment="3" min="-2" pref="43" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="bloodTypeTf" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
-                              <Component id="bdayLabel5" alignment="3" min="-2" pref="43" max="-2" attributes="0"/>
+                              <Component id="civilStatusTf" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
+                              <Component id="bdayLabel4" alignment="3" min="-2" pref="43" max="-2" attributes="0"/>
                           </Group>
-                      </Group>
-                      <Group type="102" attributes="0">
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="sexTf" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
-                              <Component id="sexLabel" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="fatherEATf" max="32767" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="fatherEALabel" alignment="3" max="32767" attributes="0"/>
+                                  <Component id="bdayLabel2" alignment="3" min="-2" pref="43" max="-2" attributes="0"/>
+                                  <Component id="nationalityTf" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
+                              </Group>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="bdayTf" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
-                              <Component id="bdayLabel1" alignment="3" min="-2" pref="43" max="-2" attributes="0"/>
+                              <Component id="motherEATf" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
+                              <Component id="motherEALabel1" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
+                              <Component id="phoneNumberTf" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
+                              <Component id="bdayLabel3" alignment="3" min="-2" pref="43" max="-2" attributes="0"/>
                           </Group>
+                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="1" attributes="0">
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Component id="labelImage" min="-2" pref="283" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="civilStatusTf" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
-                      <Component id="bdayLabel4" alignment="3" min="-2" pref="43" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace max="32767" attributes="0"/>
-                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="fatherEATf" max="32767" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="fatherEALabel" alignment="3" max="32767" attributes="0"/>
-                          <Component id="bdayLabel2" alignment="3" min="-2" pref="43" max="-2" attributes="0"/>
-                          <Component id="nationalityTf" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="motherEATf" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
-                      <Component id="motherEALabel1" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
-                      <Component id="phoneNumberTf" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
-                      <Component id="bdayLabel3" alignment="3" min="-2" pref="43" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace pref="20" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -757,6 +771,21 @@
             </Component>
           </SubComponents>
         </Container>
+        <Component class="javax.swing.JLabel" name="labelImage">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="66" green="66" red="66" type="rgb"/>
+            </Property>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="18" style="1"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+            </Property>
+            <Property name="horizontalAlignment" type="int" value="0"/>
+            <Property name="opaque" type="boolean" value="true"/>
+          </Properties>
+        </Component>
       </SubComponents>
     </Container>
   </SubComponents>

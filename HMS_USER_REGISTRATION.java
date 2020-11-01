@@ -1,10 +1,8 @@
-
 package healthMonitoringSystem;
 
 /**
  * @author Khian Orland
  */
-
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import javax.swing.*;
@@ -31,23 +29,18 @@ import javax.swing.text.AttributeSet;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.PlainDocument;
 
-
 public final class HMS_USER_REGISTRATION extends javax.swing.JFrame {
 
     /**
      * Creates new form HMS_USER_REGISTRATION
      */
-    
     // Create a variable to set the image path in it
     String image_path = null;
-    
+
     public HMS_USER_REGISTRATION() {
 
-        
         initComponents();
-        
-        
-        
+
         // create border for the text and password fields
         Border field_border = BorderFactory.createMatteBorder(1, 5, 1, 1, Color.blue);
         registerUsernameTf.setBorder(field_border);
@@ -55,46 +48,51 @@ public final class HMS_USER_REGISTRATION extends javax.swing.JFrame {
         registerConfirmPsswordField.setBorder(field_border);
         registerFullNameField.setBorder(field_border);
         registerPhoneNumberTf.setBorder(field_border);
-        
+
         // create a button group for Gender
         ButtonGroup genderButtonGroup = new ButtonGroup();
         genderButtonGroup.add(maleButton);
         genderButtonGroup.add(femaleButton);
-        
+
         showDate();
         showTime();
     }
-        void showDate() {
-               Date date = new Date();
-               SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
-               dateLabel.setText(simpleDateFormat.format(date));
+
+    void showDate() {
+        Date date = new Date();
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        dateLabel.setText(simpleDateFormat.format(date));
+    }
+
+    void showTime() {
+        new Timer(0, (ActionEvent e) -> {
+            Date date = new Date();
+            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("hh:mm:ss a");
+            timeLabel.setText(simpleDateFormat.format(date));
+        }).start();
+    }
+    // limit phone number max
+
+    public class JTextFieldLimit extends PlainDocument {
+
+        private final int limit;
+
+        JTextFieldLimit(int limit) {
+            super();
+            this.limit = limit;
+        }
+
+        @Override
+        public void insertString(int offset, String str, AttributeSet attr) throws BadLocationException {
+            if (str == null) {
+                return;
             }
 
-           void showTime() {
-           new Timer (0, (ActionEvent e) -> {
-               Date date = new Date();
-               SimpleDateFormat simpleDateFormat = new SimpleDateFormat("hh:mm:ss a");
-               timeLabel.setText(simpleDateFormat.format(date));
-           }).start();
+            if ((getLength() + str.length()) <= limit) {
+                super.insertString(offset, str, attr);
+            }
         }
-       // limit phone number max
-        public class JTextFieldLimit extends PlainDocument {
-         private final int limit;
-
-         JTextFieldLimit(int limit) {
-          super();
-          this.limit = limit;
-          }
-
-         @Override
-         public void insertString( int offset, String  str, AttributeSet attr ) throws BadLocationException {
-           if (str == null) return;
-
-           if ((getLength() + str.length()) <= limit) {
-             super.insertString(offset, str, attr);
-           }
-         }
-       }
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -149,8 +147,8 @@ public final class HMS_USER_REGISTRATION extends javax.swing.JFrame {
 
         registerMainPanel.setBackground(new java.awt.Color(235, 241, 253));
 
-        registerUsernameTf.setBackground(new java.awt.Color(204, 204, 255));
         registerUsernameTf.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        registerUsernameTf.setBackground(new java.awt.Color(204, 204, 255));
         registerUsernameTf.setToolTipText("Username used to login.");
         registerUsernameTf.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -158,10 +156,10 @@ public final class HMS_USER_REGISTRATION extends javax.swing.JFrame {
             }
         });
 
-        usernameClearTextButton.setBackground(new java.awt.Color(238, 245, 251));
-        usernameClearTextButton.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         usernameClearTextButton.setText("Clear");
+        usernameClearTextButton.setBackground(new java.awt.Color(238, 245, 251));
         usernameClearTextButton.setBorderPainted(false);
+        usernameClearTextButton.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         usernameClearTextButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 usernameClearTextButtonActionPerformed(evt);
@@ -182,18 +180,18 @@ public final class HMS_USER_REGISTRATION extends javax.swing.JFrame {
             }
         });
 
-        passwordClearTextButton.setBackground(new java.awt.Color(238, 245, 251));
-        passwordClearTextButton.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         passwordClearTextButton.setText("Clear");
+        passwordClearTextButton.setBackground(new java.awt.Color(238, 245, 251));
         passwordClearTextButton.setBorderPainted(false);
+        passwordClearTextButton.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         passwordClearTextButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 passwordClearTextButtonActionPerformed(evt);
             }
         });
 
-        registerConfirmPsswordField.setBackground(new java.awt.Color(204, 219, 255));
         registerConfirmPsswordField.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        registerConfirmPsswordField.setBackground(new java.awt.Color(204, 219, 255));
         registerConfirmPsswordField.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         registerConfirmPsswordField.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -208,20 +206,23 @@ public final class HMS_USER_REGISTRATION extends javax.swing.JFrame {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 registerFullNameFieldKeyPressed(evt);
             }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                registerFullNameFieldKeyTyped(evt);
+            }
         });
 
-        fullNameClearTextButton.setBackground(new java.awt.Color(238, 245, 251));
-        fullNameClearTextButton.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         fullNameClearTextButton.setText("Clear");
+        fullNameClearTextButton.setBackground(new java.awt.Color(238, 245, 251));
         fullNameClearTextButton.setBorderPainted(false);
+        fullNameClearTextButton.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         fullNameClearTextButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 fullNameClearTextButtonActionPerformed(evt);
             }
         });
 
-        registerPhoneNumberTf.setBackground(new java.awt.Color(204, 204, 255));
         registerPhoneNumberTf.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        registerPhoneNumberTf.setBackground(new java.awt.Color(204, 204, 255));
         registerPhoneNumberTf.setToolTipText("Please indicate your Phone number starting at 09xxxxxxxx");
         registerPhoneNumberTf.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -233,76 +234,76 @@ public final class HMS_USER_REGISTRATION extends javax.swing.JFrame {
         });
         registerPhoneNumberTf.setDocument(new JTextFieldLimit(11));
 
-        phoneNumberClearTextButton.setBackground(new java.awt.Color(238, 245, 251));
-        phoneNumberClearTextButton.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         phoneNumberClearTextButton.setText("Clear");
+        phoneNumberClearTextButton.setBackground(new java.awt.Color(238, 245, 251));
         phoneNumberClearTextButton.setBorderPainted(false);
+        phoneNumberClearTextButton.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         phoneNumberClearTextButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 phoneNumberClearTextButtonActionPerformed(evt);
             }
         });
 
-        clearAllButton.setBackground(new java.awt.Color(153, 153, 255));
-        clearAllButton.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         clearAllButton.setText("Clear All");
+        clearAllButton.setBackground(new java.awt.Color(153, 153, 255));
         clearAllButton.setBorderPainted(false);
+        clearAllButton.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         clearAllButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 clearAllButtonActionPerformed(evt);
             }
         });
 
-        maleButton.setBackground(new java.awt.Color(235, 241, 253));
-        maleButton.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         maleButton.setSelected(true);
         maleButton.setText("Male");
+        maleButton.setBackground(new java.awt.Color(235, 241, 253));
+        maleButton.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
+        femaleButton.setText("Female");
         femaleButton.setBackground(new java.awt.Color(235, 241, 253));
         femaleButton.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        femaleButton.setText("Female");
 
+        selectImageButton.setText("Select Image");
         selectImageButton.setBackground(new java.awt.Color(255, 255, 255));
         selectImageButton.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        selectImageButton.setText("Select Image");
         selectImageButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 selectImageButtonActionPerformed(evt);
             }
         });
 
-        registerUsernameLabel.setBackground(new java.awt.Color(255, 255, 255));
-        registerUsernameLabel.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         registerUsernameLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/healthMonitoringSystem/APP_IMAGES/login_images/usernameIconIMAGE.png"))); // NOI18N
         registerUsernameLabel.setText("Username:");
+        registerUsernameLabel.setBackground(new java.awt.Color(255, 255, 255));
+        registerUsernameLabel.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
 
-        registerPasswordLabel.setBackground(new java.awt.Color(255, 255, 255));
-        registerPasswordLabel.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         registerPasswordLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/healthMonitoringSystem/APP_IMAGES/login_images/passwordIconIMAGE.png"))); // NOI18N
         registerPasswordLabel.setText("Password:");
+        registerPasswordLabel.setBackground(new java.awt.Color(255, 255, 255));
+        registerPasswordLabel.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
 
+        imagePathLabel.setText("image path");
         imagePathLabel.setBackground(new java.awt.Color(235, 241, 253));
         imagePathLabel.setFont(new java.awt.Font("Sylfaen", 0, 11)); // NOI18N
-        imagePathLabel.setText("image path");
 
+        registerConfirmPasswordLabel.setText("Confirm Password:");
         registerConfirmPasswordLabel.setBackground(new java.awt.Color(255, 255, 255));
         registerConfirmPasswordLabel.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        registerConfirmPasswordLabel.setText("Confirm Password:");
 
+        fullNameLabel.setText("Full Name:");
         fullNameLabel.setBackground(new java.awt.Color(255, 255, 255));
         fullNameLabel.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        fullNameLabel.setText("Full Name:");
 
+        phoneNumberLabel.setText("Phone Number (09xx):");
         phoneNumberLabel.setBackground(new java.awt.Color(255, 255, 255));
         phoneNumberLabel.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        phoneNumberLabel.setText("Phone Number (09xx):");
 
+        genderLabel.setText("Gender:");
         genderLabel.setBackground(new java.awt.Color(255, 255, 255));
         genderLabel.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        genderLabel.setText("Gender:");
 
-        userImageLabel.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         userImageLabel.setText("User Image:");
+        userImageLabel.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
 
         registerButton.setBackground(new java.awt.Color(153, 153, 255));
         registerButton.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
@@ -329,16 +330,16 @@ public final class HMS_USER_REGISTRATION extends javax.swing.JFrame {
         bottomPanel.setBackground(new java.awt.Color(153, 153, 255));
         bottomPanel.setRequestFocusEnabled(false);
 
-        timeLabel.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
-        timeLabel.setForeground(new java.awt.Color(255, 255, 255));
         timeLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         timeLabel.setText("Time");
+        timeLabel.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        timeLabel.setForeground(new java.awt.Color(255, 255, 255));
         timeLabel.setRequestFocusEnabled(false);
 
-        dateLabel.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
-        dateLabel.setForeground(new java.awt.Color(255, 255, 255));
         dateLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         dateLabel.setText("Date");
+        dateLabel.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        dateLabel.setForeground(new java.awt.Color(255, 255, 255));
         dateLabel.setRequestFocusEnabled(false);
 
         javax.swing.GroupLayout bottomPanelLayout = new javax.swing.GroupLayout(bottomPanel);
@@ -359,11 +360,11 @@ public final class HMS_USER_REGISTRATION extends javax.swing.JFrame {
                 .addComponent(dateLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        onScreenKeyboardButton.setBackground(new java.awt.Color(216, 219, 249));
-        onScreenKeyboardButton.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         onScreenKeyboardButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/healthMonitoringSystem/APP_IMAGES/mainprogram/onScreenKeyboard.png"))); // NOI18N
         onScreenKeyboardButton.setText("On-screen Keyboard");
+        onScreenKeyboardButton.setBackground(new java.awt.Color(216, 219, 249));
         onScreenKeyboardButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        onScreenKeyboardButton.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         onScreenKeyboardButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 onScreenKeyboardButtonActionPerformed(evt);
@@ -538,72 +539,66 @@ public final class HMS_USER_REGISTRATION extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void registerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerButtonActionPerformed
-        
-            
-            String fname = registerFullNameField.getText();
-            String username = registerUsernameTf.getText();
-            String pass1 = String.valueOf(registerPasswordTf.getPassword());
-            String phone = registerPhoneNumberTf.getText();
-            String gender = "Male";
-            
-            
-            if (femaleButton.isSelected()) {
-                gender = "Female";
-            }
-            
-            if (verifyFields())
-            {
-                if (!checkUsername(username))
-                {
-                    PreparedStatement ps;
-                    ResultSet rs;
-                    String registerUserQuery = "INSERT INTO users (full_name, usernameString, passwordString, phone, gender, picture) VALUES (?,?,?,?,?,?)";
-                    
+
+        String fname = registerFullNameField.getText();
+        String username = registerUsernameTf.getText();
+        String pass1 = String.valueOf(registerPasswordTf.getPassword());
+        String phone = registerPhoneNumberTf.getText();
+        String gender = "Male";
+
+        if (femaleButton.isSelected()) {
+            gender = "Female";
+        }
+
+        if (verifyFields()) {
+            if (!checkUsername(username)) {
+                PreparedStatement ps;
+                ResultSet rs;
+                String registerUserQuery = "INSERT INTO users (full_name, usernameString, passwordString, phone, gender, picture) VALUES (?,?,?,?,?,?)";
+
+                try {
+
+                    ps = HEALTH_MONITORING_SYSTEM_DATABASE.getConnection().prepareStatement(registerUserQuery);
+                    ps.setString(1, fname);
+                    ps.setString(2, username);
+                    ps.setString(3, pass1);
+                    ps.setString(4, phone);
+                    ps.setString(5, gender);
+
                     try {
-                        
-                        ps = HEALTH_MONITORING_SYSTEM_DATABASE.getConnection().prepareStatement(registerUserQuery);
-                        ps.setString(1, fname);
-                        ps.setString(2, username);
-                        ps.setString(3, pass1);
-                        ps.setString(4, phone);
-                        ps.setString(5, gender);
-                        
-                        try {
-                            // Save the image as BLOB in the Database
-                            if (image_path != null) {
-                                
-                                InputStream image = new FileInputStream(new File(image_path));
-                                ps.setBlob(6, image);
-                                
-                            }
-                            else if (image_path == null) {
-                                ps.setNull(6, java.sql.Types.NULL);
-                                System.out.println("No image attached.");
-                                
-                            } else {
-                                ps.setNull(6, java.sql.Types.NULL);
-                                System.out.println("No image attached.");
-                            }
-                            
-                            if (ps.executeUpdate() != 0) {
-                                
-                                
-                                JOptionPane.showMessageDialog(null, "Your Account has been created.");
-                            } else {
-                                JOptionPane.showMessageDialog(null, "Error: Check your Information.");
-                            }
-                            
+                        // Save the image as BLOB in the Database
+                        if (image_path != null) {
+
+                            InputStream image = new FileInputStream(new File(image_path));
+                            ps.setBlob(6, image);
+
+                        } else if (image_path == null) {
                             ps.setNull(6, java.sql.Types.NULL);
-                            
-                        } catch (FileNotFoundException ex) {
-                            Logger.getLogger(HMS_USER_REGISTRATION.class.getName()).log(Level.SEVERE, null, ex);
+                            System.out.println("No image attached.");
+
+                        } else {
+                            ps.setNull(6, java.sql.Types.NULL);
+                            System.out.println("No image attached.");
                         }
-                        
-                    } catch (SQLException ex) {
+
+                        if (ps.executeUpdate() != 0) {
+
+                            JOptionPane.showMessageDialog(null, "Your Account has been created.");
+                        } else {
+                            JOptionPane.showMessageDialog(null, "Error: Check your Information.");
+                        }
+
+                        ps.setNull(6, java.sql.Types.NULL);
+
+                    } catch (FileNotFoundException ex) {
                         Logger.getLogger(HMS_USER_REGISTRATION.class.getName()).log(Level.SEVERE, null, ex);
                     }
 
+                } catch (SQLException ex) {
+                    Logger.getLogger(HMS_USER_REGISTRATION.class.getName()).log(Level.SEVERE, null, ex);
                 }
+
+            }
         }
     }//GEN-LAST:event_registerButtonActionPerformed
 
@@ -616,14 +611,13 @@ public final class HMS_USER_REGISTRATION extends javax.swing.JFrame {
         chooser.setCurrentDirectory(new File(System.getProperty("user.home")));
 
         // File extension
-        FileNameExtensionFilter extension = new FileNameExtensionFilter("*Images","jpg","png","jpeg");
+        FileNameExtensionFilter extension = new FileNameExtensionFilter("*Images", "jpg", "png", "jpeg");
         chooser.addChoosableFileFilter(extension);
 
         int filestate = chooser.showSaveDialog(null);
 
         // Check if the user select an image
-        if (filestate == JFileChooser.APPROVE_OPTION)
-        {
+        if (filestate == JFileChooser.APPROVE_OPTION) {
             File selectedImage = chooser.getSelectedFile();
             path = selectedImage.getAbsolutePath();
             imagePathLabel.setText(path);
@@ -658,9 +652,9 @@ public final class HMS_USER_REGISTRATION extends javax.swing.JFrame {
     }//GEN-LAST:event_fullNameClearTextButtonActionPerformed
 
     private void registerConfirmPsswordFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_registerConfirmPsswordFieldKeyPressed
-        if (evt.getKeyCode()==KeyEvent.VK_ESCAPE){
+        if (evt.getKeyCode() == KeyEvent.VK_ESCAPE) {
             HMS_ADMINFORM showAdminForm = new HMS_ADMINFORM();
-            showAdminForm.setVisible(true); 
+            showAdminForm.setVisible(true);
             this.dispose();
         }
     }//GEN-LAST:event_registerConfirmPsswordFieldKeyPressed
@@ -670,9 +664,9 @@ public final class HMS_USER_REGISTRATION extends javax.swing.JFrame {
     }//GEN-LAST:event_passwordClearTextButtonActionPerformed
 
     private void registerPasswordTfKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_registerPasswordTfKeyPressed
-        if (evt.getKeyCode()==KeyEvent.VK_ESCAPE){
+        if (evt.getKeyCode() == KeyEvent.VK_ESCAPE) {
             HMS_ADMINFORM showAdminForm = new HMS_ADMINFORM();
-            showAdminForm.setVisible(true); 
+            showAdminForm.setVisible(true);
             this.dispose();
         }
     }//GEN-LAST:event_registerPasswordTfKeyPressed
@@ -682,9 +676,9 @@ public final class HMS_USER_REGISTRATION extends javax.swing.JFrame {
     }//GEN-LAST:event_usernameClearTextButtonActionPerformed
 
     private void registerUsernameTfKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_registerUsernameTfKeyPressed
-        if (evt.getKeyCode()==KeyEvent.VK_ESCAPE){
+        if (evt.getKeyCode() == KeyEvent.VK_ESCAPE) {
             HMS_ADMINFORM showAdminForm = new HMS_ADMINFORM();
-            showAdminForm.setVisible(true); 
+            showAdminForm.setVisible(true);
             this.dispose();
         }
     }//GEN-LAST:event_registerUsernameTfKeyPressed
@@ -704,17 +698,17 @@ public final class HMS_USER_REGISTRATION extends javax.swing.JFrame {
     }//GEN-LAST:event_onScreenKeyboardButtonActionPerformed
 
     private void registerFullNameFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_registerFullNameFieldKeyPressed
-        if (evt.getKeyCode()==KeyEvent.VK_ESCAPE){
+        if (evt.getKeyCode() == KeyEvent.VK_ESCAPE) {
             HMS_ADMINFORM showAdminForm = new HMS_ADMINFORM();
-            showAdminForm.setVisible(true); 
+            showAdminForm.setVisible(true);
             this.dispose();
         }
     }//GEN-LAST:event_registerFullNameFieldKeyPressed
 
     private void registerPhoneNumberTfKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_registerPhoneNumberTfKeyPressed
-        if (evt.getKeyCode()==KeyEvent.VK_ESCAPE){
+        if (evt.getKeyCode() == KeyEvent.VK_ESCAPE) {
             HMS_ADMINFORM showAdminForm = new HMS_ADMINFORM();
-            showAdminForm.setVisible(true); 
+            showAdminForm.setVisible(true);
             this.dispose();
         }
     }//GEN-LAST:event_registerPhoneNumberTfKeyPressed
@@ -723,33 +717,36 @@ public final class HMS_USER_REGISTRATION extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_registerPasswordTfActionPerformed
 
+    private void registerFullNameFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_registerFullNameFieldKeyTyped
+        char charInputOnly = evt.getKeyChar();
+        if (!(Character.isAlphabetic(charInputOnly) || (charInputOnly == KeyEvent.VK_BACK_SPACE) || charInputOnly == KeyEvent.VK_DELETE || charInputOnly == KeyEvent.VK_SPACE)) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_registerFullNameFieldKeyTyped
+
     // Create a function to verify the empty fields
-    public boolean verifyFields()
-    {
+    public boolean verifyFields() {
         String fname = registerFullNameField.getText();
         String uname = registerUsernameTf.getText();
         String phone = registerPhoneNumberTf.getText();
         String pass1 = String.valueOf(registerPasswordTf.getPassword());
         String pass2 = String.valueOf(registerConfirmPsswordField.getPassword());
-        
+
         // Check empty fields
         if (fname.trim().equals("") || uname.trim().equals("") || phone.trim().equals("")
-        || pass1.trim().equals("") || pass2.trim().equals(""))
-        {
+                || pass1.trim().equals("") || pass2.trim().equals("")) {
             JOptionPane.showMessageDialog(null, "One or more fields are empty.", "Empty fields", 2);
             return false;
-        }
-         // Check if the two password are equal
-        else if (!pass1.equals(pass2))
-        {
+        } // Check if the two password are equal
+        else if (!pass1.equals(pass2)) {
             JOptionPane.showMessageDialog(null, "Password doesn't match.", "Confirm Password", 2);
             return false;
-        }
-        // If everything is okay...
+        } // If everything is okay...
         else {
             return true;
         }
-    }  
+    }
+
     // Create a function to check if the entered username already exists in the Database
     public boolean checkUsername(String username) {
         PreparedStatement st;
@@ -757,43 +754,38 @@ public final class HMS_USER_REGISTRATION extends javax.swing.JFrame {
         boolean username_exist = false;
 
         String query = "SELECT * FROM users WHERE usernameString = ?";
-        
+
         try {
-            
+
             st = HEALTH_MONITORING_SYSTEM_DATABASE.getConnection().prepareStatement(query);
             st.setString(1, username);
             rs = st.executeQuery();
-            
-            if (rs.next())
-            {
+
+            if (rs.next()) {
                 username_exist = true;
                 JOptionPane.showMessageDialog(null, "Username is already taken.\nPlease choose another one.", "Username existed", 2);
             }
-        
+
         } catch (SQLException ex) {
             Logger.getLogger(HMS_USER_REGISTRATION.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
         return username_exist;
     }
-    
-    
-    
-    
-    
+
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        
 
         // sets the look and feel to be that of the operating system's
-        try { 
+        try {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-        } catch (ClassNotFoundException | 
-            InstantiationException | 
-            IllegalAccessException | 
-            UnsupportedLookAndFeelException e) {System.out.println(e);
+        } catch (ClassNotFoundException
+                | InstantiationException
+                | IllegalAccessException
+                | UnsupportedLookAndFeelException e) {
+            System.out.println(e);
         }
 
         /* Create and display the form */

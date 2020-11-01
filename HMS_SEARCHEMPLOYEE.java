@@ -1,9 +1,9 @@
-
 package healthMonitoringSystem;
 
 import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.PreparedStatement;
 import java.awt.HeadlessException;
+import java.awt.Image;
 import java.awt.event.KeyEvent;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -19,11 +19,10 @@ public class HMS_SEARCHEMPLOYEE extends javax.swing.JFrame {
      * Creates new form HMS_SEARCHEMPLOYEE
      */
     public HMS_SEARCHEMPLOYEE() {
-        
-        
+
         initComponents();
         JOptionPane.showMessageDialog(this, "Please input Employee ID for accurate search.\n"
-           + "There may or may not be the same First, Middle, and Last Name.");
+                + "There may or may not be the same First, Middle, and Last Name.");
     }
 
     /**
@@ -71,6 +70,7 @@ public class HMS_SEARCHEMPLOYEE extends javax.swing.JFrame {
         lastNameLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         employeeAddressTf = new javax.swing.JTextArea();
+        labelImage = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Search Employee");
@@ -282,6 +282,12 @@ public class HMS_SEARCHEMPLOYEE extends javax.swing.JFrame {
         employeeAddressTf.setFocusable(false);
         jScrollPane1.setViewportView(employeeAddressTf);
 
+        labelImage.setBackground(new java.awt.Color(102, 102, 102));
+        labelImage.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        labelImage.setForeground(new java.awt.Color(255, 255, 255));
+        labelImage.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        labelImage.setOpaque(true);
+
         javax.swing.GroupLayout searchEmployeeMainPanelLayout = new javax.swing.GroupLayout(searchEmployeeMainPanel);
         searchEmployeeMainPanel.setLayout(searchEmployeeMainPanelLayout);
         searchEmployeeMainPanelLayout.setHorizontalGroup(
@@ -325,8 +331,7 @@ public class HMS_SEARCHEMPLOYEE extends javax.swing.JFrame {
                                 .addGroup(searchEmployeeMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(religionTf)
                                     .addComponent(bloodTypeTf))))
-                        .addGap(39, 39, 39)
-                        .addComponent(imageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 355, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(66, 66, 66))
                     .addGroup(searchEmployeeMainPanelLayout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addGroup(searchEmployeeMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -336,7 +341,9 @@ public class HMS_SEARCHEMPLOYEE extends javax.swing.JFrame {
                         .addGroup(searchEmployeeMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(fatherEATf)
                             .addComponent(motherEATf, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap())))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addComponent(labelImage, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(75, 75, 75))
             .addGroup(searchEmployeeMainPanelLayout.createSequentialGroup()
                 .addGap(19, 19, 19)
                 .addGroup(searchEmployeeMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -365,7 +372,9 @@ public class HMS_SEARCHEMPLOYEE extends javax.swing.JFrame {
                         .addGap(34, 34, 34))
                     .addGroup(searchEmployeeMainPanelLayout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 354, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(imageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 355, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())))
         );
         searchEmployeeMainPanelLayout.setVerticalGroup(
             searchEmployeeMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -400,44 +409,51 @@ public class HMS_SEARCHEMPLOYEE extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(cancelButton, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(25, 25, 25)
-                .addGroup(searchEmployeeMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(searchEmployeeMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(imageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGroup(searchEmployeeMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(searchEmployeeMainPanelLayout.createSequentialGroup()
-                        .addGroup(searchEmployeeMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(religionTf, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(religionLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(imageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(25, 25, 25)
+                        .addGroup(searchEmployeeMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(searchEmployeeMainPanelLayout.createSequentialGroup()
+                                .addGroup(searchEmployeeMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(religionTf, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(religionLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(searchEmployeeMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(bloodTypeTf, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(bdayLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(searchEmployeeMainPanelLayout.createSequentialGroup()
+                                .addGroup(searchEmployeeMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(sexTf, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(sexLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(searchEmployeeMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(bdayTf, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(bdayLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(searchEmployeeMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(bloodTypeTf, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(bdayLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(searchEmployeeMainPanelLayout.createSequentialGroup()
-                        .addGroup(searchEmployeeMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(sexTf, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(sexLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(civilStatusTf, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(bdayLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(searchEmployeeMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(fatherEATf)
+                            .addGroup(searchEmployeeMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(fatherEALabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(bdayLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(nationalityTf, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(searchEmployeeMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(bdayTf, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(bdayLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(searchEmployeeMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(civilStatusTf, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(bdayLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(searchEmployeeMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(fatherEATf)
-                    .addGroup(searchEmployeeMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(fatherEALabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(bdayLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(nationalityTf, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(searchEmployeeMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(motherEATf, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(motherEALabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(phoneNumberTf, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(bdayLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(20, Short.MAX_VALUE))
+                            .addComponent(motherEATf, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(motherEALabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(phoneNumberTf, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(bdayLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, searchEmployeeMainPanelLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(labelImage, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -466,22 +482,21 @@ public class HMS_SEARCHEMPLOYEE extends javax.swing.JFrame {
     }//GEN-LAST:event_cancelButtonActionPerformed
 
     private void searchEmployeeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchEmployeeButtonActionPerformed
-            PreparedStatement pstmt;
-            ResultSet rs;
+        PreparedStatement pstmt;
+        ResultSet rs;
         try {
             Class.forName("com.mysql.jdbc.Driver");
             String username = "root";
             String password = "root";
             Connection conn = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/health_monitoring_system_database", username, password);
-            
+
             // employeeID search
             String employeeID_sql = "SELECT * FROM employees WHERE employeeId = ?";
             pstmt = (PreparedStatement) conn.prepareStatement(employeeID_sql);
             pstmt.setInt(1, Integer.parseInt(employeeIdTf.getText()));
-            
+
             rs = pstmt.executeQuery();
-            if (rs.next())
-            {
+            if (rs.next()) {
                 employeeFirstNameTfforSearch.setText(rs.getString("firstName"));
                 employeeMiddleInitialTf.setText(rs.getString("middleInitial"));
                 employeeLastNameTf.setText(rs.getString("lastName"));
@@ -495,18 +510,20 @@ public class HMS_SEARCHEMPLOYEE extends javax.swing.JFrame {
                 civilStatusTf.setText(rs.getString("civilStatus"));
                 fatherEATf.setText(rs.getString("fatherEmailAddress"));
                 motherEATf.setText(rs.getString("motherEmailAddress"));
-                
-                
-            }
-            else
-            {
-                JOptionPane.showMessageDialog(null, "Employee ID "+ employeeIdTf.getText() + " is not found in the System.");
+                try {
+                labelImage.setIcon(new ImageIcon(new ImageIcon().getImage().getScaledInstance(labelImage.getWidth(), labelImage.getHeight(), Image.SCALE_SMOOTH)));
+                } catch (NullPointerException err) {
+                    labelImage.setText("no image found.");
+                }
+
+            } else {
+                JOptionPane.showMessageDialog(null, "Employee ID " + employeeIdTf.getText() + " is not found in the System.");
             }
             conn.close();
         } catch (HeadlessException | ClassNotFoundException | NumberFormatException | SQLException ex) {
             JOptionPane.showMessageDialog(null, "Please Employee ID to Search.");
         }
- 
+
     }//GEN-LAST:event_searchEmployeeButtonActionPerformed
 
     private void resetAllFieldsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resetAllFieldsButtonActionPerformed
@@ -533,22 +550,23 @@ public class HMS_SEARCHEMPLOYEE extends javax.swing.JFrame {
     }//GEN-LAST:event_employeeFirstNameTfforSearchActionPerformed
 
     private void employeeIdTfKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_employeeIdTfKeyPressed
-         if (evt.getKeyCode()==KeyEvent.VK_ESCAPE){
-             this.dispose();
-         }
+        if (evt.getKeyCode() == KeyEvent.VK_ESCAPE) {
+            this.dispose();
+        }
     }//GEN-LAST:event_employeeIdTfKeyPressed
 
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        
-        try { 
+
+        try {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-        } catch (ClassNotFoundException | 
-            InstantiationException | 
-            IllegalAccessException | 
-            UnsupportedLookAndFeelException e) {System.out.println(e);
+        } catch (ClassNotFoundException
+                | InstantiationException
+                | IllegalAccessException
+                | UnsupportedLookAndFeelException e) {
+            System.out.println(e);
         }
 
         /* Create and display the form */
@@ -581,6 +599,7 @@ public class HMS_SEARCHEMPLOYEE extends javax.swing.JFrame {
     public javax.swing.JLabel firstNameLabel;
     public javax.swing.JLabel imageLabel;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel labelImage;
     public javax.swing.JLabel lastNameLabel;
     public javax.swing.JLabel lastNameLabel1;
     public javax.swing.JLabel middleNameLabel;
