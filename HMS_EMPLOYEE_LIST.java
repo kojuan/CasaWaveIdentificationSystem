@@ -28,7 +28,7 @@ public final class HMS_EMPLOYEE_LIST extends javax.swing.JFrame {
      * Creates new form HMS_EMPLOYEE_LIST
      */
     public HMS_EMPLOYEE_LIST() {
-
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("HMS_LOGO_800PX.png")));
         initComponents();
         DisplayTable();
         showDate();

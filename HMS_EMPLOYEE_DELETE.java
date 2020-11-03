@@ -1,6 +1,4 @@
-
 package healthMonitoringSystem;
-
 
 import java.awt.Color;
 import java.awt.event.ActionEvent;
@@ -23,6 +21,7 @@ import javax.swing.text.BadLocationException;
 import javax.swing.text.PlainDocument;
 import com.mysql.jdbc.Connection;
 import java.awt.HeadlessException;
+import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -34,7 +33,6 @@ import net.proteanit.sql.DbUtils;
  *
  * @author Khian Orland Juan
  */
-
 public final class HMS_EMPLOYEE_DELETE extends javax.swing.JFrame {
 
     /**
@@ -43,60 +41,62 @@ public final class HMS_EMPLOYEE_DELETE extends javax.swing.JFrame {
     public static JLabel confirmLabelText;
     public static JPanel confirmPanel;
     String image_path = null;
-    
-    public HMS_EMPLOYEE_DELETE() {
-        
 
-       
+    public HMS_EMPLOYEE_DELETE() {
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("HMS_LOGO_800PX.png")));
         initComponents();
         topBannerPanel.invalidate();
         topBannerPanel.validate();
         topBannerPanel.repaint();
-        
+
         Date dateNow = new Date();
         System.out.println(dateNow);
-        
+
         showDate();
         showTime();
-        
+
     }
-     void showDate() {
-            Date date = new Date();
-            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
-            dateLabel.setText(simpleDateFormat.format(date));
-         }
-        
-        void showTime() {
-        new Timer (0, new ActionListener() {
-           
-           @Override
-           public void actionPerformed(ActionEvent e) {
-               Date date = new Date();
-               SimpleDateFormat simpleDateFormat = new SimpleDateFormat("hh:mm:ss a");
-               timeLabel.setText(simpleDateFormat.format(date));
-           }
+
+    void showDate() {
+        Date date = new Date();
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        dateLabel.setText(simpleDateFormat.format(date));
+    }
+
+    void showTime() {
+        new Timer(0, new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Date date = new Date();
+                SimpleDateFormat simpleDateFormat = new SimpleDateFormat("hh:mm:ss a");
+                timeLabel.setText(simpleDateFormat.format(date));
+            }
         }).start();
-        }
+    }
 
     // limit phone number max
-       public class JTextFieldLimit extends PlainDocument {
+    public class JTextFieldLimit extends PlainDocument {
+
         private final int limit;
 
         JTextFieldLimit(int limit) {
-         super();
-         this.limit = limit;
-         }
+            super();
+            this.limit = limit;
+        }
 
         @Override
-        public void insertString( int offset, String  str, AttributeSet attr ) throws BadLocationException {
-          if (str == null) return;
+        public void insertString(int offset, String str, AttributeSet attr) throws BadLocationException {
+            if (str == null) {
+                return;
+            }
 
-          if ((getLength() + str.length()) <= limit) {
-            super.insertString(offset, str, attr);
-          }
+            if ((getLength() + str.length()) <= limit) {
+                super.insertString(offset, str, attr);
+            }
         }
-      }
-       
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -669,9 +669,9 @@ public final class HMS_EMPLOYEE_DELETE extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void nationalityTfKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nationalityTfKeyPressed
-        if (evt.getKeyCode()==KeyEvent.VK_ESCAPE){
+        if (evt.getKeyCode() == KeyEvent.VK_ESCAPE) {
             HMS_ADMINFORM showAdminForm = new HMS_ADMINFORM();
-            showAdminForm.setVisible(true); 
+            showAdminForm.setVisible(true);
             this.dispose();
         }
     }//GEN-LAST:event_nationalityTfKeyPressed
@@ -685,58 +685,58 @@ public final class HMS_EMPLOYEE_DELETE extends javax.swing.JFrame {
     }//GEN-LAST:event_employeePhoneNumberTfKeyTyped
 
     private void employeePhoneNumberTfKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_employeePhoneNumberTfKeyPressed
-        if (evt.getKeyCode()==KeyEvent.VK_ESCAPE){
+        if (evt.getKeyCode() == KeyEvent.VK_ESCAPE) {
             HMS_ADMINFORM showAdminForm = new HMS_ADMINFORM();
-            showAdminForm.setVisible(true); 
+            showAdminForm.setVisible(true);
             this.dispose();
         }
     }//GEN-LAST:event_employeePhoneNumberTfKeyPressed
 
     private void employeeHomeAddressTAKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_employeeHomeAddressTAKeyPressed
-        if (evt.getKeyCode()==KeyEvent.VK_ESCAPE){
+        if (evt.getKeyCode() == KeyEvent.VK_ESCAPE) {
             HMS_ADMINFORM showAdminForm = new HMS_ADMINFORM();
-            showAdminForm.setVisible(true); 
+            showAdminForm.setVisible(true);
             this.dispose();
         }
     }//GEN-LAST:event_employeeHomeAddressTAKeyPressed
 
     private void employeeFirstNameTfKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_employeeFirstNameTfKeyPressed
-        if (evt.getKeyCode()==KeyEvent.VK_ESCAPE){
+        if (evt.getKeyCode() == KeyEvent.VK_ESCAPE) {
             HMS_ADMINFORM showAdminForm = new HMS_ADMINFORM();
-            showAdminForm.setVisible(true); 
+            showAdminForm.setVisible(true);
             this.dispose();
         }
     }//GEN-LAST:event_employeeFirstNameTfKeyPressed
 
     private void employeeMiddleInitialTfKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_employeeMiddleInitialTfKeyPressed
-        if (evt.getKeyCode()==KeyEvent.VK_ESCAPE){
+        if (evt.getKeyCode() == KeyEvent.VK_ESCAPE) {
             HMS_ADMINFORM showAdminForm = new HMS_ADMINFORM();
-            showAdminForm.setVisible(true); 
+            showAdminForm.setVisible(true);
             this.dispose();
         }
     }//GEN-LAST:event_employeeMiddleInitialTfKeyPressed
 
     private void employeeLastNameTfKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_employeeLastNameTfKeyPressed
-        if (evt.getKeyCode()==KeyEvent.VK_ESCAPE){
+        if (evt.getKeyCode() == KeyEvent.VK_ESCAPE) {
             HMS_ADMINFORM showAdminForm = new HMS_ADMINFORM();
-            showAdminForm.setVisible(true); 
+            showAdminForm.setVisible(true);
             this.dispose();
         }
     }//GEN-LAST:event_employeeLastNameTfKeyPressed
 
     private void fatherEmailAddressTfKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fatherEmailAddressTfKeyPressed
-           if (evt.getKeyCode()==KeyEvent.VK_ESCAPE){
+        if (evt.getKeyCode() == KeyEvent.VK_ESCAPE) {
             HMS_ADMINFORM showAdminForm = new HMS_ADMINFORM();
-            showAdminForm.setVisible(true); 
+            showAdminForm.setVisible(true);
             this.dispose();
         }
     }//GEN-LAST:event_fatherEmailAddressTfKeyPressed
 
     private void motherEmailAddressTfKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_motherEmailAddressTfKeyPressed
-        if (evt.getKeyCode()==KeyEvent.VK_ESCAPE){
-         HMS_ADMINFORM showAdminForm = new HMS_ADMINFORM();
-         showAdminForm.setVisible(true); 
-         this.dispose();
+        if (evt.getKeyCode() == KeyEvent.VK_ESCAPE) {
+            HMS_ADMINFORM showAdminForm = new HMS_ADMINFORM();
+            showAdminForm.setVisible(true);
+            this.dispose();
         }
     }//GEN-LAST:event_motherEmailAddressTfKeyPressed
 
@@ -749,14 +749,13 @@ public final class HMS_EMPLOYEE_DELETE extends javax.swing.JFrame {
         chooser.setCurrentDirectory(new File(System.getProperty("user.home")));
 
         // File extension
-        FileNameExtensionFilter extension = new FileNameExtensionFilter("*Images","jpg","png","jpeg");
+        FileNameExtensionFilter extension = new FileNameExtensionFilter("*Images", "jpg", "png", "jpeg");
         chooser.addChoosableFileFilter(extension);
 
         int filestate = chooser.showSaveDialog(null);
 
         // Check if the user select an image
-        if (filestate == JFileChooser.APPROVE_OPTION)
-        {
+        if (filestate == JFileChooser.APPROVE_OPTION) {
             File selectedImage = chooser.getSelectedFile();
             path = selectedImage.getAbsolutePath();
             imagePathLabel.setText(path);
@@ -769,19 +768,19 @@ public final class HMS_EMPLOYEE_DELETE extends javax.swing.JFrame {
     ResultSet rs;
     PreparedStatement pst;
 
-  
+
     private void deleteEmployeeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteEmployeeButtonActionPerformed
         confirmPanel = new JPanel();
         confirmLabelText = new JLabel("Do you want to delete the employee profile?");
         confirmPanel.add(confirmLabelText);
-        
+
         String[] options = new String[]{"BACK", "CONFIRM"};
-          int option = JOptionPane.showOptionDialog(null, confirmPanel,"Confirm?",
-              JOptionPane.NO_OPTION, JOptionPane.PLAIN_MESSAGE,
-              null, options, options[1]); // default selection
-              if(option == 1) // pressing CONFIRM button
-              {
-                try {
+        int option = JOptionPane.showOptionDialog(null, confirmPanel, "Confirm?",
+                JOptionPane.NO_OPTION, JOptionPane.PLAIN_MESSAGE,
+                null, options, options[1]); // default selection
+        if (option == 1) // pressing CONFIRM button
+        {
+            try {
                 Class.forName("com.mysql.jdbc.Driver");
                 String username = "root";
                 String password = "root";
@@ -815,13 +814,13 @@ public final class HMS_EMPLOYEE_DELETE extends javax.swing.JFrame {
                 this.repaint();
                 JOptionPane.showMessageDialog(null, "The data is now deleted.");
 
-                } catch (SQLException | ClassNotFoundException ex) {
-                    JOptionPane.showMessageDialog(null, ex);
-                }  
-                
-              }        
+            } catch (SQLException | ClassNotFoundException ex) {
+                JOptionPane.showMessageDialog(null, ex);
+            }
+
+        }
     }//GEN-LAST:event_deleteEmployeeButtonActionPerformed
- 
+
     private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelButtonActionPerformed
         this.dispose();
     }//GEN-LAST:event_cancelButtonActionPerformed
@@ -869,16 +868,15 @@ public final class HMS_EMPLOYEE_DELETE extends javax.swing.JFrame {
             String username = "root";
             String password = "root";
             // employeeID search
-            try (Connection conn = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/health_monitoring_system_database", username, password)) {
+            try ( Connection conn = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/health_monitoring_system_database", username, password)) {
                 // employeeID search
                 String employeeID_sql = "SELECT * FROM employees WHERE employeeId = ?";
                 pstmt = (PreparedStatement) conn.prepareStatement(employeeID_sql);
                 pstmt.setInt(1, Integer.parseInt(employeeIdTf.getText()));
-                
+
                 rs = pstmt.executeQuery();
-                if (rs.next())
-                {
-                    
+                if (rs.next()) {
+
                     employeeFirstNameTf.setText(rs.getString("firstName"));
                     employeeMiddleInitialTf.setText(rs.getString("middleInitial"));
                     employeeLastNameTf.setText(rs.getString("lastName"));
@@ -894,10 +892,8 @@ public final class HMS_EMPLOYEE_DELETE extends javax.swing.JFrame {
                     motherEmailAddressTf.setText(rs.getString("motherEmailAddress"));
                     JOptionPane.showMessageDialog(null, "Review Profile Data.");
                     deleteEmployeeButton.setEnabled(true);
-                }
-                else
-                {
-                    JOptionPane.showMessageDialog(null, "Employee ID "+ employeeIdTf.getText() + " is not found in the System.");
+                } else {
+                    JOptionPane.showMessageDialog(null, "Employee ID " + employeeIdTf.getText() + " is not found in the System.");
                 }
             }
         } catch (HeadlessException | ClassNotFoundException | NumberFormatException | SQLException ex) {
@@ -910,12 +906,12 @@ public final class HMS_EMPLOYEE_DELETE extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        try { 
+        try {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-        } catch (ClassNotFoundException | 
-            InstantiationException | 
-            IllegalAccessException | 
-            UnsupportedLookAndFeelException e) {
+        } catch (ClassNotFoundException
+                | InstantiationException
+                | IllegalAccessException
+                | UnsupportedLookAndFeelException e) {
         }
 
         /* Create and display the form */
@@ -976,4 +972,3 @@ public final class HMS_EMPLOYEE_DELETE extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
 }
-

@@ -17,6 +17,10 @@ import javax.swing.border.LineBorder;
 
 public final class HMS_LOGIN extends javax.swing.JFrame {
 
+    // Absolute =  Drive +  {folders(s)} + {file} | Uniform Naming Convention
+    // Relative = No drive | ..\ one level up | ..\..\ two levels up
+    final String currentAbsoluteFileDirectoryPath = System.getProperty("user.dir");
+
     public static JLabel passwordLabelText;
     public static JPanel passwordPanel;
     public static String username, password, query;
@@ -25,9 +29,8 @@ public final class HMS_LOGIN extends javax.swing.JFrame {
      * Creates new form BCLOGIN
      */
     public HMS_LOGIN() {
-
         this.setBackground(Color.white); // default white background color.
-
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("HMS_LOGO_800PX.png")));
         initComponents();
 
         /* - Download The Connector For JAVA & MySQL Database 
@@ -126,9 +129,7 @@ public final class HMS_LOGIN extends javax.swing.JFrame {
         );
         bottomPanelLayout.setVerticalGroup(
             bottomPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(bottomPanelLayout.createSequentialGroup()
-                .addComponent(adminButton, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(adminButton, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         mainPanel.setBackground(new java.awt.Color(235, 241, 253));
@@ -280,7 +281,7 @@ public final class HMS_LOGIN extends javax.swing.JFrame {
         );
         leftPanelLayout.setVerticalGroup(
             leftPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 432, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout mainPanelLayout = new javax.swing.GroupLayout(mainPanel);
@@ -338,7 +339,7 @@ public final class HMS_LOGIN extends javax.swing.JFrame {
                                 .addComponent(passwordTf, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(sep2, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 26, Short.MAX_VALUE))
+                        .addGap(26, 26, 26))
                     .addGroup(mainPanelLayout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(leftPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
@@ -354,9 +355,10 @@ public final class HMS_LOGIN extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(mainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(bottomPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(mainPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(bottomPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         setSize(new java.awt.Dimension(1000, 629));
@@ -411,7 +413,7 @@ public final class HMS_LOGIN extends javax.swing.JFrame {
                     openMain.setVisible(true);
 //                 close the current form(login form)
                     this.dispose();
-                    
+
                 } else {
                     // error message
                     JOptionPane.showMessageDialog(null, "Invalid Username or Password.\nPlease try again.", "Login Error", 2);

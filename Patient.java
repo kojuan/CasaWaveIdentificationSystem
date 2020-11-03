@@ -1,8 +1,5 @@
 package healthMonitoringSystem;
 
-
-import java.sql.Date;
-
 public class Patient {
 
     private int id;
@@ -17,8 +14,6 @@ public class Patient {
     private String nationality;
     private String phonenumber;
     private byte[] imagePath;
-
-
 
 // Constructors
 //    public Patient(int iD, String firstName, String middleName, String lastName, String genderSelect,
@@ -41,7 +36,6 @@ public class Patient {
 //
 //    }
 // Getters and Setters
-
     public int getID() {
         return id;
     }

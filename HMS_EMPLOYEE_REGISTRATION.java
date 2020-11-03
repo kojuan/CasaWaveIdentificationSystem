@@ -1,6 +1,7 @@
 package healthMonitoringSystem;
 
 import java.awt.Color;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 import java.io.File;
@@ -41,7 +42,7 @@ public final class HMS_EMPLOYEE_REGISTRATION extends javax.swing.JFrame {
     String image_path = null;
 
     public HMS_EMPLOYEE_REGISTRATION() {
-
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("HMS_LOGO_800PX.png")));
         initComponents();
         topBannerPanel.invalidate();
         topBannerPanel.validate();

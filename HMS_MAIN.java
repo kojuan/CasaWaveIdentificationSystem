@@ -1,6 +1,7 @@
 package healthMonitoringSystem;
 
 import java.awt.Color;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.io.File;
 import java.io.IOException;
@@ -28,6 +29,10 @@ import net.proteanit.sql.DbUtils;
 
 public class HMS_MAIN extends javax.swing.JFrame {
 
+    // Absolute =  Drive +  {folders(s)} + {file} | Uniform Naming Convention
+    // Relative = No drive | ..\ one level up | ..\..\ two levels up
+    final String currentAbsoluteFileDirectoryPath = System.getProperty("user.dir");
+
     HMS_DATABASECONNECTION dbConnect = new HMS_DATABASECONNECTION();
     //get Strings of 'em all
     String patientIdString = "";
@@ -53,7 +58,7 @@ public class HMS_MAIN extends javax.swing.JFrame {
     HMS_DATAACESSOBJECT_IMPLEMENTATION dao = new HMS_DATAACESSOBJECT_IMPLEMENTATION();
 
     public HMS_MAIN() {
-
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("HMS_LOGO_800PX.png")));
         initComponents();
         dashboardPanel.setVisible(true);
         employeePanel.setVisible(false);

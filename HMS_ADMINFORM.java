@@ -1,6 +1,7 @@
 package healthMonitoringSystem;
 
 import java.awt.Desktop;
+import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import java.io.IOException;
 import java.net.URI;
@@ -22,7 +23,7 @@ public class HMS_ADMINFORM extends javax.swing.JFrame {
      * Creates new form HMS_ADMINTOOLFORM
      */
     public HMS_ADMINFORM() {
-
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("HMS_LOGO_800PX.png")));
         initComponents();
         adminCancelButton.requestFocus();
     }
@@ -308,7 +309,7 @@ public class HMS_ADMINFORM extends javax.swing.JFrame {
     }//GEN-LAST:event_adminCancelButtonActionPerformed
 
     private void manageUserButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageUserButtonActionPerformed
-try {
+        try {
 
             Desktop.getDesktop().browse(new URI("http://localhost/phpmyadmin/sql.php?db=health_monitoring_system_database&table=users&pos=0"));
 

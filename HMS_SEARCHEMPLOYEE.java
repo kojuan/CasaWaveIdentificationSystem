@@ -4,6 +4,7 @@ import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.PreparedStatement;
 import java.awt.HeadlessException;
 import java.awt.Image;
+import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -19,7 +20,7 @@ public class HMS_SEARCHEMPLOYEE extends javax.swing.JFrame {
      * Creates new form HMS_SEARCHEMPLOYEE
      */
     public HMS_SEARCHEMPLOYEE() {
-
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("HMS_LOGO_800PX.png")));
         initComponents();
         JOptionPane.showMessageDialog(this, "Please input Employee ID for accurate search.\n"
                 + "There may or may not be the same First, Middle, and Last Name.");
@@ -511,7 +512,7 @@ public class HMS_SEARCHEMPLOYEE extends javax.swing.JFrame {
                 fatherEATf.setText(rs.getString("fatherEmailAddress"));
                 motherEATf.setText(rs.getString("motherEmailAddress"));
                 try {
-                labelImage.setIcon(new ImageIcon(new ImageIcon().getImage().getScaledInstance(labelImage.getWidth(), labelImage.getHeight(), Image.SCALE_SMOOTH)));
+                    labelImage.setIcon(new ImageIcon(new ImageIcon().getImage().getScaledInstance(labelImage.getWidth(), labelImage.getHeight(), Image.SCALE_SMOOTH)));
                 } catch (NullPointerException err) {
                     labelImage.setText("no image found.");
                 }

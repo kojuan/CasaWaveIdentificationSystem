@@ -13,11 +13,6 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.UnsupportedEncodingException;
-import java.math.BigInteger;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
-import javax.swing.SwingConstants; // center text/label
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.sql.SQLException;
@@ -38,7 +33,7 @@ public final class HMS_USER_REGISTRATION extends javax.swing.JFrame {
     String image_path = null;
 
     public HMS_USER_REGISTRATION() {
-
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("HMS_LOGO_800PX.png")));
         initComponents();
 
         // create border for the text and password fields

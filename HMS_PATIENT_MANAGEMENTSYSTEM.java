@@ -4,6 +4,7 @@ import com.mysql.jdbc.PreparedStatement;
 import java.awt.Color;
 import java.awt.HeadlessException;
 import java.awt.Image;
+import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import java.awt.print.PrinterException;
 import java.io.BufferedOutputStream;
@@ -64,8 +65,11 @@ public class HMS_PATIENT_MANAGEMENTSYSTEM extends javax.swing.JFrame {
 
     /**
      * Creates new form HMS_PATIENT_MANAGEMENTSYSTEM
+     *
+     * @throws java.lang.Exception
      */
     public HMS_PATIENT_MANAGEMENTSYSTEM() throws Exception {
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("HMS_LOGO_800PX.png")));
         initComponents();
         connx = dbConnect.databaseConnection();
         // Populating patientDataTable

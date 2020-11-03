@@ -23,6 +23,7 @@ import javax.swing.text.BadLocationException;
 import javax.swing.text.PlainDocument;
 import com.mysql.jdbc.Connection;
 import java.awt.HeadlessException;
+import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -47,7 +48,7 @@ public final class HMS_EMPLOYEE_UPDATE extends javax.swing.JFrame {
     String image_path = null;
 
     public HMS_EMPLOYEE_UPDATE() {
-
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("HMS_LOGO_800PX.png")));
         initComponents();
         topBannerPanel.invalidate();
         topBannerPanel.validate();
