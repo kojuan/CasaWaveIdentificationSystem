@@ -8,18 +8,13 @@ import java.sql.ResultSet;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.InputStream;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.swing.border.Border;
-import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.text.AttributeSet;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.PlainDocument;
@@ -35,6 +30,8 @@ public final class HMS_USER_REGISTRATION extends javax.swing.JFrame {
     public HMS_USER_REGISTRATION() {
         setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("HMS_LOGO_800PX.png")));
         initComponents();
+        showDate();
+        showTime();
 
         // create border for the text and password fields
         Border field_border = BorderFactory.createMatteBorder(1, 5, 1, 1, Color.blue);
@@ -112,27 +109,26 @@ public final class HMS_USER_REGISTRATION extends javax.swing.JFrame {
         clearAllButton = new javax.swing.JButton();
         maleButton = new javax.swing.JRadioButton();
         femaleButton = new javax.swing.JRadioButton();
-        selectImageButton = new javax.swing.JButton();
         registerUsernameLabel = new javax.swing.JLabel();
         registerPasswordLabel = new javax.swing.JLabel();
-        imagePathLabel = new javax.swing.JLabel();
         registerConfirmPasswordLabel = new javax.swing.JLabel();
         fullNameLabel = new javax.swing.JLabel();
         phoneNumberLabel = new javax.swing.JLabel();
         genderLabel = new javax.swing.JLabel();
-        userImageLabel = new javax.swing.JLabel();
         registerButton = new javax.swing.JButton();
         cancelButton = new javax.swing.JButton();
-        bottomPanel = new javax.swing.JPanel();
-        timeLabel = new javax.swing.JLabel();
-        dateLabel = new javax.swing.JLabel();
         onScreenKeyboardButton = new javax.swing.JButton();
+        bottomPanel = new javax.swing.JPanel();
+        dateLabel = new javax.swing.JLabel();
+        timeLabel = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         registerTopPanelImage = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Register Account for Cheque Management System");
         setBackground(new java.awt.Color(118, 158, 203));
+        setMaximumSize(new java.awt.Dimension(1000, 629));
+        setMinimumSize(new java.awt.Dimension(1000, 629));
         setName("registerAccountFrame"); // NOI18N
         setUndecorated(true);
         setResizable(false);
@@ -142,8 +138,8 @@ public final class HMS_USER_REGISTRATION extends javax.swing.JFrame {
 
         registerMainPanel.setBackground(new java.awt.Color(235, 241, 253));
 
-        registerUsernameTf.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         registerUsernameTf.setBackground(new java.awt.Color(204, 204, 255));
+        registerUsernameTf.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         registerUsernameTf.setToolTipText("Username used to login.");
         registerUsernameTf.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -151,18 +147,18 @@ public final class HMS_USER_REGISTRATION extends javax.swing.JFrame {
             }
         });
 
-        usernameClearTextButton.setText("Clear");
         usernameClearTextButton.setBackground(new java.awt.Color(238, 245, 251));
-        usernameClearTextButton.setBorderPainted(false);
         usernameClearTextButton.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        usernameClearTextButton.setText("Clear");
+        usernameClearTextButton.setBorderPainted(false);
         usernameClearTextButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 usernameClearTextButtonActionPerformed(evt);
             }
         });
 
-        registerPasswordTf.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         registerPasswordTf.setBackground(new java.awt.Color(204, 204, 255));
+        registerPasswordTf.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         registerPasswordTf.setToolTipText("Password used to login.");
         registerPasswordTf.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -175,18 +171,18 @@ public final class HMS_USER_REGISTRATION extends javax.swing.JFrame {
             }
         });
 
-        passwordClearTextButton.setText("Clear");
         passwordClearTextButton.setBackground(new java.awt.Color(238, 245, 251));
-        passwordClearTextButton.setBorderPainted(false);
         passwordClearTextButton.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        passwordClearTextButton.setText("Clear");
+        passwordClearTextButton.setBorderPainted(false);
         passwordClearTextButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 passwordClearTextButtonActionPerformed(evt);
             }
         });
 
-        registerConfirmPsswordField.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         registerConfirmPsswordField.setBackground(new java.awt.Color(204, 219, 255));
+        registerConfirmPsswordField.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         registerConfirmPsswordField.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         registerConfirmPsswordField.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -206,18 +202,18 @@ public final class HMS_USER_REGISTRATION extends javax.swing.JFrame {
             }
         });
 
-        fullNameClearTextButton.setText("Clear");
         fullNameClearTextButton.setBackground(new java.awt.Color(238, 245, 251));
-        fullNameClearTextButton.setBorderPainted(false);
         fullNameClearTextButton.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        fullNameClearTextButton.setText("Clear");
+        fullNameClearTextButton.setBorderPainted(false);
         fullNameClearTextButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 fullNameClearTextButtonActionPerformed(evt);
             }
         });
 
-        registerPhoneNumberTf.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         registerPhoneNumberTf.setBackground(new java.awt.Color(204, 204, 255));
+        registerPhoneNumberTf.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         registerPhoneNumberTf.setToolTipText("Please indicate your Phone number starting at 09xxxxxxxx");
         registerPhoneNumberTf.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -229,76 +225,60 @@ public final class HMS_USER_REGISTRATION extends javax.swing.JFrame {
         });
         registerPhoneNumberTf.setDocument(new JTextFieldLimit(11));
 
-        phoneNumberClearTextButton.setText("Clear");
         phoneNumberClearTextButton.setBackground(new java.awt.Color(238, 245, 251));
-        phoneNumberClearTextButton.setBorderPainted(false);
         phoneNumberClearTextButton.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        phoneNumberClearTextButton.setText("Clear");
+        phoneNumberClearTextButton.setBorderPainted(false);
         phoneNumberClearTextButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 phoneNumberClearTextButtonActionPerformed(evt);
             }
         });
 
-        clearAllButton.setText("Clear All");
         clearAllButton.setBackground(new java.awt.Color(153, 153, 255));
-        clearAllButton.setBorderPainted(false);
         clearAllButton.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        clearAllButton.setText("Clear All");
+        clearAllButton.setBorderPainted(false);
         clearAllButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 clearAllButtonActionPerformed(evt);
             }
         });
 
-        maleButton.setSelected(true);
-        maleButton.setText("Male");
         maleButton.setBackground(new java.awt.Color(235, 241, 253));
         maleButton.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        maleButton.setSelected(true);
+        maleButton.setText("Male");
 
-        femaleButton.setText("Female");
         femaleButton.setBackground(new java.awt.Color(235, 241, 253));
         femaleButton.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        femaleButton.setText("Female");
 
-        selectImageButton.setText("Select Image");
-        selectImageButton.setBackground(new java.awt.Color(255, 255, 255));
-        selectImageButton.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        selectImageButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                selectImageButtonActionPerformed(evt);
-            }
-        });
-
-        registerUsernameLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/healthMonitoringSystem/APP_IMAGES/login_images/usernameIconIMAGE.png"))); // NOI18N
-        registerUsernameLabel.setText("Username:");
         registerUsernameLabel.setBackground(new java.awt.Color(255, 255, 255));
         registerUsernameLabel.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        registerUsernameLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/healthMonitoringSystem/APP_IMAGES/login_images/usernameIconIMAGE.png"))); // NOI18N
+        registerUsernameLabel.setText("Username:");
 
-        registerPasswordLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/healthMonitoringSystem/APP_IMAGES/login_images/passwordIconIMAGE.png"))); // NOI18N
-        registerPasswordLabel.setText("Password:");
         registerPasswordLabel.setBackground(new java.awt.Color(255, 255, 255));
         registerPasswordLabel.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        registerPasswordLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/healthMonitoringSystem/APP_IMAGES/login_images/passwordIconIMAGE.png"))); // NOI18N
+        registerPasswordLabel.setText("Password:");
 
-        imagePathLabel.setText("image path");
-        imagePathLabel.setBackground(new java.awt.Color(235, 241, 253));
-        imagePathLabel.setFont(new java.awt.Font("Sylfaen", 0, 11)); // NOI18N
-
-        registerConfirmPasswordLabel.setText("Confirm Password:");
         registerConfirmPasswordLabel.setBackground(new java.awt.Color(255, 255, 255));
         registerConfirmPasswordLabel.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        registerConfirmPasswordLabel.setText("Confirm Password:");
 
-        fullNameLabel.setText("Full Name:");
         fullNameLabel.setBackground(new java.awt.Color(255, 255, 255));
         fullNameLabel.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        fullNameLabel.setText("Full Name:");
 
-        phoneNumberLabel.setText("Phone Number (09xx):");
         phoneNumberLabel.setBackground(new java.awt.Color(255, 255, 255));
         phoneNumberLabel.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        phoneNumberLabel.setText("Phone Number (09xx):");
 
-        genderLabel.setText("Gender:");
         genderLabel.setBackground(new java.awt.Color(255, 255, 255));
         genderLabel.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-
-        userImageLabel.setText("User Image:");
-        userImageLabel.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        genderLabel.setText("Gender:");
 
         registerButton.setBackground(new java.awt.Color(153, 153, 255));
         registerButton.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
@@ -322,98 +302,95 @@ public final class HMS_USER_REGISTRATION extends javax.swing.JFrame {
             }
         });
 
-        bottomPanel.setBackground(new java.awt.Color(153, 153, 255));
-        bottomPanel.setRequestFocusEnabled(false);
-
-        timeLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        timeLabel.setText("Time");
-        timeLabel.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
-        timeLabel.setForeground(new java.awt.Color(255, 255, 255));
-        timeLabel.setRequestFocusEnabled(false);
-
-        dateLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        dateLabel.setText("Date");
-        dateLabel.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
-        dateLabel.setForeground(new java.awt.Color(255, 255, 255));
-        dateLabel.setRequestFocusEnabled(false);
-
-        javax.swing.GroupLayout bottomPanelLayout = new javax.swing.GroupLayout(bottomPanel);
-        bottomPanel.setLayout(bottomPanelLayout);
-        bottomPanelLayout.setHorizontalGroup(
-            bottomPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(bottomPanelLayout.createSequentialGroup()
-                .addContainerGap(707, Short.MAX_VALUE)
-                .addComponent(dateLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(timeLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-        bottomPanelLayout.setVerticalGroup(
-            bottomPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(bottomPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                .addComponent(timeLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
-                .addComponent(dateLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
+        onScreenKeyboardButton.setBackground(new java.awt.Color(216, 219, 249));
+        onScreenKeyboardButton.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         onScreenKeyboardButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/healthMonitoringSystem/APP_IMAGES/mainprogram/onScreenKeyboard.png"))); // NOI18N
         onScreenKeyboardButton.setText("On-screen Keyboard");
-        onScreenKeyboardButton.setBackground(new java.awt.Color(216, 219, 249));
         onScreenKeyboardButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        onScreenKeyboardButton.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         onScreenKeyboardButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 onScreenKeyboardButtonActionPerformed(evt);
             }
         });
 
+        bottomPanel.setBackground(new java.awt.Color(153, 153, 255));
+        bottomPanel.setRequestFocusEnabled(false);
+
+        dateLabel.setBackground(new java.awt.Color(153, 153, 255));
+        dateLabel.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
+        dateLabel.setForeground(new java.awt.Color(235, 241, 253));
+        dateLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        dateLabel.setText("Date");
+        dateLabel.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        dateLabel.setRequestFocusEnabled(false);
+
+        timeLabel.setBackground(new java.awt.Color(235, 241, 253));
+        timeLabel.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
+        timeLabel.setForeground(new java.awt.Color(235, 241, 253));
+        timeLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        timeLabel.setText("Time");
+        timeLabel.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        timeLabel.setRequestFocusEnabled(false);
+
+        javax.swing.GroupLayout bottomPanelLayout = new javax.swing.GroupLayout(bottomPanel);
+        bottomPanel.setLayout(bottomPanelLayout);
+        bottomPanelLayout.setHorizontalGroup(
+            bottomPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(bottomPanelLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(dateLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(28, 28, 28)
+                .addComponent(timeLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+        bottomPanelLayout.setVerticalGroup(
+            bottomPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(bottomPanelLayout.createSequentialGroup()
+                .addGap(1, 1, 1)
+                .addComponent(dateLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE))
+            .addComponent(timeLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
         javax.swing.GroupLayout registerMainPanelLayout = new javax.swing.GroupLayout(registerMainPanel);
         registerMainPanel.setLayout(registerMainPanelLayout);
         registerMainPanelLayout.setHorizontalGroup(
             registerMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(registerMainPanelLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(bottomPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-            .addGroup(registerMainPanelLayout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, registerMainPanelLayout.createSequentialGroup()
                 .addGroup(registerMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(registerMainPanelLayout.createSequentialGroup()
                         .addGroup(registerMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(userImageLabel, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(phoneNumberLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(registerMainPanelLayout.createSequentialGroup()
-                                .addGroup(registerMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(genderLabel)
-                                    .addComponent(phoneNumberLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(fullNameLabel))
-                                .addGap(4, 4, 4)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGap(63, 63, 63)
+                                .addComponent(fullNameLabel))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, registerMainPanelLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(genderLabel)
+                                .addGap(35, 35, 35)))
+                        .addGap(14, 14, 14)
                         .addGroup(registerMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(registerMainPanelLayout.createSequentialGroup()
-                                .addComponent(selectImageButton, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(imagePathLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGap(114, 114, 114))
-                            .addGroup(registerMainPanelLayout.createSequentialGroup()
-                                .addGroup(registerMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(registerMainPanelLayout.createSequentialGroup()
-                                        .addComponent(maleButton)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(femaleButton))
-                                    .addComponent(registerPhoneNumberTf, javax.swing.GroupLayout.PREFERRED_SIZE, 289, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(registerFullNameField, javax.swing.GroupLayout.PREFERRED_SIZE, 289, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(registerMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(fullNameClearTextButton)
-                                    .addComponent(phoneNumberClearTextButton)
-                                    .addComponent(clearAllButton, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(maleButton)
+                                .addGap(18, 18, 18)
+                                .addComponent(femaleButton))
+                            .addComponent(registerPhoneNumberTf, javax.swing.GroupLayout.PREFERRED_SIZE, 289, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(registerFullNameField, javax.swing.GroupLayout.PREFERRED_SIZE, 289, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(registerMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(fullNameClearTextButton)
+                            .addComponent(phoneNumberClearTextButton)
+                            .addComponent(clearAllButton, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(registerMainPanelLayout.createSequentialGroup()
-                        .addGap(56, 56, 56)
-                        .addGroup(registerMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(registerPasswordLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(registerUsernameLabel, javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(registerMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(registerMainPanelLayout.createSequentialGroup()
-                                .addGap(10, 10, 10)
-                                .addComponent(registerConfirmPasswordLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                        .addGap(4, 4, 4)
+                                .addContainerGap()
+                                .addGroup(registerMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(registerPasswordLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(registerUsernameLabel)))
+                            .addGroup(registerMainPanelLayout.createSequentialGroup()
+                                .addGap(32, 32, 32)
+                                .addComponent(registerConfirmPasswordLabel)))
+                        .addGap(50, 50, 50)
                         .addGroup(registerMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(registerPasswordTf, javax.swing.GroupLayout.DEFAULT_SIZE, 289, Short.MAX_VALUE)
                             .addComponent(registerUsernameTf, javax.swing.GroupLayout.DEFAULT_SIZE, 289, Short.MAX_VALUE)
@@ -421,67 +398,59 @@ public final class HMS_USER_REGISTRATION extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(registerMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(passwordClearTextButton)
-                            .addComponent(usernameClearTextButton))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addComponent(usernameClearTextButton))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(registerMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(registerButton, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
-                    .addComponent(cancelButton, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
-                    .addComponent(onScreenKeyboardButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(21, 21, 21))
+                    .addComponent(registerButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(cancelButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(onScreenKeyboardButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(44, 44, 44))
+            .addComponent(bottomPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         registerMainPanelLayout.setVerticalGroup(
             registerMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(registerMainPanelLayout.createSequentialGroup()
                 .addGroup(registerMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(registerMainPanelLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(registerButton, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(registerMainPanelLayout.createSequentialGroup()
-                        .addGroup(registerMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(registerMainPanelLayout.createSequentialGroup()
-                                .addComponent(onScreenKeyboardButton, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
-                                .addGap(137, 137, 137))
-                            .addGroup(registerMainPanelLayout.createSequentialGroup()
-                                .addGap(17, 17, 17)
-                                .addGroup(registerMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(registerUsernameTf, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(registerUsernameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(usernameClearTextButton))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(registerMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(registerPasswordTf, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(registerPasswordLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(passwordClearTextButton))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(registerMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(registerConfirmPsswordField, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(registerConfirmPasswordLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addGap(17, 17, 17)
+                        .addGroup(registerMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(registerUsernameTf, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(registerUsernameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(usernameClearTextButton))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(registerMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(registerPasswordTf, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(registerPasswordLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(passwordClearTextButton))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(registerMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(registerConfirmPsswordField, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(registerConfirmPasswordLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
                         .addGroup(registerMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(registerFullNameField, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(fullNameClearTextButton)
                             .addComponent(fullNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGap(16, 16, 16)
                         .addGroup(registerMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(phoneNumberLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(registerPhoneNumberTf, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(phoneNumberClearTextButton))
-                        .addGroup(registerMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(registerMainPanelLayout.createSequentialGroup()
-                                .addGroup(registerMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(maleButton)
-                                    .addComponent(femaleButton)
-                                    .addComponent(genderLabel))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(registerMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(userImageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(registerMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(selectImageButton, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(imagePathLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                            .addComponent(clearAllButton, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(cancelButton, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(registerMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(registerMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(genderLabel)
+                                .addComponent(maleButton)
+                                .addComponent(femaleButton))
+                            .addComponent(clearAllButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(registerMainPanelLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(onScreenKeyboardButton, javax.swing.GroupLayout.DEFAULT_SIZE, 55, Short.MAX_VALUE)
+                        .addGap(137, 137, 137)
+                        .addComponent(registerButton, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cancelButton, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(88, 88, 88)
                 .addComponent(bottomPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(4, 4, 4))
         );
@@ -497,7 +466,7 @@ public final class HMS_USER_REGISTRATION extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(registerTopPanelImage)
+                .addComponent(registerTopPanelImage, javax.swing.GroupLayout.PREFERRED_SIZE, 1000, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 10, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -515,7 +484,7 @@ public final class HMS_USER_REGISTRATION extends javax.swing.JFrame {
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(registerTopPanelLayout.createSequentialGroup()
-                .addComponent(registerMainPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                .addComponent(registerMainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         registerTopPanelLayout.setVerticalGroup(
@@ -549,7 +518,7 @@ public final class HMS_USER_REGISTRATION extends javax.swing.JFrame {
             if (!checkUsername(username)) {
                 PreparedStatement ps;
                 ResultSet rs;
-                String registerUserQuery = "INSERT INTO users (full_name, usernameString, passwordString, phone, gender, picture) VALUES (?,?,?,?,?,?)";
+                String registerUserQuery = "INSERT INTO users (full_name, usernameString, passwordString, phone, gender) VALUES (?,?,?,?,?)";
 
                 try {
 
@@ -560,33 +529,11 @@ public final class HMS_USER_REGISTRATION extends javax.swing.JFrame {
                     ps.setString(4, phone);
                     ps.setString(5, gender);
 
-                    try {
-                        // Save the image as BLOB in the Database
-                        if (image_path != null) {
+                    if (ps.executeUpdate() != 0) {
 
-                            InputStream image = new FileInputStream(new File(image_path));
-                            ps.setBlob(6, image);
-
-                        } else if (image_path == null) {
-                            ps.setNull(6, java.sql.Types.NULL);
-                            System.out.println("No image attached.");
-
-                        } else {
-                            ps.setNull(6, java.sql.Types.NULL);
-                            System.out.println("No image attached.");
-                        }
-
-                        if (ps.executeUpdate() != 0) {
-
-                            JOptionPane.showMessageDialog(null, "Your Account has been created.");
-                        } else {
-                            JOptionPane.showMessageDialog(null, "Error: Check your Information.");
-                        }
-
-                        ps.setNull(6, java.sql.Types.NULL);
-
-                    } catch (FileNotFoundException ex) {
-                        Logger.getLogger(HMS_USER_REGISTRATION.class.getName()).log(Level.SEVERE, null, ex);
+                        JOptionPane.showMessageDialog(null, "Your Account has been created.");
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Error: Check your Information.");
                     }
 
                 } catch (SQLException ex) {
@@ -597,37 +544,12 @@ public final class HMS_USER_REGISTRATION extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_registerButtonActionPerformed
 
-    private void selectImageButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectImageButtonActionPerformed
-        // select an image and set the image path into a JLabel
-        String path = null;
-
-        JFileChooser chooser = new JFileChooser();
-
-        chooser.setCurrentDirectory(new File(System.getProperty("user.home")));
-
-        // File extension
-        FileNameExtensionFilter extension = new FileNameExtensionFilter("*Images", "jpg", "png", "jpeg");
-        chooser.addChoosableFileFilter(extension);
-
-        int filestate = chooser.showSaveDialog(null);
-
-        // Check if the user select an image
-        if (filestate == JFileChooser.APPROVE_OPTION) {
-            File selectedImage = chooser.getSelectedFile();
-            path = selectedImage.getAbsolutePath();
-            imagePathLabel.setText(path);
-            image_path = path;
-        }
-
-    }//GEN-LAST:event_selectImageButtonActionPerformed
-
     private void clearAllButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearAllButtonActionPerformed
         registerUsernameTf.setText("");
         registerPasswordTf.setText("");
         registerConfirmPsswordField.setText("");
         registerFullNameField.setText("");
         registerPhoneNumberTf.setText("");
-        imagePathLabel.setText("image path");
     }//GEN-LAST:event_clearAllButtonActionPerformed
 
     private void phoneNumberClearTextButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_phoneNumberClearTextButtonActionPerformed
@@ -784,11 +706,8 @@ public final class HMS_USER_REGISTRATION extends javax.swing.JFrame {
         }
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                new HMS_USER_REGISTRATION().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new HMS_USER_REGISTRATION().setVisible(true);
         });
     }
 
@@ -801,7 +720,6 @@ public final class HMS_USER_REGISTRATION extends javax.swing.JFrame {
     private javax.swing.JButton fullNameClearTextButton;
     public javax.swing.JLabel fullNameLabel;
     private javax.swing.JLabel genderLabel;
-    private javax.swing.JLabel imagePathLabel;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JRadioButton maleButton;
     private javax.swing.JButton onScreenKeyboardButton;
@@ -820,9 +738,7 @@ public final class HMS_USER_REGISTRATION extends javax.swing.JFrame {
     private javax.swing.JLabel registerTopPanelImage;
     public javax.swing.JLabel registerUsernameLabel;
     private javax.swing.JTextField registerUsernameTf;
-    private javax.swing.JButton selectImageButton;
     private javax.swing.JLabel timeLabel;
-    private javax.swing.JLabel userImageLabel;
     private javax.swing.JButton usernameClearTextButton;
     // End of variables declaration//GEN-END:variables
 }

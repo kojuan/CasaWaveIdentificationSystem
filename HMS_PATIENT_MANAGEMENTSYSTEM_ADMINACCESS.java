@@ -40,7 +40,7 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
  *
  * @author khian
  */
-public class HMS_PATIENT_MANAGEMENTSYSTEM extends javax.swing.JFrame {
+public class HMS_PATIENT_MANAGEMENTSYSTEM_ADMINACCESS extends javax.swing.JFrame {
 
     HMS_DATABASECONNECTION dbConnect = new HMS_DATABASECONNECTION();
     //get Strings of 'em all
@@ -68,7 +68,7 @@ public class HMS_PATIENT_MANAGEMENTSYSTEM extends javax.swing.JFrame {
      *
      * @throws java.lang.Exception
      */
-    public HMS_PATIENT_MANAGEMENTSYSTEM() throws Exception {
+    public HMS_PATIENT_MANAGEMENTSYSTEM_ADMINACCESS() throws Exception {
         setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("HMS_LOGO_800PX.png")));
         initComponents();
         connx = dbConnect.databaseConnection();
@@ -1035,7 +1035,7 @@ public class HMS_PATIENT_MANAGEMENTSYSTEM extends javax.swing.JFrame {
 
                 }
             } catch (ParseException ex) {
-                Logger.getLogger(HMS_PATIENT_MANAGEMENTSYSTEM.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(HMS_PATIENT_MANAGEMENTSYSTEM_ADMINACCESS.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
 
@@ -1370,9 +1370,10 @@ public class HMS_PATIENT_MANAGEMENTSYSTEM extends javax.swing.JFrame {
     }//GEN-LAST:event_filterSearchTfKeyReleased
 
     private void closeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_closeButtonActionPerformed
-        HMS_MAIN showMainForm = new HMS_MAIN();
-        showMainForm.setVisible(true);
+        HMS_ADMINFORM showAdminForm = new HMS_ADMINFORM();
+        showAdminForm.setVisible(true);
         this.dispose();
+
     }//GEN-LAST:event_closeButtonActionPerformed
 
     private void temperatureTf1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_temperatureTf1KeyTyped
@@ -1531,9 +1532,9 @@ public class HMS_PATIENT_MANAGEMENTSYSTEM extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(() -> {
             try {
-                new HMS_PATIENT_MANAGEMENTSYSTEM().setVisible(true);
+                new HMS_PATIENT_MANAGEMENTSYSTEM_ADMINACCESS().setVisible(true);
             } catch (Exception ex) {
-                Logger.getLogger(HMS_PATIENT_MANAGEMENTSYSTEM.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(HMS_PATIENT_MANAGEMENTSYSTEM_ADMINACCESS.class.getName()).log(Level.SEVERE, null, ex);
             }
         });
     }

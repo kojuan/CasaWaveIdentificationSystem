@@ -351,8 +351,10 @@ public class HMS_ADMINFORM extends javax.swing.JFrame {
 
     private void managePatientsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_managePatientsButtonActionPerformed
         try {
-            HMS_PATIENT_MANAGEMENTSYSTEM showPatientDataList = new HMS_PATIENT_MANAGEMENTSYSTEM();
+            this.dispose();
+            HMS_PATIENT_MANAGEMENTSYSTEM_ADMINACCESS showPatientDataList = new HMS_PATIENT_MANAGEMENTSYSTEM_ADMINACCESS();
             showPatientDataList.setVisible(true);
+            
         } catch (SQLException exception) {
             JOptionPane.showMessageDialog(null, "Try again.");
         } catch (Exception ex) {

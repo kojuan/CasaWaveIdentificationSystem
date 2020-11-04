@@ -146,7 +146,7 @@ public final class HMS_EMPLOYEE_REGISTRATION extends javax.swing.JFrame {
         resetAllFieldsButton = new javax.swing.JButton();
         onScreenKeyboardButton = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Register Employee");
         setBackground(new java.awt.Color(235, 241, 253));
         setMinimumSize(new java.awt.Dimension(1000, 629));
@@ -400,22 +400,22 @@ public final class HMS_EMPLOYEE_REGISTRATION extends javax.swing.JFrame {
         imagePathLabel.setFont(new java.awt.Font("Sylfaen", 0, 11)); // NOI18N
         imagePathLabel.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
 
-        cancelButton.setBackground(new java.awt.Color(255, 102, 102));
-        cancelButton.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         cancelButton.setText("Cancel (Esc)");
+        cancelButton.setBackground(new java.awt.Color(255, 102, 102));
         cancelButton.setBorderPainted(false);
         cancelButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        cancelButton.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         cancelButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cancelButtonActionPerformed(evt);
             }
         });
 
-        registerButton.setBackground(new java.awt.Color(153, 153, 255));
-        registerButton.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
         registerButton.setText("Register Employee Account");
+        registerButton.setBackground(new java.awt.Color(153, 153, 255));
         registerButton.setBorderPainted(false);
         registerButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        registerButton.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
         registerButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 registerButtonActionPerformed(evt);

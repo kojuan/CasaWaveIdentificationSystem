@@ -107,7 +107,7 @@ public final class HMS_EMPLOYEE_LIST extends javax.swing.JFrame {
         filterSearchTf = new javax.swing.JTextField();
         refreshDataButton = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
         setMinimumSize(new java.awt.Dimension(1920, 1080));
         setName("hmsEmployeeFrame"); // NOI18N
@@ -252,21 +252,21 @@ public final class HMS_EMPLOYEE_LIST extends javax.swing.JFrame {
             }
         });
 
-        deleteEmployeeButton.setBackground(new java.awt.Color(153, 204, 255));
-        deleteEmployeeButton.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
         deleteEmployeeButton.setText("Delete Employee");
+        deleteEmployeeButton.setBackground(new java.awt.Color(153, 204, 255));
         deleteEmployeeButton.setBorderPainted(false);
+        deleteEmployeeButton.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
         deleteEmployeeButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 deleteEmployeeButtonActionPerformed(evt);
             }
         });
 
-        cancelButton.setBackground(new java.awt.Color(255, 102, 102));
-        cancelButton.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         cancelButton.setText("Back");
+        cancelButton.setBackground(new java.awt.Color(255, 102, 102));
         cancelButton.setBorderPainted(false);
         cancelButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        cancelButton.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         cancelButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cancelButtonActionPerformed(evt);

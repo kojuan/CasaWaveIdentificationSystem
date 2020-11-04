@@ -2,7 +2,7 @@
 
 <Form version="1.9" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <Properties>
-    <Property name="defaultCloseOperation" type="int" value="3"/>
+    <Property name="defaultCloseOperation" type="int" value="2"/>
     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
       <Color blue="ff" green="ff" red="ff" type="rgb"/>
     </Property>
@@ -132,7 +132,6 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Component id="HomeTab" alignment="1" max="32767" attributes="0"/>
-              <Component id="SettingsTab" alignment="1" pref="390" max="32767" attributes="0"/>
               <Component id="ExitTab" alignment="1" max="32767" attributes="0"/>
               <Component id="EmployeeTab" alignment="1" max="32767" attributes="0"/>
               <Component id="PatientTab" alignment="1" max="32767" attributes="0"/>
@@ -159,9 +158,7 @@
                   <Component id="EmployeeTab" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="PatientTab" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="361" max="32767" attributes="0"/>
-                  <Component id="SettingsTab" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <EmptySpace pref="465" max="32767" attributes="0"/>
                   <Component id="ExitTab" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
               </Group>
@@ -319,56 +316,6 @@
             </Component>
           </SubComponents>
         </Container>
-        <Container class="javax.swing.JPanel" name="SettingsTab">
-          <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="fe" green="ee" red="ee" type="rgb"/>
-            </Property>
-            <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[165, 86]"/>
-            </Property>
-            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[165, 86]"/>
-            </Property>
-          </Properties>
-
-          <Layout>
-            <DimensionLayout dim="0">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="SettingsLabel" max="32767" attributes="0"/>
-                  </Group>
-              </Group>
-            </DimensionLayout>
-            <DimensionLayout dim="1">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="SettingsLabel" pref="64" max="32767" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                  </Group>
-              </Group>
-            </DimensionLayout>
-          </Layout>
-          <SubComponents>
-            <Component class="javax.swing.JLabel" name="SettingsLabel">
-              <Properties>
-                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
-                </Property>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Tahoma" size="36" style="0"/>
-                </Property>
-                <Property name="horizontalAlignment" type="int" value="2"/>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/healthMonitoringSystem/APP_IMAGES/mainprogram/setting.png"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value=" Settings"/>
-              </Properties>
-            </Component>
-          </SubComponents>
-        </Container>
         <Container class="javax.swing.JPanel" name="ExitTab">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -480,7 +427,7 @@
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="970" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="972" max="32767" attributes="0"/>
                   <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
@@ -582,7 +529,8 @@
                         <Property name="text" type="java.lang.String" value="Registered Patient Count:"/>
                       </Properties>
                       <AuxValues>
-                        <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="DefaultTableModel dashboard_patientTableModel = (DefaultTableModel)patientDataTable.getModel();&#xa;int dashboard_patient_number_of_rows = dashboard_patientTableModel.getRowCount();&#xa;int dashboard_patient_numOne = 1;&#xa;patientCountLabel.setText(&quot;Registered Patient Count: &quot; + Integer.sum(dashboard_patient_number_of_rows, dashboard_patient_numOne));"/>
+                        <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="DefaultTableModel dashboard_patientTableModel = (DefaultTableModel)patientDataTable.getModel();&#xa;int dashboard_patient_number_of_rows = dashboard_patientTableModel.getRowCount();&#xa;int dashboard_patient_numOne = 1;"/>
+                        <AuxValue name="JavaCodeGenerator_ListenersCodePost" type="java.lang.String" value="if (dashboard_patient_number_of_rows == 0) {&#xa;patientCountLabel.setText(&quot;Registered Patient Count: 0&quot;);&#xa;}&#xa;else {&#xa;patientCountLabel.setText(&quot;Registered Patient Count: &quot; + Integer.sum(dashboard_patient_number_of_rows, dashboard_patient_numOne));&#xa;}"/>
                         <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
                       </AuxValues>
                     </Component>
@@ -594,7 +542,7 @@
                         <Property name="text" type="java.lang.String" value="Registered Employee Count:"/>
                       </Properties>
                       <AuxValues>
-                        <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="DefaultTableModel dashboard_employeeTableModel=(DefaultTableModel)employeeListTable.getModel();&#xa;int dashboard_number_of_rows = dashboard_employeeTableModel.getRowCount();&#xa;int dashboard_numOne = 1;&#xa;employeeCountLabel.setText(&quot;Registered Employee Count: &quot; + Integer.sum(dashboard_number_of_rows, dashboard_numOne));"/>
+                        <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="DefaultTableModel dashboard_employeeTableModel=(DefaultTableModel)employeeListTable.getModel();&#xa;int dashboard_number_of_rows = dashboard_employeeTableModel.getRowCount();&#xa;int dashboard_numOne = 1;&#xa;if (dashboard_number_of_rows == 0) {&#xa;employeeCountLabel.setText(&quot;Registered Employee Count: 0&quot;);&#xa;}&#xa;else {&#xa;employeeCountLabel.setText(&quot;Registered Employee Count: &quot; + Integer.sum(dashboard_number_of_rows, dashboard_numOne));&#xa;}"/>
                         <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
                       </AuxValues>
                     </Component>
@@ -722,25 +670,26 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="employeeHeaderLabel" pref="1500" max="32767" attributes="0"/>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="-2" pref="225" max="-2" attributes="0"/>
-                                  <Component id="filterSearchLabel" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="102" attributes="0">
-                                          <Component id="searchEmployeeButton" min="-2" pref="460" max="-2" attributes="0"/>
-                                          <EmptySpace max="32767" attributes="0"/>
-                                          <Component id="updateEmployeeButton" min="-2" pref="335" max="-2" attributes="0"/>
-                                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                          <Component id="deleteEmployeeButton" min="-2" pref="335" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Component id="filterSearchTf" max="32767" attributes="0"/>
-                                  </Group>
-                              </Group>
                               <Group type="102" attributes="0">
                                   <Component id="employeeTrackerPanel" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="jScrollPane1" max="32767" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="-2" pref="225" max="-2" attributes="0"/>
+                                  <Component id="filterSearchLabel" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="filterSearchTf" max="32767" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace max="32767" attributes="0"/>
+                                  <Component id="manageEmployeesButton" min="-2" pref="230" max="-2" attributes="0"/>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Component id="searchEmployeeButton" min="-2" pref="335" max="-2" attributes="0"/>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Component id="updateEmployeeButton" min="-2" pref="335" max="-2" attributes="0"/>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Component id="deleteEmployeeButton" min="-2" pref="335" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
@@ -753,19 +702,22 @@
                           <Component id="employeeHeaderLabel" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jScrollPane1" min="-2" pref="712" max="-2" attributes="0"/>
-                              <Component id="employeeTrackerPanel" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="filterSearchTf" alignment="3" min="-2" pref="29" max="-2" attributes="0"/>
-                              <Component id="filterSearchLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="jScrollPane1" min="-2" pref="712" max="-2" attributes="0"/>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="filterSearchTf" alignment="3" min="-2" pref="29" max="-2" attributes="0"/>
+                                      <Component id="filterSearchLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <Component id="employeeTrackerPanel" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="deleteEmployeeButton" alignment="3" min="-2" pref="80" max="-2" attributes="0"/>
                               <Component id="updateEmployeeButton" alignment="3" min="-2" pref="80" max="-2" attributes="0"/>
                               <Component id="searchEmployeeButton" alignment="3" min="-2" pref="80" max="-2" attributes="0"/>
+                              <Component id="manageEmployeesButton" alignment="3" pref="80" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
@@ -832,7 +784,7 @@
                         <Property name="text" type="java.lang.String" value="Total Employee Count: "/>
                       </Properties>
                       <AuxValues>
-                        <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="DefaultTableModel employeeTableModel=(DefaultTableModel)employeeListTable.getModel();&#xa;int number_of_rows = employeeTableModel.getRowCount();&#xa;int numOne = 1;&#xa;totalEmployeeCountLabel.setText(&quot;Total Employee Count: &quot; + Integer.sum(number_of_rows, numOne));"/>
+                        <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="DefaultTableModel employeeTableModel=(DefaultTableModel)employeeListTable.getModel();&#xa;int number_of_rows = employeeTableModel.getRowCount();&#xa;int numOne = 1;&#xa;if (number_of_rows == 0) {&#xa;totalEmployeeCountLabel.setText(&quot;Total Employee Count: 0&quot;);&#xa;}&#xa;else {&#xa;totalEmployeeCountLabel.setText(&quot;Total Employee Count: &quot; + Integer.sum(number_of_rows, numOne));&#xa;}"/>
                         <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
                       </AuxValues>
                     </Component>
@@ -1044,6 +996,41 @@
                     </Component>
                   </SubComponents>
                 </Container>
+                <Component class="javax.swing.JButton" name="manageEmployeesButton">
+                  <Properties>
+                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="9d" green="4f" red="f" type="rgb"/>
+                    </Property>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Verdana" size="14" style="1"/>
+                    </Property>
+                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                    </Property>
+                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                      <Image iconType="3" name="/healthMonitoringSystem/APP_IMAGES/mainprogram/employeeIcon.png"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" value="Manage Employees"/>
+                    <Property name="toolTipText" type="java.lang.String" value="Full admin commands of the database"/>
+                    <Property name="actionCommand" type="java.lang.String" value=""/>
+                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                      <Border info="org.netbeans.modules.form.compat2.border.SoftBevelBorderInfo">
+                        <BevelBorder>
+                          <Color PropertyName="highlightOuter" blue="ff" green="cc" red="cc" type="rgb"/>
+                          <Color PropertyName="shadowOuter" blue="ff" green="cc" red="cc" type="rgb"/>
+                        </BevelBorder>
+                      </Border>
+                    </Property>
+                    <Property name="borderPainted" type="boolean" value="false"/>
+                    <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                      <Color id="Hand Cursor"/>
+                    </Property>
+                    <Property name="hideActionText" type="boolean" value="true"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="manageEmployeesButtonActionPerformed"/>
+                  </Events>
+                </Component>
               </SubComponents>
             </Container>
             <Container class="javax.swing.JPanel" name="patientPanel">
@@ -1175,7 +1162,7 @@
                         <Property name="text" type="java.lang.String" value="Total Patient Count: "/>
                       </Properties>
                       <AuxValues>
-                        <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="DefaultTableModel patientTableModel = (DefaultTableModel)patientDataTable.getModel();&#xa;int patient_number_of_rows = patientTableModel.getRowCount();&#xa;int patient_numOne = 1;&#xa;totalPatientCountLabel.setText(&quot;Total Patient Count: &quot; + Integer.sum(patient_number_of_rows, patient_numOne));"/>
+                        <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="DefaultTableModel patientTableModel = (DefaultTableModel)patientDataTable.getModel();&#xa;int patient_number_of_rows = patientTableModel.getRowCount();&#xa;int patient_numOne = 1;&#xa;if (patient_number_of_rows == 0) {&#xa;totalPatientCountLabel.setText(&quot;Total Patient Count: 0&quot;);&#xa;}&#xa;else {&#xa;totalPatientCountLabel.setText(&quot;Total Patient Count: &quot; + Integer.sum(patient_number_of_rows, patient_numOne));&#xa;}"/>
                         <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
                       </AuxValues>
                     </Component>
@@ -1378,7 +1365,6 @@
                 </Component>
                 <Component class="javax.swing.JLabel" name="labelImage">
                   <Properties>
-                    <Property name="horizontalAlignment" type="int" value="0"/>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="66" green="66" red="66" type="rgb"/>
                     </Property>
@@ -1388,6 +1374,7 @@
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="ff" green="ff" red="ff" type="rgb"/>
                     </Property>
+                    <Property name="horizontalAlignment" type="int" value="0"/>
                     <Property name="opaque" type="boolean" value="true"/>
                   </Properties>
                 </Component>

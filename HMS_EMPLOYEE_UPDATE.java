@@ -167,7 +167,7 @@ public final class HMS_EMPLOYEE_UPDATE extends javax.swing.JFrame {
 
         jButton1.setText("jButton1");
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Update Employee Data");
         setBackground(new java.awt.Color(235, 241, 253));
         setMinimumSize(new java.awt.Dimension(1000, 720));
