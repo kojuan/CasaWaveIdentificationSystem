@@ -1,8 +1,11 @@
 package healthMonitoringSystem;
 
+import static healthMonitoringSystem.HMS_PATIENT_MANAGEMENTSYSTEM.patientDataTable;
 import java.awt.Color;
+import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
+import java.awt.event.KeyEvent;
 import java.io.File;
 import java.io.IOException;
 import java.sql.Connection;
@@ -14,6 +17,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -146,8 +150,9 @@ public class HMS_MAIN extends javax.swing.JFrame {
         mainWindowPanel = new javax.swing.JPanel();
         layeredPanel = new javax.swing.JLayeredPane();
         dashboardPanel = new javax.swing.JPanel();
-        employeeCountLabel = new javax.swing.JLabel();
+        statPanel = new javax.swing.JPanel();
         patientCountLabel = new javax.swing.JLabel();
+        employeeCountLabel = new javax.swing.JLabel();
         backuporrestorePanel = new javax.swing.JPanel();
         backupBrowsePathButton = new javax.swing.JButton();
         pathToBackup = new javax.swing.JTextField();
@@ -174,6 +179,8 @@ public class HMS_MAIN extends javax.swing.JFrame {
         patientFilterSearchLabel = new javax.swing.JLabel();
         patientSearchTf = new javax.swing.JTextField();
         managePatientsButton = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        labelImage = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
@@ -430,12 +437,7 @@ public class HMS_MAIN extends javax.swing.JFrame {
         dashboardPanel.setMinimumSize(new java.awt.Dimension(1520, 970));
         dashboardPanel.setPreferredSize(new java.awt.Dimension(1520, 970));
 
-        employeeCountLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        employeeCountLabel.setText("Registered Employee Count:");
-        DefaultTableModel dashboard_employeeTableModel=(DefaultTableModel)employeeListTable.getModel();
-        int dashboard_number_of_rows = dashboard_employeeTableModel.getRowCount();
-        int dashboard_numOne = 1;
-        employeeCountLabel.setText("Registered Employee Count: " + Integer.sum(dashboard_number_of_rows, dashboard_numOne));
+        statPanel.setBackground(new java.awt.Color(255, 255, 255));
 
         patientCountLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         patientCountLabel.setText("Registered Patient Count:");
@@ -443,6 +445,13 @@ public class HMS_MAIN extends javax.swing.JFrame {
         int dashboard_patient_number_of_rows = dashboard_patientTableModel.getRowCount();
         int dashboard_patient_numOne = 1;
         patientCountLabel.setText("Registered Patient Count: " + Integer.sum(dashboard_patient_number_of_rows, dashboard_patient_numOne));
+
+        employeeCountLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        employeeCountLabel.setText("Registered Employee Count:");
+        DefaultTableModel dashboard_employeeTableModel=(DefaultTableModel)employeeListTable.getModel();
+        int dashboard_number_of_rows = dashboard_employeeTableModel.getRowCount();
+        int dashboard_numOne = 1;
+        employeeCountLabel.setText("Registered Employee Count: " + Integer.sum(dashboard_number_of_rows, dashboard_numOne));
 
         backuporrestorePanel.setBackground(new java.awt.Color(247, 255, 255));
 
@@ -491,7 +500,7 @@ public class HMS_MAIN extends javax.swing.JFrame {
                     .addComponent(backupResetButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(backuporrestorePanelLayout.createSequentialGroup()
                         .addComponent(backupEntireDatabaseLabel)
-                        .addGap(0, 37, Short.MAX_VALUE)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         backuporrestorePanelLayout.setVerticalGroup(
@@ -510,32 +519,48 @@ public class HMS_MAIN extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        javax.swing.GroupLayout statPanelLayout = new javax.swing.GroupLayout(statPanel);
+        statPanel.setLayout(statPanelLayout);
+        statPanelLayout.setHorizontalGroup(
+            statPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(statPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(statPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(statPanelLayout.createSequentialGroup()
+                        .addGroup(statPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(employeeCountLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(patientCountLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 379, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 111, Short.MAX_VALUE))
+                    .addComponent(backuporrestorePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        statPanelLayout.setVerticalGroup(
+            statPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(statPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(employeeCountLabel)
+                .addGap(26, 26, 26)
+                .addComponent(patientCountLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 580, Short.MAX_VALUE)
+                .addComponent(backuporrestorePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+
         javax.swing.GroupLayout dashboardPanelLayout = new javax.swing.GroupLayout(dashboardPanel);
         dashboardPanel.setLayout(dashboardPanelLayout);
         dashboardPanelLayout.setHorizontalGroup(
             dashboardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(dashboardPanelLayout.createSequentialGroup()
-                .addGap(53, 53, 53)
-                .addGroup(dashboardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(employeeCountLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 636, Short.MAX_VALUE)
-                    .addComponent(patientCountLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 416, Short.MAX_VALUE)
-                .addComponent(backuporrestorePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGap(21, 21, 21)
+                .addComponent(statPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(989, Short.MAX_VALUE))
         );
         dashboardPanelLayout.setVerticalGroup(
             dashboardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(dashboardPanelLayout.createSequentialGroup()
-                .addGroup(dashboardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(dashboardPanelLayout.createSequentialGroup()
-                        .addGap(108, 108, 108)
-                        .addComponent(employeeCountLabel)
-                        .addGap(26, 26, 26)
-                        .addComponent(patientCountLabel))
-                    .addGroup(dashboardPanelLayout.createSequentialGroup()
-                        .addGap(70, 70, 70)
-                        .addComponent(backuporrestorePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(738, Short.MAX_VALUE))
+                .addGap(70, 70, 70)
+                .addComponent(statPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(60, Short.MAX_VALUE))
         );
 
         employeePanel.setBackground(new java.awt.Color(235, 241, 253));
@@ -548,6 +573,7 @@ public class HMS_MAIN extends javax.swing.JFrame {
 
         employeeTrackerPanel.setBackground(new java.awt.Color(255, 255, 255));
         employeeTrackerPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createTitledBorder(""), "Tracker", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 24))); // NOI18N
+        employeeTrackerPanel.setMaximumSize(new java.awt.Dimension(318, 120));
 
         totalEmployeeCountLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         totalEmployeeCountLabel.setText("Total Employee Count: ");
@@ -562,7 +588,7 @@ public class HMS_MAIN extends javax.swing.JFrame {
             employeeTrackerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(employeeTrackerPanelLayout.createSequentialGroup()
                 .addComponent(totalEmployeeCountLabel)
-                .addGap(0, 126, Short.MAX_VALUE))
+                .addGap(0, 53, Short.MAX_VALUE))
         );
         employeeTrackerPanelLayout.setVerticalGroup(
             employeeTrackerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -648,6 +674,22 @@ public class HMS_MAIN extends javax.swing.JFrame {
         employeeListTable.setRowHeight(40);
         employeeListTable.setShowGrid(false);
         jScrollPane1.setViewportView(employeeListTable);
+        if (employeeListTable.getColumnModel().getColumnCount() > 0) {
+            employeeListTable.getColumnModel().getColumn(0).setHeaderValue("Employee ID");
+            employeeListTable.getColumnModel().getColumn(1).setHeaderValue("FIRST NAME");
+            employeeListTable.getColumnModel().getColumn(2).setHeaderValue("MIDDLE NAME");
+            employeeListTable.getColumnModel().getColumn(3).setHeaderValue("LAST NAME");
+            employeeListTable.getColumnModel().getColumn(4).setHeaderValue("Address");
+            employeeListTable.getColumnModel().getColumn(5).setHeaderValue("Sex");
+            employeeListTable.getColumnModel().getColumn(6).setHeaderValue("Birthday");
+            employeeListTable.getColumnModel().getColumn(7).setHeaderValue("Blood Type");
+            employeeListTable.getColumnModel().getColumn(8).setHeaderValue("Cellphone Number");
+            employeeListTable.getColumnModel().getColumn(9).setHeaderValue("Civil Status");
+            employeeListTable.getColumnModel().getColumn(10).setHeaderValue("Religion");
+            employeeListTable.getColumnModel().getColumn(11).setHeaderValue("Nationality");
+            employeeListTable.getColumnModel().getColumn(12).setHeaderValue("Father's Email Ad.");
+            employeeListTable.getColumnModel().getColumn(13).setHeaderValue("Mother's Email Ad");
+        }
 
         javax.swing.GroupLayout employeePanelLayout = new javax.swing.GroupLayout(employeePanel);
         employeePanel.setLayout(employeePanelLayout);
@@ -658,9 +700,8 @@ public class HMS_MAIN extends javax.swing.JFrame {
                 .addGroup(employeePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(employeeHeaderLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 1500, Short.MAX_VALUE)
                     .addGroup(employeePanelLayout.createSequentialGroup()
-                        .addGroup(employeePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(filterSearchLabel)
-                            .addComponent(employeeTrackerPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(225, 225, 225)
+                        .addComponent(filterSearchLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(employeePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(employeePanelLayout.createSequentialGroup()
@@ -669,8 +710,11 @@ public class HMS_MAIN extends javax.swing.JFrame {
                                 .addComponent(updateEmployeeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 335, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(deleteEmployeeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 335, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(filterSearchTf)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING))))
+                            .addComponent(filterSearchTf)))
+                    .addGroup(employeePanelLayout.createSequentialGroup()
+                        .addComponent(employeeTrackerPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane1)))
                 .addContainerGap())
         );
         employeePanelLayout.setVerticalGroup(
@@ -700,6 +744,8 @@ public class HMS_MAIN extends javax.swing.JFrame {
 
         patientTrackerPanel1.setBackground(new java.awt.Color(255, 255, 255));
         patientTrackerPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createTitledBorder(""), "Tracker", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 24))); // NOI18N
+        patientTrackerPanel1.setMaximumSize(new java.awt.Dimension(318, 120));
+        patientTrackerPanel1.setPreferredSize(new java.awt.Dimension(318, 120));
 
         totalPatientCountLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         totalPatientCountLabel.setText("Total Patient Count: ");
@@ -713,7 +759,7 @@ public class HMS_MAIN extends javax.swing.JFrame {
         patientTrackerPanel1Layout.setHorizontalGroup(
             patientTrackerPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(patientTrackerPanel1Layout.createSequentialGroup()
-                .addComponent(totalPatientCountLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 294, Short.MAX_VALUE)
+                .addComponent(totalPatientCountLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 227, Short.MAX_VALUE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         patientTrackerPanel1Layout.setVerticalGroup(
@@ -809,6 +855,16 @@ public class HMS_MAIN extends javax.swing.JFrame {
             }
         });
 
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("Patient Image");
+
+        labelImage.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        labelImage.setBackground(new java.awt.Color(102, 102, 102));
+        labelImage.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        labelImage.setForeground(new java.awt.Color(255, 255, 255));
+        labelImage.setOpaque(true);
+
         javax.swing.GroupLayout patientPanelLayout = new javax.swing.GroupLayout(patientPanel);
         patientPanel.setLayout(patientPanelLayout);
         patientPanelLayout.setHorizontalGroup(
@@ -825,7 +881,11 @@ public class HMS_MAIN extends javax.swing.JFrame {
                             .addComponent(patientSearchTf, javax.swing.GroupLayout.Alignment.TRAILING)))
                     .addGroup(patientPanelLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(patientTrackerPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(patientPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(patientPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(patientTrackerPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 245, Short.MAX_VALUE)
+                                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(labelImage, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane2)))
                 .addContainerGap())
@@ -836,8 +896,13 @@ public class HMS_MAIN extends javax.swing.JFrame {
                 .addComponent(PatientHeader)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(patientPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 705, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(patientTrackerPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(patientPanelLayout.createSequentialGroup()
+                        .addComponent(patientTrackerPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(labelImage, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 705, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(patientPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(patientFilterSearchLabel)
@@ -999,8 +1064,29 @@ public class HMS_MAIN extends javax.swing.JFrame {
     private void patientDataTableKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_patientDataTableKeyReleased
         // Get the selected row index
         patientDataTableSelectedRow = patientDataTable.getSelectedRow();
-    }//GEN-LAST:event_patientDataTableKeyReleased
 
+        // Get the selected row index
+        patientDataTableSelectedRow = patientDataTable.getSelectedRow();
+        if (evt.getKeyCode() == KeyEvent.VK_UP || evt.getKeyCode() == KeyEvent.VK_DOWN) {
+            selectPatient(patientDataTableSelectedRow);
+        }
+    }//GEN-LAST:event_patientDataTableKeyReleased
+    private void selectPatient(int counter) {
+        try {
+            try {
+                labelImage.setIcon(new ImageIcon(new ImageIcon(dao.patientList().get(counter).getimagePath()).getImage().getScaledInstance(labelImage.getWidth(), labelImage.getHeight(), Image.SCALE_SMOOTH)));
+            } catch (Exception err) {
+                this.invalidate();
+                this.validate();
+                this.repaint();
+            } finally {
+                labelImage.setText("no image found.");
+            }
+        } catch (IndexOutOfBoundsException err) {
+            labelImage.setText("no image found.");
+            this.repaint();
+        }
+    }
     private void patientSearchTfKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_patientSearchTfKeyReleased
         String query = filterSearchTf.getText();
         patientFilter(query);
@@ -1031,7 +1117,7 @@ public class HMS_MAIN extends javax.swing.JFrame {
             pathToBackup.setText(backupRestorePath);
             backupEntireDatabaseButton.setEnabled(true);
         } catch (Exception err) {
-            JOptionPane.showMessageDialog(null, "Backup failed.\n Try again.");
+            JOptionPane.showMessageDialog(null, "Backup failed or Window closed.\nTry again.");
         }
 
     }//GEN-LAST:event_backupBrowsePathButtonActionPerformed
@@ -1109,9 +1195,11 @@ public class HMS_MAIN extends javax.swing.JFrame {
     public javax.swing.JPanel employeeTrackerPanel;
     private javax.swing.JLabel filterSearchLabel;
     private javax.swing.JTextField filterSearchTf;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JLabel labelImage;
     private javax.swing.JLayeredPane layeredPanel;
     private javax.swing.JPanel leftPanel;
     public static javax.swing.JLabel loggedInUsername;
@@ -1126,6 +1214,7 @@ public class HMS_MAIN extends javax.swing.JFrame {
     private javax.swing.JTextField patientSearchTf;
     public javax.swing.JPanel patientTrackerPanel1;
     private javax.swing.JButton searchEmployeeButton;
+    private javax.swing.JPanel statPanel;
     private javax.swing.JLabel timeLabel;
     private javax.swing.JPanel topPanel;
     public javax.swing.JLabel totalEmployeeCountLabel;
