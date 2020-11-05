@@ -54,6 +54,10 @@ public final class HMS_LOGIN extends javax.swing.JFrame {
         showDate();
         showTime();
 
+        privacyPolicyLabel.setText("");
+        privacyPolicyHideButton.setVisible(false);
+        CJJS_TEAM_TEXTLOGO.setVisible(false);
+
     }
 
     void showDate() {
@@ -92,6 +96,9 @@ public final class HMS_LOGIN extends javax.swing.JFrame {
         userNameLabel = new javax.swing.JLabel();
         passwordLabel = new javax.swing.JLabel();
         leftPanel = new javax.swing.JPanel();
+        privacyPolicyLabel = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        CJJS_TEAM_TEXTLOGO = new javax.swing.JLabel();
         dateLabel = new javax.swing.JLabel();
         timeLabel = new javax.swing.JLabel();
         bottomPanel = new javax.swing.JPanel();
@@ -109,7 +116,6 @@ public final class HMS_LOGIN extends javax.swing.JFrame {
         loginButton.setBackground(new java.awt.Color(60, 143, 246));
         loginButton.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         loginButton.setForeground(new java.awt.Color(204, 255, 255));
-        loginButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/healthMonitoringSystem/APP_IMAGES/mainprogram/hyperlinkIcon.png"))); // NOI18N
         loginButton.setText("LOGIN (Enter)");
         loginButton.setToolTipText("Log In");
         loginButton.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -138,7 +144,6 @@ public final class HMS_LOGIN extends javax.swing.JFrame {
         closeButton.setBackground(new java.awt.Color(255, 0, 102));
         closeButton.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
         closeButton.setForeground(new java.awt.Color(204, 255, 255));
-        closeButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/healthMonitoringSystem/APP_IMAGES/mainprogram/exitIcon.png"))); // NOI18N
         closeButton.setText("Close (Esc)");
         closeButton.setToolTipText("Exit the application");
         closeButton.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
@@ -229,15 +234,37 @@ public final class HMS_LOGIN extends javax.swing.JFrame {
         leftPanel.setBackground(new java.awt.Color(235, 241, 253));
         leftPanel.setMaximumSize(new java.awt.Dimension(574, 0));
 
+        privacyPolicyLabel.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
+        privacyPolicyLabel.setText("<html> <left> <b>Privacy Policy:</b><br> We, the CJJS Company of this Program informs you(as the user of this Program) of our policies regarding the collection, use and disclosure of Personal Information you will receive from patients in this Program.<br> By using this program, the personal data information of a Patient shall be kept and protected inside this program and the server database only. We use your Personal Information only for providing identification to co-workers and recognition as an Employee of the Hospital. <br><br> This Privacy Policy is effective as of November 07, 2020 and will remain in effect except with respect to any changes in its provisions in the future, which will be in effect immediately after being posted on this program. We reserve the right to update or change our Privacy Policy at any time and you should check this Privacy Policy periodically. Your continued use of the Service after we post any modifications to the Privacy Policy on this program will constitute your acknowledgment of the modifications and your consent to abide and be bound by the modified Privacy Policy. If we make any material changes to this Privacy Policy, we will notify you either through the email address you have provided us, or by placing a prominent notice on our website. <br> If you have any questions about this Privacy Policy, please contact your manager or the rightful owner of this Program. </left> </html>");
+
+        CJJS_TEAM_TEXTLOGO.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        CJJS_TEAM_TEXTLOGO.setIcon(new javax.swing.ImageIcon(getClass().getResource("/healthMonitoringSystem/APP_IMAGES/mainprogram/CJJS_Company_TextLogo.png"))); // NOI18N
+
         javax.swing.GroupLayout leftPanelLayout = new javax.swing.GroupLayout(leftPanel);
         leftPanel.setLayout(leftPanelLayout);
         leftPanelLayout.setHorizontalGroup(
             leftPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 482, Short.MAX_VALUE)
+            .addGroup(leftPanelLayout.createSequentialGroup()
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(leftPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(privacyPolicyLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addGroup(leftPanelLayout.createSequentialGroup()
+                        .addComponent(CJJS_TEAM_TEXTLOGO, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 162, Short.MAX_VALUE))))
         );
         leftPanelLayout.setVerticalGroup(
             leftPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, leftPanelLayout.createSequentialGroup()
+                .addContainerGap(14, Short.MAX_VALUE)
+                .addGroup(leftPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, leftPanelLayout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(55, 55, 55))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, leftPanelLayout.createSequentialGroup()
+                        .addComponent(CJJS_TEAM_TEXTLOGO, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                .addComponent(privacyPolicyLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         dateLabel.setFont(new java.awt.Font("Century Gothic", 1, 38)); // NOI18N
@@ -274,31 +301,54 @@ public final class HMS_LOGIN extends javax.swing.JFrame {
             bottomPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(bottomPanelLayout.createSequentialGroup()
                 .addComponent(adminButton, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addContainerGap(940, Short.MAX_VALUE))
         );
         bottomPanelLayout.setVerticalGroup(
             bottomPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(adminButton, javax.swing.GroupLayout.DEFAULT_SIZE, 24, Short.MAX_VALUE)
+            .addComponent(adminButton, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
+
+        privacyPolicyTriggerButton.setBackground(new java.awt.Color(153, 204, 255));
+        privacyPolicyTriggerButton.setText("SHOW PRIVACY POLICY");
+        privacyPolicyTriggerButton.setToolTipText("Administrator Access");
+        privacyPolicyTriggerButton.setBorder(new javax.swing.border.MatteBorder(null));
+        privacyPolicyTriggerButton.setBorderPainted(false);
+        privacyPolicyTriggerButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        privacyPolicyTriggerButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        privacyPolicyTriggerButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                privacyPolicyTriggerButtonActionPerformed(evt);
+            }
+        });
+
+        privacyPolicyHideButton.setBackground(new java.awt.Color(153, 204, 255));
+        privacyPolicyHideButton.setText("HIDE PRIVACY POLICY");
+        privacyPolicyHideButton.setToolTipText("Administrator Access");
+        privacyPolicyHideButton.setBorder(new javax.swing.border.MatteBorder(null));
+        privacyPolicyHideButton.setBorderPainted(false);
+        privacyPolicyHideButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        privacyPolicyHideButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        privacyPolicyHideButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                privacyPolicyHideButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout mainPanelLayout = new javax.swing.GroupLayout(mainPanel);
         mainPanel.setLayout(mainPanelLayout);
         mainPanelLayout.setHorizontalGroup(
             mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(mainPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(leftPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(mainPanelLayout.createSequentialGroup()
+                        .addComponent(privacyPolicyTriggerButton, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(privacyPolicyHideButton, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(mainPanelLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(leftPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, mainPanelLayout.createSequentialGroup()
-                        .addComponent(DATEANDTIME_PANEL, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(timeLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 397, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(mainPanelLayout.createSequentialGroup()
-                        .addComponent(closeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(loginButton, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(dateLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 397, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, mainPanelLayout.createSequentialGroup()
                         .addGap(73, 73, 73)
                         .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -312,13 +362,24 @@ public final class HMS_LOGIN extends javax.swing.JFrame {
                                     .addComponent(showCBox, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGap(0, 0, Short.MAX_VALUE))
                                 .addComponent(sep2, javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(passwordTf, javax.swing.GroupLayout.Alignment.TRAILING)))))
+                                .addComponent(passwordTf, javax.swing.GroupLayout.Alignment.TRAILING))))
+                    .addGroup(mainPanelLayout.createSequentialGroup()
+                        .addComponent(DATEANDTIME_PANEL, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(68, 68, 68)
+                        .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(timeLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(dateLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(mainPanelLayout.createSequentialGroup()
+                                .addComponent(closeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(loginButton, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addGap(59, 59, 59))
             .addGroup(mainPanelLayout.createSequentialGroup()
-                .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(bottomPanel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(imageLabelTop, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(imageLabelTop)
                 .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(mainPanelLayout.createSequentialGroup()
+                .addComponent(bottomPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         mainPanelLayout.setVerticalGroup(
             mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -342,24 +403,24 @@ public final class HMS_LOGIN extends javax.swing.JFrame {
                         .addComponent(sep2, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(15, 15, 15)
                         .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(loginButton)
-                            .addComponent(closeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(loginButton, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(closeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(27, 27, 27)
                         .addComponent(dateLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(mainPanelLayout.createSequentialGroup()
-                                .addGap(27, 27, 27)
-                                .addComponent(DATEANDTIME_PANEL, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(mainPanelLayout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(timeLabel)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                            .addComponent(DATEANDTIME_PANEL, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(timeLabel)))
                     .addGroup(mainPanelLayout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(leftPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addGap(18, 18, 18)
+                        .addComponent(leftPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(privacyPolicyTriggerButton, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(privacyPolicyHideButton, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(bottomPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGap(2, 2, 2))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -367,17 +428,15 @@ public final class HMS_LOGIN extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(mainPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addComponent(mainPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 1000, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(mainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(53, 53, 53))
+            .addComponent(mainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        setSize(new java.awt.Dimension(1000, 629));
+        setSize(new java.awt.Dimension(1000, 614));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -573,6 +632,31 @@ public final class HMS_LOGIN extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_adminButtonActionPerformed
 
+    private void privacyPolicyTriggerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_privacyPolicyTriggerButtonActionPerformed
+        privacyPolicyLabel.setText("<html>\n"
+                + "<left>\n"
+                + "<b>Privacy Policy:</b><br>\n"
+                + "We, the CJJS Company of this Program informs you(as the user of this Program) of our policies regarding the collection, use and disclosure of Personal Information you will receive from patients in this Program.<br>\n"
+                + "By using this program, the personal data information of a Patient shall be kept and protected inside this program and the server database only. We use your Personal Information only for providing identification to co-workers and recognition as an Employee of the Hospital. <br><br>\n"
+                + "This Privacy Policy is effective as of November 07, 2020 and will remain in effect except with respect to any changes in its provisions in the future, which will be in effect immediately after being posted on this program. We reserve the right to update or change our Privacy Policy at any time and you should check this Privacy Policy periodically. Your continued use of the Service after we post any modifications to the Privacy Policy on this program will constitute your acknowledgment of the modifications and your consent to abide and be bound by the modified Privacy Policy.\n"
+                + "If we make any material changes to this Privacy Policy, we will notify you either through the email\n"
+                + "address you have provided us, or by placing a prominent notice on our website.\n"
+                + "<br>\n"
+                + "If you have any questions about this Privacy Policy, please contact your manager or the rightful owner of this Program.\n"
+                + "</left>\n"
+                + "</html>");
+        privacyPolicyTriggerButton.setVisible(false);
+        privacyPolicyHideButton.setVisible(true);
+        CJJS_TEAM_TEXTLOGO.setVisible(true);
+    }//GEN-LAST:event_privacyPolicyTriggerButtonActionPerformed
+
+    private void privacyPolicyHideButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_privacyPolicyHideButtonActionPerformed
+        privacyPolicyLabel.setText("");
+        privacyPolicyTriggerButton.setVisible(true);
+        privacyPolicyHideButton.setVisible(false);
+        CJJS_TEAM_TEXTLOGO.setVisible(false);
+    }//GEN-LAST:event_privacyPolicyHideButtonActionPerformed
+
     /**
      * @param args the command line arguments
      * @throws java.io.IOException
@@ -599,15 +683,20 @@ public final class HMS_LOGIN extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel CJJS_TEAM_TEXTLOGO;
     private javax.swing.JPanel DATEANDTIME_PANEL;
     private javax.swing.JPanel bottomPanel;
     private javax.swing.JButton closeButton;
     private javax.swing.JLabel dateLabel;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel leftPanel;
     public javax.swing.JButton loginButton;
     private javax.swing.JPanel mainPanel;
     private javax.swing.JLabel passwordLabel;
     private javax.swing.JPasswordField passwordTf;
+    private final javax.swing.JButton privacyPolicyHideButton = new javax.swing.JButton();
+    public javax.swing.JLabel privacyPolicyLabel;
+    private final javax.swing.JButton privacyPolicyTriggerButton = new javax.swing.JButton();
     private javax.swing.JSeparator sep1;
     private javax.swing.JSeparator sep2;
     private javax.swing.JCheckBox showCBox;
