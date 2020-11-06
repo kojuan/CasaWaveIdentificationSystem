@@ -146,6 +146,7 @@ public class HMS_PATIENT_MANAGEMENTSYSTEM_ADMINACCESS extends javax.swing.JFrame
         bpmTf = new javax.swing.JTextField();
         detectBPMButton = new javax.swing.JButton();
         temperatureClearAllButton1 = new javax.swing.JButton();
+        captureImageButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("MHMS Patient Data Management System");
@@ -566,6 +567,13 @@ public class HMS_PATIENT_MANAGEMENTSYSTEM_ADMINACCESS extends javax.swing.JFrame
             }
         });
 
+        captureImageButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/healthMonitoringSystem/APP_IMAGES/mainprogram/camera.png"))); // NOI18N
+        captureImageButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                captureImageButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout patientFullMainPanelLayout = new javax.swing.GroupLayout(patientFullMainPanel);
         patientFullMainPanel.setLayout(patientFullMainPanelLayout);
         patientFullMainPanelLayout.setHorizontalGroup(
@@ -616,9 +624,12 @@ public class HMS_PATIENT_MANAGEMENTSYSTEM_ADMINACCESS extends javax.swing.JFrame
                             .addComponent(imageNameTf, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(18, 18, 18)
                 .addGroup(patientFullMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(labelImage, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(browseImageButton, javax.swing.GroupLayout.DEFAULT_SIZE, 355, Short.MAX_VALUE))
-                .addGap(32, 32, 32)
+                    .addComponent(labelImage, javax.swing.GroupLayout.PREFERRED_SIZE, 355, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(patientFullMainPanelLayout.createSequentialGroup()
+                        .addComponent(browseImageButton, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(captureImageButton, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
+                .addGap(44, 44, 44)
                 .addGroup(patientFullMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(patientFullMainPanelLayout.createSequentialGroup()
                         .addGap(10, 10, 10)
@@ -674,8 +685,8 @@ public class HMS_PATIENT_MANAGEMENTSYSTEM_ADMINACCESS extends javax.swing.JFrame
                                 .addComponent(updateButton, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addGap(41, 41, 41))
             .addGroup(patientFullMainPanelLayout.createSequentialGroup()
-                .addGroup(patientFullMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(patientFullMainPanelLayout.createSequentialGroup()
+                .addGroup(patientFullMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, patientFullMainPanelLayout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(filterSearchTf, javax.swing.GroupLayout.PREFERRED_SIZE, 698, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -700,7 +711,9 @@ public class HMS_PATIENT_MANAGEMENTSYSTEM_ADMINACCESS extends javax.swing.JFrame
                             .addGroup(patientFullMainPanelLayout.createSequentialGroup()
                                 .addComponent(labelImage, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGap(18, 18, 18)
-                                .addComponent(browseImageButton, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(patientFullMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(browseImageButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(captureImageButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                             .addGroup(patientFullMainPanelLayout.createSequentialGroup()
                                 .addGroup(patientFullMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(patientIDLabel)
@@ -1511,6 +1524,10 @@ public class HMS_PATIENT_MANAGEMENTSYSTEM_ADMINACCESS extends javax.swing.JFrame
         bpmTf.setText("");
     }//GEN-LAST:event_temperatureClearAllButton1ActionPerformed
 
+    private void captureImageButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_captureImageButtonActionPerformed
+ 
+    }//GEN-LAST:event_captureImageButtonActionPerformed
+
     public static void main(String args[]) {
         try {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
@@ -1537,6 +1554,7 @@ public class HMS_PATIENT_MANAGEMENTSYSTEM_ADMINACCESS extends javax.swing.JFrame
     private javax.swing.JLabel bloodTypeLabel;
     private javax.swing.JTextField bpmTf;
     private javax.swing.JButton browseImageButton;
+    private javax.swing.JButton captureImageButton;
     private javax.swing.JLabel cellphoneNumberLabel;
     private javax.swing.JComboBox<String> civilStatusCB;
     private javax.swing.JLabel civilStatusLabel;
