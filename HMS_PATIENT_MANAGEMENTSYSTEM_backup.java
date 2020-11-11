@@ -2,14 +2,17 @@ package healthMonitoringSystem;
 
 import com.mysql.jdbc.PreparedStatement;
 import java.awt.Color;
+import java.awt.HeadlessException;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import java.awt.print.PrinterException;
 import java.io.BufferedOutputStream;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
@@ -24,6 +27,7 @@ import java.sql.SQLException;
 import java.text.ParseException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
@@ -31,18 +35,13 @@ import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-import java.awt.HeadlessException;
-import java.io.File;
-import java.io.IOException;
-import javax.swing.JOptionPane;
 
 /**
  *
  * @author khian
  */
-public class HMS_PATIENT_MANAGEMENTSYSTEM extends javax.swing.JFrame {
+public class HMS_PATIENT_MANAGEMENTSYSTEM_backup extends javax.swing.JFrame {
 
-    final String currentAbsoluteFileDirectoryPath = System.getProperty("user.dir");
     HMS_DATABASECONNECTION dbConnect = new HMS_DATABASECONNECTION();
     //get Strings of 'em all
     String patientIdString = "";
@@ -69,7 +68,7 @@ public class HMS_PATIENT_MANAGEMENTSYSTEM extends javax.swing.JFrame {
      *
      * @throws java.lang.Exception
      */
-    public HMS_PATIENT_MANAGEMENTSYSTEM() throws Exception {
+    public HMS_PATIENT_MANAGEMENTSYSTEM_backup() throws Exception {
         setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("HMS_LOGO_800PX.png")));
         initComponents();
         connx = dbConnect.databaseConnection();
@@ -135,8 +134,6 @@ public class HMS_PATIENT_MANAGEMENTSYSTEM extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         filterSearchTf = new javax.swing.JTextField();
         closeButton = new javax.swing.JButton();
-        captureImageButton = new javax.swing.JButton();
-        quickCheckerPanel = new javax.swing.JPanel();
         temperatureTf1 = new javax.swing.JTextField();
         temperatureTf2 = new javax.swing.JTextField();
         temperatureBox1 = new javax.swing.JComboBox<>();
@@ -149,7 +146,6 @@ public class HMS_PATIENT_MANAGEMENTSYSTEM extends javax.swing.JFrame {
         bpmTf = new javax.swing.JTextField();
         detectBPMButton = new javax.swing.JButton();
         temperatureClearAllButton1 = new javax.swing.JButton();
-        quickBodyChecker = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("MHMS Patient Data Management System");
@@ -236,11 +232,10 @@ public class HMS_PATIENT_MANAGEMENTSYSTEM extends javax.swing.JFrame {
         bloodTypeCB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Unspecified", "A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-" }));
         bloodTypeCB.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
-        civilStatusCB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Unspecified", "Single", "Married", "Divorced", "Widowed" }));
+        civilStatusCB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Unspecified", "Single", "Married", "Divorced", "Separated", "Widowed" }));
         civilStatusCB.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
-        religionCB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Aglipayan", "Buddhism", "Catholic", "Hinduism", "Iglesia ni Cristo", "Islam", "Judaism", "Non-Roman Catholic and Protestant", "Seventh-day Adventist", "Unspecified", " " }));
-        religionCB.setSelectedIndex(9);
+        religionCB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Unspecified", "Aglipayan", "Baháʼí Faith", "Buddhism", "Catholic", "Caodaism", "Cheondoism", "Falun Gong", "Hinduism", "Hoahaoism", "Iglesia ni Cristo", "Islam", "Jainism", "Judaism", "Korean Shamanism", "Non-Roman Catholic and Protestant", "Seventh-day Adventist", "Shinto", "Sikhism", "Taoism", "Tenriism", " ", " " }));
         religionCB.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
         nationalityTf.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -498,15 +493,6 @@ public class HMS_PATIENT_MANAGEMENTSYSTEM extends javax.swing.JFrame {
             }
         });
 
-        captureImageButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/healthMonitoringSystem/APP_IMAGES/mainprogram/camera.png"))); // NOI18N
-        captureImageButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                captureImageButtonActionPerformed(evt);
-            }
-        });
-
-        quickCheckerPanel.setBackground(new java.awt.Color(255, 255, 255));
-
         temperatureTf1.setEditable(false);
         temperatureTf1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         temperatureTf1.setMaximumSize(new java.awt.Dimension(7, 20));
@@ -579,68 +565,145 @@ public class HMS_PATIENT_MANAGEMENTSYSTEM extends javax.swing.JFrame {
             }
         });
 
-        quickBodyChecker.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        quickBodyChecker.setText("QUICK BODY CHECKER");
-        quickBodyChecker.setBackground(new java.awt.Color(255, 255, 255));
-        quickBodyChecker.setFont(new java.awt.Font("Segoe UI", 2, 36)); // NOI18N
-
-        javax.swing.GroupLayout quickCheckerPanelLayout = new javax.swing.GroupLayout(quickCheckerPanel);
-        quickCheckerPanel.setLayout(quickCheckerPanelLayout);
-        quickCheckerPanelLayout.setHorizontalGroup(
-            quickCheckerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(quickCheckerPanelLayout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addGroup(quickCheckerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(quickCheckerPanelLayout.createSequentialGroup()
+        javax.swing.GroupLayout patientFullMainPanelLayout = new javax.swing.GroupLayout(patientFullMainPanel);
+        patientFullMainPanel.setLayout(patientFullMainPanelLayout);
+        patientFullMainPanelLayout.setHorizontalGroup(
+            patientFullMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(patientFullMainPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(patientFullMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addGroup(patientFullMainPanelLayout.createSequentialGroup()
+                        .addGroup(patientFullMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(patientFullMainPanelLayout.createSequentialGroup()
+                                .addGroup(patientFullMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(firstNameLabel)
+                                    .addComponent(patientIDLabel)
+                                    .addComponent(middleNameLabel)
+                                    .addComponent(dateOfBirthLabel)
+                                    .addComponent(bloodTypeLabel)
+                                    .addComponent(civilStatusLabel)
+                                    .addComponent(religionLabel)
+                                    .addComponent(nationalityLabel)
+                                    .addComponent(cellphoneNumberLabel)
+                                    .addComponent(lastNameLabel))
+                                .addGap(19, 19, 19))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, patientFullMainPanelLayout.createSequentialGroup()
+                                .addComponent(genderLabel)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                        .addGroup(patientFullMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(middleNameTf, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lastNameTf, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(patientFullMainPanelLayout.createSequentialGroup()
+                                .addComponent(maleCbButton)
+                                .addGap(29, 29, 29)
+                                .addComponent(femaleCbButton))
+                            .addComponent(dateOfBirthPicker, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(bloodTypeCB, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(phoneNumberTf, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(nationalityTf, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(religionCB, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(civilStatusCB, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(firstNameTf, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(patientIdTf, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(patientFullMainPanelLayout.createSequentialGroup()
+                        .addGroup(patientFullMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(imagePathLabel)
+                            .addComponent(imageNameLabel))
+                        .addGap(68, 68, 68)
+                        .addGroup(patientFullMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(imagePathTf, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(imageNameTf, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(18, 18, 18)
+                .addGroup(patientFullMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(labelImage, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(browseImageButton, javax.swing.GroupLayout.DEFAULT_SIZE, 355, Short.MAX_VALUE))
+                .addGap(32, 32, 32)
+                .addGroup(patientFullMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(patientFullMainPanelLayout.createSequentialGroup()
                         .addGap(10, 10, 10)
                         .addComponent(temperatureStatus, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(29, 29, 29))
+                        .addGap(121, 121, 121))
+                    .addGroup(patientFullMainPanelLayout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addComponent(patientIDLabel1))
                     .addComponent(temperatureBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(quickCheckerPanelLayout.createSequentialGroup()
+                    .addGroup(patientFullMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(patientFullMainPanelLayout.createSequentialGroup()
+                            .addComponent(temperatureBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(temperatureTf1, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(patientFullMainPanelLayout.createSequentialGroup()
+                            .addComponent(temperatureConvertButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addGroup(patientFullMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(temperatureTf2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(temperatureClearAllButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                    .addGroup(patientFullMainPanelLayout.createSequentialGroup()
                         .addGap(2, 2, 2)
-                        .addGroup(quickCheckerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(quickCheckerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(patientFullMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(patientFullMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addComponent(detectBPMButton, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(bpmTf, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(patientIDLabel2))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(temperatureClearAllButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(quickCheckerPanelLayout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(patientIDLabel1))
-                    .addGroup(quickCheckerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(quickCheckerPanelLayout.createSequentialGroup()
-                            .addComponent(temperatureBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(temperatureTf1, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(quickCheckerPanelLayout.createSequentialGroup()
-                            .addComponent(temperatureConvertButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addGroup(quickCheckerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(temperatureTf2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(temperatureClearAllButton)))))
-                .addGap(103, 103, 103))
-            .addGroup(quickCheckerPanelLayout.createSequentialGroup()
-                .addComponent(quickBodyChecker, javax.swing.GroupLayout.PREFERRED_SIZE, 402, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                        .addComponent(temperatureClearAllButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(patientFullMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(patientFullMainPanelLayout.createSequentialGroup()
+                        .addComponent(firstItemInListButton, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lastItemInListButton, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(previousItemInListButton, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(nextItemInListButton, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, patientFullMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, patientFullMainPanelLayout.createSequentialGroup()
+                            .addComponent(importExcelButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(exportExcelButton, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, patientFullMainPanelLayout.createSequentialGroup()
+                            .addComponent(deleteButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGap(18, 18, 18)
+                            .addComponent(clearButton, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, patientFullMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(closeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 486, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, patientFullMainPanelLayout.createSequentialGroup()
+                                .addComponent(addButton, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(16, 16, 16)
+                                .addComponent(updateButton, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addGap(25, 25, 25))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, patientFullMainPanelLayout.createSequentialGroup()
+                .addGroup(patientFullMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(patientFullMainPanelLayout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(filterSearchTf, javax.swing.GroupLayout.PREFERRED_SIZE, 698, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(184, 184, 184)
+                        .addComponent(moveRowUpButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(moveRowDownButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(printButton, javax.swing.GroupLayout.PREFERRED_SIZE, 415, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(patientFullMainPanelLayout.createSequentialGroup()
+                        .addGap(0, 8, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1886, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(26, 26, 26))
         );
-        quickCheckerPanelLayout.setVerticalGroup(
-            quickCheckerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, quickCheckerPanelLayout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addComponent(quickBodyChecker)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(quickCheckerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(quickCheckerPanelLayout.createSequentialGroup()
+        patientFullMainPanelLayout.setVerticalGroup(
+            patientFullMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(patientFullMainPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(patientFullMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(patientFullMainPanelLayout.createSequentialGroup()
                         .addComponent(patientIDLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(quickCheckerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(patientFullMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(temperatureBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(temperatureTf1, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(2, 2, 2)
                         .addComponent(temperatureStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(quickCheckerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGroup(patientFullMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(temperatureTf2, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(temperatureBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(6, 6, 6)
@@ -650,115 +713,15 @@ public class HMS_PATIENT_MANAGEMENTSYSTEM extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(bpmTf, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(quickCheckerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGroup(patientFullMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(detectBPMButton)
-                            .addComponent(temperatureClearAllButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(quickCheckerPanelLayout.createSequentialGroup()
-                        .addGap(131, 131, 131)
-                        .addComponent(temperatureClearAllButton, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(29, 29, 29))
-        );
-
-        javax.swing.GroupLayout patientFullMainPanelLayout = new javax.swing.GroupLayout(patientFullMainPanel);
-        patientFullMainPanel.setLayout(patientFullMainPanelLayout);
-        patientFullMainPanelLayout.setHorizontalGroup(
-            patientFullMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(patientFullMainPanelLayout.createSequentialGroup()
-                .addGroup(patientFullMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(temperatureClearAllButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(patientFullMainPanelLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(patientFullMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(patientFullMainPanelLayout.createSequentialGroup()
-                                .addGroup(patientFullMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(patientFullMainPanelLayout.createSequentialGroup()
-                                        .addGroup(patientFullMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(firstNameLabel)
-                                            .addComponent(patientIDLabel)
-                                            .addComponent(middleNameLabel)
-                                            .addComponent(dateOfBirthLabel)
-                                            .addComponent(bloodTypeLabel)
-                                            .addComponent(civilStatusLabel)
-                                            .addComponent(religionLabel)
-                                            .addComponent(nationalityLabel)
-                                            .addComponent(cellphoneNumberLabel)
-                                            .addComponent(lastNameLabel))
-                                        .addGap(19, 19, 19))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, patientFullMainPanelLayout.createSequentialGroup()
-                                        .addComponent(genderLabel)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
-                                .addGroup(patientFullMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(middleNameTf, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(lastNameTf, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(patientFullMainPanelLayout.createSequentialGroup()
-                                        .addComponent(maleCbButton)
-                                        .addGap(29, 29, 29)
-                                        .addComponent(femaleCbButton))
-                                    .addComponent(dateOfBirthPicker, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(bloodTypeCB, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(phoneNumberTf, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(nationalityTf, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(religionCB, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(civilStatusCB, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(firstNameTf, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(patientIdTf, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(patientFullMainPanelLayout.createSequentialGroup()
-                                .addGroup(patientFullMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(imagePathLabel)
-                                    .addComponent(imageNameLabel))
-                                .addGap(68, 68, 68)
-                                .addGroup(patientFullMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(imagePathTf, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(imageNameTf, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addComponent(labelImage, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(18, 18, 18)
-                        .addGroup(patientFullMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(labelImage, javax.swing.GroupLayout.PREFERRED_SIZE, 355, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(patientFullMainPanelLayout.createSequentialGroup()
-                                .addComponent(browseImageButton, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(captureImageButton, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
-                        .addGap(10, 10, 10)
-                        .addGroup(patientFullMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(addButton, javax.swing.GroupLayout.DEFAULT_SIZE, 235, Short.MAX_VALUE)
-                            .addComponent(updateButton, javax.swing.GroupLayout.DEFAULT_SIZE, 235, Short.MAX_VALUE)
-                            .addComponent(clearButton, javax.swing.GroupLayout.DEFAULT_SIZE, 235, Short.MAX_VALUE)
-                            .addComponent(deleteButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 149, Short.MAX_VALUE)
-                        .addGroup(patientFullMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, patientFullMainPanelLayout.createSequentialGroup()
-                                .addComponent(importExcelButton)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(exportExcelButton, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, patientFullMainPanelLayout.createSequentialGroup()
-                                .addComponent(firstItemInListButton, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(lastItemInListButton, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(previousItemInListButton, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(nextItemInListButton, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(quickCheckerPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 402, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(closeButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(patientFullMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, patientFullMainPanelLayout.createSequentialGroup()
-                            .addComponent(jLabel1)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(filterSearchTf, javax.swing.GroupLayout.PREFERRED_SIZE, 698, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(173, 173, 173)
-                            .addComponent(moveRowUpButton)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(moveRowDownButton)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(printButton, javax.swing.GroupLayout.PREFERRED_SIZE, 415, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, patientFullMainPanelLayout.createSequentialGroup()
-                            .addContainerGap()
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1885, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap())
-        );
-        patientFullMainPanelLayout.setVerticalGroup(
-            patientFullMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(patientFullMainPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(patientFullMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(browseImageButton, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(79, 79, 79))
                     .addGroup(patientFullMainPanelLayout.createSequentialGroup()
                         .addGroup(patientFullMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(patientIDLabel)
@@ -811,12 +774,23 @@ public class HMS_PATIENT_MANAGEMENTSYSTEM extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(patientFullMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(imageNameLabel)
-                            .addComponent(imageNameTf, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(imageNameTf, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(80, 80, 80))
                     .addGroup(patientFullMainPanelLayout.createSequentialGroup()
+                        .addGap(131, 131, 131)
+                        .addComponent(temperatureClearAllButton, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, patientFullMainPanelLayout.createSequentialGroup()
                         .addComponent(closeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(patientFullMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(updateButton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(addButton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
-                        .addComponent(quickCheckerPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(18, 18, 18)
+                        .addGroup(patientFullMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(clearButton, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(deleteButton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(patientFullMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(exportExcelButton)
                             .addComponent(importExcelButton))
@@ -825,26 +799,10 @@ public class HMS_PATIENT_MANAGEMENTSYSTEM extends javax.swing.JFrame {
                             .addComponent(firstItemInListButton)
                             .addComponent(lastItemInListButton)
                             .addComponent(previousItemInListButton)
-                            .addComponent(nextItemInListButton)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, patientFullMainPanelLayout.createSequentialGroup()
-                        .addGroup(patientFullMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(patientFullMainPanelLayout.createSequentialGroup()
-                                .addComponent(addButton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(38, 38, 38)
-                                .addComponent(updateButton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(38, 38, 38)
-                                .addComponent(clearButton, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(31, 31, 31)
-                                .addComponent(deleteButton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addComponent(labelImage, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(18, 18, 18)
-                        .addGroup(patientFullMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(browseImageButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(captureImageButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(nextItemInListButton))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 394, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(1, 1, 1)
                 .addGroup(patientFullMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(filterSearchTf, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -944,7 +902,7 @@ public class HMS_PATIENT_MANAGEMENTSYSTEM extends javax.swing.JFrame {
     private void browseImageButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_browseImageButtonActionPerformed
         // Default image location
 
-        String currentDirectoryPath = currentAbsoluteFileDirectoryPath;
+        String currentDirectoryPath = "C:\\Users\\Public\\Pictures\\";
         JFileChooser imageFileChooser = new JFileChooser(currentDirectoryPath);
         int imageChooser = imageFileChooser.showOpenDialog(null);
         imageFileChooser.setDialogTitle("Chose Image...");
@@ -1066,7 +1024,7 @@ public class HMS_PATIENT_MANAGEMENTSYSTEM extends javax.swing.JFrame {
 
                 }
             } catch (ParseException ex) {
-                Logger.getLogger(HMS_PATIENT_MANAGEMENTSYSTEM.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(HMS_PATIENT_MANAGEMENTSYSTEM_backup.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
 
@@ -1401,10 +1359,9 @@ public class HMS_PATIENT_MANAGEMENTSYSTEM extends javax.swing.JFrame {
     }//GEN-LAST:event_filterSearchTfKeyReleased
 
     private void closeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_closeButtonActionPerformed
-        HMS_ADMINFORM showAdminForm = new HMS_ADMINFORM();
-        showAdminForm.setVisible(true);
+        HMS_MAIN showMainForm = new HMS_MAIN();
+        showMainForm.setVisible(true);
         this.dispose();
-
     }//GEN-LAST:event_closeButtonActionPerformed
 
     private void temperatureTf1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_temperatureTf1KeyTyped
@@ -1550,11 +1507,6 @@ public class HMS_PATIENT_MANAGEMENTSYSTEM extends javax.swing.JFrame {
         bpmTf.setText("");
     }//GEN-LAST:event_temperatureClearAllButton1ActionPerformed
 
-    private void captureImageButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_captureImageButtonActionPerformed
-        webcamFrame showWebcam = new webcamFrame();
-        showWebcam.setVisible(true);
-    }//GEN-LAST:event_captureImageButtonActionPerformed
-
     public static void main(String args[]) {
         try {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
@@ -1568,11 +1520,9 @@ public class HMS_PATIENT_MANAGEMENTSYSTEM extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(() -> {
             try {
-                new HMS_PATIENT_MANAGEMENTSYSTEM().setVisible(true);
-
+                new HMS_PATIENT_MANAGEMENTSYSTEM_backup().setVisible(true);
             } catch (Exception ex) {
-                Logger.getLogger(HMS_PATIENT_MANAGEMENTSYSTEM.class
-                        .getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(HMS_PATIENT_MANAGEMENTSYSTEM_backup.class.getName()).log(Level.SEVERE, null, ex);
             }
         });
     }
@@ -1583,7 +1533,6 @@ public class HMS_PATIENT_MANAGEMENTSYSTEM extends javax.swing.JFrame {
     private javax.swing.JLabel bloodTypeLabel;
     private javax.swing.JTextField bpmTf;
     private javax.swing.JButton browseImageButton;
-    private javax.swing.JButton captureImageButton;
     private javax.swing.JLabel cellphoneNumberLabel;
     private javax.swing.JComboBox<String> civilStatusCB;
     private javax.swing.JLabel civilStatusLabel;
@@ -1629,8 +1578,6 @@ public class HMS_PATIENT_MANAGEMENTSYSTEM extends javax.swing.JFrame {
     private javax.swing.JTextField phoneNumberTf;
     private javax.swing.JButton previousItemInListButton;
     private javax.swing.JButton printButton;
-    private javax.swing.JLabel quickBodyChecker;
-    private javax.swing.JPanel quickCheckerPanel;
     private javax.swing.JComboBox<String> religionCB;
     private javax.swing.JLabel religionLabel;
     private javax.swing.JComboBox<String> temperatureBox1;

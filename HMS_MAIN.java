@@ -246,17 +246,17 @@ public class HMS_MAIN extends javax.swing.JFrame {
         logoLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         logoLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/healthMonitoringSystem/APP_IMAGES/mainprogram/LOGO_HEADERPANEL_MAIN.png"))); // NOI18N
 
-        timeLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        timeLabel.setText("Time");
         timeLabel.setFont(new java.awt.Font("Century Gothic", 1, 30)); // NOI18N
         timeLabel.setForeground(new java.awt.Color(0, 0, 51));
+        timeLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        timeLabel.setText("Time");
         timeLabel.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         timeLabel.setRequestFocusEnabled(false);
 
-        dateLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        dateLabel.setText("Date");
         dateLabel.setFont(new java.awt.Font("Century Gothic", 1, 28)); // NOI18N
         dateLabel.setForeground(new java.awt.Color(0, 0, 51));
+        dateLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        dateLabel.setText("Date");
         dateLabel.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         dateLabel.setRequestFocusEnabled(false);
 
@@ -297,11 +297,11 @@ public class HMS_MAIN extends javax.swing.JFrame {
             }
         });
 
+        HomeLabel.setBackground(new java.awt.Color(238, 238, 254));
+        HomeLabel.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         HomeLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         HomeLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/healthMonitoringSystem/APP_IMAGES/mainprogram/dashboard64px.png"))); // NOI18N
         HomeLabel.setText(" Home");
-        HomeLabel.setBackground(new java.awt.Color(238, 238, 254));
-        HomeLabel.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
 
         javax.swing.GroupLayout HomeTabLayout = new javax.swing.GroupLayout(HomeTab);
         HomeTab.setLayout(HomeTabLayout);
@@ -327,11 +327,11 @@ public class HMS_MAIN extends javax.swing.JFrame {
             }
         });
 
+        EmployeeLabel.setBackground(new java.awt.Color(255, 255, 255));
+        EmployeeLabel.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         EmployeeLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         EmployeeLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/healthMonitoringSystem/APP_IMAGES/mainprogram/employeeMain.png"))); // NOI18N
         EmployeeLabel.setText("Employee");
-        EmployeeLabel.setBackground(new java.awt.Color(255, 255, 255));
-        EmployeeLabel.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
 
         javax.swing.GroupLayout EmployeeTabLayout = new javax.swing.GroupLayout(EmployeeTab);
         EmployeeTab.setLayout(EmployeeTabLayout);
@@ -357,11 +357,11 @@ public class HMS_MAIN extends javax.swing.JFrame {
             }
         });
 
+        PatientLabel.setBackground(new java.awt.Color(255, 255, 255));
+        PatientLabel.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         PatientLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         PatientLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/healthMonitoringSystem/APP_IMAGES/mainprogram/patientMain.png"))); // NOI18N
         PatientLabel.setText(" Patient");
-        PatientLabel.setBackground(new java.awt.Color(255, 255, 255));
-        PatientLabel.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
 
         javax.swing.GroupLayout PatientTabLayout = new javax.swing.GroupLayout(PatientTab);
         PatientTab.setLayout(PatientTabLayout);
@@ -386,11 +386,11 @@ public class HMS_MAIN extends javax.swing.JFrame {
             }
         });
 
+        ExitLabel.setBackground(new java.awt.Color(255, 255, 255));
+        ExitLabel.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         ExitLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ExitLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/healthMonitoringSystem/APP_IMAGES/mainprogram/exitIcon.png"))); // NOI18N
         ExitLabel.setText(" Exit");
-        ExitLabel.setBackground(new java.awt.Color(255, 255, 255));
-        ExitLabel.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
 
         javax.swing.GroupLayout ExitTabLayout = new javax.swing.GroupLayout(ExitTab);
         ExitTab.setLayout(ExitTabLayout);
@@ -461,11 +461,11 @@ public class HMS_MAIN extends javax.swing.JFrame {
 
         statPanel.setBackground(new java.awt.Color(255, 255, 255));
 
-        patientCountLabel.setText("Registered Patient Count: ");
         patientCountLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        patientCountLabel.setText("Registered Patient Count: ");
 
-        employeeCountLabel.setText("Registered Employee Count: ");
         employeeCountLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        employeeCountLabel.setText("Registered Employee Count: ");
 
         backuporrestorePanel.setBackground(new java.awt.Color(247, 255, 255));
 
@@ -477,8 +477,8 @@ public class HMS_MAIN extends javax.swing.JFrame {
         });
 
         pathToBackup.setEditable(false);
-        pathToBackup.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         pathToBackup.setBackground(new java.awt.Color(255, 255, 255));
+        pathToBackup.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         pathToBackup.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         backupEntireDatabaseButton.setText("Backup Database");
@@ -489,8 +489,8 @@ public class HMS_MAIN extends javax.swing.JFrame {
             }
         });
 
-        backupEntireDatabaseLabel.setText("Create a Backup of the Database");
         backupEntireDatabaseLabel.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        backupEntireDatabaseLabel.setText("Create a Backup of the Database");
 
         backupResetButton.setText("RESET");
         backupResetButton.addActionListener(new java.awt.event.ActionListener() {
@@ -586,8 +586,8 @@ public class HMS_MAIN extends javax.swing.JFrame {
         employeeTrackerPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createTitledBorder(""), "Tracker", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 24))); // NOI18N
         employeeTrackerPanel.setMaximumSize(new java.awt.Dimension(318, 120));
 
-        totalEmployeeCountLabel.setText("Total Employee Count: ");
         totalEmployeeCountLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        totalEmployeeCountLabel.setText("Total Employee Count: ");
         DefaultTableModel employeeTableModel=(DefaultTableModel)employeeListTable.getModel();
         int number_of_rows = employeeTableModel.getRowCount();
         int numOne = 1;
@@ -613,38 +613,38 @@ public class HMS_MAIN extends javax.swing.JFrame {
                 .addGap(0, 57, Short.MAX_VALUE))
         );
 
-        searchEmployeeButton.setText("Search Employee");
         searchEmployeeButton.setBackground(new java.awt.Color(153, 204, 255));
-        searchEmployeeButton.setBorderPainted(false);
         searchEmployeeButton.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
+        searchEmployeeButton.setText("Search Employee");
+        searchEmployeeButton.setBorderPainted(false);
         searchEmployeeButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 searchEmployeeButtonActionPerformed(evt);
             }
         });
 
-        updateEmployeeButton.setText("Update Employee");
         updateEmployeeButton.setBackground(new java.awt.Color(153, 204, 255));
-        updateEmployeeButton.setBorderPainted(false);
         updateEmployeeButton.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
+        updateEmployeeButton.setText("Update Employee");
+        updateEmployeeButton.setBorderPainted(false);
         updateEmployeeButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 updateEmployeeButtonActionPerformed(evt);
             }
         });
 
-        deleteEmployeeButton.setText("Delete Employee");
         deleteEmployeeButton.setBackground(new java.awt.Color(153, 204, 255));
-        deleteEmployeeButton.setBorderPainted(false);
         deleteEmployeeButton.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
+        deleteEmployeeButton.setText("Delete Employee");
+        deleteEmployeeButton.setBorderPainted(false);
         deleteEmployeeButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 deleteEmployeeButtonActionPerformed(evt);
             }
         });
 
-        filterSearchTf.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         filterSearchTf.setBackground(new java.awt.Color(204, 204, 255));
+        filterSearchTf.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         filterSearchTf.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         filterSearchTf.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -652,9 +652,9 @@ public class HMS_MAIN extends javax.swing.JFrame {
             }
         });
 
-        filterSearchLabel.setText("Filter Search:");
         filterSearchLabel.setBackground(new java.awt.Color(235, 241, 253));
         filterSearchLabel.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        filterSearchLabel.setText("Filter Search:");
 
         employeeListTable.setFillsViewportHeight(true);
         employeeListTable.setBackground(new Color(235, 240, 255));
@@ -707,17 +707,17 @@ public class HMS_MAIN extends javax.swing.JFrame {
             employeeListTable.getColumnModel().getColumn(13).setHeaderValue("Mother's Email Ad");
         }
 
+        manageEmployeesButton.setBackground(new java.awt.Color(15, 79, 157));
+        manageEmployeesButton.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
+        manageEmployeesButton.setForeground(new java.awt.Color(255, 255, 255));
         manageEmployeesButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/healthMonitoringSystem/APP_IMAGES/mainprogram/employeeIcon.png"))); // NOI18N
         manageEmployeesButton.setText("Manage Employees");
+        manageEmployeesButton.setToolTipText("Full admin commands of the database");
         manageEmployeesButton.setActionCommand("");
-        manageEmployeesButton.setBackground(new java.awt.Color(15, 79, 157));
         manageEmployeesButton.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(204, 204, 255), new java.awt.Color(204, 204, 255)));
         manageEmployeesButton.setBorderPainted(false);
         manageEmployeesButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        manageEmployeesButton.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
-        manageEmployeesButton.setForeground(new java.awt.Color(255, 255, 255));
         manageEmployeesButton.setHideActionText(true);
-        manageEmployeesButton.setToolTipText("Full admin commands of the database");
         manageEmployeesButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 manageEmployeesButtonActionPerformed(evt);
@@ -783,8 +783,8 @@ public class HMS_MAIN extends javax.swing.JFrame {
         patientTrackerPanel1.setMaximumSize(new java.awt.Dimension(318, 120));
         patientTrackerPanel1.setPreferredSize(new java.awt.Dimension(318, 120));
 
-        totalPatientCountLabel.setText("Total Patient Count: ");
         totalPatientCountLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        totalPatientCountLabel.setText("Total Patient Count: ");
         DefaultTableModel patientTableModel = (DefaultTableModel)patientDataTable.getModel();
         int patient_number_of_rows = patientTableModel.getRowCount();
         int patient_numOne = 1;
@@ -861,12 +861,12 @@ public class HMS_MAIN extends javax.swing.JFrame {
             patientDataTable.getColumnModel().getColumn(0).setMaxWidth(66);
         }
 
-        patientFilterSearchLabel.setText("Filter Search:");
         patientFilterSearchLabel.setBackground(new java.awt.Color(235, 241, 253));
         patientFilterSearchLabel.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        patientFilterSearchLabel.setText("Filter Search:");
 
-        patientSearchTf.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         patientSearchTf.setBackground(new java.awt.Color(204, 204, 255));
+        patientSearchTf.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         patientSearchTf.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         patientSearchTf.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -879,31 +879,31 @@ public class HMS_MAIN extends javax.swing.JFrame {
             }
         });
 
+        managePatientsButton.setBackground(new java.awt.Color(15, 79, 157));
+        managePatientsButton.setFont(new java.awt.Font("Verdana", 1, 20)); // NOI18N
+        managePatientsButton.setForeground(new java.awt.Color(255, 255, 255));
         managePatientsButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/healthMonitoringSystem/APP_IMAGES/mainprogram/patientIcon.png"))); // NOI18N
         managePatientsButton.setText("Manage Patients");
+        managePatientsButton.setToolTipText("Full admin commands of the database");
         managePatientsButton.setActionCommand("");
-        managePatientsButton.setBackground(new java.awt.Color(15, 79, 157));
         managePatientsButton.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(204, 204, 255), new java.awt.Color(204, 204, 255)));
         managePatientsButton.setBorderPainted(false);
         managePatientsButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        managePatientsButton.setFont(new java.awt.Font("Verdana", 1, 20)); // NOI18N
-        managePatientsButton.setForeground(new java.awt.Color(255, 255, 255));
         managePatientsButton.setHideActionText(true);
-        managePatientsButton.setToolTipText("Full admin commands of the database");
         managePatientsButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 managePatientsButtonActionPerformed(evt);
             }
         });
 
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Patient Image");
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 
-        labelImage.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         labelImage.setBackground(new java.awt.Color(102, 102, 102));
         labelImage.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         labelImage.setForeground(new java.awt.Color(255, 255, 255));
+        labelImage.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         labelImage.setOpaque(true);
 
         javax.swing.GroupLayout patientPanelLayout = new javax.swing.GroupLayout(patientPanel);

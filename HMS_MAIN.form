@@ -88,28 +88,28 @@
         </Component>
         <Component class="javax.swing.JLabel" name="timeLabel">
           <Properties>
-            <Property name="horizontalAlignment" type="int" value="4"/>
-            <Property name="text" type="java.lang.String" value="Time"/>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Century Gothic" size="30" style="1"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="33" green="0" red="0" type="rgb"/>
             </Property>
+            <Property name="horizontalAlignment" type="int" value="4"/>
+            <Property name="text" type="java.lang.String" value="Time"/>
             <Property name="horizontalTextPosition" type="int" value="4"/>
             <Property name="requestFocusEnabled" type="boolean" value="false"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="dateLabel">
           <Properties>
-            <Property name="horizontalAlignment" type="int" value="4"/>
-            <Property name="text" type="java.lang.String" value="Date"/>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Century Gothic" size="28" style="1"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="33" green="0" red="0" type="rgb"/>
             </Property>
+            <Property name="horizontalAlignment" type="int" value="4"/>
+            <Property name="text" type="java.lang.String" value="Date"/>
             <Property name="horizontalTextPosition" type="int" value="4"/>
             <Property name="requestFocusEnabled" type="boolean" value="false"/>
           </Properties>
@@ -201,17 +201,17 @@
           <SubComponents>
             <Component class="javax.swing.JLabel" name="HomeLabel">
               <Properties>
-                <Property name="horizontalAlignment" type="int" value="2"/>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/healthMonitoringSystem/APP_IMAGES/mainprogram/dashboard64px.png"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value=" Home"/>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="fe" green="ee" red="ee" type="rgb"/>
                 </Property>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="36" style="0"/>
                 </Property>
+                <Property name="horizontalAlignment" type="int" value="2"/>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/healthMonitoringSystem/APP_IMAGES/mainprogram/dashboard64px.png"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value=" Home"/>
               </Properties>
             </Component>
           </SubComponents>
@@ -251,17 +251,17 @@
           <SubComponents>
             <Component class="javax.swing.JLabel" name="EmployeeLabel">
               <Properties>
-                <Property name="horizontalAlignment" type="int" value="2"/>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/healthMonitoringSystem/APP_IMAGES/mainprogram/employeeMain.png"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="Employee"/>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="36" style="0"/>
                 </Property>
+                <Property name="horizontalAlignment" type="int" value="2"/>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/healthMonitoringSystem/APP_IMAGES/mainprogram/employeeMain.png"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Employee"/>
               </Properties>
             </Component>
           </SubComponents>
@@ -301,17 +301,17 @@
           <SubComponents>
             <Component class="javax.swing.JLabel" name="PatientLabel">
               <Properties>
-                <Property name="horizontalAlignment" type="int" value="2"/>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/healthMonitoringSystem/APP_IMAGES/mainprogram/patientMain.png"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value=" Patient"/>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="36" style="0"/>
                 </Property>
+                <Property name="horizontalAlignment" type="int" value="2"/>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/healthMonitoringSystem/APP_IMAGES/mainprogram/patientMain.png"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value=" Patient"/>
               </Properties>
             </Component>
           </SubComponents>
@@ -348,17 +348,17 @@
           <SubComponents>
             <Component class="javax.swing.JLabel" name="ExitLabel">
               <Properties>
-                <Property name="horizontalAlignment" type="int" value="2"/>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/healthMonitoringSystem/APP_IMAGES/mainprogram/exitIcon.png"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value=" Exit"/>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="36" style="0"/>
                 </Property>
+                <Property name="horizontalAlignment" type="int" value="2"/>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/healthMonitoringSystem/APP_IMAGES/mainprogram/exitIcon.png"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value=" Exit"/>
               </Properties>
             </Component>
           </SubComponents>
@@ -518,10 +518,10 @@
                   <SubComponents>
                     <Component class="javax.swing.JLabel" name="patientCountLabel">
                       <Properties>
-                        <Property name="text" type="java.lang.String" value="Registered Patient Count: "/>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Segoe UI" size="18" style="0"/>
                         </Property>
+                        <Property name="text" type="java.lang.String" value="Registered Patient Count: "/>
                       </Properties>
                       <AuxValues>
                         <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
@@ -529,10 +529,10 @@
                     </Component>
                     <Component class="javax.swing.JLabel" name="employeeCountLabel">
                       <Properties>
-                        <Property name="text" type="java.lang.String" value="Registered Employee Count: "/>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Segoe UI" size="18" style="0"/>
                         </Property>
+                        <Property name="text" type="java.lang.String" value="Registered Employee Count: "/>
                       </Properties>
                     </Component>
                     <Container class="javax.swing.JPanel" name="backuporrestorePanel">
@@ -595,11 +595,11 @@
                         <Component class="javax.swing.JTextField" name="pathToBackup">
                           <Properties>
                             <Property name="editable" type="boolean" value="false"/>
-                            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                              <Font name="Tahoma" size="12" style="0"/>
-                            </Property>
                             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                               <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                            </Property>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                              <Font name="Tahoma" size="12" style="0"/>
                             </Property>
                             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                               <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
@@ -619,10 +619,10 @@
                         </Component>
                         <Component class="javax.swing.JLabel" name="backupEntireDatabaseLabel">
                           <Properties>
-                            <Property name="text" type="java.lang.String" value="Create a Backup of the Database"/>
                             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                               <Font name="Segoe UI" size="24" style="0"/>
                             </Property>
+                            <Property name="text" type="java.lang.String" value="Create a Backup of the Database"/>
                           </Properties>
                         </Component>
                         <Component class="javax.swing.JButton" name="backupResetButton">
@@ -766,10 +766,10 @@
                   <SubComponents>
                     <Component class="javax.swing.JLabel" name="totalEmployeeCountLabel">
                       <Properties>
-                        <Property name="text" type="java.lang.String" value="Total Employee Count: "/>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Segoe UI" size="18" style="0"/>
                         </Property>
+                        <Property name="text" type="java.lang.String" value="Total Employee Count: "/>
                       </Properties>
                       <AuxValues>
                         <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="DefaultTableModel employeeTableModel=(DefaultTableModel)employeeListTable.getModel();&#xa;int number_of_rows = employeeTableModel.getRowCount();&#xa;int numOne = 1;&#xa;if (number_of_rows == 0) {&#xa;totalEmployeeCountLabel.setText(&quot;Total Employee Count: 0&quot;);&#xa;}&#xa;else if (number_of_rows &gt;= 1) {&#xa;totalEmployeeCountLabel.setText(&quot;Total Employee Count: &quot; + Integer.sum(number_of_rows, numOne));&#xa;}"/>
@@ -780,14 +780,14 @@
                 </Container>
                 <Component class="javax.swing.JButton" name="searchEmployeeButton">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Search Employee"/>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="ff" green="cc" red="99" type="rgb"/>
                     </Property>
-                    <Property name="borderPainted" type="boolean" value="false"/>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Verdana" size="18" style="0"/>
                     </Property>
+                    <Property name="text" type="java.lang.String" value="Search Employee"/>
+                    <Property name="borderPainted" type="boolean" value="false"/>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="searchEmployeeButtonActionPerformed"/>
@@ -795,14 +795,14 @@
                 </Component>
                 <Component class="javax.swing.JButton" name="updateEmployeeButton">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Update Employee"/>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="ff" green="cc" red="99" type="rgb"/>
                     </Property>
-                    <Property name="borderPainted" type="boolean" value="false"/>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Verdana" size="18" style="0"/>
                     </Property>
+                    <Property name="text" type="java.lang.String" value="Update Employee"/>
+                    <Property name="borderPainted" type="boolean" value="false"/>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="updateEmployeeButtonActionPerformed"/>
@@ -810,14 +810,14 @@
                 </Component>
                 <Component class="javax.swing.JButton" name="deleteEmployeeButton">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Delete Employee"/>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="ff" green="cc" red="99" type="rgb"/>
                     </Property>
-                    <Property name="borderPainted" type="boolean" value="false"/>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Verdana" size="18" style="0"/>
                     </Property>
+                    <Property name="text" type="java.lang.String" value="Delete Employee"/>
+                    <Property name="borderPainted" type="boolean" value="false"/>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="deleteEmployeeButtonActionPerformed"/>
@@ -825,11 +825,11 @@
                 </Component>
                 <Component class="javax.swing.JTextField" name="filterSearchTf">
                   <Properties>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Tahoma" size="14" style="0"/>
-                    </Property>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="ff" green="cc" red="cc" type="rgb"/>
+                    </Property>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Tahoma" size="14" style="0"/>
                     </Property>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
@@ -843,13 +843,13 @@
                 </Component>
                 <Component class="javax.swing.JLabel" name="filterSearchLabel">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Filter Search:"/>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="fd" green="f1" red="eb" type="rgb"/>
                     </Property>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Verdana" size="14" style="0"/>
                     </Property>
+                    <Property name="text" type="java.lang.String" value="Filter Search:"/>
                   </Properties>
                 </Component>
                 <Container class="javax.swing.JScrollPane" name="jScrollPane1">
@@ -1146,10 +1146,10 @@
                   <SubComponents>
                     <Component class="javax.swing.JLabel" name="totalPatientCountLabel">
                       <Properties>
-                        <Property name="text" type="java.lang.String" value="Total Patient Count: "/>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Segoe UI" size="18" style="0"/>
                         </Property>
+                        <Property name="text" type="java.lang.String" value="Total Patient Count: "/>
                       </Properties>
                       <AuxValues>
                         <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="DefaultTableModel patientTableModel = (DefaultTableModel)patientDataTable.getModel();&#xa;int patient_number_of_rows = patientTableModel.getRowCount();&#xa;int patient_numOne = 1;&#xa;if (patient_number_of_rows == 0) {&#xa;totalPatientCountLabel.setText(&quot;Total Patient Count: 0&quot;);&#xa;}&#xa;else {&#xa;totalPatientCountLabel.setText(&quot;Total Patient Count: &quot; + Integer.sum(patient_number_of_rows, patient_numOne));&#xa;}"/>
@@ -1281,22 +1281,22 @@
                 </Container>
                 <Component class="javax.swing.JLabel" name="patientFilterSearchLabel">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Filter Search:"/>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="fd" green="f1" red="eb" type="rgb"/>
                     </Property>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Verdana" size="14" style="0"/>
                     </Property>
+                    <Property name="text" type="java.lang.String" value="Filter Search:"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="patientSearchTf">
                   <Properties>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Tahoma" size="14" style="0"/>
-                    </Property>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="ff" green="cc" red="cc" type="rgb"/>
+                    </Property>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Tahoma" size="14" style="0"/>
                     </Property>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
@@ -1346,16 +1346,15 @@
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel1">
                   <Properties>
-                    <Property name="horizontalAlignment" type="int" value="0"/>
-                    <Property name="text" type="java.lang.String" value="Patient Image"/>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Segoe UI" size="18" style="0"/>
                     </Property>
+                    <Property name="horizontalAlignment" type="int" value="0"/>
+                    <Property name="text" type="java.lang.String" value="Patient Image"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="labelImage">
                   <Properties>
-                    <Property name="horizontalAlignment" type="int" value="0"/>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="66" green="66" red="66" type="rgb"/>
                     </Property>
@@ -1365,6 +1364,7 @@
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="ff" green="ff" red="ff" type="rgb"/>
                     </Property>
+                    <Property name="horizontalAlignment" type="int" value="0"/>
                     <Property name="opaque" type="boolean" value="true"/>
                   </Properties>
                 </Component>

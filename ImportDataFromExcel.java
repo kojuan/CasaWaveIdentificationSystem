@@ -320,7 +320,7 @@ public class ImportDataFromExcel extends javax.swing.JFrame {
                     }
                     if (pst.executeUpdate() != 0) {
                         insertedRows++;
-                        daoImportedExcel.populatepatientDataTableFromMySQLDatabase(HMS_PATIENT_MANAGEMENTSYSTEM.model, HMS_PATIENT_MANAGEMENTSYSTEM.patientDataTable);
+                        daoImportedExcel.populatepatientDataTableFromMySQLDatabase(HMS_PATIENT_MANAGEMENTSYSTEM_backup.model, HMS_PATIENT_MANAGEMENTSYSTEM_backup.patientDataTable);
                     } else {
                         JOptionPane.showMessageDialog(null, "Error: Cannot import data to the database.");
                     }
@@ -341,7 +341,7 @@ public class ImportDataFromExcel extends javax.swing.JFrame {
 
 //        try {
 //            // Refresh JTable
-//            HMS_PATIENT_MANAGEMENTSYSTEM patientManagementSystemProject = new HMS_PATIENT_MANAGEMENTSYSTEM();
+//            HMS_PATIENT_MANAGEMENTSYSTEM_backup patientManagementSystemProject = new HMS_PATIENT_MANAGEMENTSYSTEM_backup();
 //            patientManagementSystemProject.populatepatientDataTableFromMySQLDatabase();
 //        } catch (Exception ex) {
 //            Logger.getLogger(ImportDataFromExcel.class.getName()).log(Level.SEVERE, null, ex);
