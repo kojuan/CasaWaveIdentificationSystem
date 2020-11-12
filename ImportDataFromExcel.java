@@ -320,7 +320,7 @@ public class ImportDataFromExcel extends javax.swing.JFrame {
                     }
                     if (pst.executeUpdate() != 0) {
                         insertedRows++;
-                        daoImportedExcel.populatepatientDataTableFromMySQLDatabase(HMS_PATIENT_MANAGEMENTSYSTEM_backup.model, HMS_PATIENT_MANAGEMENTSYSTEM_backup.patientDataTable);
+                        daoImportedExcel.populatepatientDataTableFromMySQLDatabase(HMS_PATIENT_MANAGEMENTSYSTEM.model, HMS_PATIENT_MANAGEMENTSYSTEM.patientDataTable);
                     } else {
                         JOptionPane.showMessageDialog(null, "Error: Cannot import data to the database.");
                     }

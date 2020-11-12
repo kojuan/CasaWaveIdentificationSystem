@@ -1551,6 +1551,7 @@ public class HMS_PATIENT_MANAGEMENTSYSTEM_ADMINACCESS extends javax.swing.JFrame
 
     private void captureImageButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_captureImageButtonActionPerformed
         webcamFrame showWebcam = new webcamFrame();
+        showWebcam.wCamPanel.stop();
         showWebcam.setVisible(true);
     }//GEN-LAST:event_captureImageButtonActionPerformed
 

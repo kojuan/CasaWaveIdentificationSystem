@@ -56,7 +56,7 @@ public final class HMS_LOGIN extends javax.swing.JFrame {
 
         privacyPolicyLabel.setText("");
         privacyPolicyHideButton.setVisible(false);
-        CJJS_TEAM_TEXTLOGO.setVisible(false);
+
 
     }
 
@@ -98,7 +98,6 @@ public final class HMS_LOGIN extends javax.swing.JFrame {
         leftPanel = new javax.swing.JPanel();
         privacyPolicyLabel = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        CJJS_TEAM_TEXTLOGO = new javax.swing.JLabel();
         dateLabel = new javax.swing.JLabel();
         timeLabel = new javax.swing.JLabel();
         bottomPanel = new javax.swing.JPanel();
@@ -237,9 +236,6 @@ public final class HMS_LOGIN extends javax.swing.JFrame {
         privacyPolicyLabel.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
         privacyPolicyLabel.setText("<html> <left> <b>Privacy Policy:</b><br> We, the CJJS Company of this Program informs you(as the user of this Program) of our policies regarding the collection, use and disclosure of Personal Information you will receive from patients in this Program.<br> By using this program, the personal data information of a Patient shall be kept and protected inside this program and the server database only. We use your Personal Information only for providing identification to co-workers and recognition as an Employee of the Hospital. <br><br> This Privacy Policy is effective as of November 07, 2020 and will remain in effect except with respect to any changes in its provisions in the future, which will be in effect immediately after being posted on this program. We reserve the right to update or change our Privacy Policy at any time and you should check this Privacy Policy periodically. Your continued use of the Service after we post any modifications to the Privacy Policy on this program will constitute your acknowledgment of the modifications and your consent to abide and be bound by the modified Privacy Policy. If we make any material changes to this Privacy Policy, we will notify you either through the email address you have provided us, or by placing a prominent notice on our website. <br> If you have any questions about this Privacy Policy, please contact your manager or the rightful owner of this Program. </left> </html>");
 
-        CJJS_TEAM_TEXTLOGO.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        CJJS_TEAM_TEXTLOGO.setIcon(new javax.swing.ImageIcon(getClass().getResource("/healthMonitoringSystem/APP_IMAGES/mainprogram/CJJS_Company_TextLogo.png"))); // NOI18N
-
         javax.swing.GroupLayout leftPanelLayout = new javax.swing.GroupLayout(leftPanel);
         leftPanel.setLayout(leftPanelLayout);
         leftPanelLayout.setHorizontalGroup(
@@ -247,23 +243,14 @@ public final class HMS_LOGIN extends javax.swing.JFrame {
             .addGroup(leftPanelLayout.createSequentialGroup()
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(leftPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(privacyPolicyLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addGroup(leftPanelLayout.createSequentialGroup()
-                        .addComponent(CJJS_TEAM_TEXTLOGO, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 162, Short.MAX_VALUE))))
+                .addComponent(privacyPolicyLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 440, Short.MAX_VALUE))
         );
         leftPanelLayout.setVerticalGroup(
             leftPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, leftPanelLayout.createSequentialGroup()
-                .addContainerGap(14, Short.MAX_VALUE)
-                .addGroup(leftPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, leftPanelLayout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(55, 55, 55))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, leftPanelLayout.createSequentialGroup()
-                        .addComponent(CJJS_TEAM_TEXTLOGO, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                .addContainerGap(62, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(55, 55, 55)
                 .addComponent(privacyPolicyLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
@@ -647,14 +634,14 @@ public final class HMS_LOGIN extends javax.swing.JFrame {
                 + "</html>");
         privacyPolicyTriggerButton.setVisible(false);
         privacyPolicyHideButton.setVisible(true);
-        CJJS_TEAM_TEXTLOGO.setVisible(true);
+
     }//GEN-LAST:event_privacyPolicyTriggerButtonActionPerformed
 
     private void privacyPolicyHideButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_privacyPolicyHideButtonActionPerformed
         privacyPolicyLabel.setText("");
         privacyPolicyTriggerButton.setVisible(true);
         privacyPolicyHideButton.setVisible(false);
-        CJJS_TEAM_TEXTLOGO.setVisible(false);
+
     }//GEN-LAST:event_privacyPolicyHideButtonActionPerformed
 
     /**
@@ -683,7 +670,6 @@ public final class HMS_LOGIN extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel CJJS_TEAM_TEXTLOGO;
     private javax.swing.JPanel DATEANDTIME_PANEL;
     private javax.swing.JPanel bottomPanel;
     private javax.swing.JButton closeButton;

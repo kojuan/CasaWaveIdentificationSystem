@@ -58,7 +58,7 @@ public class HMS_PATIENT_MANAGEMENTSYSTEM extends javax.swing.JFrame {
     String cellphoneNumber = "";
     String image_path = null;
     Connection connx;
-    static DefaultTableModel model;
+    public static DefaultTableModel model;
     int currentPosition = 0;
     HMS_DATAACESSOBJECT_IMPLEMENTATION dao = new HMS_DATAACESSOBJECT_IMPLEMENTATION();
 
@@ -347,6 +347,7 @@ public class HMS_PATIENT_MANAGEMENTSYSTEM extends javax.swing.JFrame {
 
         exportExcelButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/healthMonitoringSystem/APP_IMAGES/mainprogram/excel.png"))); // NOI18N
         exportExcelButton.setText("Export (Excel)");
+        exportExcelButton.setEnabled(false);
         exportExcelButton.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         exportExcelButton.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
         exportExcelButton.addActionListener(new java.awt.event.ActionListener() {
@@ -357,6 +358,7 @@ public class HMS_PATIENT_MANAGEMENTSYSTEM extends javax.swing.JFrame {
 
         importExcelButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/healthMonitoringSystem/APP_IMAGES/mainprogram/excel.png"))); // NOI18N
         importExcelButton.setText("Import (Excel)");
+        importExcelButton.setEnabled(false);
         importExcelButton.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         importExcelButton.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
         importExcelButton.addActionListener(new java.awt.event.ActionListener() {
@@ -598,11 +600,10 @@ public class HMS_PATIENT_MANAGEMENTSYSTEM extends javax.swing.JFrame {
                     .addComponent(temperatureBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(quickCheckerPanelLayout.createSequentialGroup()
                         .addGap(2, 2, 2)
-                        .addGroup(quickCheckerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(quickCheckerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(detectBPMButton, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(bpmTf, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(patientIDLabel2))
+                        .addGroup(quickCheckerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(bpmTf, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(patientIDLabel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(detectBPMButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(temperatureClearAllButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(quickCheckerPanelLayout.createSequentialGroup()
@@ -629,33 +630,32 @@ public class HMS_PATIENT_MANAGEMENTSYSTEM extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, quickCheckerPanelLayout.createSequentialGroup()
                 .addGap(19, 19, 19)
                 .addComponent(quickBodyChecker)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(36, 36, 36)
+                .addComponent(patientIDLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(quickCheckerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(temperatureTf1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(temperatureBox1, javax.swing.GroupLayout.DEFAULT_SIZE, 36, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(temperatureStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(quickCheckerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(quickCheckerPanelLayout.createSequentialGroup()
-                        .addComponent(patientIDLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(quickCheckerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(temperatureBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(temperatureTf1, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(2, 2, 2)
-                        .addComponent(temperatureStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(quickCheckerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(temperatureTf2, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(temperatureBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(6, 6, 6)
-                        .addComponent(temperatureConvertButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(30, 30, 30)
-                        .addComponent(patientIDLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(bpmTf, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(quickCheckerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(detectBPMButton)
-                            .addComponent(temperatureClearAllButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(quickCheckerPanelLayout.createSequentialGroup()
-                        .addGap(131, 131, 131)
-                        .addComponent(temperatureClearAllButton, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(temperatureTf2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(2, 2, 2))
+                    .addComponent(temperatureBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(8, 8, 8)
+                .addGroup(quickCheckerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(temperatureConvertButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(temperatureClearAllButton, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(30, 30, 30)
+                .addComponent(patientIDLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(bpmTf, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(quickCheckerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(detectBPMButton)
+                    .addComponent(temperatureClearAllButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(29, 29, 29))
         );
 
@@ -1305,6 +1305,7 @@ public class HMS_PATIENT_MANAGEMENTSYSTEM extends javax.swing.JFrame {
     }//GEN-LAST:event_updateButtonActionPerformed
 
     private void exportExcelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exportExcelButtonActionPerformed
+        DefaultTableModel dm = (DefaultTableModel) patientDataTable.getModel();
         String currentDirectoryFilePathToExport = "C:\\Users\\Public\\Desktop";
         JFileChooser excelExportChooser = new JFileChooser(currentDirectoryFilePathToExport);
         // Filter only excel files
@@ -1321,9 +1322,9 @@ public class HMS_PATIENT_MANAGEMENTSYSTEM extends javax.swing.JFrame {
             XSSFSheet excelSheet = excelXSSFWorkBookExporter.createSheet("Patient's Data");
             // Loop through JTable columns and rows
 
-            for (int i = 0; i < model.getRowCount(); i++) {
+            for (int i = 0; i < dm.getRowCount(); i++) {
                 XSSFRow excelRow = excelSheet.createRow(i);
-                for (int j = 0; j < model.getColumnCount(); j++) {
+                for (int j = 0; j < dm.getColumnCount(); j++) {
                     XSSFCell excelCell = excelRow.createCell(j);
 
                     excelCell.setCellValue(model.getValueAt(i, j).toString());
@@ -1552,6 +1553,7 @@ public class HMS_PATIENT_MANAGEMENTSYSTEM extends javax.swing.JFrame {
 
     private void captureImageButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_captureImageButtonActionPerformed
         webcamFrame showWebcam = new webcamFrame();
+        showWebcam.wCamPanel.stop();
         showWebcam.setVisible(true);
     }//GEN-LAST:event_captureImageButtonActionPerformed
 

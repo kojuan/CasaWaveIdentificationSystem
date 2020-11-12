@@ -38,12 +38,13 @@ public class webcamFrame extends javax.swing.JFrame {
     private final Dimension ds = new Dimension(450, 360);
     private final Dimension cs = WebcamResolution.VGA.getSize();
     private final Webcam wCam = Webcam.getDefault();
-    private final WebcamPanel wCamPanel = new WebcamPanel(wCam, ds, false);
+    public final WebcamPanel wCamPanel = new WebcamPanel(wCam, ds, false);
 
     /**
      * Creates new form webcamFrame
      */
     public webcamFrame() {
+        this.repaint();
         this.setBackground(Color.white); // default white background color.
         setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("HMS_LOGO_800PX.png")));
         initComponents();
@@ -67,17 +68,19 @@ public class webcamFrame extends javax.swing.JFrame {
         bottomPanel = new javax.swing.JPanel();
         startCameraButton = new javax.swing.JButton();
         captureCameraButton = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Capture Image");
         setBackground(new java.awt.Color(0, 0, 0));
-        setMaximumSize(new java.awt.Dimension(540, 560));
+        setName("webcamFrame"); // NOI18N
+        setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         panelCam.setBackground(new java.awt.Color(0, 0, 0));
         panelCam.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         panelCam.setLayout(null);
-        getContentPane().add(panelCam, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 500, 390));
+        getContentPane().add(panelCam, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 500, 370));
 
         bottomPanel.setBackground(new java.awt.Color(0, 0, 0));
         bottomPanel.setMaximumSize(new java.awt.Dimension(500, 140));
@@ -102,6 +105,16 @@ public class webcamFrame extends javax.swing.JFrame {
             }
         });
 
+        jButton1.setBackground(new java.awt.Color(255, 102, 102));
+        jButton1.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
+        jButton1.setText("Close");
+        jButton1.setBorder(null);
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout bottomPanelLayout = new javax.swing.GroupLayout(bottomPanel);
         bottomPanel.setLayout(bottomPanelLayout);
         bottomPanelLayout.setHorizontalGroup(
@@ -110,20 +123,24 @@ public class webcamFrame extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(bottomPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(startCameraButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(captureCameraButton, javax.swing.GroupLayout.DEFAULT_SIZE, 480, Short.MAX_VALUE))
+                    .addComponent(captureCameraButton, javax.swing.GroupLayout.DEFAULT_SIZE, 480, Short.MAX_VALUE)
+                    .addGroup(bottomPanelLayout.createSequentialGroup()
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         bottomPanelLayout.setVerticalGroup(
             bottomPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(bottomPanelLayout.createSequentialGroup()
-                .addGap(12, 12, 12)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, bottomPanelLayout.createSequentialGroup()
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(startCameraButton, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(captureCameraButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(34, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
-        getContentPane().add(bottomPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 390, 500, 110));
+        getContentPane().add(bottomPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 370, 500, 130));
 
         pack();
         setLocationRelativeTo(null);
@@ -149,7 +166,7 @@ public class webcamFrame extends javax.swing.JFrame {
         try {
             File file = new File(String.format("capture-%d.jpg", System.currentTimeMillis()));
             ImageIO.write(wCam.getImage(), "JPG", file);
-            JOptionPane.showMessageDialog(this, "image saved on :\n" + file.getAbsolutePath(), "CamCap", 1);
+            JOptionPane.showMessageDialog(this, "The image is saved on :\n" + file.getAbsolutePath(), "CamCap", 1);
             startCameraButton.setEnabled(true);
             captureCameraButton.setEnabled(false);
         } catch (HeadlessException | IOException e) {
@@ -158,6 +175,13 @@ public class webcamFrame extends javax.swing.JFrame {
         }
         this.dispose();
     }//GEN-LAST:event_captureCameraButtonActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        wCamPanel.stop();
+        this.dispose();
+        
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -195,6 +219,7 @@ public class webcamFrame extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel bottomPanel;
     private javax.swing.JButton captureCameraButton;
+    private javax.swing.JButton jButton1;
     private javax.swing.JPanel panelCam;
     private javax.swing.JButton startCameraButton;
     // End of variables declaration//GEN-END:variables
