@@ -3,11 +3,10 @@
 
 <p align="center">
 <img src="https://github.com/kojuan/MedicalHealthMonitoringSystem/blob/master/APP_IMAGES/LOGO_ICONS/HMS_LOGO_800PX.png?raw=true" width="400" height="400"><br>
-_A Software Engineering and Integrative Programming Project._
-</p
+_A Software Engineering, Integrative Programming, and Computer Architecture Final Project._
 
 [GOOGLE FORM PROGRAM SURVEY](https://forms.gle/Afz6UQGFWuFVzrUX6)
-
+</p>
 
 ## Project Updates
 ```bash
@@ -23,18 +22,18 @@ September 15, 2020 - 11:45 AM
 
 ## Screenshots
 
-<center><b>
+<p align="center"><b>
   Login<br>
-  <a href="https://ibb.co/G7gW59B"><img src="https://i.ibb.co/G7gW59B/image.png" alt="image" border="0"></a><br>
+  <a href="https://ibb.co/G7gW59B"><img src="https://i.ibb.co/G7gW59B/image.png" alt="image" border="0" width="310" height="280"></a><br>
   Admin Tool<br>
-  <a href="https://ibb.co/KW2ZST9"><img src="https://i.ibb.co/KW2ZST9/image.png" alt="image" border="0"></a><br>
+  <a href="https://ibb.co/KW2ZST9"><img src="https://i.ibb.co/KW2ZST9/image.png" alt="image" border="0" width="310" height="280"></a><br>
   Display Date and Time<br>
-  <a href="https://ibb.co/2MKb1gP"><img src="https://i.ibb.co/2MKb1gP/image.png" alt="image" border="0"></a><br>
+  <a href="https://ibb.co/2MKb1gP"><img src="https://i.ibb.co/2MKb1gP/image.png" alt="image" border="0" width="310" height="280"></a><br>
   Patient Database<br>
-  <a href="https://ibb.co/wRrJZrg"><img src="https://i.ibb.co/wRrJZrg/image.png" alt="image" border="0"></a><br>
+  <a href="https://ibb.co/wRrJZrg"><img src="https://i.ibb.co/wRrJZrg/image.png" alt="image" border="0" width="310" height="280"></a><br>
   Employee Database<br>
-  <a href="https://ibb.co/qWvM8C6"><img src="https://i.ibb.co/qWvM8C6/image.png" alt="image" border="0"></a><br>
-</center></b>
+  <a href="https://ibb.co/qWvM8C6"><img src="https://i.ibb.co/qWvM8C6/image.png" alt="image" border="0" width="310" height="280"></a><br>
+</p></b>
 
 
 
