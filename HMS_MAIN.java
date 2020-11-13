@@ -66,8 +66,12 @@ public class HMS_MAIN extends javax.swing.JFrame {
         dashboardPanel.setVisible(true);
         employeePanel.setVisible(false);
         patientPanel.setVisible(false);
+        displayDateAndTimePanel.setVisible(false);
         HomeTab.setBackground(Color.white);
+        dateLabel.setVisible(true);
+        timeLabel.setVisible(true);
         showDate();
+        showDatePrivateTab();
         showTime();
         determineEmployeeRowCount();
         determinePatientRowCount();
@@ -113,6 +117,13 @@ public class HMS_MAIN extends javax.swing.JFrame {
         Date date = new Date();
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
         dateLabel.setText(simpleDateFormat.format(date));
+        dateLabelPrivateTab.setText(simpleDateFormat.format(date));
+    }
+
+    final void showDatePrivateTab() {
+        Date date = new Date();
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MMMM dd, yyyy");
+        dateLabelPrivateTab.setText(simpleDateFormat.format(date));
     }
 
     final void showTime() {
@@ -120,6 +131,7 @@ public class HMS_MAIN extends javax.swing.JFrame {
             Date date = new Date();
             SimpleDateFormat simpleDateFormat = new SimpleDateFormat("hh:mm:ss a");
             timeLabel.setText(simpleDateFormat.format(date));
+            timeLabelPrivateTab.setText(simpleDateFormat.format(date));
         }).start();
     }
 
@@ -197,8 +209,13 @@ public class HMS_MAIN extends javax.swing.JFrame {
         ExitLabel = new javax.swing.JLabel();
         loggedInUsername = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
+        displayTimeAndDateTab = new javax.swing.JPanel();
+        PatientLabel1 = new javax.swing.JLabel();
         mainWindowPanel = new javax.swing.JPanel();
         layeredPanel = new javax.swing.JLayeredPane();
+        displayDateAndTimePanel = new javax.swing.JPanel();
+        dateLabelPrivateTab = new javax.swing.JLabel();
+        timeLabelPrivateTab = new javax.swing.JLabel();
         dashboardPanel = new javax.swing.JPanel();
         statPanel = new javax.swing.JPanel();
         patientCountLabel = new javax.swing.JLabel();
@@ -337,9 +354,7 @@ public class HMS_MAIN extends javax.swing.JFrame {
         EmployeeTab.setLayout(EmployeeTabLayout);
         EmployeeTabLayout.setHorizontalGroup(
             EmployeeTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, EmployeeTabLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(EmployeeLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(EmployeeLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         EmployeeTabLayout.setVerticalGroup(
             EmployeeTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -368,8 +383,8 @@ public class HMS_MAIN extends javax.swing.JFrame {
         PatientTabLayout.setHorizontalGroup(
             PatientTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PatientTabLayout.createSequentialGroup()
-                .addGap(0, 18, Short.MAX_VALUE)
-                .addComponent(PatientLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 372, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap()
+                .addComponent(PatientLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         PatientTabLayout.setVerticalGroup(
             PatientTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -396,9 +411,7 @@ public class HMS_MAIN extends javax.swing.JFrame {
         ExitTab.setLayout(ExitTabLayout);
         ExitTabLayout.setHorizontalGroup(
             ExitTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ExitTabLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(ExitLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(ExitLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         ExitTabLayout.setVerticalGroup(
             ExitTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -414,6 +427,36 @@ public class HMS_MAIN extends javax.swing.JFrame {
         String getUsernameCredential = getUsername.username;
         loggedInUsername.setText("Logged in: " + getUsernameCredential);
 
+        displayTimeAndDateTab.setBackground(new java.awt.Color(238, 238, 254));
+        displayTimeAndDateTab.setMaximumSize(new java.awt.Dimension(100, 100));
+        displayTimeAndDateTab.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                displayTimeAndDateTabMouseClicked(evt);
+            }
+        });
+
+        PatientLabel1.setBackground(new java.awt.Color(255, 255, 255));
+        PatientLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        PatientLabel1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        PatientLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/healthMonitoringSystem/APP_IMAGES/mainprogram/dateAndTimeIcon.png"))); // NOI18N
+        PatientLabel1.setText("Display Time and Date");
+
+        javax.swing.GroupLayout displayTimeAndDateTabLayout = new javax.swing.GroupLayout(displayTimeAndDateTab);
+        displayTimeAndDateTab.setLayout(displayTimeAndDateTabLayout);
+        displayTimeAndDateTabLayout.setHorizontalGroup(
+            displayTimeAndDateTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, displayTimeAndDateTabLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(PatientLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 380, Short.MAX_VALUE))
+        );
+        displayTimeAndDateTabLayout.setVerticalGroup(
+            displayTimeAndDateTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(displayTimeAndDateTabLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(PatientLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
         javax.swing.GroupLayout leftPanelLayout = new javax.swing.GroupLayout(leftPanel);
         leftPanel.setLayout(leftPanelLayout);
         leftPanelLayout.setHorizontalGroup(
@@ -428,6 +471,7 @@ public class HMS_MAIN extends javax.swing.JFrame {
                     .addComponent(jSeparator1)
                     .addComponent(loggedInUsername, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
+            .addComponent(displayTimeAndDateTab, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         leftPanelLayout.setVerticalGroup(
             leftPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -442,7 +486,9 @@ public class HMS_MAIN extends javax.swing.JFrame {
                 .addComponent(EmployeeTab, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(PatientTab, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 465, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 375, Short.MAX_VALUE)
+                .addComponent(displayTimeAndDateTab, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(ExitTab, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(21, 21, 21))
         );
@@ -453,6 +499,43 @@ public class HMS_MAIN extends javax.swing.JFrame {
         mainWindowPanel.setMaximumSize(new java.awt.Dimension(1520, 970));
         mainWindowPanel.setRequestFocusEnabled(false);
         mainWindowPanel.setLayout(null);
+
+        displayDateAndTimePanel.setBackground(new java.awt.Color(235, 241, 253));
+
+        dateLabelPrivateTab.setFont(new java.awt.Font("Segoe UI", 1, 65)); // NOI18N
+        dateLabelPrivateTab.setForeground(new java.awt.Color(0, 0, 51));
+        dateLabelPrivateTab.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        dateLabelPrivateTab.setText("Date");
+        dateLabelPrivateTab.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        dateLabelPrivateTab.setRequestFocusEnabled(false);
+
+        timeLabelPrivateTab.setFont(new java.awt.Font("Segoe UI", 1, 100)); // NOI18N
+        timeLabelPrivateTab.setForeground(new java.awt.Color(0, 0, 51));
+        timeLabelPrivateTab.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        timeLabelPrivateTab.setText("Time");
+        timeLabelPrivateTab.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        timeLabelPrivateTab.setRequestFocusEnabled(false);
+
+        javax.swing.GroupLayout displayDateAndTimePanelLayout = new javax.swing.GroupLayout(displayDateAndTimePanel);
+        displayDateAndTimePanel.setLayout(displayDateAndTimePanelLayout);
+        displayDateAndTimePanelLayout.setHorizontalGroup(
+            displayDateAndTimePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(displayDateAndTimePanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(displayDateAndTimePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(dateLabelPrivateTab, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(timeLabelPrivateTab, javax.swing.GroupLayout.DEFAULT_SIZE, 1500, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        displayDateAndTimePanelLayout.setVerticalGroup(
+            displayDateAndTimePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(displayDateAndTimePanelLayout.createSequentialGroup()
+                .addGap(273, 273, 273)
+                .addComponent(dateLabelPrivateTab)
+                .addGap(18, 18, 18)
+                .addComponent(timeLabelPrivateTab)
+                .addContainerGap(459, Short.MAX_VALUE))
+        );
 
         dashboardPanel.setBackground(new java.awt.Color(235, 241, 253));
         dashboardPanel.setMaximumSize(new java.awt.Dimension(1520, 970));
@@ -954,6 +1037,7 @@ public class HMS_MAIN extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        layeredPanel.setLayer(displayDateAndTimePanel, javax.swing.JLayeredPane.DEFAULT_LAYER);
         layeredPanel.setLayer(dashboardPanel, javax.swing.JLayeredPane.DEFAULT_LAYER);
         layeredPanel.setLayer(employeePanel, javax.swing.JLayeredPane.DEFAULT_LAYER);
         layeredPanel.setLayer(patientPanel, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -971,6 +1055,10 @@ public class HMS_MAIN extends javax.swing.JFrame {
                         .addComponent(dashboardPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(employeePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGap(0, 5, Short.MAX_VALUE)))
+            .addGroup(layeredPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layeredPanelLayout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(displayDateAndTimePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
         layeredPanelLayout.setVerticalGroup(
             layeredPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -983,6 +1071,8 @@ public class HMS_MAIN extends javax.swing.JFrame {
                         .addComponent(dashboardPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(employeePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGap(0, 0, Short.MAX_VALUE)))
+            .addGroup(layeredPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(displayDateAndTimePanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         mainWindowPanel.add(layeredPanel);
@@ -995,23 +1085,33 @@ public class HMS_MAIN extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void HomeTabMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HomeTabMouseClicked
-        dashboardPanel.setVisible(true);
         employeePanel.setVisible(false);
         patientPanel.setVisible(false);
+        displayDateAndTimePanel.setVisible(false);
+        dashboardPanel.setVisible(true);
 
         HomeTab.setBackground(Color.white);
         EmployeeTab.setBackground(new Color(238, 238, 254));
         PatientTab.setBackground(new Color(238, 238, 254));
+        displayTimeAndDateTab.setBackground(new Color(238, 238, 254));
+
+        dateLabel.setVisible(true);
+        timeLabel.setVisible(true);
     }//GEN-LAST:event_HomeTabMouseClicked
 
     private void EmployeeTabMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EmployeeTabMouseClicked
         dashboardPanel.setVisible(false);
-        employeePanel.setVisible(true);
         patientPanel.setVisible(false);
+        displayDateAndTimePanel.setVisible(false);
+        employeePanel.setVisible(true);
 
         EmployeeTab.setBackground(Color.white);
         HomeTab.setBackground(new Color(238, 238, 254));
         PatientTab.setBackground(new Color(238, 238, 254));
+        displayTimeAndDateTab.setBackground(new Color(238, 238, 254));
+
+        dateLabel.setVisible(true);
+        timeLabel.setVisible(true);
 
         DisplayTable();
     }//GEN-LAST:event_EmployeeTabMouseClicked
@@ -1019,10 +1119,17 @@ public class HMS_MAIN extends javax.swing.JFrame {
     private void PatientTabMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PatientTabMouseClicked
         dashboardPanel.setVisible(false);
         employeePanel.setVisible(false);
+        displayDateAndTimePanel.setVisible(false);
         patientPanel.setVisible(true);
+
         HomeTab.setBackground(new Color(238, 238, 254));
         EmployeeTab.setBackground(new Color(238, 238, 254));
+        displayTimeAndDateTab.setBackground(new Color(238, 238, 254));
         PatientTab.setBackground(Color.white);
+
+        dateLabel.setVisible(true);
+        timeLabel.setVisible(true);
+
         dao.populatepatientDataTableFromMySQLDatabase(model, patientDataTable);
 
     }//GEN-LAST:event_PatientTabMouseClicked
@@ -1192,6 +1299,20 @@ public class HMS_MAIN extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(null, "You cannot manage employees database.\nPlease contact administrator.");
     }//GEN-LAST:event_manageEmployeesButtonActionPerformed
 
+    private void displayTimeAndDateTabMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_displayTimeAndDateTabMouseClicked
+        dashboardPanel.setVisible(false);
+        employeePanel.setVisible(false);
+        patientPanel.setVisible(false);
+        displayDateAndTimePanel.setVisible(true);
+        displayTimeAndDateTab.setBackground(Color.white);
+        HomeTab.setBackground(new Color(238, 238, 254));
+        EmployeeTab.setBackground(new Color(238, 238, 254));
+        PatientTab.setBackground(new Color(238, 238, 254));
+        dateLabel.setVisible(false);
+        timeLabel.setVisible(false);
+
+    }//GEN-LAST:event_displayTimeAndDateTabMouseClicked
+
     public static void main(String args[]) {
         // sets the look and feel to be that of the operating system's
         try {
@@ -1220,6 +1341,7 @@ public class HMS_MAIN extends javax.swing.JFrame {
     private javax.swing.JPanel HomeTab;
     private javax.swing.JLabel PatientHeader;
     private javax.swing.JLabel PatientLabel;
+    private javax.swing.JLabel PatientLabel1;
     private javax.swing.JPanel PatientTab;
     private javax.swing.JButton backupBrowsePathButton;
     private javax.swing.JButton backupEntireDatabaseButton;
@@ -1228,7 +1350,10 @@ public class HMS_MAIN extends javax.swing.JFrame {
     private javax.swing.JPanel backuporrestorePanel;
     private javax.swing.JPanel dashboardPanel;
     private javax.swing.JLabel dateLabel;
+    private javax.swing.JLabel dateLabelPrivateTab;
     private javax.swing.JButton deleteEmployeeButton;
+    private javax.swing.JPanel displayDateAndTimePanel;
+    private javax.swing.JPanel displayTimeAndDateTab;
     private javax.swing.JLabel employeeCountLabel;
     private javax.swing.JLabel employeeHeaderLabel;
     public javax.swing.JTable employeeListTable;
@@ -1258,6 +1383,7 @@ public class HMS_MAIN extends javax.swing.JFrame {
     private javax.swing.JButton searchEmployeeButton;
     private javax.swing.JPanel statPanel;
     private javax.swing.JLabel timeLabel;
+    private javax.swing.JLabel timeLabelPrivateTab;
     private javax.swing.JPanel topPanel;
     public javax.swing.JLabel totalEmployeeCountLabel;
     public javax.swing.JLabel totalPatientCountLabel;
