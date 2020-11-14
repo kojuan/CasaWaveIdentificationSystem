@@ -878,6 +878,8 @@ public class CWIS_PATIENT_MANAGEMENTSYSTEM extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void selectPatient(int counter) {
+        labelImage.setText("");
+        labelImage.setIcon(null);
         try {
             patientIdTf.setText(Integer.toString(dao.patientList().get(counter).getID()));
             firstNameTf.setText(dao.patientList().get(counter).getfirstName());
@@ -913,12 +915,21 @@ public class CWIS_PATIENT_MANAGEMENTSYSTEM extends javax.swing.JFrame {
             try {
                 labelImage.setIcon(new ImageIcon(new ImageIcon(dao.patientList().get(counter).getimagePath()).getImage().getScaledInstance(labelImage.getWidth(), labelImage.getHeight(), Image.SCALE_SMOOTH)));
             } catch (Exception err) {
+                labelImage.setIcon(null);
                 labelImage.setText("no image found.");
                 this.invalidate();
                 this.validate();
                 this.repaint();
             }
         } catch (IndexOutOfBoundsException err) {
+            labelImage.setIcon(null);
+            labelImage.setText("no image found.");
+            this.repaint();
+        } catch (NullPointerException errx) {
+            labelImage.setIcon(null);
+            labelImage.setText("no image found.");
+            this.invalidate();
+            this.validate();
             this.repaint();
         }
     }
@@ -1424,7 +1435,7 @@ public class CWIS_PATIENT_MANAGEMENTSYSTEM extends javax.swing.JFrame {
         CWIS_MAIN showMainForm = new CWIS_MAIN();
         showMainForm.setVisible(true);
         this.dispose();
-        
+
 
     }//GEN-LAST:event_closeButtonActionPerformed
 
@@ -1560,7 +1571,7 @@ public class CWIS_PATIENT_MANAGEMENTSYSTEM extends javax.swing.JFrame {
             double bpmDigitGenerated = Math.random();
             int convertedHundredthBPM = (int) (bpmDigitGenerated * 500);
             convertedHundredthBPM = Math.max(convertedHundredthBPM, 60);
-            convertedHundredthBPM = Math.min(convertedHundredthBPM, 500);
+            convertedHundredthBPM = Math.min(convertedHundredthBPM, 350);
 
             String convertedStringBPMDIGIT = String.valueOf(convertedHundredthBPM);
             bpmTf.setText(convertedStringBPMDIGIT);

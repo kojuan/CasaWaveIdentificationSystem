@@ -311,10 +311,12 @@ public class ImportDataFromExcel extends javax.swing.JFrame {
                         pst.setBlob(11, image);
                     } else if (ImagePath == null) {
                         pst.setNull(11, java.sql.Types.NULL);
-                        System.out.println("No image detected.");
+                        System.out.println("The data has no image upon imported to the database.");
+                        this.repaint();
                     } else {
                         pst.setNull(1, java.sql.Types.NULL);
-                        System.out.println("No image detected.");
+                        System.out.println("The data has no image upon imported to the database.");
+                        this.repaint();
                     }
                     if (pst.executeUpdate() != 0) {
                         insertedRows++;

@@ -872,6 +872,8 @@ public class CWIS_PATIENT_MANAGEMENTSYSTEM_ADMINACCESS extends javax.swing.JFram
     }// </editor-fold>//GEN-END:initComponents
 
     private void selectPatient(int counter) {
+        labelImage.setText("");
+        labelImage.setIcon(null);
         try {
             patientIdTf.setText(Integer.toString(dao.patientList().get(counter).getID()));
             firstNameTf.setText(dao.patientList().get(counter).getfirstName());
@@ -907,12 +909,21 @@ public class CWIS_PATIENT_MANAGEMENTSYSTEM_ADMINACCESS extends javax.swing.JFram
             try {
                 labelImage.setIcon(new ImageIcon(new ImageIcon(dao.patientList().get(counter).getimagePath()).getImage().getScaledInstance(labelImage.getWidth(), labelImage.getHeight(), Image.SCALE_SMOOTH)));
             } catch (Exception err) {
+                labelImage.setIcon(null);
                 labelImage.setText("no image found.");
                 this.invalidate();
                 this.validate();
                 this.repaint();
             }
         } catch (IndexOutOfBoundsException err) {
+            labelImage.setIcon(null);
+            labelImage.setText("no image found.");
+            this.repaint();
+        } catch (NullPointerException errx) {
+            labelImage.setIcon(null);
+            labelImage.setText("no image found.");
+            this.invalidate();
+            this.validate();
             this.repaint();
         }
     }
@@ -1525,18 +1536,18 @@ public class CWIS_PATIENT_MANAGEMENTSYSTEM_ADMINACCESS extends javax.swing.JFram
             //------------------------------------------------------------------------------
             //            double temperatureTF1GetText = Double.parseDouble(temperatureTf1.getText());
             //            if (temperatureTF1GetText <= 0 && temperatureTF1GetText >= 35.3 && box1.equals("Celsius") && box2.equals("Celsius")) {
-                //                temperatureStatus.setText("Possible cold body temperature!");
-                //                temperatureStatus.setForeground(Color.red);
-                //            } else if (temperatureTF1GetText >= 35.4 || temperatureTF1GetText >= 37.7 && box1.equals("Celsius") && box2.equals("Celsius")) {
-                //                temperatureStatus.setText("Normal body temperature");
-                //                temperatureStatus.setForeground(Color.blue);
-                //            } else if (temperatureTF1GetText >= 37.8 || temperatureTF1GetText >= 39.0 && box1.equals("Celsius") && box2.equals("Celsius")) {
-                //                temperatureStatus.setText("Moderate fever body temperature");
-                //                temperatureStatus.setForeground(Color.yellow);
-                //            } else if (temperatureTF1GetText > 39.0 || box1.equals("Celsius") && box2.equals("Celsius")) {
-                //                temperatureStatus.setText("High fever body temperature");
-                //                temperatureStatus.setForeground(Color.red);
-                //            }
+            //                temperatureStatus.setText("Possible cold body temperature!");
+            //                temperatureStatus.setForeground(Color.red);
+            //            } else if (temperatureTF1GetText >= 35.4 || temperatureTF1GetText >= 37.7 && box1.equals("Celsius") && box2.equals("Celsius")) {
+            //                temperatureStatus.setText("Normal body temperature");
+            //                temperatureStatus.setForeground(Color.blue);
+            //            } else if (temperatureTF1GetText >= 37.8 || temperatureTF1GetText >= 39.0 && box1.equals("Celsius") && box2.equals("Celsius")) {
+            //                temperatureStatus.setText("Moderate fever body temperature");
+            //                temperatureStatus.setForeground(Color.yellow);
+            //            } else if (temperatureTF1GetText > 39.0 || box1.equals("Celsius") && box2.equals("Celsius")) {
+            //                temperatureStatus.setText("High fever body temperature");
+            //                temperatureStatus.setForeground(Color.red);
+            //            }
             //            }
         } catch (NumberFormatException err) {
             JOptionPane.showMessageDialog(null, "Device not detected.");
@@ -1555,7 +1566,7 @@ public class CWIS_PATIENT_MANAGEMENTSYSTEM_ADMINACCESS extends javax.swing.JFram
             double bpmDigitGenerated = Math.random();
             int convertedHundredthBPM = (int) (bpmDigitGenerated * 500);
             convertedHundredthBPM = Math.max(convertedHundredthBPM, 60);
-            convertedHundredthBPM = Math.min(convertedHundredthBPM, 500);
+            convertedHundredthBPM = Math.min(convertedHundredthBPM, 350);
 
             String convertedStringBPMDIGIT = String.valueOf(convertedHundredthBPM);
             bpmTf.setText(convertedStringBPMDIGIT);
