@@ -2,16 +2,15 @@
 
 
 <p align="center">
-<img src="https://github.com/kojuan/MedicalHealthMonitoringSystem/blob/master/APP_IMAGES/LOGO_ICONS/HMS_LOGO_800PX.png?raw=true" width="400" height="400"><br>
+<a href="https://ibb.co/2t6Cdfx"><img src="https://i.ibb.co/2t6Cdfx/HMS-LOGO-800-PX.png" alt="HMS-LOGO-800-PX" border="0" width="400" height="400"></a><br>
 _A Software Engineering, Integrative Programming, and Computer Architecture Final Project._
-
-<center>[GOOGLE FORM PROGRAM SURVEY]<br>
-<a href="https://ibb.co/6sRBq8m"><img src="https://i.ibb.co/6sRBq8m/image.png" alt="image" border="0" width="150" height="150"></a>	
-</center>
 </p>
+<center>[GOOGLE FORM PROGRAM SURVEY]<br>
+<a href="https://ibb.co/6sRBq8m"><img src="https://i.ibb.co/6sRBq8m/image.png" alt="image" border="0" width="150" height="150"></a>
+</center>
 
 ## Project Updates
-![Stable version @ 36th commit]
+*Stable version @ 36th commit*
 ```bash
 November 14, 2020 - 2:20 PM
 > Renamed project to "CasaWave Identification System"
@@ -30,23 +29,8 @@ September 15, 2020 - 11:45 AM
 > Started the Project
 ```
 
-## Screenshots
-
-<p align="center"><b>
-  Login<br>
-  <a href="https://ibb.co/G7gW59B"><img src="https://i.ibb.co/G7gW59B/image.png" alt="image" border="0" width="310" height="280"></a><br>
-  Admin Tool<br>
-  <a href="https://ibb.co/KW2ZST9"><img src="https://i.ibb.co/KW2ZST9/image.png" alt="image" border="0" width="310" height="280"></a><br>
-  Display Date and Time<br>
-  <a href="https://ibb.co/2MKb1gP"><img src="https://i.ibb.co/2MKb1gP/image.png" alt="image" border="0" width="310" height="280"></a><br>
-  Patient Database<br>
-  <a href="https://ibb.co/wRrJZrg"><img src="https://i.ibb.co/wRrJZrg/image.png" alt="image" border="0" width="310" height="280"></a><br>
-  Employee Database<br>
-  <a href="https://ibb.co/qWvM8C6"><img src="https://i.ibb.co/qWvM8C6/image.png" alt="image" border="0" width="310" height="280"></a><br>
-</p></b>
-
-
-
+## Presentation
+[CANVA PRESENTATION](https://www.canva.com/design/DAENYg4r2i4/gh8HwKczfDc7Z0jyXq74Uw/view?utm_content=DAENYg4r2i4&utm_campaign=designshare&utm_medium=link&utm_source=sharebutton)
 
 ## Programmers
 [Aldrei O. Caballero](https://www.facebook.com/aldreicaballero4)
@@ -58,9 +42,7 @@ September 15, 2020 - 11:45 AM
 [Mohammad Abdullah A. Salik](https://www.facebook.com/whycooktherice)
 
 ## License
-**_This is an open source project for educational purposes only._**
-
-## License
+**_for educational purposes only._**
 
 Copyright (C) 2020 Khian Juan (https://github.com/kojuan) and contributors
 
