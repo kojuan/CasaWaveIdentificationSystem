@@ -9,13 +9,13 @@ _A Software Engineering, Integrative Programming, and Computer Architecture Fina
 </center>
 
 ## Project Updates
-*Stable version @ 39th commit*
+*Stable version @ 42nd commit*
 ```bash
 November 14, 2020 - 4:00 PM
 > Renamed project to "CasaWave Identification System"
 > MAJOR BUG FIXES OF PATIENT AND EMPLOYEE TABLE IN HOME TAB
 > Fixed Search Employee Window
-> Changed and fix glitched layouts
+> Changed and fix glitched layouts (in Home Page where you click anywhere on the table, the image does not replace but stack and make the window glitch)
 > Changed fonts to some windows
 ```
 ```bash

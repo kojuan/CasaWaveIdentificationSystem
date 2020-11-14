@@ -1174,14 +1174,19 @@ public class CWIS_MAIN extends javax.swing.JFrame {
     }//GEN-LAST:event_filterSearchTfKeyReleased
     int patientDataTableSelectedRow;
     private void patientDataTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_patientDataTableMouseClicked
+        labelImagePatient.setText("");
+        labelImagePatient.setIcon(null);
         patientDataTableSelectedRow = patientDataTable.getSelectedRow();
+
         selectPatient(patientDataTableSelectedRow);
         // make currentPosition start counting from the selected JTable Row
         currentPosition = patientDataTableSelectedRow;
     }//GEN-LAST:event_patientDataTableMouseClicked
     int employeeDataTableSelectedRow;
     private void patientDataTableKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_patientDataTableKeyReleased
-        // Get the selected row index
+        labelImagePatient.setText("");
+        labelImagePatient.setIcon(null);
+// Get the selected row index
         patientDataTableSelectedRow = patientDataTable.getSelectedRow();
         if (evt.getKeyCode() == KeyEvent.VK_UP || evt.getKeyCode() == KeyEvent.VK_DOWN) {
             selectPatient(patientDataTableSelectedRow);
@@ -1297,7 +1302,9 @@ public class CWIS_MAIN extends javax.swing.JFrame {
     }//GEN-LAST:event_displayTimeAndDateTabMouseClicked
 
     private void employeeListTableKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_employeeListTableKeyReleased
-        // Get the selected row index
+        labelImageEmployee.setText("");
+        labelImageEmployee.setIcon(null);
+// Get the selected row index
         employeeDataTableSelectedRow = employeeListTable.getSelectedRow();
         if (evt.getKeyCode() == KeyEvent.VK_UP || evt.getKeyCode() == KeyEvent.VK_DOWN) {
             selectEmployee(employeeDataTableSelectedRow);
@@ -1305,6 +1312,8 @@ public class CWIS_MAIN extends javax.swing.JFrame {
     }//GEN-LAST:event_employeeListTableKeyReleased
 
     private void employeeListTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_employeeListTableMouseClicked
+        labelImageEmployee.setText("");
+        labelImageEmployee.setIcon(null);
         employeeDataTableSelectedRow = employeeListTable.getSelectedRow();
         selectEmployee(employeeDataTableSelectedRow);
         // make currentPosition start counting from the selected JTable Row
