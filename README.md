@@ -14,7 +14,7 @@ November 17, 2020 - 10:00 AM
 > Fixed localhost/phpmyadmin database error
 > Restored Database
 > Fixed logical bugs
-* PROBABLY THE LAST COMMIT *
+> Highlight and Selection of Patient row in the Table is NOW FIXED
 ```
 ```bash
 November 14, 2020 - 6:25 PM
