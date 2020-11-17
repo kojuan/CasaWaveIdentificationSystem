@@ -166,8 +166,8 @@ public final class CWIS_EMPLOYEE_DELETE extends javax.swing.JFrame {
         topBannerPanel.setMinimumSize(new java.awt.Dimension(1000, 629));
         topBannerPanel.setPreferredSize(new java.awt.Dimension(1000, 629));
 
-        employeeRagistrationImageLabel.setBackground(new java.awt.Color(235, 241, 253));
         employeeRagistrationImageLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/CasaWaveIdentificationSystem/APP_IMAGES/mainprogram/CWIS_TOPPANEL_DELETEMPLOYEE_fit.png"))); // NOI18N
+        employeeRagistrationImageLabel.setBackground(new java.awt.Color(235, 241, 253));
 
         employeeLastNameTf.setEditable(false);
         employeeLastNameTf.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -363,23 +363,23 @@ public final class CWIS_EMPLOYEE_DELETE extends javax.swing.JFrame {
         imagePathLabel.setFont(new java.awt.Font("Sylfaen", 0, 11)); // NOI18N
         imagePathLabel.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
 
-        cancelButton.setBackground(new java.awt.Color(255, 102, 102));
-        cancelButton.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         cancelButton.setText("Cancel (Esc)");
+        cancelButton.setBackground(new java.awt.Color(255, 102, 102));
         cancelButton.setBorderPainted(false);
         cancelButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        cancelButton.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         cancelButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cancelButtonActionPerformed(evt);
             }
         });
 
-        deleteEmployeeButton.setBackground(new java.awt.Color(153, 153, 255));
-        deleteEmployeeButton.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
         deleteEmployeeButton.setText("Delete Employee Account");
+        deleteEmployeeButton.setBackground(new java.awt.Color(153, 153, 255));
         deleteEmployeeButton.setBorderPainted(false);
         deleteEmployeeButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         deleteEmployeeButton.setEnabled(false);
+        deleteEmployeeButton.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         deleteEmployeeButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 deleteEmployeeButtonActionPerformed(evt);
@@ -423,7 +423,7 @@ public final class CWIS_EMPLOYEE_DELETE extends javax.swing.JFrame {
         resetAllFieldsButton.setBackground(new java.awt.Color(153, 153, 255));
         resetAllFieldsButton.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         resetAllFieldsButton.setEnabled(false);
-        resetAllFieldsButton.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
+        resetAllFieldsButton.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         resetAllFieldsButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 resetAllFieldsButtonActionPerformed(evt);
@@ -449,6 +449,7 @@ public final class CWIS_EMPLOYEE_DELETE extends javax.swing.JFrame {
         employeeIdTf.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         employeeIdTf.setBackground(new java.awt.Color(234, 234, 250));
 
+        searchEmployeeButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/CasaWaveIdentificationSystem/APP_IMAGES/mainprogram/searchIcon.png"))); // NOI18N
         searchEmployeeButton.setText("Search Employee");
         searchEmployeeButton.setBackground(new java.awt.Color(153, 204, 255));
         searchEmployeeButton.setBorderPainted(false);
@@ -525,9 +526,6 @@ public final class CWIS_EMPLOYEE_DELETE extends javax.swing.JFrame {
                         .addComponent(sexTf, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(topBannerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, topBannerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(deleteEmployeeButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(cancelButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(imagePathLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 478, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, topBannerPanelLayout.createSequentialGroup()
                         .addGroup(topBannerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -541,7 +539,10 @@ public final class CWIS_EMPLOYEE_DELETE extends javax.swing.JFrame {
                             .addComponent(selectImageButton, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(fatherEmailAddressTf, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(employeePhoneNumberTf, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(motherEmailAddressTf, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(motherEmailAddressTf, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, topBannerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(deleteEmployeeButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(cancelButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGap(28, 28, 28))
             .addGroup(topBannerPanelLayout.createSequentialGroup()
                 .addGroup(topBannerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -549,16 +550,15 @@ public final class CWIS_EMPLOYEE_DELETE extends javax.swing.JFrame {
                     .addComponent(bottomPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(topBannerPanelLayout.createSequentialGroup()
-                .addGroup(topBannerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(34, 34, 34)
+                .addGroup(topBannerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(topBannerPanelLayout.createSequentialGroup()
-                        .addGap(44, 44, 44)
                         .addComponent(employeeIDNumberLabel)
                         .addGap(18, 18, 18)
                         .addComponent(employeeIdTf, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(36, 36, 36)
-                        .addComponent(searchEmployeeButton))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(searchEmployeeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 631, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(topBannerPanelLayout.createSequentialGroup()
-                        .addGap(34, 34, 34)
                         .addGroup(topBannerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(fullNameLabel)
                             .addComponent(homeAddressLabel))
@@ -584,10 +584,13 @@ public final class CWIS_EMPLOYEE_DELETE extends javax.swing.JFrame {
             .addGroup(topBannerPanelLayout.createSequentialGroup()
                 .addComponent(employeeRagistrationImageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(49, 49, 49)
-                .addGroup(topBannerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE, false)
-                    .addComponent(employeeIDNumberLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(employeeIdTf, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(searchEmployeeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(topBannerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(topBannerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE, false)
+                        .addComponent(employeeIDNumberLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(employeeIdTf, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(topBannerPanelLayout.createSequentialGroup()
+                        .addGap(2, 2, 2)
+                        .addComponent(searchEmployeeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(topBannerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(firstNameLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 19, Short.MAX_VALUE)

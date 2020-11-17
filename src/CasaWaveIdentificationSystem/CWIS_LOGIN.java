@@ -233,8 +233,8 @@ public final class CWIS_LOGIN extends javax.swing.JFrame {
         leftPanel.setBackground(new java.awt.Color(235, 241, 253));
         leftPanel.setMaximumSize(new java.awt.Dimension(574, 0));
 
-        privacyPolicyLabel.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
-        privacyPolicyLabel.setText("<html> <left> <b>Privacy Policy:</b><br> We, the CJJS Company of this Program informs you(as the user of this Program) of our policies regarding the collection, use and disclosure of Personal Information you will receive from patients in this Program.<br> By using this program, the personal data information of a Patient shall be kept and protected inside this program and the server database only. We use your Personal Information only for providing identification to co-workers and recognition as an Employee of the Hospital. <br><br> This Privacy Policy is effective as of November 07, 2020 and will remain in effect except with respect to any changes in its provisions in the future, which will be in effect immediately after being posted on this program. We reserve the right to update or change our Privacy Policy at any time and you should check this Privacy Policy periodically. Your continued use of the Service after we post any modifications to the Privacy Policy on this program will constitute your acknowledgment of the modifications and your consent to abide and be bound by the modified Privacy Policy. If we make any material changes to this Privacy Policy, we will notify you either through the email address you have provided us, or by placing a prominent notice on our website. <br> If you have any questions about this Privacy Policy, please contact your manager or the rightful owner of this Program. </left> </html>");
+        privacyPolicyLabel.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
+        privacyPolicyLabel.setText("<html> <left> <b>Privacy Policy:</b><br> We, the CJJS Company of this Program informs you  (as the user of this Program) of our policies regarding the collection, use and disclosure of Personal Information you will receive from patients in this Program.<br> By using this program, the personal data information of a Patient shall be kept and protected inside this program and the server database only. We use your Personal Information only for providing identification to co-workers and recognition as an Employee of the Hospital. <br><br> This Privacy Policy is effective as of November 07, 2020 and will remain in effect except with respect to any changes in its provisions in the future, which will be in effect immediately after being posted on this program. We reserve the right to update or change our Privacy Policy at any time and you should check this Privacy Policy periodically. Your continued use of the Service after we post any modifications to the Privacy Policy on this program will constitute your acknowledgment of the modifications and your consent to abide and be bound by the modified Privacy Policy. If we make any material changes to this Privacy Policy, we will notify you either through the email address you have provided us, or by placing a prominent notice on our website. <br> If you have any questions about this Privacy Policy, please contact your manager or the rightful owner of this Program. </left> </html>");
 
         javax.swing.GroupLayout leftPanelLayout = new javax.swing.GroupLayout(leftPanel);
         leftPanel.setLayout(leftPanelLayout);
@@ -247,11 +247,15 @@ public final class CWIS_LOGIN extends javax.swing.JFrame {
         );
         leftPanelLayout.setVerticalGroup(
             leftPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, leftPanelLayout.createSequentialGroup()
-                .addContainerGap(62, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(55, 55, 55)
-                .addComponent(privacyPolicyLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(leftPanelLayout.createSequentialGroup()
+                .addContainerGap(26, Short.MAX_VALUE)
+                .addGroup(leftPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, leftPanelLayout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(321, 321, 321))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, leftPanelLayout.createSequentialGroup()
+                        .addComponent(privacyPolicyLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 357, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())))
         );
 
         dateLabel.setFont(new java.awt.Font("Segoe UI Black", 1, 38)); // NOI18N
@@ -681,7 +685,7 @@ public final class CWIS_LOGIN extends javax.swing.JFrame {
     private javax.swing.JLabel passwordLabel;
     private javax.swing.JPasswordField passwordTf;
     private final javax.swing.JButton privacyPolicyHideButton = new javax.swing.JButton();
-    public javax.swing.JLabel privacyPolicyLabel;
+    private javax.swing.JLabel privacyPolicyLabel;
     private final javax.swing.JButton privacyPolicyTriggerButton = new javax.swing.JButton();
     private javax.swing.JSeparator sep1;
     private javax.swing.JSeparator sep2;

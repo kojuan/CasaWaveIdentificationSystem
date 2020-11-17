@@ -316,7 +316,7 @@ public final class CWIS_USER_REGISTRATION extends javax.swing.JFrame {
         bottomPanel.setRequestFocusEnabled(false);
 
         dateLabel.setBackground(new java.awt.Color(153, 153, 255));
-        dateLabel.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
+        dateLabel.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         dateLabel.setForeground(new java.awt.Color(235, 241, 253));
         dateLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         dateLabel.setText("Date");
@@ -324,7 +324,7 @@ public final class CWIS_USER_REGISTRATION extends javax.swing.JFrame {
         dateLabel.setRequestFocusEnabled(false);
 
         timeLabel.setBackground(new java.awt.Color(235, 241, 253));
-        timeLabel.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
+        timeLabel.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         timeLabel.setForeground(new java.awt.Color(235, 241, 253));
         timeLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         timeLabel.setText("Time");
@@ -338,16 +338,17 @@ public final class CWIS_USER_REGISTRATION extends javax.swing.JFrame {
             .addGroup(bottomPanelLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(dateLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(28, 28, 28)
+                .addGap(29, 29, 29)
                 .addComponent(timeLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         bottomPanelLayout.setVerticalGroup(
             bottomPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(bottomPanelLayout.createSequentialGroup()
-                .addGap(1, 1, 1)
-                .addComponent(dateLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE))
-            .addComponent(timeLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, bottomPanelLayout.createSequentialGroup()
+                .addGroup(bottomPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(dateLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 26, Short.MAX_VALUE)
+                    .addComponent(timeLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout registerMainPanelLayout = new javax.swing.GroupLayout(registerMainPanel);
@@ -399,11 +400,11 @@ public final class CWIS_USER_REGISTRATION extends javax.swing.JFrame {
                             .addComponent(passwordClearTextButton)
                             .addComponent(usernameClearTextButton))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(registerMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(registerButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(cancelButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(registerMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(registerButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cancelButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(onScreenKeyboardButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(44, 44, 44))
+                .addContainerGap())
             .addComponent(bottomPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         registerMainPanelLayout.setVerticalGroup(
@@ -411,11 +412,12 @@ public final class CWIS_USER_REGISTRATION extends javax.swing.JFrame {
             .addGroup(registerMainPanelLayout.createSequentialGroup()
                 .addGroup(registerMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(registerMainPanelLayout.createSequentialGroup()
-                        .addGap(17, 17, 17)
+                        .addGap(15, 15, 15)
                         .addGroup(registerMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(registerUsernameTf, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(registerUsernameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(usernameClearTextButton))
+                            .addComponent(usernameClearTextButton)
+                            .addComponent(onScreenKeyboardButton, javax.swing.GroupLayout.DEFAULT_SIZE, 55, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(registerMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(registerPasswordTf, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -441,17 +443,16 @@ public final class CWIS_USER_REGISTRATION extends javax.swing.JFrame {
                                 .addComponent(genderLabel)
                                 .addComponent(maleButton)
                                 .addComponent(femaleButton))
-                            .addComponent(clearAllButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addComponent(clearAllButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(94, 94, 94))
                     .addGroup(registerMainPanelLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(onScreenKeyboardButton, javax.swing.GroupLayout.DEFAULT_SIZE, 55, Short.MAX_VALUE)
-                        .addGap(137, 137, 137)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(registerButton, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cancelButton, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(88, 88, 88)
+                        .addComponent(cancelButton, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(98, 98, 98)))
                 .addComponent(bottomPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(4, 4, 4))
+                .addContainerGap())
         );
 
         jPanel1.setBackground(new java.awt.Color(235, 241, 253));
@@ -497,7 +498,7 @@ public final class CWIS_USER_REGISTRATION extends javax.swing.JFrame {
 
         getContentPane().add(registerTopPanel);
 
-        setSize(new java.awt.Dimension(1000, 629));
+        setSize(new java.awt.Dimension(1000, 623));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 

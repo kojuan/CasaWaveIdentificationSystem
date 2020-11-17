@@ -162,7 +162,8 @@ public class CWIS_SEARCHEMPLOYEE extends javax.swing.JFrame {
         employeeLastNameTf.setFocusable(false);
 
         searchEmployeeButton.setBackground(new java.awt.Color(153, 204, 255));
-        searchEmployeeButton.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
+        searchEmployeeButton.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        searchEmployeeButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/CasaWaveIdentificationSystem/APP_IMAGES/mainprogram/searchIcon.png"))); // NOI18N
         searchEmployeeButton.setText("Search Employee");
         searchEmployeeButton.setBorderPainted(false);
         searchEmployeeButton.addActionListener(new java.awt.event.ActionListener() {
@@ -260,6 +261,7 @@ public class CWIS_SEARCHEMPLOYEE extends javax.swing.JFrame {
 
         resetAllFieldsButton.setBackground(new java.awt.Color(234, 234, 250));
         resetAllFieldsButton.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
+        resetAllFieldsButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/CasaWaveIdentificationSystem/APP_IMAGES/mainprogram/clearIcon2.png"))); // NOI18N
         resetAllFieldsButton.setText("Clear all fields");
         resetAllFieldsButton.setToolTipText("Clear all fields after search.");
         resetAllFieldsButton.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -365,10 +367,10 @@ public class CWIS_SEARCHEMPLOYEE extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, searchEmployeeMainPanelLayout.createSequentialGroup()
                                 .addGroup(searchEmployeeMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(employeeLastNameTf, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(employeeMiddleInitialTf, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(employeeFirstNameTfforSearch))
-                                .addGap(224, 224, 224)))
+                                    .addComponent(employeeFirstNameTfforSearch, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(employeeMiddleInitialTf)
+                                    .addComponent(employeeLastNameTf))
+                                .addGap(218, 218, 218)))
                         .addGroup(searchEmployeeMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(searchEmployeeButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(cancelButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -397,7 +399,8 @@ public class CWIS_SEARCHEMPLOYEE extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(lastNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(lastNameLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(lastNameLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(14, 14, 14))
                     .addGroup(searchEmployeeMainPanelLayout.createSequentialGroup()
                         .addGroup(searchEmployeeMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(searchEmployeeMainPanelLayout.createSequentialGroup()

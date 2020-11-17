@@ -109,6 +109,7 @@ public class CWIS_DATAACESSOBJECT_IMPLEMENTATION implements CWIS_DATAACCESSOBJEC
                 employee.setfirstName(rs.getString("firstName"));
                 employee.setmiddleName(rs.getString("middleInitial"));
                 employee.setlastName(rs.getString("lastName"));
+                employee.setAddress(rs.getString("employeeAddress"));
                 employee.setGender(rs.getString("employeeGender"));
                 employee.setdateOfBirth(rs.getString("DateOfBirth"));
                 employee.setbloodType(rs.getString("employeeBloodType"));
@@ -144,7 +145,6 @@ public class CWIS_DATAACESSOBJECT_IMPLEMENTATION implements CWIS_DATAACCESSOBJEC
 
         return employeeList;
     }
-
     @Override
     public void populateemployeeDataTableFromMySQLDatabase(DefaultTableModel model, JTable employeeListTable) {
         ArrayList<Employee> dataArrayEmployee = employeeList();
@@ -158,17 +158,18 @@ public class CWIS_DATAACESSOBJECT_IMPLEMENTATION implements CWIS_DATAACCESSOBJEC
             rowsEmployee[0] = dataArrayEmployee.get(k).getID();
             rowsEmployee[1] = dataArrayEmployee.get(k).getfirstName();
             rowsEmployee[2] = dataArrayEmployee.get(k).getMiddleInitial();
-            rowsEmployee[3] = dataArrayEmployee.get(k).getAddress();
-            rowsEmployee[4] = dataArrayEmployee.get(k).getGender();
-            rowsEmployee[5] = dataArrayEmployee.get(k).getdateOfBirth();
-            rowsEmployee[6] = dataArrayEmployee.get(k).getbloodType();
-            rowsEmployee[7] = dataArrayEmployee.get(k).getphoneNumber();
-            rowsEmployee[8] = dataArrayEmployee.get(k).getcivilStatus();
-            rowsEmployee[9] = dataArrayEmployee.get(k).getReligion();
-            rowsEmployee[10] = dataArrayEmployee.get(k).getNationality();
-            rowsEmployee[11] = dataArrayEmployee.get(k).getFatherEmailAd();
-            rowsEmployee[12] = dataArrayEmployee.get(k).getMotherEmailAd();
-            rowsEmployee[13] = dataArrayEmployee.get(k).getDateAndTimeRegistered();
+            rowsEmployee[3] = dataArrayEmployee.get(k).getLastName();
+            rowsEmployee[4] = dataArrayEmployee.get(k).getAddress();
+            rowsEmployee[5] = dataArrayEmployee.get(k).getGender();
+            rowsEmployee[6] = dataArrayEmployee.get(k).getdateOfBirth();
+            rowsEmployee[7] = dataArrayEmployee.get(k).getbloodType();
+            rowsEmployee[8] = dataArrayEmployee.get(k).getphoneNumber();
+            rowsEmployee[9] = dataArrayEmployee.get(k).getcivilStatus();
+            rowsEmployee[10] = dataArrayEmployee.get(k).getReligion();
+            rowsEmployee[11] = dataArrayEmployee.get(k).getNationality();
+            rowsEmployee[12] = dataArrayEmployee.get(k).getFatherEmailAd();
+            rowsEmployee[13] = dataArrayEmployee.get(k).getMotherEmailAd();
+            rowsEmployee[14] = dataArrayEmployee.get(k).getDateAndTimeRegistered();
             model.addRow(rowsEmployee);
 
         }

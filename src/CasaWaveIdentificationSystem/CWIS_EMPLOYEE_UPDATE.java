@@ -385,23 +385,23 @@ public final class CWIS_EMPLOYEE_UPDATE extends javax.swing.JFrame {
         imagePathLabel.setFont(new java.awt.Font("Sylfaen", 0, 11)); // NOI18N
         imagePathLabel.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
 
-        cancelButton.setText("Cancel (Esc)");
         cancelButton.setBackground(new java.awt.Color(255, 102, 102));
+        cancelButton.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        cancelButton.setText("Cancel (Esc)");
         cancelButton.setBorderPainted(false);
         cancelButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        cancelButton.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         cancelButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cancelButtonActionPerformed(evt);
             }
         });
 
-        updateButton.setText("Update Employee Account");
         updateButton.setBackground(new java.awt.Color(153, 153, 255));
+        updateButton.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
+        updateButton.setText("Update Employee Account");
         updateButton.setBorderPainted(false);
         updateButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         updateButton.setEnabled(false);
-        updateButton.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
         updateButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 updateButtonActionPerformed(evt);
@@ -476,10 +476,11 @@ public final class CWIS_EMPLOYEE_UPDATE extends javax.swing.JFrame {
         employeeIdTf.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         employeeIdTf.setBackground(new java.awt.Color(234, 234, 250));
 
+        searchEmployeeButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/CasaWaveIdentificationSystem/APP_IMAGES/mainprogram/searchIcon.png"))); // NOI18N
         searchEmployeeButton.setText("Search Employee");
         searchEmployeeButton.setBackground(new java.awt.Color(153, 204, 255));
         searchEmployeeButton.setBorderPainted(false);
-        searchEmployeeButton.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        searchEmployeeButton.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         searchEmployeeButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 searchEmployeeButtonActionPerformed(evt);
@@ -545,7 +546,9 @@ public final class CWIS_EMPLOYEE_UPDATE extends javax.swing.JFrame {
                         .addGroup(topBannerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(topBannerPanelLayout.createSequentialGroup()
                                 .addGap(25, 25, 25)
-                                .addComponent(dateOfBirthLabel))
+                                .addComponent(dateOfBirthLabel)
+                                .addGap(18, 18, 18)
+                                .addComponent(birthdayPicker, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, topBannerPanelLayout.createSequentialGroup()
                                 .addGroup(topBannerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(nationalityLabel)
@@ -567,9 +570,7 @@ public final class CWIS_EMPLOYEE_UPDATE extends javax.swing.JFrame {
                         .addComponent(sexLabel)
                         .addGroup(topBannerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(topBannerPanelLayout.createSequentialGroup()
-                                .addGap(21, 21, 21)
-                                .addComponent(birthdayPicker, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGap(160, 160, 160)
                                 .addComponent(displayedBirthday, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(topBannerPanelLayout.createSequentialGroup()
                                 .addGap(18, 18, 18)
@@ -604,16 +605,15 @@ public final class CWIS_EMPLOYEE_UPDATE extends javax.swing.JFrame {
                     .addComponent(bottomPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(topBannerPanelLayout.createSequentialGroup()
-                .addGroup(topBannerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(34, 34, 34)
+                .addGroup(topBannerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(topBannerPanelLayout.createSequentialGroup()
-                        .addGap(44, 44, 44)
                         .addComponent(employeeIDNumberLabel)
                         .addGap(18, 18, 18)
                         .addComponent(employeeIdTf, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(36, 36, 36)
-                        .addComponent(searchEmployeeButton))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(searchEmployeeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 631, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(topBannerPanelLayout.createSequentialGroup()
-                        .addGap(34, 34, 34)
                         .addGroup(topBannerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(fullNameLabel)
                             .addComponent(homeAddressLabel))
@@ -692,11 +692,11 @@ public final class CWIS_EMPLOYEE_UPDATE extends javax.swing.JFrame {
                             .addComponent(sexTf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(maleButton)
                             .addComponent(femaleButton))
-                        .addGroup(topBannerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(displayedBirthday, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(topBannerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(dateOfBirthLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(birthdayPicker, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(topBannerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(dateOfBirthLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(birthdayPicker, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(displayedBirthday, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(topBannerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(nationalityLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)

@@ -60,6 +60,8 @@ public class CWIS_MAIN extends javax.swing.JFrame {
     int currentPosition = 0;
     CWIS_DATAACESSOBJECT_IMPLEMENTATION dao = new CWIS_DATAACESSOBJECT_IMPLEMENTATION();
 
+    String bgMusicFilePath = currentAbsoluteFileDirectoryPath + "\\CasaWaveChime.mp3";
+
     public CWIS_MAIN() {
         setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("HMS_LOGO_800PX.png")));
         initComponents();
@@ -75,7 +77,6 @@ public class CWIS_MAIN extends javax.swing.JFrame {
         showTime();
         determineEmployeeRowCount();
         determinePatientRowCount();
-
     }
 
     private void EmployeeDisplayTable() {
@@ -697,7 +698,7 @@ public class CWIS_MAIN extends javax.swing.JFrame {
         );
 
         searchEmployeeButton.setBackground(new java.awt.Color(153, 204, 255));
-        searchEmployeeButton.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
+        searchEmployeeButton.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         searchEmployeeButton.setText("Search Employee");
         searchEmployeeButton.setBorderPainted(false);
         searchEmployeeButton.addActionListener(new java.awt.event.ActionListener() {
@@ -774,7 +775,6 @@ public class CWIS_MAIN extends javax.swing.JFrame {
         manageEmployeesButton.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(204, 204, 255), new java.awt.Color(204, 204, 255)));
         manageEmployeesButton.setBorderPainted(false);
         manageEmployeesButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        manageEmployeesButton.setEnabled(false);
         manageEmployeesButton.setHideActionText(true);
         manageEmployeesButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -811,12 +811,12 @@ public class CWIS_MAIN extends javax.swing.JFrame {
                         .addGap(225, 225, 225)
                         .addComponent(filterSearchLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(filterSearchTf))
-                    .addGroup(employeePanelLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(manageEmployeesButton, javax.swing.GroupLayout.PREFERRED_SIZE, 908, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(searchEmployeeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 335, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(employeePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(employeePanelLayout.createSequentialGroup()
+                                .addComponent(manageEmployeesButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(searchEmployeeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 335, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(filterSearchTf))))
                 .addContainerGap())
         );
         employeePanelLayout.setVerticalGroup(
@@ -991,8 +991,8 @@ public class CWIS_MAIN extends javax.swing.JFrame {
                             .addComponent(patientTrackerPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 245, Short.MAX_VALUE)
                             .addComponent(patientImageLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(labelImagePatient, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 1244, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 1247, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         patientPanelLayout.setVerticalGroup(
@@ -1284,7 +1284,7 @@ public class CWIS_MAIN extends javax.swing.JFrame {
     }//GEN-LAST:event_backupResetButtonActionPerformed
 
     private void manageEmployeesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageEmployeesButtonActionPerformed
-        JOptionPane.showMessageDialog(null, "You cannot manage employees database.\nPlease contact administrator.");
+        JOptionPane.showMessageDialog(null, "Only the administrator(s) can manage Employees data.\nPlease contact administrator if you need to change something.");
     }//GEN-LAST:event_manageEmployeesButtonActionPerformed
 
     private void displayTimeAndDateTabMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_displayTimeAndDateTabMouseClicked

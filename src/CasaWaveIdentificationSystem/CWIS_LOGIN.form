@@ -370,11 +370,18 @@
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace pref="62" max="32767" attributes="0"/>
-                      <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="55" max="-2" attributes="0"/>
-                      <Component id="privacyPolicyLabel" min="-2" pref="266" max="-2" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <EmptySpace pref="26" max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="1" attributes="0">
+                              <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="321" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="1" attributes="0">
+                              <Component id="privacyPolicyLabel" min="-2" pref="357" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -383,9 +390,9 @@
             <Component class="javax.swing.JLabel" name="privacyPolicyLabel">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Segoe UI" size="10" style="0"/>
+                  <Font name="Segoe UI" size="12" style="0"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="&lt;html&gt; &lt;left&gt; &lt;b&gt;Privacy Policy:&lt;/b&gt;&lt;br&gt; We, the CJJS Company of this Program informs you(as the user of this Program) of our policies regarding the collection, use and disclosure of Personal Information you will receive from patients in this Program.&lt;br&gt; By using this program, the personal data information of a Patient shall be kept and protected inside this program and the server database only. We use your Personal Information only for providing identification to co-workers and recognition as an Employee of the Hospital. &lt;br&gt;&lt;br&gt; This Privacy Policy is effective as of November 07, 2020 and will remain in effect except with respect to any changes in its provisions in the future, which will be in effect immediately after being posted on this program. We reserve the right to update or change our Privacy Policy at any time and you should check this Privacy Policy periodically. Your continued use of the Service after we post any modifications to the Privacy Policy on this program will constitute your acknowledgment of the modifications and your consent to abide and be bound by the modified Privacy Policy. If we make any material changes to this Privacy Policy, we will notify you either through the email address you have provided us, or by placing a prominent notice on our website. &lt;br&gt; If you have any questions about this Privacy Policy, please contact your manager or the rightful owner of this Program. &lt;/left&gt; &lt;/html&gt;"/>
+                <Property name="text" type="java.lang.String" value="&lt;html&gt; &lt;left&gt; &lt;b&gt;Privacy Policy:&lt;/b&gt;&lt;br&gt; We, the CJJS Company of this Program informs you  (as the user of this Program) of our policies regarding the collection, use and disclosure of Personal Information you will receive from patients in this Program.&lt;br&gt; By using this program, the personal data information of a Patient shall be kept and protected inside this program and the server database only. We use your Personal Information only for providing identification to co-workers and recognition as an Employee of the Hospital. &lt;br&gt;&lt;br&gt; This Privacy Policy is effective as of November 07, 2020 and will remain in effect except with respect to any changes in its provisions in the future, which will be in effect immediately after being posted on this program. We reserve the right to update or change our Privacy Policy at any time and you should check this Privacy Policy periodically. Your continued use of the Service after we post any modifications to the Privacy Policy on this program will constitute your acknowledgment of the modifications and your consent to abide and be bound by the modified Privacy Policy. If we make any material changes to this Privacy Policy, we will notify you either through the email address you have provided us, or by placing a prominent notice on our website. &lt;br&gt; If you have any questions about this Privacy Policy, please contact your manager or the rightful owner of this Program. &lt;/left&gt; &lt;/html&gt;"/>
               </Properties>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>

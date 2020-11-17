@@ -158,16 +158,16 @@ public final class CWIS_EMPLOYEE_LIST extends javax.swing.JFrame {
         bottomPanel.setMaximumSize(new java.awt.Dimension(292, 30));
         bottomPanel.setRequestFocusEnabled(false);
 
-        dateLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        dateLabel.setText("Date");
         dateLabel.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         dateLabel.setForeground(new java.awt.Color(255, 255, 255));
+        dateLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        dateLabel.setText("Date");
         dateLabel.setRequestFocusEnabled(false);
 
-        timeLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        timeLabel.setText("Time");
         timeLabel.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         timeLabel.setForeground(new java.awt.Color(255, 255, 255));
+        timeLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        timeLabel.setText("Time");
         timeLabel.setRequestFocusEnabled(false);
 
         javax.swing.GroupLayout bottomPanelLayout = new javax.swing.GroupLayout(bottomPanel);
@@ -231,30 +231,33 @@ public final class CWIS_EMPLOYEE_LIST extends javax.swing.JFrame {
             employeeListTable.getColumnModel().getColumn(0).setResizable(false);
         }
 
-        searchEmployeeButton.setText("Search Employee");
         searchEmployeeButton.setBackground(new java.awt.Color(153, 204, 255));
+        searchEmployeeButton.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        searchEmployeeButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/CasaWaveIdentificationSystem/APP_IMAGES/mainprogram/searchIcon.png"))); // NOI18N
+        searchEmployeeButton.setText("Search Employee");
         searchEmployeeButton.setBorderPainted(false);
-        searchEmployeeButton.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
         searchEmployeeButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 searchEmployeeButtonActionPerformed(evt);
             }
         });
 
-        updateEmployeeButton.setText("Update Employee");
         updateEmployeeButton.setBackground(new java.awt.Color(153, 204, 255));
+        updateEmployeeButton.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        updateEmployeeButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/CasaWaveIdentificationSystem/APP_IMAGES/mainprogram/updateIcon.png"))); // NOI18N
+        updateEmployeeButton.setText("Update Employee");
         updateEmployeeButton.setBorderPainted(false);
-        updateEmployeeButton.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
         updateEmployeeButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 updateEmployeeButtonActionPerformed(evt);
             }
         });
 
-        deleteEmployeeButton.setText("Delete Employee");
         deleteEmployeeButton.setBackground(new java.awt.Color(153, 204, 255));
+        deleteEmployeeButton.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        deleteEmployeeButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/CasaWaveIdentificationSystem/APP_IMAGES/mainprogram/delete-sign-small.png"))); // NOI18N
+        deleteEmployeeButton.setText("Delete Employee");
         deleteEmployeeButton.setBorderPainted(false);
-        deleteEmployeeButton.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
         deleteEmployeeButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 deleteEmployeeButtonActionPerformed(evt);
@@ -262,7 +265,8 @@ public final class CWIS_EMPLOYEE_LIST extends javax.swing.JFrame {
         });
 
         cancelButton.setBackground(new java.awt.Color(255, 102, 102));
-        cancelButton.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        cancelButton.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        cancelButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/CasaWaveIdentificationSystem/APP_IMAGES/mainprogram/exitIcon.png"))); // NOI18N
         cancelButton.setText("Back");
         cancelButton.setBorderPainted(false);
         cancelButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -272,12 +276,12 @@ public final class CWIS_EMPLOYEE_LIST extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setText("Filter Search:");
         jLabel1.setBackground(new java.awt.Color(235, 241, 253));
         jLabel1.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        jLabel1.setText("Filter Search:");
 
-        filterSearchTf.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         filterSearchTf.setBackground(new java.awt.Color(204, 204, 255));
+        filterSearchTf.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         filterSearchTf.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         filterSearchTf.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -285,10 +289,10 @@ public final class CWIS_EMPLOYEE_LIST extends javax.swing.JFrame {
             }
         });
 
-        refreshDataButton.setText("Refresh Data");
         refreshDataButton.setBackground(new java.awt.Color(235, 241, 253));
-        refreshDataButton.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         refreshDataButton.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        refreshDataButton.setText("REFRESH DATA");
+        refreshDataButton.setBorder(javax.swing.BorderFactory.createMatteBorder(3, 1, 3, 1, new java.awt.Color(102, 102, 255)));
         refreshDataButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 refreshDataButtonActionPerformed(evt);
