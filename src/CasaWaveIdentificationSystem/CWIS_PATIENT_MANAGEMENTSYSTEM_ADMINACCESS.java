@@ -1183,11 +1183,16 @@ public class CWIS_PATIENT_MANAGEMENTSYSTEM_ADMINACCESS extends javax.swing.JFram
     private void firstItemInListButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_firstItemInListButtonActionPerformed
         currentPosition = 0;
         selectPatient(currentPosition);
+        patientDataTable.clearSelection();
+        patientDataTable.addRowSelectionInterval(currentPosition, currentPosition);
+
     }//GEN-LAST:event_firstItemInListButtonActionPerformed
 
     private void lastItemInListButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lastItemInListButtonActionPerformed
         currentPosition = dao.patientList().size() - 1;
         selectPatient(currentPosition);
+        patientDataTable.clearSelection();
+        patientDataTable.addRowSelectionInterval(currentPosition, currentPosition);
     }//GEN-LAST:event_lastItemInListButtonActionPerformed
 
     private void nextItemInListButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextItemInListButtonActionPerformed
@@ -1201,6 +1206,8 @@ public class CWIS_PATIENT_MANAGEMENTSYSTEM_ADMINACCESS extends javax.swing.JFram
 
         // If you reach the last item , move back to the first item.
         selectPatient(currentPosition);
+        patientDataTable.clearSelection();
+        patientDataTable.addRowSelectionInterval(currentPosition, currentPosition);
     }//GEN-LAST:event_nextItemInListButtonActionPerformed
 
     private void previousItemInListButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_previousItemInListButtonActionPerformed
@@ -1211,6 +1218,8 @@ public class CWIS_PATIENT_MANAGEMENTSYSTEM_ADMINACCESS extends javax.swing.JFram
             currentPosition = dao.patientList().size() - 1;
         }
         selectPatient(currentPosition);
+        patientDataTable.clearSelection();
+        patientDataTable.addRowSelectionInterval(currentPosition, currentPosition);
     }//GEN-LAST:event_previousItemInListButtonActionPerformed
 
     private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteButtonActionPerformed
