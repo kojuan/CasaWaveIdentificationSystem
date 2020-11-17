@@ -10,7 +10,7 @@ _A Software Engineering, Integrative Programming, and Computer Architecture Fina
 
 ## Project Updates
 ```bash
-November 14, 2020 - 6:25 PM
+November 17, 2020 - 10:00 AM
 > Fixed localhost/phpmyadmin database error
 > Restored Database
 > Fixed logical bugs
