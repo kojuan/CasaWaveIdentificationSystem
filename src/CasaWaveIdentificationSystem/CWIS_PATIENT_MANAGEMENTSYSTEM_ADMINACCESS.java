@@ -118,8 +118,6 @@ public class CWIS_PATIENT_MANAGEMENTSYSTEM_ADMINACCESS extends javax.swing.JFram
         updateButton = new javax.swing.JButton();
         deleteButton = new javax.swing.JButton();
         clearButton = new javax.swing.JButton();
-        moveRowUpButton = new javax.swing.JButton();
-        moveRowDownButton = new javax.swing.JButton();
         exportExcelButton = new javax.swing.JButton();
         importExcelButton = new javax.swing.JButton();
         printButton = new javax.swing.JButton();
@@ -151,6 +149,7 @@ public class CWIS_PATIENT_MANAGEMENTSYSTEM_ADMINACCESS extends javax.swing.JFram
         quickBodyChecker = new javax.swing.JLabel();
         calculatorButton = new javax.swing.JButton();
         calculatorButton1 = new javax.swing.JButton();
+        quickBodyCheckerInfoLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("MHMS Patient Data Management System");
@@ -284,7 +283,7 @@ public class CWIS_PATIENT_MANAGEMENTSYSTEM_ADMINACCESS extends javax.swing.JFram
         addButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/CasaWaveIdentificationSystem/APP_IMAGES/mainprogram/addIcon.png"))); // NOI18N
         addButton.setText("Add");
         addButton.setBackground(new java.awt.Color(235, 245, 255));
-        addButton.setBorder(javax.swing.BorderFactory.createMatteBorder(2, 1, 2, 1, new java.awt.Color(235, 245, 255)));
+        addButton.setBorder(javax.swing.BorderFactory.createMatteBorder(2, 1, 2, 1, new java.awt.Color(153, 153, 255)));
         addButton.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         addButton.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
         addButton.addActionListener(new java.awt.event.ActionListener() {
@@ -296,7 +295,7 @@ public class CWIS_PATIENT_MANAGEMENTSYSTEM_ADMINACCESS extends javax.swing.JFram
         updateButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/CasaWaveIdentificationSystem/APP_IMAGES/mainprogram/refreshIcon.png"))); // NOI18N
         updateButton.setText("Update");
         updateButton.setBackground(new java.awt.Color(235, 245, 255));
-        updateButton.setBorder(javax.swing.BorderFactory.createMatteBorder(2, 1, 2, 1, new java.awt.Color(235, 245, 255)));
+        updateButton.setBorder(javax.swing.BorderFactory.createMatteBorder(2, 1, 2, 1, new java.awt.Color(153, 153, 255)));
         updateButton.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         updateButton.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
         updateButton.addActionListener(new java.awt.event.ActionListener() {
@@ -308,7 +307,7 @@ public class CWIS_PATIENT_MANAGEMENTSYSTEM_ADMINACCESS extends javax.swing.JFram
         deleteButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/CasaWaveIdentificationSystem/APP_IMAGES/mainprogram/deleteIcon.png"))); // NOI18N
         deleteButton.setText("Delete");
         deleteButton.setBackground(new java.awt.Color(235, 245, 255));
-        deleteButton.setBorder(javax.swing.BorderFactory.createMatteBorder(2, 1, 2, 1, new java.awt.Color(235, 245, 255)));
+        deleteButton.setBorder(javax.swing.BorderFactory.createMatteBorder(2, 1, 2, 1, new java.awt.Color(153, 153, 255)));
         deleteButton.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         deleteButton.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
         deleteButton.addActionListener(new java.awt.event.ActionListener() {
@@ -320,30 +319,12 @@ public class CWIS_PATIENT_MANAGEMENTSYSTEM_ADMINACCESS extends javax.swing.JFram
         clearButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/CasaWaveIdentificationSystem/APP_IMAGES/mainprogram/clearIcon.png"))); // NOI18N
         clearButton.setText("Clear");
         clearButton.setBackground(new java.awt.Color(235, 245, 255));
-        clearButton.setBorder(javax.swing.BorderFactory.createMatteBorder(2, 1, 2, 1, new java.awt.Color(235, 245, 255)));
+        clearButton.setBorder(javax.swing.BorderFactory.createMatteBorder(2, 1, 2, 1, new java.awt.Color(153, 153, 255)));
         clearButton.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         clearButton.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
         clearButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 clearButtonActionPerformed(evt);
-            }
-        });
-
-        moveRowUpButton.setText("Move Row Up");
-        moveRowUpButton.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        moveRowUpButton.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
-        moveRowUpButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                moveRowUpButtonActionPerformed(evt);
-            }
-        });
-
-        moveRowDownButton.setText("Move Row Down");
-        moveRowDownButton.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        moveRowDownButton.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
-        moveRowDownButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                moveRowDownButtonActionPerformed(evt);
             }
         });
 
@@ -369,8 +350,9 @@ public class CWIS_PATIENT_MANAGEMENTSYSTEM_ADMINACCESS extends javax.swing.JFram
 
         printButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/CasaWaveIdentificationSystem/APP_IMAGES/mainprogram/printerIcon.png"))); // NOI18N
         printButton.setText("Print Entire Patient Database");
+        printButton.setBackground(new java.awt.Color(204, 204, 255));
+        printButton.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         printButton.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        printButton.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
         printButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 printButtonActionPerformed(evt);
@@ -510,7 +492,9 @@ public class CWIS_PATIENT_MANAGEMENTSYSTEM_ADMINACCESS extends javax.swing.JFram
         quickCheckerPanel.setBackground(new java.awt.Color(235, 241, 253));
 
         temperatureTf1.setEditable(false);
-        temperatureTf1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        temperatureTf1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        temperatureTf1.setBackground(new java.awt.Color(255, 255, 255));
+        temperatureTf1.setBorder(null);
         temperatureTf1.setMaximumSize(new java.awt.Dimension(7, 20));
         temperatureTf1.setPreferredSize(new java.awt.Dimension(7, 20));
         temperatureTf1.setToolTipText("Please indicate your Phone number starting at 09xxxxxxxx");
@@ -522,7 +506,9 @@ public class CWIS_PATIENT_MANAGEMENTSYSTEM_ADMINACCESS extends javax.swing.JFram
         phoneNumberTf.setDocument(new JTextFieldLimit(11));
 
         temperatureTf2.setEditable(false);
-        temperatureTf2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        temperatureTf2.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        temperatureTf2.setBackground(new java.awt.Color(255, 255, 255));
+        temperatureTf2.setBorder(null);
         temperatureTf2.setMaximumSize(new java.awt.Dimension(7, 20));
         temperatureTf2.setPreferredSize(new java.awt.Dimension(7, 20));
         temperatureTf2.setToolTipText("Please indicate your Phone number starting at 09xxxxxxxx");
@@ -543,6 +529,7 @@ public class CWIS_PATIENT_MANAGEMENTSYSTEM_ADMINACCESS extends javax.swing.JFram
         temperatureBox2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
 
         temperatureConvertButton1.setText("Detect");
+        temperatureConvertButton1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         temperatureConvertButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 temperatureConvertButton1ActionPerformed(evt);
@@ -560,14 +547,17 @@ public class CWIS_PATIENT_MANAGEMENTSYSTEM_ADMINACCESS extends javax.swing.JFram
         patientIDLabel2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
 
         bpmTf.setEditable(false);
-        bpmTf.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        bpmTf.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         bpmTf.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        bpmTf.setBackground(new java.awt.Color(255, 255, 255));
+        bpmTf.setBorder(null);
         bpmTf.setMaximumSize(new java.awt.Dimension(7, 20));
         bpmTf.setPreferredSize(new java.awt.Dimension(7, 20));
         bpmTf.setToolTipText("Please indicate your Phone number starting at 09xxxxxxxx");
         phoneNumberTf.setDocument(new JTextFieldLimit(11));
 
         detectBPMButton.setText("Detect");
+        detectBPMButton.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         detectBPMButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 detectBPMButtonActionPerformed(evt);
@@ -608,6 +598,8 @@ public class CWIS_PATIENT_MANAGEMENTSYSTEM_ADMINACCESS extends javax.swing.JFram
             }
         });
 
+        quickBodyCheckerInfoLabel.setText("(REQUIRES EXTERNAL CASAWAVE MEDICAL HEATH DEVICE)");
+
         javax.swing.GroupLayout quickCheckerPanelLayout = new javax.swing.GroupLayout(quickCheckerPanel);
         quickCheckerPanel.setLayout(quickCheckerPanelLayout);
         quickCheckerPanelLayout.setHorizontalGroup(
@@ -646,7 +638,8 @@ public class CWIS_PATIENT_MANAGEMENTSYSTEM_ADMINACCESS extends javax.swing.JFram
                             .addGroup(quickCheckerPanelLayout.createSequentialGroup()
                                 .addComponent(detectBPMButton, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(temperatureClearAllButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(temperatureClearAllButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(quickBodyCheckerInfoLabel))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         quickCheckerPanelLayout.setVerticalGroup(
@@ -654,7 +647,9 @@ public class CWIS_PATIENT_MANAGEMENTSYSTEM_ADMINACCESS extends javax.swing.JFram
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, quickCheckerPanelLayout.createSequentialGroup()
                 .addGap(37, 37, 37)
                 .addComponent(quickBodyChecker)
-                .addGap(18, 18, 18)
+                .addGap(4, 4, 4)
+                .addComponent(quickBodyCheckerInfoLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(quickCheckerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(quickCheckerPanelLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
@@ -667,7 +662,7 @@ public class CWIS_PATIENT_MANAGEMENTSYSTEM_ADMINACCESS extends javax.swing.JFram
                             .addComponent(temperatureBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(10, 10, 10)
                         .addGroup(quickCheckerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(temperatureBox2)
+                            .addComponent(temperatureBox2, javax.swing.GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE)
                             .addComponent(temperatureTf2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(quickCheckerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -775,12 +770,8 @@ public class CWIS_PATIENT_MANAGEMENTSYSTEM_ADMINACCESS extends javax.swing.JFram
                             .addComponent(jLabel1)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addComponent(filterSearchTf, javax.swing.GroupLayout.PREFERRED_SIZE, 698, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(173, 173, 173)
-                            .addComponent(moveRowUpButton)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(moveRowDownButton)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(printButton, javax.swing.GroupLayout.PREFERRED_SIZE, 415, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(printButton, javax.swing.GroupLayout.PREFERRED_SIZE, 325, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, patientFullMainPanelLayout.createSequentialGroup()
                             .addContainerGap()
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1885, javax.swing.GroupLayout.PREFERRED_SIZE))))
@@ -880,8 +871,6 @@ public class CWIS_PATIENT_MANAGEMENTSYSTEM_ADMINACCESS extends javax.swing.JFram
                 .addGroup(patientFullMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(filterSearchTf, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(moveRowUpButton)
-                    .addComponent(moveRowDownButton)
                     .addComponent(printButton, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
@@ -894,6 +883,9 @@ public class CWIS_PATIENT_MANAGEMENTSYSTEM_ADMINACCESS extends javax.swing.JFram
     private void selectPatient(int counter) {
         labelImage.setText("");
         labelImage.setIcon(null);
+        temperatureTf1.setText("");
+        temperatureTf2.setText("");
+        bpmTf.setText("");
         try {
             patientIdTf.setText(Integer.toString(dao.patientList().get(counter).getID()));
             firstNameTf.setText(dao.patientList().get(counter).getfirstName());
@@ -946,6 +938,7 @@ public class CWIS_PATIENT_MANAGEMENTSYSTEM_ADMINACCESS extends javax.swing.JFram
             this.validate();
             this.repaint();
         }
+
     }
     // limit phone number max
 
@@ -985,8 +978,8 @@ public class CWIS_PATIENT_MANAGEMENTSYSTEM_ADMINACCESS extends javax.swing.JFram
     }//GEN-LAST:event_phoneNumberTfKeyTyped
 
     private void browseImageButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_browseImageButtonActionPerformed
-        // Default image location
 
+// Default image location
         String currentDirectoryPath = "C:\\Users\\Public\\Pictures\\";
         JFileChooser imageFileChooser = new JFileChooser(currentDirectoryPath);
         int imageChooser = imageFileChooser.showOpenDialog(null);
@@ -996,6 +989,8 @@ public class CWIS_PATIENT_MANAGEMENTSYSTEM_ADMINACCESS extends javax.swing.JFram
         imageFileChooser.setFileFilter(fnef);
         try {
             if (imageChooser == JFileChooser.APPROVE_OPTION) {
+                labelImage.setText("");
+                labelImage.setIcon(null);
                 File imageFile = imageFileChooser.getSelectedFile();
                 String imageFileName = imageFile.getName();
                 String imageFilePath = imageFile.getAbsolutePath();
@@ -1159,6 +1154,9 @@ public class CWIS_PATIENT_MANAGEMENTSYSTEM_ADMINACCESS extends javax.swing.JFram
         imagePathTf.setText("");
         imageNameTf.setText("");
         patientDataTable.clearSelection();
+        temperatureTf1.setText("");
+        temperatureTf2.setText("");
+        bpmTf.setText("");
         this.invalidate();
         this.validate();
         this.repaint();
@@ -1185,6 +1183,9 @@ public class CWIS_PATIENT_MANAGEMENTSYSTEM_ADMINACCESS extends javax.swing.JFram
         selectPatient(currentPosition);
         patientDataTable.clearSelection();
         patientDataTable.addRowSelectionInterval(currentPosition, currentPosition);
+        temperatureTf1.setText("");
+        temperatureTf2.setText("");
+        bpmTf.setText("");
 
     }//GEN-LAST:event_firstItemInListButtonActionPerformed
 
@@ -1193,33 +1194,45 @@ public class CWIS_PATIENT_MANAGEMENTSYSTEM_ADMINACCESS extends javax.swing.JFram
         selectPatient(currentPosition);
         patientDataTable.clearSelection();
         patientDataTable.addRowSelectionInterval(currentPosition, currentPosition);
+        temperatureTf1.setText("");
+        temperatureTf2.setText("");
+        bpmTf.setText("");
     }//GEN-LAST:event_lastItemInListButtonActionPerformed
 
     private void nextItemInListButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextItemInListButtonActionPerformed
-        // Increment currentPosition to display  next item on input fields
-
-        currentPosition++;
-
-        if (currentPosition > dao.patientList().size() - 1) {
-            currentPosition = 0;
+        try {
+// Increment currentPosition to display  next item on input fields
+            currentPosition++;
+            if (currentPosition > dao.patientList().size() - 1) {
+                currentPosition = 0;
+            }
+            // If you reach the last item , move back to the first item.
+            selectPatient(currentPosition);
+            patientDataTable.clearSelection();
+            patientDataTable.addRowSelectionInterval(currentPosition, currentPosition);
+            temperatureTf1.setText("");
+            temperatureTf2.setText("");
+            bpmTf.setText("");
+        } catch (NullPointerException ex) {
+            ex.printStackTrace(System.out);
         }
-
-        // If you reach the last item , move back to the first item.
-        selectPatient(currentPosition);
-        patientDataTable.clearSelection();
-        patientDataTable.addRowSelectionInterval(currentPosition, currentPosition);
     }//GEN-LAST:event_nextItemInListButtonActionPerformed
 
     private void previousItemInListButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_previousItemInListButtonActionPerformed
-        // Decrenebt currentPosition to access/view previous item in a list
-
-        currentPosition--;
-        if (currentPosition < 0) {
-            currentPosition = dao.patientList().size() - 1;
+        try {// Decrenebt currentPosition to access/view previous item in a list
+            currentPosition--;
+            if (currentPosition < 0) {
+                currentPosition = dao.patientList().size() - 1;
+            }
+            selectPatient(currentPosition);
+            patientDataTable.clearSelection();
+            patientDataTable.addRowSelectionInterval(currentPosition, currentPosition);
+            temperatureTf1.setText("");
+            temperatureTf2.setText("");
+            bpmTf.setText("");
+        } catch (NullPointerException ex) {
+            ex.printStackTrace(System.out);
         }
-        selectPatient(currentPosition);
-        patientDataTable.clearSelection();
-        patientDataTable.addRowSelectionInterval(currentPosition, currentPosition);
     }//GEN-LAST:event_previousItemInListButtonActionPerformed
 
     private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteButtonActionPerformed
@@ -1416,29 +1429,6 @@ public class CWIS_PATIENT_MANAGEMENTSYSTEM_ADMINACCESS extends javax.swing.JFram
         ImportDataFromExcel showImportDataFromExcelFrame = new ImportDataFromExcel();
         showImportDataFromExcelFrame.setVisible(true);
     }//GEN-LAST:event_importExcelButtonActionPerformed
-
-    private void moveRowUpButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_moveRowUpButtonActionPerformed
-
-        // GetSelectedRow First and Store its value in a variable
-        int getSelectedRow = patientDataTable.getSelectedRow();
-        if (getSelectedRow > 0) {
-            System.out.println(getSelectedRow);
-            model.moveRow(getSelectedRow, getSelectedRow, getSelectedRow - 1);
-            patientDataTable.getSelectionModel().setSelectionInterval(getSelectedRow - 1, getSelectedRow - 1);
-        } else {
-            JOptionPane.showMessageDialog(null, "You have reached the top row.");
-        }
-    }//GEN-LAST:event_moveRowUpButtonActionPerformed
-
-    private void moveRowDownButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_moveRowDownButtonActionPerformed
-        int getSelectedRow = patientDataTable.getSelectedRow();
-        if (getSelectedRow > 0) {
-            model.moveRow(getSelectedRow, getSelectedRow, getSelectedRow + 1);
-            patientDataTable.getSelectionModel().setSelectionInterval(getSelectedRow + 1, getSelectedRow + 1);
-        } else {
-            JOptionPane.showMessageDialog(null, "You have reached the bottom row.");
-        }
-    }//GEN-LAST:event_moveRowDownButtonActionPerformed
 
     private void patientDataTableKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_patientDataTableKeyReleased
         // Get the selected row index
@@ -1684,8 +1674,6 @@ public class CWIS_PATIENT_MANAGEMENTSYSTEM_ADMINACCESS extends javax.swing.JFram
     private javax.swing.JCheckBox maleCbButton;
     private javax.swing.JLabel middleNameLabel;
     private javax.swing.JTextField middleNameTf;
-    private javax.swing.JButton moveRowDownButton;
-    private javax.swing.JButton moveRowUpButton;
     private javax.swing.JLabel nationalityLabel;
     private javax.swing.JTextField nationalityTf;
     private javax.swing.JButton nextItemInListButton;
@@ -1699,6 +1687,7 @@ public class CWIS_PATIENT_MANAGEMENTSYSTEM_ADMINACCESS extends javax.swing.JFram
     private javax.swing.JButton previousItemInListButton;
     private javax.swing.JButton printButton;
     private javax.swing.JLabel quickBodyChecker;
+    private javax.swing.JLabel quickBodyCheckerInfoLabel;
     private javax.swing.JPanel quickCheckerPanel;
     private javax.swing.JComboBox<String> religionCB;
     private javax.swing.JLabel religionLabel;
