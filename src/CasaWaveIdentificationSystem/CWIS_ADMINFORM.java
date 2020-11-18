@@ -351,7 +351,7 @@ public class CWIS_ADMINFORM extends javax.swing.JFrame {
     private void managePatientsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_managePatientsButtonActionPerformed
         try {
             this.dispose();
-            CWIS_PATIENT_MANAGEMENTSYSTEM_ADMINACCESS showPatientDataList = new CWIS_PATIENT_MANAGEMENTSYSTEM_ADMINACCESS();
+            CWIS_PATIENT_MANAGEMENTSYSTEM_USERACCESS showPatientDataList = new CWIS_PATIENT_MANAGEMENTSYSTEM_USERACCESS();
             showPatientDataList.setVisible(true);
             
         } catch (SQLException exception) {

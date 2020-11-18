@@ -1231,7 +1231,7 @@ public class CWIS_MAIN extends javax.swing.JFrame {
 
     private void managePatientsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_managePatientsButtonActionPerformed
         try {
-            CWIS_PATIENT_MANAGEMENTSYSTEM showPatientDataList = new CWIS_PATIENT_MANAGEMENTSYSTEM();
+            CWIS_PATIENT_MANAGEMENTSYSTEM_ADMINACCESS showPatientDataList = new CWIS_PATIENT_MANAGEMENTSYSTEM_ADMINACCESS();
             showPatientDataList.setVisible(true);
             this.dispose();
         } catch (SQLException exception) {
