@@ -10,6 +10,13 @@ _A Software Engineering, Integrative Programming, and Computer Architecture Fina
 
 ## Project Updates
 ```bash
+November 18, 2020 - 10:10 AM
+> Added "Refresh Data Manually" Button in Patient Database if in-case the data will not load automatically
+> Added birthday date in Patient Database ( a missing feature, now present )
+> Fixed GUI Layout in Patient Database
+> Prepared a list of data for importing session during presentation
+```
+```bash
 November 17, 2020 - 10:00 AM
 > Fixed localhost/phpmyadmin database error
 > Restored Database
